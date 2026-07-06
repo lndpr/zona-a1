@@ -64,13 +64,12 @@
 
                     <li><a href="#">Home</a></li>
 
-                    <li><a href="#">Technology</a></li>
 
-                    <li><a href="#">Features</a></li>
+                    <li><a href="#backtest">Backtest</a></li>
 
-                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
 
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#faq">FAQ</a></li>
 
                 </ul>
 
@@ -167,7 +166,7 @@
 
                         <span>
 
-                            SL / TP
+                            SL / TP / SL+
 
                         </span>
 
@@ -407,6 +406,95 @@
 
                 <img src="assets/dashboard-preview.png"
                     alt="Break of Structure Strategy">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================== -->
+<!-- BACKTEST RESULTS -->
+<!-- ===================================== -->
+
+<section id="backtest">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="section-badge">BACKTEST RESULTS</span>
+
+            <h2>Backtest ZONA A1</h2>
+
+            <p>
+                Berikut hasil pengujian ZONA A1 pada beberapa periode dan settingan
+                berbeda. Setiap hasil backtest disertai detail parameter yang digunakan
+                agar transparan dan mudah dipahami.
+            </p>
+
+        </div>
+
+        <div class="backtest-grid">
+
+            <!-- ============ BACKTEST 1 ============ -->
+            <div class="backtest-card">
+
+                <div class="backtest-image-wrap">
+
+                    <!--
+                        Ganti src di bawah dengan gambar hasil backtest asli, contoh:
+                        <img src="assets/backtest-1.png" alt="Backtest Result 1">
+                    -->
+                    <img src="assets/backtest-1.png" alt="Backtest Result 1"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <div class="placeholder-note" style="display:none;">
+                        <i class="fa-solid fa-image"></i>
+                        Taruh gambar di assets/backtest-1.png
+                    </div>
+                </div>
+
+                <div class="backtest-body">
+                    <h3>Mode Auto 24 jam</h3>
+                    <p class="backtest-sub">rentang tanggal backtest, 1 Jan 2024 -  1Jul 2026</p>
+
+                    <p style="color:var(--text-secondary); font-size:14px; line-height:1.8;">
+                        Setting <strong style="color:#fff;">Full Auto</strong> — EA berjalan nonstop 24 jam
+                        menggunakan settingan yang sudah ditentukan, tanpa perlu dinyalakan atau
+                        dimatikan secara manual.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- ============ BACKTEST 2 ============ -->
+            <div class="backtest-card">
+
+                <div class="backtest-image-wrap">
+
+                    <img src="assets/backtest-2.png" alt="Backtest Result 2"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <div class="placeholder-note" style="display:none;">
+                        <i class="fa-solid fa-image"></i>
+                        Taruh gambar di assets/backtest-2.png
+                    </div>
+                </div>
+
+                <div class="backtest-body">
+                    <h3>Mode Hybrid</h3>
+                    <p class="backtest-sub">Isi rentang tanggal backtest</p>
+
+                    <p style="color:var(--text-secondary); font-size:14px; line-height:1.8;">
+                        Setting <strong style="color:#fff;">Hybrid</strong> — EA tidak berjalan otomatis 24 jam.
+                        EA dinyalakan secara manual hanya saat ingin mengambil posisi, sehingga
+                        tidak perlu dibiarkan aktif dalam waktu lama.
+                    </p>
+                </div>
 
             </div>
 
@@ -858,11 +946,6 @@
 
                 </h4>
 
-                <a href="#technology">
-
-                    Technology
-
-                </a>
 
                 <a href="#pricing">
 
@@ -873,6 +956,12 @@
                 <a href="#faq">
 
                     FAQ
+
+                </a>
+
+                <a href="#backtest">
+
+                    Backtest
 
                 </a>
 
