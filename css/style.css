@@ -3151,5 +3151,174 @@ BACKTEST PAGE
 }
 
 /* ==========================================================
+           LIVE RESULTS PAGE (tambahan komponen, memakai variabel
+           dari style.css supaya tetap konsisten sama tema utama)
+        ========================================================== */
+
+        .live-hero{
+            padding:180px 0 50px;
+            text-align:center;
+        }
+
+        .live-hero .section-badge{
+            margin-bottom:20px;
+        }
+
+        .live-hero h1{
+            font-size:46px;
+            font-weight:900;
+            margin-bottom:16px;
+        }
+
+        .live-hero h1 span{
+            background:linear-gradient(90deg,#00D4FF,#8B5CF6);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .live-hero p{
+            color:var(--text-secondary);
+            max-width:650px;
+            margin:auto;
+            line-height:1.8;
+            font-size:16px;
+        }
+
+        .live-updated{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            margin-top:18px;
+            padding:6px 16px;
+            border-radius:50px;
+            font-size:13px;
+            color:var(--text-secondary);
+            border:1px solid var(--border);
+            background:rgba(255,255,255,.03);
+        }
+
+        .live-updated i{
+            color:#4ADE80;
+            font-size:8px;
+        }
+
+        /* ---- Account summary ---- */
+
+        .live-summary{
+            padding:20px 0 50px;
+        }
+
+        .live-summary-grid{
+            display:grid;
+            grid-template-columns:repeat(5,1fr);
+            gap:16px;
+        }
+
+        .live-summary-grid .setting-item{
+            background:var(--card);
+            border:1px solid var(--border);
+            border-radius:14px;
+            padding:18px 16px;
+            text-align:center;
+        }
+
+        .live-summary-grid .setting-item span{
+            display:block;
+            font-size:11px;
+            text-transform:uppercase;
+            letter-spacing:.5px;
+            color:var(--text-secondary);
+            margin-bottom:8px;
+        }
+
+        .live-summary-grid .setting-item strong{
+            font-size:22px;
+            color:#fff;
+        }
+
+        .live-summary-grid .setting-item strong.positive{
+            color:#4ADE80;
+        }
+
+        /* ---- Gallery screenshot ---- */
+
+        .live-gallery{
+            padding-bottom:80px;
+        }
+
+        .live-gallery-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:28px;
+        }
+
+        .live-gallery-card{
+            border-radius:var(--radius);
+            border:1px solid var(--border);
+            overflow:hidden;
+            background:var(--card);
+            transition:var(--transition);
+        }
+
+        .live-gallery-card:hover{
+            transform:translateY(-6px);
+            border-color:var(--primary);
+            box-shadow:var(--shadow);
+        }
+
+        .live-gallery-img-wrap{
+            position:relative;
+            aspect-ratio:9/16;
+            background:rgba(255,255,255,.02);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            overflow:hidden;
+        }
+
+        .live-gallery-img-wrap img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+
+        .live-gallery-img-wrap .placeholder-note{
+            display:none;
+            position:absolute;
+            inset:0;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:10px;
+            color:var(--text-secondary);
+            font-size:12px;
+            text-align:center;
+            padding:20px;
+        }
+
+        .live-gallery-img-wrap .placeholder-note i{
+            font-size:24px;
+            color:var(--primary);
+            opacity:.7;
+        }
+
+        .live-gallery-caption{
+            padding:14px 16px;
+            font-size:13px;
+            color:var(--text-secondary);
+            text-align:center;
+            border-top:1px solid var(--border);
+        }
+
+        @media(max-width:768px){
+
+            .live-summary-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+        }
+
+/* ==========================================================
 END
 ========================================================== */
