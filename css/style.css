@@ -3319,6 +3319,69 @@ BACKTEST PAGE
 
         }
 
+        /* ==============================
+   LIVE WARNING ALERT
+============================== */
+
+.live-alert {
+    max-width: 1135px;
+    margin: 0 auto 14px;
+    padding: 11px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px solid rgba(255, 59, 59, .55);
+    border-radius: 4px;
+
+    background: rgba(255, 59, 59, .04);
+
+    color: #ff6b6b;
+
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+
+    animation: alertBlink 1.6s ease-in-out infinite;
+}
+
+.live-alert-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #ff3b3b;
+
+    box-shadow: 0 0 10px rgba(255, 59, 59, .8);
+
+    animation: alertDot 1s ease-in-out infinite;
+}
+
+@keyframes alertBlink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .45;
+    }
+}
+
+@keyframes alertDot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(.7);
+        opacity: .5;
+    }
+}
+
 /* ==========================================================
 END
 ========================================================== */

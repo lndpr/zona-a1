@@ -1,0 +1,930 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZONA A1 | Live Trading</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* ==============================
+           LIVE PAGE
+        ============================== */
+
+        .live-page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+
+        .live-header {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 45px;
+        }
+
+        .live-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 8px 15px;
+            border: 1px solid rgba(0, 212, 255, .25);
+            border-radius: 50px;
+
+            background: rgba(0, 212, 255, .06);
+
+            color: #00D4FF;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+        }
+
+        .live-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff3b3b;
+
+            box-shadow:
+                0 0 0 4px rgba(255, 59, 59, .12),
+                0 0 15px rgba(255, 59, 59, .7);
+
+            animation: livePulse 1.5s infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .55;
+                transform: scale(.85);
+            }
+        }
+
+        .live-header h1 {
+            margin: 22px 0 14px;
+
+            font-size: clamp(38px, 6vw, 70px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .live-header h1 span {
+            background: linear-gradient(
+                90deg,
+                #00D4FF,
+                #3B82F6
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .live-header p {
+            max-width: 650px;
+            margin: auto;
+
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* ==============================
+           PLAYER
+        ============================== */
+
+        .live-player-wrapper {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .live-player {
+            position: relative;
+
+            width: 100%;
+            aspect-ratio: 16 / 9;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(0, 212, 255, .08),
+                    transparent 40%
+                ),
+                #05070c;
+
+            box-shadow:
+                0 0 0 1px rgba(0,212,255,.03),
+                0 25px 80px rgba(0,0,0,.45);
+        }
+
+        .live-player video {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: contain;
+            background: #05070c;
+        }
+
+        /* ==============================
+           WAITING SCREEN
+        ============================== */
+
+        .stream-placeholder {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .stream-icon {
+            width: 72px;
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(0,212,255,.2);
+            background: rgba(0,212,255,.05);
+
+            color: #00D4FF;
+
+            font-size: 28px;
+
+            margin-bottom: 22px;
+        }
+
+        .stream-placeholder h2 {
+            margin: 0 0 10px;
+
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .stream-placeholder p {
+            margin: 0;
+
+            max-width: 420px;
+
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .stream-placeholder.hidden {
+            display: none;
+        }
+
+        /* ==============================
+           LIVE INFO
+        ============================== */
+
+        .live-info {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 16px;
+        }
+
+        .live-info-card {
+            padding: 18px 20px;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.015);
+        }
+
+        .live-info-label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: var(--text-secondary);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .live-info-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #fff;
+
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .live-online {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #4ADE80;
+
+            box-shadow:
+                0 0 12px rgba(74,222,128,.6);
+        }
+
+        /* ==============================
+           DESCRIPTION
+        ============================== */
+
+        .live-description {
+            max-width: 900px;
+
+            margin: 70px auto 0;
+
+            text-align: center;
+        }
+
+        .live-description .section-badge {
+            margin-bottom: 18px;
+        }
+
+        .live-description h2 {
+            margin-bottom: 15px;
+        }
+
+        .live-description p {
+            color: var(--text-secondary);
+
+            line-height: 1.8;
+        }
+
+        /* ==============================
+           WARNING
+        ============================== */
+
+        .live-disclaimer {
+            max-width: 850px;
+
+            margin: 45px auto 0;
+
+            padding: 18px 20px;
+
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+
+            background: rgba(255,255,255,.015);
+
+            color: var(--text-secondary);
+
+            font-size: 12px;
+            line-height: 1.7;
+
+            text-align: center;
+        }
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 768px) {
+
+            .live-page {
+                padding: 100px 0 55px;
+            }
+
+            .live-header {
+                margin-bottom: 28px;
+            }
+
+            .live-header h1 {
+                font-size: 40px;
+                letter-spacing: -1.5px;
+            }
+
+            .live-header p {
+                font-size: 14px;
+            }
+
+            .live-player {
+                border-radius: 12px;
+            }
+
+            .live-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .live-info-card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .live-info {
+                grid-template-columns: 1fr 1fr;
+                gap: 9px;
+            }
+
+            .live-info-card {
+                padding: 13px;
+            }
+
+            .live-info-value {
+                font-size: 13px;
+            }
+
+            .stream-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .stream-placeholder h2 {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="mouse-glow"></div>
+
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="container">
+
+            <nav class="navbar">
+
+                <a href="index.html" class="logo">
+
+                    <span class="logo-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </span>
+
+                    <span
+                        class="logo-text-wrap"
+                        style="display:flex; flex-direction:column; line-height:1.15;"
+                    >
+
+                        <span class="logo-text">
+                            ZONA <span>A1</span>
+                        </span>
+
+                        <span class="logo-sub">
+                            by Mataryclub
+                        </span>
+
+                    </span>
+
+                </a>
+
+
+                <ul class="nav-menu">
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#backtest">
+                            Backtest
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#indicator">
+                            Indikator
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#pricing">
+                            Pricing
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#live">
+                            Live
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- LIVE PAGE -->
+
+    <main class="live-page" id="live">
+
+        <div class="container">
+
+
+            <!-- HEADER -->
+
+            <div class="live-header">
+
+                <div class="live-status">
+
+                    <span class="live-status-dot"></span>
+
+                    LIVE TRADING
+
+                </div>
+
+
+                <h1>
+                    ZONA A1
+                    <span>Live</span>
+                </h1>
+
+
+                <p>
+                    Pantau langsung chart trading ZONA A1 yang
+                    berjalan dari MetaTrader 5 secara real-time.
+                </p>
+
+            </div>
+
+
+            <!-- PLAYER -->
+            <div class="live-alert">
+    <span class="live-alert-dot"></span>
+
+    <span>
+        PERHATIAN: Live trading ini hanya untuk informasi dan edukasi,
+        bukan merupakan ajakan, rekomendasi, atau saran untuk melakukan transaksi.
+        Segala risiko dan keputusan trading sepenuhnya menjadi tanggung jawab masing-masing pengguna.
+    </span>
+</div>
+
+            <div class="live-player-wrapper">
+
+                <div class="live-player">
+
+                    <!--
+                        GANTI URL INI
+                        setelah Cloudflare Quick Tunnel aktif.
+
+                        Contoh:
+
+                        https://abc123.trycloudflare.com/ea1/index.m3u8
+                    -->
+
+                    <video
+                        id="liveVideo"
+                        controls
+                        autoplay
+                        muted
+                        playsinline
+                    ></video>
+
+
+                    <!-- PLACEHOLDER -->
+
+                    <div
+                        class="stream-placeholder"
+                        id="streamPlaceholder"
+                    >
+
+                        <div class="stream-icon">
+
+                            <i class="fa-solid fa-satellite-dish"></i>
+
+                        </div>
+
+                        <h2>
+                            Waiting for Live Stream
+                        </h2>
+
+                        <p>
+                            Stream MetaTrader 5 belum aktif.
+                            Live chart akan muncul otomatis
+                            ketika server mulai mengirimkan stream.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFO -->
+
+                <div class="live-info">
+
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
+                            Status
+                        </span>
+
+                        <div class="live-info-value">
+
+                            <span
+                                class="live-online"
+                                id="statusDot"
+                            ></span>
+
+                            <span id="statusText">
+                                Connecting
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
+                            Symbol
+                        </span>
+
+                        <div class="live-info-value">
+                            XAUUSD
+                        </div>
+
+                    </div>
+
+
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
+                            Timeframe
+                        </span>
+
+                        <div class="live-info-value">
+                            M1-M5
+                        </div>
+
+                    </div>
+
+
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
+                            Platform
+                        </span>
+
+                        <div class="live-info-value">
+                            MetaTrader 5
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <section class="live-description">
+
+                <span class="section-badge">
+                    REAL TIME MARKET
+                </span>
+
+                <h2>
+                    Watch The Market Live
+                </h2>
+
+                <p>
+                    Chart ditampilkan langsung dari terminal
+                    MetaTrader 5 yang menjalankan sistem ZONA A1.
+                    Tidak menggunakan screenshot atau rekaman,
+                    sehingga pergerakan chart dapat dipantau
+                    secara langsung.
+                </p>
+
+            </section>
+
+
+            <!-- DISCLAIMER -->
+
+            <div class="live-disclaimer">
+
+                <strong>
+                    Risk Disclaimer:
+                </strong>
+
+                Trading forex dan gold memiliki risiko tinggi.
+                Tampilan live trading ini hanya untuk tujuan
+                informasi dan edukasi, bukan merupakan ajakan
+                atau rekomendasi untuk melakukan transaksi.
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- HLS.JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+
+
+    <script>
+
+        /*
+        ==========================================
+        STREAM CONFIG
+        ==========================================
+
+        GANTI URL DI BAWAH SETELAH QUICK TUNNEL AKTIF.
+
+        Contoh:
+
+        const STREAM_URL =
+            "https://abc123.trycloudflare.com/ea1/index.m3u8";
+        */
+
+        const STREAM_URL =
+        "https://icon-item-million-suspected.trycloudflare.com/live/ea1/index.m3u8";
+
+
+        const video =
+            document.getElementById("liveVideo");
+
+        const placeholder =
+            document.getElementById("streamPlaceholder");
+
+        const statusText =
+            document.getElementById("statusText");
+
+        const statusDot =
+            document.getElementById("statusDot");
+
+
+        function setStatus(
+            text,
+            online = false
+        ) {
+
+            statusText.textContent = text;
+
+            if (online) {
+
+                statusDot.style.background =
+                    "#4ADE80";
+
+                statusDot.style.boxShadow =
+                    "0 0 12px rgba(74,222,128,.6)";
+
+            } else {
+
+                statusDot.style.background =
+                    "#f59e0b";
+
+                statusDot.style.boxShadow =
+                    "0 0 12px rgba(245,158,11,.5)";
+            }
+        }
+
+
+        function streamReady() {
+
+            placeholder.classList.add(
+                "hidden"
+            );
+
+            setStatus(
+                "LIVE",
+                true
+            );
+
+        }
+
+
+        function streamError() {
+
+            placeholder.classList.remove(
+                "hidden"
+            );
+
+            setStatus(
+                "Waiting",
+                false
+            );
+
+        }
+
+
+        /*
+        ==========================================
+        HLS
+        ==========================================
+        */
+
+        if (
+            window.Hls &&
+            Hls.isSupported()
+        ) {
+
+            const hls =
+                new Hls({
+                    enableWorker: true,
+
+                    lowLatencyMode: true,
+
+                    backBufferLength: 30,
+
+                    maxBufferLength: 10
+                });
+
+
+            hls.loadSource(
+                STREAM_URL
+            );
+
+
+            hls.attachMedia(
+                video
+            );
+
+
+            hls.on(
+                Hls.Events.MANIFEST_PARSED,
+                function () {
+
+                    streamReady();
+
+                    video.play()
+                        .catch(() => {});
+
+                }
+            );
+
+
+            hls.on(
+                Hls.Events.ERROR,
+                function (
+                    event,
+                    data
+                ) {
+
+                    if (
+                        data.fatal
+                    ) {
+
+                        streamError();
+
+                        setTimeout(
+                            function () {
+
+                                hls.destroy();
+
+                                location.reload();
+
+                            },
+                            10000
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+        /*
+        Safari / native HLS
+        */
+
+        else if (
+            video.canPlayType(
+                "application/vnd.apple.mpegurl"
+            )
+        ) {
+
+            video.src =
+                STREAM_URL;
+
+
+            video.addEventListener(
+                "loadedmetadata",
+                function () {
+
+                    streamReady();
+
+                    video.play()
+                        .catch(() => {});
+
+                }
+            );
+
+
+            video.addEventListener(
+                "error",
+                function () {
+
+                    streamError();
+
+                }
+            );
+
+        }
+
+        else {
+
+            setStatus(
+                "HLS Not Supported",
+                false
+            );
+
+        }
+
+    </script>
+
+
+    <!-- MOUSE GLOW -->
+
+    <script>
+
+        const mouseGlow =
+            document.querySelector(
+                ".mouse-glow"
+            );
+
+        if (mouseGlow) {
+
+            document.addEventListener(
+                "mousemove",
+                function (e) {
+
+                    mouseGlow.style.left =
+                        e.clientX + "px";
+
+                    mouseGlow.style.top =
+                        e.clientY + "px";
+
+                }
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
