@@ -385,6 +385,97 @@
             }
         }
 
+        /* ==============================
+   DISCLAIMER POPUP
+============================== */
+
+.disclaimer-popup {
+
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 99999;
+
+}
+
+
+.disclaimer-box {
+
+    width: 90%;
+    max-width: 520px;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    background: #080b12;
+
+    border: 1px solid rgba(0,212,255,.25);
+
+    box-shadow:
+    0 25px 80px rgba(0,0,0,.6);
+
+    text-align: center;
+
+}
+
+
+.disclaimer-icon {
+
+    font-size: 36px;
+    margin-bottom: 12px;
+
+}
+
+
+.disclaimer-box h3 {
+
+    color: #00D4FF;
+
+    margin-bottom: 15px;
+
+}
+
+
+.disclaimer-box p {
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.disclaimer-box button {
+
+    margin-top: 20px;
+
+    padding: 12px 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #00D4FF;
+
+    color: #000;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
     </style>
 </head>
 
@@ -952,7 +1043,7 @@
         }
 
     </script>
-    
+
    <script>
 
 function closeDisclaimer(){
