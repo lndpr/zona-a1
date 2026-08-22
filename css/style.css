@@ -3382,6 +3382,98 @@ BACKTEST PAGE
     }
 }
 
+  /* ==============================
+   popup disclaimer
+============================== */
+
+.disclaimer-popup{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:9999;
+
+}
+
+
+.disclaimer-box{
+
+    width:90%;
+    max-width:520px;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:#080b12;
+
+    border:1px solid rgba(0,212,255,.25);
+
+    box-shadow:
+    0 0 40px rgba(0,0,0,.5);
+
+    text-align:center;
+
+}
+
+
+.disclaimer-icon{
+
+    font-size:35px;
+
+    margin-bottom:10px;
+
+}
+
+
+.disclaimer-box h3{
+
+    color:#00D4FF;
+
+    margin-bottom:15px;
+
+}
+
+
+.disclaimer-box p{
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+
+.disclaimer-box button{
+
+    margin-top:20px;
+
+    padding:12px 35px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#00D4FF;
+
+    color:#000;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
 /* ==========================================================
 END
 ========================================================== */
