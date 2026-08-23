@@ -161,7 +161,7 @@
 
         .live-info {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 14px;
             margin-bottom: 26px;
         }
@@ -205,6 +205,27 @@
             border-radius: 50%;
             background: #4ADE80;
             box-shadow: 0 0 12px rgba(74,222,128,.6);
+        }
+
+        .live-info-value.win-value { color: #4ADE80; }
+        .live-info-value.loss-value { color: #ff3b3b; }
+
+        .status-badge.running {
+            background: rgba(0,212,255,.1);
+            color: #00D4FF;
+            border: 1px solid rgba(0,212,255,.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .running-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00D4FF;
+            box-shadow: 0 0 8px rgba(0,212,255,.8);
+            animation: livePulse 1.5s infinite;
         }
 
         /* ==============================
@@ -425,7 +446,7 @@
             }
 
             .live-info {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .live-info-card {
@@ -522,13 +543,7 @@
             cursor: pointer;
         }
 
-    
-.status-badge.running {
-    background: rgba(74,222,128,.1);
-    color:#4ADE80;
-    border:1px solid rgba(74,222,128,.3);
-}
-</style>
+    </style>
 </head>
 
 <div class="disclaimer-popup" id="disclaimerPopup">
@@ -726,11 +741,24 @@
                     <div class="live-info-card">
 
                         <span class="live-info-label">
-                            Symbol
+                            Win
                         </span>
 
-                        <div class="live-info-value">
-                            XAUUSD
+                        <div class="live-info-value win-value" id="winCount">
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
+                            Loss
+                        </span>
+
+                        <div class="live-info-value loss-value" id="lossCount">
+                            0
                         </div>
 
                     </div>
@@ -747,8 +775,6 @@
                         </div>
 
                     </div>
-
-                    
 
                 </div>
 
@@ -815,11 +841,23 @@
         const headerDot = document.getElementById("headerDot");
         const headerStatusText = document.getElementById("headerStatusText");
         const todayCount = document.getElementById("todayCount");
+        const winCount = document.getElementById("winCount");
+        const lossCount = document.getElementById("lossCount");
 
-        let count = 0;
+        let todayN = 0, winN = 0, lossN = 0;
 
-        const REASON_LABEL = { TP_HIT: "TP HIT", SL_HIT: "SL HIT", SL_PLUS_HIT: "SL+ HIT", STOPOUT: "STOP OUT", MANUAL: "CLOSED" };
-        const REASON_CLASS = { TP_HIT: "tp", SL_HIT: "sl", SL_PLUS_HIT: "tp", STOPOUT: "sl", MANUAL: "manual" };
+        // Kunci per posisi (pakai ticket kalau ada, fallback ke symbol+direction+zone+entry_price
+        // buat sinyal lama yang belum ngirim ticket)
+        function tradeKey(sig) {
+            if (sig.ticket) return "t" + sig.ticket;
+            return [sig.symbol, sig.direction, sig.zone, sig.entry_price].join("|");
+        }
+
+        // entries: Map key -> { data, el, status }
+        const entries = new Map();
+
+        const REASON_LABEL = { TP_HIT: "WIN · TP HIT", SL_HIT: "LOSS · SL HIT", STOPOUT: "LOSS · STOP OUT", MANUAL: "CLOSED" };
+        const REASON_CLASS = { TP_HIT: "tp", SL_HIT: "sl", STOPOUT: "sl", MANUAL: "manual" };
 
         function fmt(n) { return Number(n).toFixed(2); }
 
@@ -829,57 +867,98 @@
             });
         }
 
-        function buildCard(sig) {
-            const el = document.createElement("div");
+        function statusBadgeHtml(entry) {
+            if (!entry.close_reason) {
+                return `<span class="status-badge running"><span class="running-dot"></span>RUNNING</span>`;
+            }
+            const cls = REASON_CLASS[entry.close_reason] || "manual";
+            const label = REASON_LABEL[entry.close_reason] || "CLOSED";
+            return `<span class="status-badge ${cls}">${label}</span>`;
+        }
 
-            if (sig.event_type === "CLOSE") {
-                el.className = "signal-card closed";
-                const cls = REASON_CLASS[sig.close_reason] || "manual";
-                const label = REASON_LABEL[sig.close_reason] || "CLOSED";
+        function cardInnerHtml(entry) {
+            const dir = entry.direction === "BUY" ? "buy" : "sell";
+            const icon = entry.direction === "BUY" ? "fa-arrow-trend-up" : "fa-arrow-trend-down";
+            const iconCls = entry.close_reason ? "closed" : dir;
 
-                el.innerHTML = `
-                    <div class="signal-left">
-                        <div class="signal-dir-icon closed">
-                            <i class="fa-solid fa-flag-checkered"></i>
-                        </div>
-                        <div class="signal-meta">
-                            <h3>${sig.symbol} <span class="${sig.direction === 'BUY' ? 'dir-buy' : 'dir-sell'}">${sig.direction}</span></h3>
-                            <span class="zone-tag">Zone ${sig.zone}</span>
-                            ${sig.account_name ? `<span> · ${sig.account_name}</span>` : ""}
-                        </div>
+            return `
+                <div class="signal-left">
+                    <div class="signal-dir-icon ${iconCls}">
+                        <i class="fa-solid ${entry.close_reason ? "fa-flag-checkered" : icon}"></i>
                     </div>
-                    <div class="signal-right">
-                        <span class="status-badge ${cls}">${label}</span>
-                        <div class="signal-time">${timeStr(sig.created_at)}</div>
+                    <div class="signal-meta">
+                        <h3><span class="${dir === 'buy' ? 'dir-buy' : 'dir-sell'}">${entry.direction}</span> ${entry.symbol}</h3>
+                        <span class="zone-tag">Zone ${entry.zone}</span>
+                        ${entry.account_name ? `<span> · ${entry.account_name}</span>` : ""}
                     </div>
-                `;
-            } else {
-                el.className = "signal-card";
-                const dir = sig.direction === "BUY" ? "buy" : "sell";
-                const icon = sig.direction === "BUY" ? "fa-arrow-trend-up" : "fa-arrow-trend-down";
+                </div>
+                <div class="signal-right">
+                    <div class="signal-prices">
+                        Entry <b>${fmt(entry.entry_price)}</b><br>
+                        SL ${fmt(entry.sl)} · TP ${fmt(entry.tp)}
+                    </div>
+                    ${statusBadgeHtml(entry)}
+                    <div class="signal-time">${timeStr(entry.created_at)}</div>
+                </div>
+            `;
+        }
 
-                el.innerHTML = `
-                    <div class="signal-left">
-                        <div class="signal-dir-icon ${dir}">
-                            <i class="fa-solid ${icon}"></i>
-                        </div>
-                        <div class="signal-meta">
-                            <h3><span class="${dir === 'buy' ? 'dir-buy' : 'dir-sell'}">${sig.direction}</span> ${sig.symbol}</h3>
-                            <span class="zone-tag">Zone ${sig.zone}</span>
-                            ${sig.account_name ? `<span> · ${sig.account_name}</span>` : ""}
-                        </div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-prices">
-                            Entry <b>${fmt(sig.entry_price)}</b><br>
-                            SL ${fmt(sig.sl)} · TP ${fmt(sig.tp)}
-                        </div>
-                        <div class="signal-time">${timeStr(sig.created_at)}</div>
-                    </div>
-                `;
+        function renderEntry(entry, prepend = false) {
+            const empty = feed.querySelector(".signal-empty");
+            if (empty) empty.remove();
+
+            if (!entry.el) {
+                entry.el = document.createElement("div");
+                if (prepend && feed.firstChild) feed.insertBefore(entry.el, feed.firstChild);
+                else feed.appendChild(entry.el);
             }
 
-            return el;
+            entry.el.className = "signal-card" + (entry.close_reason ? " closed" : "");
+            entry.el.innerHTML = cardInnerHtml(entry);
+        }
+
+        function updateWinLossCounters(delta) {
+            winCount.textContent = winN += delta.win || 0;
+            lossCount.textContent = lossN += delta.loss || 0;
+        }
+
+        // Proses satu event sinyal (OPEN atau CLOSE), mutasi/insert entry yang sesuai
+        function processSignal(sig, { prepend = false, countToday = false } = {}) {
+            const key = tradeKey(sig);
+            let entry = entries.get(key);
+
+            if (sig.event_type === "CLOSE") {
+                if (!entry) {
+                    // Close event tanpa OPEN yang cocok (data lama) — buat entry minimal
+                    entry = { symbol: sig.symbol, direction: sig.direction, zone: sig.zone, account_name: sig.account_name, created_at: sig.created_at };
+                    entries.set(key, entry);
+                }
+                entry.close_reason = sig.close_reason;
+                entry.closed_at = sig.created_at;
+                renderEntry(entry, prepend);
+
+                if (sig.close_reason === "TP_HIT") updateWinLossCounters({ win: 1 });
+                else if (sig.close_reason === "SL_HIT" || sig.close_reason === "STOPOUT") updateWinLossCounters({ loss: 1 });
+            } else {
+                if (!entry) {
+                    entry = {};
+                    entries.set(key, entry);
+                }
+                Object.assign(entry, {
+                    symbol: sig.symbol, direction: sig.direction, zone: sig.zone,
+                    entry_price: sig.entry_price, sl: sig.sl, tp: sig.tp,
+                    account_name: sig.account_name, created_at: sig.created_at,
+                });
+                renderEntry(entry, prepend);
+
+                if (countToday) {
+                    const today = new Date().toISOString().slice(0, 10);
+                    if (sig.created_at.slice(0, 10) === today) {
+                        todayN++;
+                        todayCount.textContent = todayN;
+                    }
+                }
+            }
         }
 
         function setLive(isLive) {
@@ -895,7 +974,7 @@
 
         async function loadHistory() {
             try {
-                const res = await fetch(`${API_BASE}/api/signals?limit=50`);
+                const res = await fetch(`${API_BASE}/api/signals?limit=100`);
                 const data = await res.json();
 
                 if (!data.signals || data.signals.length === 0) {
@@ -904,11 +983,20 @@
                 }
 
                 feed.innerHTML = "";
-                data.signals.forEach(sig => feed.appendChild(buildCard(sig)));
-
+                // History datang terbaru dulu (DESC) — proses terbalik (lama ke baru) biar
+                // OPEN kepasang dulu sebelum CLOSE-nya, lalu render urut terbaru di atas
+                const chronological = [...data.signals].reverse();
                 const today = new Date().toISOString().slice(0, 10);
-                count = data.signals.filter(s => s.created_at.slice(0, 10) === today).length;
-                todayCount.textContent = count;
+
+                chronological.forEach(sig => {
+                    processSignal(sig, { prepend: false });
+                    if (sig.event_type !== "CLOSE" && sig.created_at.slice(0, 10) === today) todayN++;
+                });
+                todayCount.textContent = todayN;
+
+                // Urutkan ulang DOM: entry terbaru (created_at OPEN-nya) di atas
+                const sorted = [...entries.values()].sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
+                sorted.forEach(entry => { if (entry.el) feed.appendChild(entry.el); });
             } catch (e) {
                 feed.innerHTML = `<div class="signal-empty">Gagal memuat sinyal.</div>`;
             }
@@ -921,16 +1009,7 @@
 
             es.addEventListener("signal", (e) => {
                 const sig = JSON.parse(e.data);
-                const empty = feed.querySelector(".signal-empty");
-                if (empty) empty.remove();
-
-                feed.insertBefore(buildCard(sig), feed.firstChild);
-
-                const today = new Date().toISOString().slice(0, 10);
-                if (sig.created_at.slice(0, 10) === today) {
-                    count++;
-                    todayCount.textContent = count;
-                }
+                processSignal(sig, { prepend: true, countToday: true });
             });
 
             es.onerror = () => {
