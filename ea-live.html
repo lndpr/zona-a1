@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ZONA A1 | Live Trading</title>
+    <title>ZONA A1 | Live Signals</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -69,6 +68,13 @@
             animation: livePulse 1.5s infinite;
         }
 
+        .live-status-dot.online {
+            background: #4ADE80;
+            box-shadow:
+                0 0 0 4px rgba(74,222,128,.12),
+                0 0 15px rgba(74,222,128,.7);
+        }
+
         @keyframes livePulse {
             0%, 100% {
                 opacity: 1;
@@ -112,120 +118,52 @@
         }
 
         /* ==============================
-           PLAYER
+           WARNING BAR
         ============================== */
 
-        .live-player-wrapper {
+        .live-alert {
+            max-width: 1180px;
+            margin: 0 auto 26px;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 14px 18px;
+
+            border: 1px solid rgba(245,158,11,.25);
+            border-radius: 12px;
+
+            background: rgba(245,158,11,.06);
+
+            color: var(--text-secondary);
+            font-size: 12.5px;
+            line-height: 1.6;
+        }
+
+        .live-alert-dot {
+            flex-shrink: 0;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #f59e0b;
+            box-shadow: 0 0 10px rgba(245,158,11,.7);
+        }
+
+        /* ==============================
+           STATS ROW
+        ============================== */
+
+        .signal-stats-wrapper {
             max-width: 1180px;
             margin: 0 auto;
         }
 
-        .live-player {
-            position: relative;
-
-            width: 100%;
-            aspect-ratio: 16 / 9;
-
-            overflow: hidden;
-
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 18px;
-
-            background:
-                radial-gradient(
-                    circle at 50% 30%,
-                    rgba(0, 212, 255, .08),
-                    transparent 40%
-                ),
-                #05070c;
-
-            box-shadow:
-                0 0 0 1px rgba(0,212,255,.03),
-                0 25px 80px rgba(0,0,0,.45);
-        }
-
-        .live-player video {
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: contain;
-            background: #05070c;
-        }
-
-        /* ==============================
-           WAITING SCREEN
-        ============================== */
-
-        .stream-placeholder {
-            position: absolute;
-            inset: 0;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            padding: 30px;
-        }
-
-        .stream-icon {
-            width: 72px;
-            height: 72px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 20px;
-
-            border: 1px solid rgba(0,212,255,.2);
-            background: rgba(0,212,255,.05);
-
-            color: #00D4FF;
-
-            font-size: 28px;
-
-            margin-bottom: 22px;
-        }
-
-        .stream-placeholder h2 {
-            margin: 0 0 10px;
-
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .stream-placeholder p {
-            margin: 0;
-
-            max-width: 420px;
-
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        .stream-placeholder.hidden {
-            display: none;
-        }
-
-        /* ==============================
-           LIVE INFO
-        ============================== */
-
         .live-info {
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
+            grid-template-columns: repeat(4, 1fr);
             gap: 14px;
-
-            margin-top: 16px;
+            margin-bottom: 26px;
         }
 
         .live-info-card {
@@ -239,7 +177,6 @@
 
         .live-info-label {
             display: block;
-
             margin-bottom: 7px;
 
             color: var(--text-secondary);
@@ -265,13 +202,157 @@
         .live-online {
             width: 7px;
             height: 7px;
-
             border-radius: 50%;
-
             background: #4ADE80;
+            box-shadow: 0 0 12px rgba(74,222,128,.6);
+        }
 
-            box-shadow:
-                0 0 12px rgba(74,222,128,.6);
+        /* ==============================
+           SIGNAL FEED
+        ============================== */
+
+        .signal-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .signal-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+
+            padding: 18px 22px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+
+            background: var(--card);
+
+            animation: signalIn .4s ease;
+        }
+
+        @keyframes signalIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .signal-card.closed {
+            opacity: .6;
+        }
+
+        .signal-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .signal-dir-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            font-size: 17px;
+        }
+
+        .signal-dir-icon.buy {
+            background: rgba(74,222,128,.1);
+            color: #4ADE80;
+        }
+
+        .signal-dir-icon.sell {
+            background: rgba(255,59,59,.1);
+            color: #ff3b3b;
+        }
+
+        .signal-dir-icon.closed {
+            background: rgba(255,255,255,.05);
+            color: var(--text-secondary);
+        }
+
+        .signal-meta h3 {
+            font-size: 15.5px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .signal-meta h3 .dir-buy { color: #4ADE80; }
+        .signal-meta h3 .dir-sell { color: #ff3b3b; }
+
+        .signal-meta span {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+        }
+
+        .signal-meta .zone-tag {
+            color: var(--gold);
+        }
+
+        .signal-right {
+            text-align: right;
+        }
+
+        .signal-prices {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .signal-prices b {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .signal-time {
+            margin-top: 3px;
+            font-size: 11.5px;
+            color: var(--text-secondary);
+            opacity: .7;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .status-badge.tp {
+            background: rgba(74,222,128,.1);
+            color: #4ADE80;
+            border: 1px solid rgba(74,222,128,.3);
+        }
+
+        .status-badge.sl {
+            background: rgba(255,59,59,.1);
+            color: #ff3b3b;
+            border: 1px solid rgba(255,59,59,.3);
+        }
+
+        .status-badge.manual {
+            background: rgba(255,255,255,.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .signal-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
         }
 
         /* ==============================
@@ -280,9 +361,7 @@
 
         .live-description {
             max-width: 900px;
-
             margin: 70px auto 0;
-
             text-align: center;
         }
 
@@ -296,17 +375,15 @@
 
         .live-description p {
             color: var(--text-secondary);
-
             line-height: 1.8;
         }
 
         /* ==============================
-           WARNING
+           DISCLAIMER STRIP
         ============================== */
 
         .live-disclaimer {
             max-width: 850px;
-
             margin: 45px auto 0;
 
             padding: 18px 20px;
@@ -347,16 +424,22 @@
                 font-size: 14px;
             }
 
-            .live-player {
-                border-radius: 12px;
-            }
-
             .live-info {
                 grid-template-columns: repeat(2, 1fr);
             }
 
             .live-info-card {
                 padding: 15px;
+            }
+
+            .signal-card {
+                padding: 15px 16px;
+            }
+
+            .signal-right {
+                text-align: left;
+                width: 100%;
+                padding-left: 56px;
             }
         }
 
@@ -374,107 +457,70 @@
             .live-info-value {
                 font-size: 13px;
             }
-
-            .stream-icon {
-                width: 60px;
-                height: 60px;
-            }
-
-            .stream-placeholder h2 {
-                font-size: 18px;
-            }
         }
 
         /* ==============================
-   DISCLAIMER POPUP
-============================== */
+           DISCLAIMER POPUP
+        ============================== */
 
-.disclaimer-popup {
+        .disclaimer-popup {
+            position: fixed;
+            inset: 0;
 
-    position: fixed;
-    inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            background: rgba(0,0,0,.75);
 
-    background: rgba(0,0,0,.75);
+            backdrop-filter: blur(8px);
 
-    backdrop-filter: blur(8px);
+            z-index: 99999;
+        }
 
-    z-index: 99999;
+        .disclaimer-box {
+            width: 90%;
+            max-width: 520px;
 
-}
+            padding: 30px;
 
+            border-radius: 18px;
 
-.disclaimer-box {
+            background: #080b12;
 
-    width: 90%;
-    max-width: 520px;
+            border: 1px solid rgba(0,212,255,.25);
 
-    padding: 30px;
+            box-shadow: 0 25px 80px rgba(0,0,0,.6);
 
-    border-radius: 18px;
+            text-align: center;
+        }
 
-    background: #080b12;
+        .disclaimer-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
 
-    border: 1px solid rgba(0,212,255,.25);
+        .disclaimer-box h3 {
+            color: #00D4FF;
+            margin-bottom: 15px;
+        }
 
-    box-shadow:
-    0 25px 80px rgba(0,0,0,.6);
+        .disclaimer-box p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
 
-    text-align: center;
-
-}
-
-
-.disclaimer-icon {
-
-    font-size: 36px;
-    margin-bottom: 12px;
-
-}
-
-
-.disclaimer-box h3 {
-
-    color: #00D4FF;
-
-    margin-bottom: 15px;
-
-}
-
-
-.disclaimer-box p {
-
-    color: var(--text-secondary);
-
-    font-size: 14px;
-
-    line-height: 1.7;
-
-}
-
-
-.disclaimer-box button {
-
-    margin-top: 20px;
-
-    padding: 12px 35px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: #00D4FF;
-
-    color: #000;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-}
+        .disclaimer-box button {
+            margin-top: 20px;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 10px;
+            background: #00D4FF;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
     </style>
 </head>
@@ -577,7 +623,7 @@
                     </li>
 
                     <li>
-                        <a href="#live">
+                        <a href="ea-live.html">
                             EA Live
                         </a>
                     </li>
@@ -591,7 +637,7 @@
     </header>
 
 
-    <!-- LIVE PAGE -->
+    <!-- LIVE SIGNALS PAGE -->
 
     <main class="live-page" id="live">
 
@@ -604,89 +650,43 @@
 
                 <div class="live-status">
 
-                    <span class="live-status-dot"></span>
+                    <span class="live-status-dot" id="headerDot"></span>
 
-                    LIVE TRADING
+                    <span id="headerStatusText">CONNECTING</span>
 
                 </div>
 
 
                 <h1>
                     ZONA A1
-                    <span>Live</span>
+                    <span>Live Signals</span>
                 </h1>
 
 
                 <p>
-                    Pantau langsung chart trading ZONA A1 yang
-                    berjalan dari MetaTrader 5 secara real-time.
+                    Sinyal entry dan hasil trade dari ZONA EA yang berjalan
+                    di MetaTrader 5 muncul di sini secara real-time.
                 </p>
 
             </div>
 
 
-            <!-- PLAYER -->
+            <!-- WARNING -->
+
             <div class="live-alert">
-    <span class="live-alert-dot"></span>
+                <span class="live-alert-dot"></span>
 
-    <span>
-        PERHATIAN: Live trading ini hanya untuk informasi dan edukasi,
-        bukan merupakan ajakan, rekomendasi, atau saran untuk melakukan transaksi.
-        Segala risiko dan keputusan trading sepenuhnya menjadi tanggung jawab masing-masing pengguna.
-    </span>
-</div>
-
-            <div class="live-player-wrapper">
-
-                <div class="live-player">
-
-                    <!--
-                        GANTI URL INI
-                        setelah Cloudflare Quick Tunnel aktif.
-
-                        Contoh:
-
-                        https://abc123.trycloudflare.com/ea1/index.m3u8
-                    -->
-
-                    <video
-                        id="liveVideo"
-                        controls
-                        autoplay
-                        muted
-                        playsinline
-                    ></video>
+                <span>
+                    PERHATIAN: Sinyal live ini hanya untuk informasi dan edukasi,
+                    bukan merupakan ajakan, rekomendasi, atau saran untuk melakukan transaksi.
+                    Segala risiko dan keputusan trading sepenuhnya menjadi tanggung jawab masing-masing pengguna.
+                </span>
+            </div>
 
 
-                    <!-- PLACEHOLDER -->
+            <div class="signal-stats-wrapper">
 
-                    <div
-                        class="stream-placeholder"
-                        id="streamPlaceholder"
-                    >
-
-                        <div class="stream-icon">
-
-                            <i class="fa-solid fa-satellite-dish"></i>
-
-                        </div>
-
-                        <h2>
-                            Waiting for Live Stream
-                        </h2>
-
-                        <p>
-                            Stream MetaTrader 5 belum aktif.
-                            Live chart akan muncul otomatis
-                            ketika server mulai mengirimkan stream.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- INFO -->
+                <!-- STATS -->
 
                 <div class="live-info">
 
@@ -697,16 +697,21 @@
                         </span>
 
                         <div class="live-info-value">
+                            <span class="live-online" id="statusDot"></span>
+                            <span id="statusText">Connecting</span>
+                        </div>
 
-                            <span
-                                class="live-online"
-                                id="statusDot"
-                            ></span>
+                    </div>
 
-                            <span id="statusText">
-                                Connecting
-                            </span>
 
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
+                            Sinyal Hari Ini
+                        </span>
+
+                        <div class="live-info-value" id="todayCount">
+                            0
                         </div>
 
                     </div>
@@ -728,19 +733,6 @@
                     <div class="live-info-card">
 
                         <span class="live-info-label">
-                            Timeframe
-                        </span>
-
-                        <div class="live-info-value">
-                            M1-M5
-                        </div>
-
-                    </div>
-
-
-                    <div class="live-info-card">
-
-                        <span class="live-info-label">
                             Platform
                         </span>
 
@@ -752,6 +744,13 @@
 
                 </div>
 
+
+                <!-- FEED -->
+
+                <div class="signal-feed" id="signalFeed">
+                    <div class="signal-empty">Memuat sinyal…</div>
+                </div>
+
             </div>
 
 
@@ -760,19 +759,17 @@
             <section class="live-description">
 
                 <span class="section-badge">
-                    REAL TIME MARKET
+                    REAL TIME SIGNAL
                 </span>
 
                 <h2>
-                    Watch The Market Live
+                    Every Entry, Instantly
                 </h2>
 
                 <p>
-                    Chart ditampilkan langsung dari terminal
-                    MetaTrader 5 yang menjalankan sistem ZONA A1.
-                    Tidak menggunakan screenshot atau rekaman,
-                    sehingga pergerakan chart dapat dipantau
-                    secara langsung.
+                    Setiap kali ZONA EA membuka posisi baru atau menutupnya
+                    (kena TP/SL), sinyalnya langsung tampil di halaman ini
+                    tanpa perlu refresh.
                 </p>
 
             </section>
@@ -787,9 +784,8 @@
                 </strong>
 
                 Trading forex dan gold memiliki risiko tinggi.
-                Tampilan live trading ini hanya untuk tujuan
-                informasi dan edukasi, bukan merupakan ajakan
-                atau rekomendasi untuk melakukan transaksi.
+                Sinyal live ini hanya untuk tujuan informasi dan edukasi,
+                bukan merupakan ajakan atau rekomendasi untuk melakukan transaksi.
 
             </div>
 
@@ -798,220 +794,146 @@
     </main>
 
 
-    <!-- HLS.JS -->
-
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
-
+    <!-- SIGNAL FEED LOGIC -->
 
     <script>
 
-        /*
-        ==========================================
-        STREAM CONFIG
-        ==========================================
+        // Ganti dengan URL Worker kamu setelah deploy
+        const API_BASE = "https://zona-a1-signal-api.YOUR_SUBDOMAIN.workers.dev";
 
-        GANTI URL DI BAWAH SETELAH QUICK TUNNEL AKTIF.
+        const feed = document.getElementById("signalFeed");
+        const statusDot = document.getElementById("statusDot");
+        const statusText = document.getElementById("statusText");
+        const headerDot = document.getElementById("headerDot");
+        const headerStatusText = document.getElementById("headerStatusText");
+        const todayCount = document.getElementById("todayCount");
 
-        Contoh:
+        let count = 0;
 
-        const STREAM_URL =
-            "https://abc123.trycloudflare.com/ea1/index.m3u8";
-        */
+        const REASON_LABEL = { TP_HIT: "TP HIT", SL_HIT: "SL HIT", STOPOUT: "STOP OUT", MANUAL: "CLOSED" };
+        const REASON_CLASS = { TP_HIT: "tp", SL_HIT: "sl", STOPOUT: "sl", MANUAL: "manual" };
 
-        const STREAM_URL =
-        "https://icon-item-million-suspected.trycloudflare.com/live/ea1/index.m3u8";
+        function fmt(n) { return Number(n).toFixed(2); }
 
+        function timeStr(iso) {
+            return new Date(iso + "Z").toLocaleString("id-ID", {
+                day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit"
+            });
+        }
 
-        const video =
-            document.getElementById("liveVideo");
+        function buildCard(sig) {
+            const el = document.createElement("div");
 
-        const placeholder =
-            document.getElementById("streamPlaceholder");
+            if (sig.event_type === "CLOSE") {
+                el.className = "signal-card closed";
+                const cls = REASON_CLASS[sig.close_reason] || "manual";
+                const label = REASON_LABEL[sig.close_reason] || "CLOSED";
 
-        const statusText =
-            document.getElementById("statusText");
-
-        const statusDot =
-            document.getElementById("statusDot");
-
-
-        function setStatus(
-            text,
-            online = false
-        ) {
-
-            statusText.textContent = text;
-
-            if (online) {
-
-                statusDot.style.background =
-                    "#4ADE80";
-
-                statusDot.style.boxShadow =
-                    "0 0 12px rgba(74,222,128,.6)";
-
+                el.innerHTML = `
+                    <div class="signal-left">
+                        <div class="signal-dir-icon closed">
+                            <i class="fa-solid fa-flag-checkered"></i>
+                        </div>
+                        <div class="signal-meta">
+                            <h3>${sig.symbol} <span class="${sig.direction === 'BUY' ? 'dir-buy' : 'dir-sell'}">${sig.direction}</span></h3>
+                            <span class="zone-tag">Zone ${sig.zone}</span>
+                            ${sig.account_name ? `<span> · ${sig.account_name}</span>` : ""}
+                        </div>
+                    </div>
+                    <div class="signal-right">
+                        <span class="status-badge ${cls}">${label}</span>
+                        <div class="signal-time">${timeStr(sig.created_at)}</div>
+                    </div>
+                `;
             } else {
+                el.className = "signal-card";
+                const dir = sig.direction === "BUY" ? "buy" : "sell";
+                const icon = sig.direction === "BUY" ? "fa-arrow-trend-up" : "fa-arrow-trend-down";
 
-                statusDot.style.background =
-                    "#f59e0b";
+                el.innerHTML = `
+                    <div class="signal-left">
+                        <div class="signal-dir-icon ${dir}">
+                            <i class="fa-solid ${icon}"></i>
+                        </div>
+                        <div class="signal-meta">
+                            <h3><span class="${dir === 'buy' ? 'dir-buy' : 'dir-sell'}">${sig.direction}</span> ${sig.symbol}</h3>
+                            <span class="zone-tag">Zone ${sig.zone}</span>
+                            ${sig.account_name ? `<span> · ${sig.account_name}</span>` : ""}
+                        </div>
+                    </div>
+                    <div class="signal-right">
+                        <div class="signal-prices">
+                            Entry <b>${fmt(sig.entry_price)}</b><br>
+                            SL ${fmt(sig.sl)} · TP ${fmt(sig.tp)}
+                        </div>
+                        <div class="signal-time">${timeStr(sig.created_at)}</div>
+                    </div>
+                `;
+            }
 
-                statusDot.style.boxShadow =
-                    "0 0 12px rgba(245,158,11,.5)";
+            return el;
+        }
+
+        function setLive(isLive) {
+            statusDot.style.background = isLive ? "#4ADE80" : "#f59e0b";
+            statusDot.style.boxShadow = isLive
+                ? "0 0 12px rgba(74,222,128,.6)"
+                : "0 0 12px rgba(245,158,11,.5)";
+            statusText.textContent = isLive ? "Live" : "Connecting";
+
+            headerDot.classList.toggle("online", isLive);
+            headerStatusText.textContent = isLive ? "LIVE" : "CONNECTING";
+        }
+
+        async function loadHistory() {
+            try {
+                const res = await fetch(`${API_BASE}/api/signals?limit=50`);
+                const data = await res.json();
+
+                if (!data.signals || data.signals.length === 0) {
+                    feed.innerHTML = `<div class="signal-empty">Belum ada sinyal masuk.</div>`;
+                    return;
+                }
+
+                feed.innerHTML = "";
+                data.signals.forEach(sig => feed.appendChild(buildCard(sig)));
+
+                const today = new Date().toISOString().slice(0, 10);
+                count = data.signals.filter(s => s.created_at.slice(0, 10) === today).length;
+                todayCount.textContent = count;
+            } catch (e) {
+                feed.innerHTML = `<div class="signal-empty">Gagal memuat sinyal.</div>`;
             }
         }
 
+        function connectStream() {
+            const es = new EventSource(`${API_BASE}/api/stream`);
 
-        function streamReady() {
+            es.addEventListener("connected", () => setLive(true));
 
-            placeholder.classList.add(
-                "hidden"
-            );
+            es.addEventListener("signal", (e) => {
+                const sig = JSON.parse(e.data);
+                const empty = feed.querySelector(".signal-empty");
+                if (empty) empty.remove();
 
-            setStatus(
-                "LIVE",
-                true
-            );
+                feed.insertBefore(buildCard(sig), feed.firstChild);
 
-        }
-
-
-        function streamError() {
-
-            placeholder.classList.remove(
-                "hidden"
-            );
-
-            setStatus(
-                "Waiting",
-                false
-            );
-
-        }
-
-
-        /*
-        ==========================================
-        HLS
-        ==========================================
-        */
-
-        if (
-            window.Hls &&
-            Hls.isSupported()
-        ) {
-
-            const hls =
-                new Hls({
-                    enableWorker: true,
-
-                    lowLatencyMode: true,
-
-                    backBufferLength: 30,
-
-                    maxBufferLength: 10
-                });
-
-
-            hls.loadSource(
-                STREAM_URL
-            );
-
-
-            hls.attachMedia(
-                video
-            );
-
-
-            hls.on(
-                Hls.Events.MANIFEST_PARSED,
-                function () {
-
-                    streamReady();
-
-                    video.play()
-                        .catch(() => {});
-
+                const today = new Date().toISOString().slice(0, 10);
+                if (sig.created_at.slice(0, 10) === today) {
+                    count++;
+                    todayCount.textContent = count;
                 }
-            );
+            });
 
-
-            hls.on(
-                Hls.Events.ERROR,
-                function (
-                    event,
-                    data
-                ) {
-
-                    if (
-                        data.fatal
-                    ) {
-
-                        streamError();
-
-                        setTimeout(
-                            function () {
-
-                                hls.destroy();
-
-                                location.reload();
-
-                            },
-                            10000
-                        );
-
-                    }
-
-                }
-            );
-
+            es.onerror = () => {
+                setLive(false);
+                es.close();
+                setTimeout(connectStream, 3000);
+            };
         }
 
-        /*
-        Safari / native HLS
-        */
-
-        else if (
-            video.canPlayType(
-                "application/vnd.apple.mpegurl"
-            )
-        ) {
-
-            video.src =
-                STREAM_URL;
-
-
-            video.addEventListener(
-                "loadedmetadata",
-                function () {
-
-                    streamReady();
-
-                    video.play()
-                        .catch(() => {});
-
-                }
-            );
-
-
-            video.addEventListener(
-                "error",
-                function () {
-
-                    streamError();
-
-                }
-            );
-
-        }
-
-        else {
-
-            setStatus(
-                "HLS Not Supported",
-                false
-            );
-
-        }
+        loadHistory();
+        connectStream();
 
     </script>
 
@@ -1044,19 +966,18 @@
 
     </script>
 
-   <script>
+    <script>
 
-function closeDisclaimer(){
+        function closeDisclaimer(){
 
-    document.getElementById(
-        "disclaimerPopup"
-    ).style.display = "none";
+            document.getElementById(
+                "disclaimerPopup"
+            ).style.display = "none";
 
-}
+        }
 
-</script>
+    </script>
 
 </body>
 
 </html>
-```
