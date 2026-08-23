@@ -742,6 +742,8 @@
 
                     </div>
 
+                    
+
                 </div>
 
 
@@ -822,57 +824,111 @@
         }
 
         function buildCard(sig) {
-            const el = document.createElement("div");
 
-            if (sig.event_type === "CLOSE") {
-                el.className = "signal-card closed";
-                const cls = REASON_CLASS[sig.close_reason] || "manual";
-                const label = REASON_LABEL[sig.close_reason] || "CLOSED";
+    const el = document.createElement("div");
 
-                el.innerHTML = `
-                    <div class="signal-left">
-                        <div class="signal-dir-icon closed">
-                            <i class="fa-solid fa-flag-checkered"></i>
-                        </div>
-                        <div class="signal-meta">
-                            <h3>${sig.symbol} <span class="${sig.direction === 'BUY' ? 'dir-buy' : 'dir-sell'}">${sig.direction}</span></h3>
-                            <span class="zone-tag">Zone ${sig.zone}</span>
-                            ${sig.account_name ? `<span> · ${sig.account_name}</span>` : ""}
-                        </div>
-                    </div>
-                    <div class="signal-right">
-                        <span class="status-badge ${cls}">${label}</span>
-                        <div class="signal-time">${timeStr(sig.created_at)}</div>
-                    </div>
-                `;
-            } else {
-                el.className = "signal-card";
-                const dir = sig.direction === "BUY" ? "buy" : "sell";
-                const icon = sig.direction === "BUY" ? "fa-arrow-trend-up" : "fa-arrow-trend-down";
+    el.className = "signal-card";
+    el.dataset.ticket = sig.ticket || "";
 
-                el.innerHTML = `
-                    <div class="signal-left">
-                        <div class="signal-dir-icon ${dir}">
-                            <i class="fa-solid ${icon}"></i>
-                        </div>
-                        <div class="signal-meta">
-                            <h3><span class="${dir === 'buy' ? 'dir-buy' : 'dir-sell'}">${sig.direction}</span> ${sig.symbol}</h3>
-                            <span class="zone-tag">Zone ${sig.zone}</span>
-                            ${sig.account_name ? `<span> · ${sig.account_name}</span>` : ""}
-                        </div>
-                    </div>
-                    <div class="signal-right">
-                        <div class="signal-prices">
-                            Entry <b>${fmt(sig.entry_price)}</b><br>
-                            SL ${fmt(sig.sl)} · TP ${fmt(sig.tp)}
-                        </div>
-                        <div class="signal-time">${timeStr(sig.created_at)}</div>
-                    </div>
-                `;
+    const dir = sig.direction === "BUY" ? "buy" : "sell";
+
+    const icon = sig.direction === "BUY"
+        ? "fa-arrow-trend-up"
+        : "fa-arrow-trend-down";
+
+
+    let statusText = "🟢 RUNNING";
+    let statusClass = "running";
+
+
+    if(sig.result === "WIN"){
+        statusText = "🏆 WIN";
+        statusClass = "tp";
+    }
+
+
+    if(sig.result === "LOSS"){
+        statusText = "❌ LOSS";
+        statusClass = "sl";
+    }
+
+
+    el.innerHTML = `
+
+        <div class="signal-left">
+
+            <div class="signal-dir-icon ${dir}">
+                <i class="fa-solid ${icon}"></i>
+            </div>
+
+
+            <div class="signal-meta">
+
+                <h3>
+                    <span class="${dir === 'buy' ? 'dir-buy':'dir-sell'}">
+                        ${sig.direction}
+                    </span>
+                    ${sig.symbol}
+                </h3>
+
+
+                <span class="zone-tag">
+                    Zone ${sig.zone}
+                </span>
+
+                ${
+                sig.account_name
+                ? `<span> · ${sig.account_name}</span>`
+                :""
+                }
+
+            </div>
+
+        </div>
+
+
+
+        <div class="signal-right">
+
+
+            <div class="signal-prices">
+
+                Entry <b>${fmt(sig.entry_price)}</b><br>
+
+                SL ${fmt(sig.sl)}
+                ·
+                TP ${fmt(sig.tp)}
+
+            </div>
+
+
+            <span class="status-badge ${statusClass}">
+                ${statusText}
+            </span>
+
+
+            ${
+            sig.close_reason
+            ?
+            `<div class="signal-time">
+                ${sig.close_reason}
+            </div>`
+            :""
             }
 
-            return el;
-        }
+
+            <div class="signal-time">
+                ${timeStr(sig.closed_at || sig.created_at)}
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    return el;
+}
 
         function setLive(isLive) {
             statusDot.style.background = isLive ? "#4ADE80" : "#f59e0b";
@@ -896,41 +952,85 @@
                 }
 
                 feed.innerHTML = "";
-                data.signals.forEach(sig => feed.appendChild(buildCard(sig)));
+                data.signals.forEach(sig => {
+    feed.appendChild(buildCard(sig));
+});
 
-                const today = new Date().toISOString().slice(0, 10);
-                count = data.signals.filter(s => s.created_at.slice(0, 10) === today).length;
-                todayCount.textContent = count;
+
+const today = new Date().toISOString().slice(0,10);
+
+
+count = data.signals.filter(
+s => s.created_at.slice(0,10) === today
+).length;
+
+
+todayCount.textContent = count;
             } catch (e) {
                 feed.innerHTML = `<div class="signal-empty">Gagal memuat sinyal.</div>`;
             }
         }
 
-        function connectStream() {
-            const es = new EventSource(`${API_BASE}/api/stream`);
+        es.addEventListener("signal", (e) => {
 
-            es.addEventListener("connected", () => setLive(true));
+    const sig = JSON.parse(e.data);
 
-            es.addEventListener("signal", (e) => {
-                const sig = JSON.parse(e.data);
-                const empty = feed.querySelector(".signal-empty");
-                if (empty) empty.remove();
+    const empty = feed.querySelector(".signal-empty");
+    if (empty) empty.remove();
 
-                feed.insertBefore(buildCard(sig), feed.firstChild);
 
-                const today = new Date().toISOString().slice(0, 10);
-                if (sig.created_at.slice(0, 10) === today) {
-                    count++;
-                    todayCount.textContent = count;
-                }
-            });
+    // Jika trade baru OPEN
+    if(sig.status === "RUNNING") {
 
-            es.onerror = () => {
-                setLive(false);
-                es.close();
-                setTimeout(connectStream, 3000);
-            };
+        feed.insertBefore(
+            buildCard(sig),
+            feed.firstChild
+        );
+
+    }
+
+
+    // Jika trade sudah CLOSE
+    else if(sig.status === "CLOSED") {
+
+
+        const oldCard = document.querySelector(
+            `[data-ticket="${sig.ticket}"]`
+        );
+
+
+        if(oldCard) {
+
+            // update card lama
+            oldCard.replaceWith(
+                buildCard(sig)
+            );
+
+        } else {
+
+            // fallback kalau browser baru buka
+            feed.insertBefore(
+                buildCard(sig),
+                feed.firstChild
+            );
+
         }
+
+    }
+
+
+
+    // update jumlah sinyal hari ini
+    const today = new Date().toISOString().slice(0, 10);
+
+    if(sig.created_at.slice(0,10) === today) {
+
+        count++;
+        todayCount.textContent = count;
+
+    }
+
+});
 
         loadHistory();
         connectStream();

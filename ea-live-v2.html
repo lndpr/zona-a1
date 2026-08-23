@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZONA A1 | Live Signals</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:20px 0}
+.box{padding:15px;border:1px solid #333;border-radius:12px;background:#111}
+.label{font-size:12px;color:#aaa}.value{font-size:22px;font-weight:bold;color:#fff}
+.card{padding:20px;border:1px solid #333;border-radius:15px;background:#111;margin-bottom:12px;display:flex;justify-content:space-between}
+.badge{padding:5px 12px;border-radius:20px;font-weight:bold}
+.running{background:#064e3b;color:#4ade80}
+.win{background:#064e3b;color:#4ade80}
+.loss{background:#450a0a;color:#f87171}
+</style>
+</head>
+
+<body>
+<main class="live-page">
+<div class="container">
+
+<h1>ZONA A1 <span>Live Signals</span></h1>
+
+<div class="stats">
+<div class="box"><div class="label">STATUS</div><div class="value" id="status">CONNECTING</div></div>
+<div class="box"><div class="label">TODAY</div><div class="value" id="todayCount">0</div></div>
+<div class="box"><div class="label">RUNNING</div><div class="value" id="runningCount">0</div></div>
+<div class="box"><div class="label">WIN</div><div class="value" id="winCount">0</div></div>
+<div class="box"><div class="label">LOSS</div><div class="value" id="lossCount">0</div></div>
+<div class="box"><div class="label">WIN RATE</div><div class="value" id="winRate">0%</div></div>
+</div>
+
+<div id="feed">Memuat sinyal...</div>
+
+</div>
+</main>
+
+<script>
+const API_BASE="https://zona-a1-signal-api.landungprakoso14.workers.dev";
+const feed=document.getElementById("feed");
+let signals={};
+
+function badge(sig){
+ if(sig.status==="RUNNING") return `<span class="badge running">🟢 RUNNING</span>`;
+ if(sig.result==="WIN") return `<span class="badge win">🏆 WIN (${sig.close_reason})</span>`;
+ if(sig.result==="LOSS") return `<span class="badge loss">❌ LOSS (${sig.close_reason})</span>`;
+ return "";
+}
+
+function card(sig){
+ return `
+ <div class="card">
+  <div>
+   <h3>${sig.direction} ${sig.symbol}</h3>
+   <div>Zone ${sig.zone}</div>
+   <div>Entry ${sig.entry_price ?? "-"}<br>
+   SL ${sig.sl ?? "-"} · TP ${sig.tp ?? "-"}</div>
+   <small>${sig.account_name ?? ""}</small>
+  </div>
+  <div>
+   ${badge(sig)}
+   <br><small>${sig.created_at ?? ""}</small>
+  </div>
+ </div>`;
+}
+
+function render(){
+ feed.innerHTML=Object.values(signals).map(card).join("");
+ updateStats();
+}
+
+function updateStats(){
+ let arr=Object.values(signals);
+ let win=arr.filter(x=>x.result==="WIN").length;
+ let loss=arr.filter(x=>x.result==="LOSS").length;
+ let running=arr.filter(x=>x.status==="RUNNING").length;
+ let total=win+loss;
+ document.getElementById("winCount").innerHTML=win;
+ document.getElementById("lossCount").innerHTML=loss;
+ document.getElementById("runningCount").innerHTML=running;
+ document.getElementById("todayCount").innerHTML=arr.length;
+ document.getElementById("winRate").innerHTML=total?((win/total)*100).toFixed(1)+"%":"0%";
+}
+
+async function load(){
+ const r=await fetch(API_BASE+"/api/signals?limit=100");
+ const d=await r.json();
+ d.signals.forEach(s=>signals[s.ticket||s.id]=s);
+ render();
+}
+
+function stream(){
+ const es=new EventSource(API_BASE+"/api/stream");
+ es.addEventListener("connected",()=>document.getElementById("status").innerHTML="LIVE");
+
+ es.addEventListener("signal",e=>{
+  const s=JSON.parse(e.data);
+  signals[s.ticket||s.id]=s;
+  render();
+ });
+}
+
+load();
+stream();
+</script>
+</body>
+</html>
