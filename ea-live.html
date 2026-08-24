@@ -1180,6 +1180,19 @@
                     <div class="live-info-card">
 
                         <span class="live-info-label">
+                            Symbol
+                        </span>
+
+                        <div class="live-info-value">
+                            XAUUSD
+                        </div>
+
+                    </div>
+
+
+                    <div class="live-info-card">
+
+                        <span class="live-info-label">
                             Platform
                         </span>
 
@@ -1441,41 +1454,58 @@
             lossCount.textContent = lossN += delta.loss || 0;
         }
 
-        // Proses satu event sinyal (OPEN atau CLOSE), mutasi/insert entry yang sesuai
+        // Deteksi apakah payload ini menandakan posisi sudah closed —
+        // dukung dua kemungkinan bentuk API: field "event_type":"CLOSE" (desain lama)
+        // ATAU field "status":"CLOSED" / "close_reason" terisi (desain saat ini, satu
+        // baris per ticket yang di-upsert).
+        function isClosedPayload(sig) {
+            return !!(
+                sig.close_reason ||
+                sig.event_type === "CLOSE" ||
+                sig.status === "CLOSED" ||
+                sig.status === "closed"
+            );
+        }
+
+        // Proses satu baris/event sinyal, mutasi/insert entry yang sesuai.
+        // Setiap baris dari API dianggap gambaran TERBARU dari satu posisi (ticket) —
+        // field yang ada di payload di-merge ke entry yang sudah tersimpan.
         function processSignal(sig, { prepend = false, countToday = false } = {}) {
             const key = tradeKey(sig);
             let entry = entries.get(key);
+            const isNew = !entry;
 
-            if (sig.event_type === "CLOSE") {
-                if (!entry) {
-                    // Close event tanpa OPEN yang cocok (data lama) — buat entry minimal
-                    entry = { symbol: sig.symbol, direction: sig.direction, zone: sig.zone, account_name: sig.account_name, created_at: sig.created_at };
-                    entries.set(key, entry);
-                }
-                entry.close_reason = sig.close_reason;
-                entry.closed_at = sig.created_at;
-                renderEntry(entry, prepend);
+            if (!entry) {
+                entry = {};
+                entries.set(key, entry);
+            }
 
-                if (sig.close_reason === "TP_HIT") updateWinLossCounters({ win: 1 });
-                else if (sig.close_reason === "SL_HIT" || sig.close_reason === "STOPOUT") updateWinLossCounters({ loss: 1 });
-            } else {
-                if (!entry) {
-                    entry = {};
-                    entries.set(key, entry);
-                }
-                Object.assign(entry, {
-                    symbol: sig.symbol, direction: sig.direction, zone: sig.zone,
-                    entry_price: sig.entry_price, sl: sig.sl, tp: sig.tp,
-                    account_name: sig.account_name, created_at: sig.created_at,
-                });
-                renderEntry(entry, prepend);
+            // Merge field yang memang ada di payload ini (jangan timpa dengan null/undefined)
+            const fields = ["symbol", "direction", "zone", "entry_price", "sl", "tp", "account_name", "lot"];
+            fields.forEach(f => { if (sig[f] != null) entry[f] = sig[f]; });
+            if (!entry.created_at) entry.created_at = sig.created_at;
 
-                if (countToday) {
-                    const today = new Date().toISOString().slice(0, 10);
-                    if (sig.created_at.slice(0, 10) === today) {
-                        todayN++;
-                        todayCount.textContent = todayN;
-                    }
+            const closedNow = isClosedPayload(sig);
+            const wasClosed = !!entry.close_reason;
+
+            if (closedNow) {
+                entry.close_reason = sig.close_reason || entry.close_reason || "MANUAL";
+                entry.closed_at = sig.closed_at || sig.created_at;
+            }
+
+            renderEntry(entry, prepend);
+
+            // Hitung Win/Loss cuma sekali per posisi, tepat saat transisi jadi closed
+            if (closedNow && !wasClosed) {
+                if (entry.close_reason === "TP_HIT") updateWinLossCounters({ win: 1 });
+                else if (entry.close_reason === "SL_HIT" || entry.close_reason === "STOPOUT") updateWinLossCounters({ loss: 1 });
+            }
+
+            if (countToday && isNew) {
+                const today = new Date().toISOString().slice(0, 10);
+                if ((entry.created_at || "").slice(0, 10) === today) {
+                    todayN++;
+                    todayCount.textContent = todayN;
                 }
             }
         }
@@ -1498,23 +1528,25 @@
 
                 feedOpen.innerHTML = "";
                 feedHistory.innerHTML = "";
+                entries.clear();
+                todayN = 0; winN = 0; lossN = 0;
 
                 if (!data.signals || data.signals.length === 0) {
                     ensureEmpty(feedOpen, "Belum ada posisi berjalan.");
                     ensureEmpty(feedHistory, "Belum ada riwayat.");
+                    todayCount.textContent = "0";
+                    winCount.textContent = "0";
+                    lossCount.textContent = "0";
                     return;
                 }
 
-                // History datang terbaru dulu (DESC) — proses terbalik (lama ke baru) biar
-                // OPEN kepasang dulu sebelum CLOSE-nya
+                // API balikin terbaru dulu (DESC) — proses terbalik (lama ke baru) biar
+                // urutan "pertama kali dilihat" konsisten buat hitungan hari ini
                 const chronological = [...data.signals].reverse();
-                const today = new Date().toISOString().slice(0, 10);
 
                 chronological.forEach(sig => {
-                    processSignal(sig, { prepend: false });
-                    if (sig.event_type !== "CLOSE" && sig.created_at.slice(0, 10) === today) todayN++;
+                    processSignal(sig, { prepend: false, countToday: true });
                 });
-                todayCount.textContent = todayN;
 
                 // Urutkan ulang DOM tiap container: yang terbaru di atas
                 const openSorted = [...entries.values()]
