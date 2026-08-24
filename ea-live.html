@@ -24,6 +24,72 @@
     <style>
 
         /* ==============================
+           MOBILE NAV TOGGLE
+        ============================== */
+
+        .nav-toggle {
+            display: none;
+
+            width: 40px;
+            height: 40px;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: rgba(255,255,255,.03);
+
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none !important;
+                position: absolute;
+                top: 82px;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+
+                flex-direction: column;
+                gap: 0;
+
+                margin: 0;
+                padding: 10px 20px 20px;
+                list-style: none;
+
+                background: #06070A;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-menu.mobile-open {
+                display: flex !important;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                margin: 0;
+                border-top: 1px solid rgba(255,255,255,.08);
+            }
+
+            .nav-menu li a {
+                display: block;
+                padding: 14px 4px;
+                color: #fff !important;
+                font-size: 15px;
+                opacity: 1 !important;
+            }
+        }
+
+        /* ==============================
            LIVE PAGE
         ============================== */
 
@@ -159,6 +225,61 @@
             margin: 0 auto;
         }
 
+        .feed-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .feed-main {
+            min-width: 0;
+        }
+
+        .feed-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .feed-section-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .feed-section-tag {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            color: var(--text-secondary);
+            opacity: .7;
+        }
+
+        .feed-sidebar {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--card);
+            overflow: hidden;
+            position: sticky;
+            top: 100px;
+        }
+
+        .feed-sidebar .market-card-header {
+            padding: 16px 20px;
+        }
+
+        @media (max-width: 1024px) {
+
+            .feed-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .feed-sidebar {
+                position: static;
+            }
+        }
+
         .live-info {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -239,20 +360,36 @@
         }
 
         .signal-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            position: relative;
 
-            padding: 18px 22px;
+            padding: 18px 22px 18px 26px;
 
             border: 1px solid var(--border);
             border-radius: var(--radius);
 
-            background: var(--card);
+            background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%), var(--card);
+            overflow: hidden;
 
             animation: signalIn .4s ease;
+        }
+
+        .signal-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+        }
+
+        .signal-card.buy::before {
+            background: linear-gradient(180deg, #4ADE80, #16a34a);
+            box-shadow: 0 0 12px rgba(74,222,128,.4);
+        }
+
+        .signal-card.sell::before {
+            background: linear-gradient(180deg, #ff3b3b, #b91c1c);
+            box-shadow: 0 0 12px rgba(255,59,59,.4);
         }
 
         @keyframes signalIn {
@@ -261,7 +398,21 @@
         }
 
         .signal-card.closed {
-            opacity: .6;
+            opacity: .68;
+        }
+
+        .signal-card.closed::before {
+            background: var(--text-secondary);
+            opacity: .35;
+            box-shadow: none;
+        }
+
+        .signal-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .signal-left {
@@ -302,39 +453,64 @@
         .signal-meta h3 {
             font-size: 15.5px;
             font-weight: 700;
-            margin-bottom: 3px;
+            margin-bottom: 6px;
         }
 
         .signal-meta h3 .dir-buy { color: #4ADE80; }
         .signal-meta h3 .dir-sell { color: #ff3b3b; }
 
-        .signal-meta span {
-            font-size: 12.5px;
-            color: var(--text-secondary);
+        .signal-tags {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .signal-meta .zone-tag {
-            color: var(--gold);
-        }
+        .signal-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
 
-        .signal-right {
-            text-align: right;
-        }
+            padding: 2px 9px;
+            border-radius: 6px;
 
-        .signal-prices {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .signal-prices b {
-            color: #fff;
+            font-size: 10.5px;
             font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+        .signal-chip.zone-br1 {
+            background: rgba(245,197,66,.1);
+            color: var(--gold);
+            border: 1px solid rgba(245,197,66,.25);
+        }
+
+        .signal-chip.zone-br2 {
+            background: rgba(0,212,255,.1);
+            color: #00D4FF;
+            border: 1px solid rgba(0,212,255,.25);
+        }
+
+        .signal-chip.account {
+            background: rgba(255,255,255,.04);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .signal-chip.rr {
+            background: rgba(139,92,246,.1);
+            color: #A78BFA;
+            border: 1px solid rgba(139,92,246,.25);
+        }
+
+        .signal-card-right {
+            text-align: right;
+            flex-shrink: 0;
         }
 
         .signal-time {
-            margin-top: 3px;
-            font-size: 11.5px;
+            margin-top: 6px;
+            font-size: 11px;
             color: var(--text-secondary);
             opacity: .7;
         }
@@ -364,6 +540,105 @@
             background: rgba(255,255,255,.05);
             color: var(--text-secondary);
             border: 1px solid var(--border);
+        }
+
+        /* ── RANGE VISUAL (SL — Entry — TP) ── */
+
+        .signal-range {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 16px;
+        }
+
+        .range-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .range-label b {
+            display: block;
+            margin-top: 2px;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .range-label.sl-label b { color: #ff3b3b; }
+        .range-label.tp-label b { color: #4ADE80; }
+        .range-label.tp-label { text-align: right; }
+
+        .range-track {
+            position: relative;
+            height: 6px;
+            border-radius: 3px;
+            overflow: visible;
+            background: rgba(255,255,255,.06);
+        }
+
+        .range-fill-risk {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            border-radius: 3px 0 0 3px;
+            background: linear-gradient(90deg, rgba(255,59,59,.55), rgba(255,59,59,.15));
+        }
+
+        .range-fill-reward {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 0 3px 3px 0;
+            background: linear-gradient(90deg, rgba(74,222,128,.15), rgba(74,222,128,.55));
+        }
+
+        .range-marker {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .range-marker-dot {
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #06070A;
+            box-shadow: 0 0 0 2px rgba(255,255,255,.25);
+        }
+
+        .range-marker-label {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            padding: 1px 6px;
+            border-radius: 5px;
+
+            background: rgba(6,7,10,.9);
+            border: 1px solid var(--border);
+
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .signal-card.closed .range-marker-dot {
+            background: var(--text-secondary);
+            box-shadow: none;
         }
 
         .signal-empty {
@@ -454,13 +729,26 @@
             }
 
             .signal-card {
-                padding: 15px 16px;
+                padding: 15px 16px 15px 20px;
             }
 
-            .signal-right {
+            .signal-card-right {
                 text-align: left;
                 width: 100%;
-                padding-left: 56px;
+            }
+
+            .signal-range {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .range-label.tp-label {
+                text-align: left;
+            }
+
+            .range-track {
+                order: 3;
+                margin-top: 6px;
             }
         }
 
@@ -543,6 +831,126 @@
             cursor: pointer;
         }
 
+        /* ==============================
+           MARKET WIDGETS
+        ============================== */
+
+        .market-section {
+            max-width: 1180px;
+            margin: 60px auto 0;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 16px;
+        }
+
+        .market-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--card);
+            overflow: hidden;
+        }
+
+        .market-card-header {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .market-card-header i {
+            color: #00D4FF;
+        }
+
+        .market-card-body {
+            min-height: 220px;
+        }
+
+        /* ==============================
+           HOW IT WORKS
+        ============================== */
+
+        .how-section {
+            max-width: 1180px;
+            margin: 60px auto 0;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .how-card {
+            position: relative;
+
+            padding: 24px 20px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+
+            background: var(--card);
+        }
+
+        .how-step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 30px;
+            height: 30px;
+            margin-bottom: 14px;
+
+            border-radius: 9px;
+
+            background: rgba(0,212,255,.1);
+            border: 1px solid rgba(0,212,255,.25);
+
+            color: #00D4FF;
+            font-size: 12.5px;
+            font-weight: 800;
+        }
+
+        .how-card h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .how-card p {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+
+            .market-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .how-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 
@@ -617,7 +1025,7 @@
                 </a>
 
 
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="navMenu">
 
                     <li>
                         <a href="index.html">
@@ -650,6 +1058,11 @@
                     </li>
 
                 </ul>
+
+
+                <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
             </nav>
 
@@ -779,13 +1192,64 @@
                 </div>
 
 
-                <!-- FEED -->
+                <!-- FEED + SIDEBAR -->
 
-                <div class="signal-feed" id="signalFeed">
-                    <div class="signal-empty">Memuat sinyal…</div>
+                <div class="feed-layout">
+
+                    <div class="feed-main">
+
+                        <div class="feed-section-header">
+                            <h3>Posisi Berjalan</h3>
+                            <span class="feed-section-tag">LIVE EXECUTION</span>
+                        </div>
+
+                        <div class="signal-feed" id="signalFeedOpen">
+                            <div class="signal-empty">Memuat sinyal…</div>
+                        </div>
+
+
+                        <div class="feed-section-header" style="margin-top: 32px;">
+                            <h3>Riwayat Sinyal</h3>
+                            <span class="feed-section-tag">CLOSED TRADES</span>
+                        </div>
+
+                        <div class="signal-feed" id="signalFeedHistory">
+                            <div class="signal-empty">Belum ada riwayat.</div>
+                        </div>
+
+                    </div>
+
+                    <div class="feed-sidebar">
+
+                        <div class="market-card-header">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            Economic Calendar
+                        </div>
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/economic-calendar/" rel="noopener nofollow" target="_blank"><span class="blue-text">Economic Calendar</span></a><span class="trademark"> by TradingView</span></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                            {
+                            "colorTheme": "dark",
+                            "isTransparent": false,
+                            "locale": "en",
+                            "countryFilter": "us,gb,jp",
+                            "importanceFilter": "0,1",
+                            "width": 400,
+                            "height": 550
+                            }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div>
+
                 </div>
 
             </div>
+
 
 
             <!-- DESCRIPTION -->
@@ -835,7 +1299,8 @@
         // Ganti dengan URL Worker kamu setelah deploy
         const API_BASE = "https://zona-a1-signal-api.landungprakoso14.workers.dev";
 
-        const feed = document.getElementById("signalFeed");
+        const feedOpen = document.getElementById("signalFeedOpen");
+        const feedHistory = document.getElementById("signalFeedHistory");
         const statusDot = document.getElementById("statusDot");
         const statusText = document.getElementById("statusText");
         const headerDot = document.getElementById("headerDot");
@@ -853,7 +1318,7 @@
             return [sig.symbol, sig.direction, sig.zone, sig.entry_price].join("|");
         }
 
-        // entries: Map key -> { data, el, status }
+        // entries: Map key -> { data..., el }
         const entries = new Map();
 
         const REASON_LABEL = { TP_HIT: "WIN · TP HIT", SL_HIT: "LOSS · SL HIT", STOPOUT: "LOSS · STOP OUT", MANUAL: "CLOSED" };
@@ -876,45 +1341,99 @@
             return `<span class="status-badge ${cls}">${label}</span>`;
         }
 
+        // Bar visual SL — Entry — TP, plus rasio risk:reward
+        function rangeBarHtml(entry) {
+            if (entry.entry_price == null || entry.sl == null || entry.tp == null) return { bar: "", rr: null };
+
+            const risk = Math.abs(entry.entry_price - entry.sl);
+            const reward = Math.abs(entry.tp - entry.entry_price);
+            const total = risk + reward || 1;
+            const entryPct = Math.min(96, Math.max(4, (risk / total) * 100)).toFixed(1);
+            const rr = risk > 0 ? (reward / risk).toFixed(1) : null;
+
+            const bar = `
+                <div class="signal-range">
+                    <div class="range-label sl-label">SL<b>${fmt(entry.sl)}</b></div>
+                    <div class="range-track">
+                        <div class="range-fill-risk" style="width:${entryPct}%"></div>
+                        <div class="range-fill-reward" style="width:${(100 - entryPct)}%"></div>
+                        <div class="range-marker" style="left:${entryPct}%">
+                            <span class="range-marker-label">${fmt(entry.entry_price)}</span>
+                            <span class="range-marker-dot"></span>
+                        </div>
+                    </div>
+                    <div class="range-label tp-label">TP<b>${fmt(entry.tp)}</b></div>
+                </div>
+            `;
+            return { bar, rr };
+        }
+
         function cardInnerHtml(entry) {
             const dir = entry.direction === "BUY" ? "buy" : "sell";
             const icon = entry.direction === "BUY" ? "fa-arrow-trend-up" : "fa-arrow-trend-down";
             const iconCls = entry.close_reason ? "closed" : dir;
+            const zoneCls = entry.zone === "BR1" ? "zone-br1" : "zone-br2";
+            const { bar, rr } = rangeBarHtml(entry);
 
             return `
-                <div class="signal-left">
-                    <div class="signal-dir-icon ${iconCls}">
-                        <i class="fa-solid ${entry.close_reason ? "fa-flag-checkered" : icon}"></i>
+                <div class="signal-card-header">
+                    <div class="signal-left">
+                        <div class="signal-dir-icon ${iconCls}">
+                            <i class="fa-solid ${entry.close_reason ? "fa-flag-checkered" : icon}"></i>
+                        </div>
+                        <div class="signal-meta">
+                            <h3><span class="${dir === 'buy' ? 'dir-buy' : 'dir-sell'}">${entry.direction}</span> ${entry.symbol}</h3>
+                            <div class="signal-tags">
+                                <span class="signal-chip ${zoneCls}">ZONE ${entry.zone}</span>
+                                ${rr ? `<span class="signal-chip rr">R:R 1:${rr}</span>` : ""}
+                                ${entry.account_name ? `<span class="signal-chip account">${entry.account_name}</span>` : ""}
+                            </div>
+                        </div>
                     </div>
-                    <div class="signal-meta">
-                        <h3><span class="${dir === 'buy' ? 'dir-buy' : 'dir-sell'}">${entry.direction}</span> ${entry.symbol}</h3>
-                        <span class="zone-tag">Zone ${entry.zone}</span>
-                        ${entry.account_name ? `<span> · ${entry.account_name}</span>` : ""}
+                    <div class="signal-card-right">
+                        ${statusBadgeHtml(entry)}
+                        <div class="signal-time">${timeStr(entry.close_reason ? (entry.closed_at || entry.created_at) : entry.created_at)}</div>
                     </div>
                 </div>
-                <div class="signal-right">
-                    <div class="signal-prices">
-                        Entry <b>${fmt(entry.entry_price)}</b><br>
-                        SL ${fmt(entry.sl)} · TP ${fmt(entry.tp)}
-                    </div>
-                    ${statusBadgeHtml(entry)}
-                    <div class="signal-time">${timeStr(entry.created_at)}</div>
-                </div>
+                ${bar}
             `;
         }
 
-        function renderEntry(entry, prepend = false) {
-            const empty = feed.querySelector(".signal-empty");
+        function clearEmpty(container) {
+            const empty = container.querySelector(".signal-empty");
             if (empty) empty.remove();
+        }
+
+        function ensureEmpty(container, text) {
+            if (!container.children.length) container.innerHTML = `<div class="signal-empty">${text}</div>`;
+        }
+
+        // Render/pindahkan kartu entry ke container yang benar (open atau history)
+        // — kalau entry baru saja closed dan sebelumnya ada di "open", kartunya
+        // dipindah (bukan disalin) ke "history".
+        function renderEntry(entry, prepend = false) {
+            const targetContainer = entry.close_reason ? feedHistory : feedOpen;
+            const otherContainer = entry.close_reason ? feedOpen : feedHistory;
+
+            clearEmpty(targetContainer);
 
             if (!entry.el) {
                 entry.el = document.createElement("div");
-                if (prepend && feed.firstChild) feed.insertBefore(entry.el, feed.firstChild);
-                else feed.appendChild(entry.el);
             }
 
-            entry.el.className = "signal-card" + (entry.close_reason ? " closed" : "");
+            const dirCls = entry.direction === "BUY" ? "buy" : "sell";
+            entry.el.className = "signal-card " + dirCls + (entry.close_reason ? " closed" : "");
             entry.el.innerHTML = cardInnerHtml(entry);
+
+            // Pindahkan elemen ke container yang benar kalau belum di sana
+            if (entry.el.parentElement !== targetContainer) {
+                if (prepend && targetContainer.firstChild) targetContainer.insertBefore(entry.el, targetContainer.firstChild);
+                else targetContainer.appendChild(entry.el);
+            } else if (prepend && targetContainer.firstChild !== entry.el) {
+                targetContainer.insertBefore(entry.el, targetContainer.firstChild);
+            }
+
+            ensureEmpty(otherContainer, otherContainer === feedOpen ? "Belum ada posisi berjalan." : "Belum ada riwayat.");
         }
 
         function updateWinLossCounters(delta) {
@@ -977,14 +1496,17 @@
                 const res = await fetch(`${API_BASE}/api/signals?limit=100`);
                 const data = await res.json();
 
+                feedOpen.innerHTML = "";
+                feedHistory.innerHTML = "";
+
                 if (!data.signals || data.signals.length === 0) {
-                    feed.innerHTML = `<div class="signal-empty">Belum ada sinyal masuk.</div>`;
+                    ensureEmpty(feedOpen, "Belum ada posisi berjalan.");
+                    ensureEmpty(feedHistory, "Belum ada riwayat.");
                     return;
                 }
 
-                feed.innerHTML = "";
                 // History datang terbaru dulu (DESC) — proses terbalik (lama ke baru) biar
-                // OPEN kepasang dulu sebelum CLOSE-nya, lalu render urut terbaru di atas
+                // OPEN kepasang dulu sebelum CLOSE-nya
                 const chronological = [...data.signals].reverse();
                 const today = new Date().toISOString().slice(0, 10);
 
@@ -994,11 +1516,22 @@
                 });
                 todayCount.textContent = todayN;
 
-                // Urutkan ulang DOM: entry terbaru (created_at OPEN-nya) di atas
-                const sorted = [...entries.values()].sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
-                sorted.forEach(entry => { if (entry.el) feed.appendChild(entry.el); });
+                // Urutkan ulang DOM tiap container: yang terbaru di atas
+                const openSorted = [...entries.values()]
+                    .filter(e => !e.close_reason)
+                    .sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""));
+                openSorted.forEach(entry => { if (entry.el) feedOpen.appendChild(entry.el); });
+
+                const closedSorted = [...entries.values()]
+                    .filter(e => e.close_reason)
+                    .sort((a, b) => (b.closed_at || b.created_at || "").localeCompare(a.closed_at || a.created_at || ""));
+                closedSorted.forEach(entry => { if (entry.el) feedHistory.appendChild(entry.el); });
+
+                ensureEmpty(feedOpen, "Belum ada posisi berjalan.");
+                ensureEmpty(feedHistory, "Belum ada riwayat.");
             } catch (e) {
-                feed.innerHTML = `<div class="signal-empty">Gagal memuat sinyal.</div>`;
+                feedOpen.innerHTML = `<div class="signal-empty">Gagal memuat sinyal.</div>`;
+                feedHistory.innerHTML = "";
             }
         }
 
@@ -1021,6 +1554,34 @@
 
         loadHistory();
         connectStream();
+
+    </script>
+
+
+    <!-- MOBILE NAV TOGGLE -->
+
+    <script>
+
+        const navToggle = document.getElementById("navToggle");
+        const navMenu = document.getElementById("navMenu");
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("mobile-open");
+                const icon = navToggle.querySelector("i");
+                icon.className = navMenu.classList.contains("mobile-open")
+                    ? "fa-solid fa-xmark"
+                    : "fa-solid fa-bars";
+            });
+
+            // Tutup menu begitu salah satu link diklik
+            navMenu.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navMenu.classList.remove("mobile-open");
+                    navToggle.querySelector("i").className = "fa-solid fa-bars";
+                });
+            });
+        }
 
     </script>
 
