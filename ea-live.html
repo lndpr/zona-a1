@@ -1568,21 +1568,47 @@
         }
 
         function connectStream() {
-            const es = new EventSource(`${API_BASE}/api/stream`);
 
-            es.addEventListener("connected", () => setLive(true));
+    const es = new EventSource(`${API_BASE}/api/stream`);
 
-            es.addEventListener("signal", (e) => {
-                const sig = JSON.parse(e.data);
-                processSignal(sig, { prepend: true, countToday: true });
-            });
+    console.log("SSE START");
 
-            es.onerror = () => {
-                setLive(false);
-                es.close();
-                setTimeout(connectStream, 3000);
-            };
-        }
+
+    es.addEventListener("connected", () => {
+
+        console.log("SSE CONNECTED");
+
+        setLive(true);
+
+    });
+
+
+    es.addEventListener("signal", (e) => {
+
+        console.log("SIGNAL MASUK:", e.data);
+
+        const sig = JSON.parse(e.data);
+
+        processSignal(sig, { 
+            prepend: true, 
+            countToday: true 
+        });
+
+    });
+
+
+    es.onerror = () => {
+
+        console.log("SSE ERROR");
+
+        setLive(false);
+
+        es.close();
+
+        setTimeout(connectStream, 3000);
+
+    };
+}
 
         loadHistory();
         connectStream();
