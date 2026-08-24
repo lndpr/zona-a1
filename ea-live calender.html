@@ -1434,31 +1434,8 @@ color:#fb7185;
 }
 
 
-.day-card{
-
-cursor:pointer;
-
-}
-
-
-.day-card:hover{
-
-transform:translateY(-3px);
-
-border-color:#22d3ee;
-
-box-shadow:
-0 0 20px rgba(34,211,238,.25);
-
-}
-
 
     </style>
-
-
-
-
-
 </head>
 
 <div class="disclaimer-popup" id="disclaimerPopup">
@@ -2399,26 +2376,24 @@ async function loadTradeCalendar(){
         box.innerHTML += `
 
 
-<div 
-class="day-card ${color} animate-day"
-onclick="loadDayHistory('${date}')"
->
+        <div class="day-card ${color} animate-day">
 
 
-    <div class="day-number">
+            <div class="day-number">
 
-        ${day}
+                ${day}
 
-    </div>
-
-
-    ${content}
+            </div>
 
 
-</div>
+            ${content}
 
 
-`;
+        </div>
+
+
+
+        `;
 
 
 
@@ -2437,99 +2412,6 @@ connectStream();
 
 loadTradeCalendar();
 
-// ===============================
-// LOAD HISTORY BY DATE
-// ===============================
-
-async function loadDayHistory(date){
-
-    const box =
-    document.getElementById("signalFeedHistory");
-
-
-    try {
-
-
-        const res = await fetch(
-            `${API_BASE}/api/signals-by-date?date=${date}`
-        );
-
-
-        const data = await res.json();
-
-
-        box.innerHTML="";
-
-
-        if(!data.signals || data.signals.length === 0){
-
-            box.innerHTML = `
-            <div class="signal-empty">
-                Tidak ada trade pada ${date}
-            </div>
-            `;
-
-            return;
-
-        }
-
-
-
-        data.signals.forEach(sig=>{
-
-
-            const entry = {
-
-                symbol: sig.symbol,
-
-                direction: sig.direction,
-
-                zone: sig.zone,
-
-                entry_price: sig.entry_price,
-
-                sl: sig.sl,
-
-                tp: sig.tp,
-
-                lot: sig.lot,
-
-                account_name: sig.account_name,
-
-                ticket: sig.ticket,
-
-                close_reason: sig.close_reason,
-
-                closed_at: sig.closed_at,
-
-                created_at: sig.created_at,
-
-                status: sig.status,
-
-                result: sig.result
-
-            };
-
-
-            renderEntry(entry, true);
-
-
-        });
-
-
-
-    }
-    catch(error){
-
-        console.log(
-            "Load date history error",
-            error
-        );
-
-    }
-
-
-}
     </script>
 
     
