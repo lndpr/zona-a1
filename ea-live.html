@@ -24,72 +24,6 @@
     <style>
 
         /* ==============================
-           MOBILE NAV TOGGLE
-        ============================== */
-
-        .nav-toggle {
-            display: none;
-
-            width: 40px;
-            height: 40px;
-
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: rgba(255,255,255,.03);
-
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                display: none !important;
-                position: absolute;
-                top: 82px;
-                left: 0;
-                right: 0;
-                z-index: 1000;
-
-                flex-direction: column;
-                gap: 0;
-
-                margin: 0;
-                padding: 10px 20px 20px;
-                list-style: none;
-
-                background: #06070A;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .nav-menu.mobile-open {
-                display: flex !important;
-            }
-
-            .nav-menu li {
-                width: 100%;
-                margin: 0;
-                border-top: 1px solid rgba(255,255,255,.08);
-            }
-
-            .nav-menu li a {
-                display: block;
-                padding: 14px 4px;
-                color: #fff !important;
-                font-size: 15px;
-                opacity: 1 !important;
-            }
-        }
-
-        /* ==============================
            LIVE PAGE
         ============================== */
 
@@ -1519,7 +1453,7 @@ box-shadow:
 
             <nav class="navbar">
 
-                <a href="index.html" class="logo">
+                <div class="logo">
 
                     <span class="logo-icon">
                         <i class="fa-solid fa-chart-line"></i>
@@ -1540,47 +1474,7 @@ box-shadow:
 
                     </span>
 
-                </a>
-
-
-                <ul class="nav-menu" id="navMenu">
-
-                    <li>
-                        <a href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#backtest">
-                            Backtest
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#indicator">
-                            Indikator
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html#pricing">
-                            Pricing
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="ea-live.html">
-                            EA Live
-                        </a>
-                    </li>
-
-                </ul>
-
-
-                <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+                </div>
 
             </nav>
 
@@ -2695,36 +2589,6 @@ async function loadDayHistory(date){
 
 
 }
-    </script>
-
-    
-
-
-    <!-- MOBILE NAV TOGGLE -->
-
-    <script>
-
-        const navToggle = document.getElementById("navToggle");
-        const navMenu = document.getElementById("navMenu");
-
-        if (navToggle && navMenu) {
-            navToggle.addEventListener("click", () => {
-                navMenu.classList.toggle("mobile-open");
-                const icon = navToggle.querySelector("i");
-                icon.className = navMenu.classList.contains("mobile-open")
-                    ? "fa-solid fa-xmark"
-                    : "fa-solid fa-bars";
-            });
-
-            // Tutup menu begitu salah satu link diklik
-            navMenu.querySelectorAll("a").forEach(link => {
-                link.addEventListener("click", () => {
-                    navMenu.classList.remove("mobile-open");
-                    navToggle.querySelector("i").className = "fa-solid fa-bars";
-                });
-            });
-        }
-
     </script>
 
 
