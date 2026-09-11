@@ -909,8 +909,8 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
    not an exchange order book.
    ========================================================= */
 .a1-heatmap-core{
-    width:min(900px,94vw)!important;
-    height:390px!important;
+    width:min(1080px,96vw)!important;
+    height:475px!important;
     margin:30px auto 0!important;
     display:block!important;
     position:relative!important;
@@ -918,7 +918,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 .a1-heatmap-terminal{
     position:absolute;
     inset:0 0 auto;
-    height:345px;
+    height:425px;
     box-sizing:border-box;
     border:1px solid rgba(54,145,168,.38);
     border-radius:6px;
@@ -980,8 +980,8 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 }
 .hm-chart-wrap{
     position:relative;
-    height:218px;
-    margin-top:7px;
+    height:285px;
+    margin-top:9px;
     border:1px solid rgba(61,107,128,.22);
     background:rgba(2,8,13,.72);
     overflow:hidden;
@@ -1013,7 +1013,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     background:rgba(2,8,13,.68);
 }
 .hm-scale{
-    height:17px;
+    height:20px;
     display:flex;align-items:center;gap:8px;
     color:#597181;font-size:5.5px;letter-spacing:.6px;
 }
@@ -1024,12 +1024,12 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 }
 .hm-stats{
     display:flex;justify-content:space-between;
-    padding-top:5px;
+    padding-top:6px;
     color:#516a79;font-size:6px;letter-spacing:.8px;
 }
 .hm-stats b{color:#8faab9;margin-left:3px}
 .hm-footer{
-    position:absolute;left:0;right:0;bottom:0;height:25px;
+    position:absolute;left:0;right:0;bottom:0;height:29px;
     padding:0 13px;
     display:flex;align-items:center;justify-content:space-between;
     border-top:1px solid rgba(69,116,138,.18);
@@ -1051,9 +1051,9 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     50%{opacity:1;transform:scale(1.25)}
 }
 @media(max-width:620px){
-    .a1-heatmap-core{height:350px!important}
-    .a1-heatmap-terminal{height:305px}
-    .hm-chart-wrap{height:180px}
+    .a1-heatmap-core{width:calc(100vw - 22px)!important;height:390px!important}
+    .a1-heatmap-terminal{height:350px}
+    .hm-chart-wrap{height:215px}
     .hm-stats{font-size:5px}
     .hm-source{display:none}
 }
@@ -1166,32 +1166,14 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 </section>
 
 
-  <section class="intel-grid">
-    <div class="card intel-panel reveal">
-      <div class="intel-title"><b>MARKET PULSE</b><span>REAL-TIME ENGINE</span></div>
-      <div class="pulse-screen" id="marketPulseScreen">
-        <canvas id="marketPulseCanvas"></canvas>
-        <div class="pulse-live-readout">
-          <span>PRICE <b id="pulsePrice">—</b></span>
-          <span>MOVE <b id="pulseMove">—</b></span>
-          <span>ACTIVITY <b id="pulseActivity">SCANNING</b></span>
-        </div>
-        <div class="pulse-meta"><span>LOW ACTIVITY</span><span id="pulseState">SCANNING</span><span>HIGH ACTIVITY</span></div>
-      </div>
-      <div class="flow">
-        <div class="flow-step active"><div class="flow-node">01</div><b>ZONE</b></div>
-        <div class="flow-step"><div class="flow-node">02</div><b>SIGNAL</b></div>
-        <div class="flow-step"><div class="flow-node">03</div><b>ENTRY</b></div>
-        <div class="flow-step"><div class="flow-node">04</div><b>TP / SL</b></div>
-      </div>
-    </div>
 
+  <section class="intel-grid">
     <div class="card intel-panel reveal">
       <div class="intel-title"><b>SESSION MONITOR</b><span id="sessionTime">LOCAL TIME</span></div>
       <div class="session-strip">
-        <div class="session" id="tokyo"><span class="session-dot"></span><b>TOKYO</b><span>00:00–07:00</span></div>
-        <div class="session" id="london"><span class="session-dot"></span><b>LONDON</b><span>07:00–13:00</span></div>
-        <div class="session" id="newyork"><span class="session-dot"></span><b>NEW YORK</b><span>13:00–22:00</span></div>
+        <div class="session" id="tokyo"><span class="session-dot"></span><b>TOKYO</b><span>06:00–13:00</span></div>
+        <div class="session" id="london"><span class="session-dot"></span><b>LONDON</b><span>13:00–19:00</span></div>
+        <div class="session" id="newyork"><span class="session-dot"></span><b>NEW YORK</b><span>19:00–01:00</span></div>
       </div>
     </div>
 
@@ -1719,46 +1701,18 @@ setInterval(updateLiquidityHero,1200);setTimeout(updateLiquidityHero,500);
 
 /* ===== Intelligence Terminal live micro-state ===== */
 function updateSessionMonitor(){
-  const now = new Date();
-
-  // Semua waktu menggunakan WIB / UTC+7
-  const wib = new Date(
-    now.toLocaleString("en-US", {
-      timeZone: "Asia/Jakarta"
-    })
-  );
-
-  const h = wib.getHours();
-  const m = wib.getMinutes();
-  const s = wib.getSeconds();
-  const mins = h * 60 + m;
-
-  // Tampilkan jam WIB
-  document.getElementById("sessionTime").textContent =
-    `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-
-  // SESSION WIB
-  const ranges = {
-    tokyo: [6 * 60, 13 * 60],      // 06:00 - 13:00 WIB
-    london: [13 * 60, 19 * 60],    // 13:00 - 19:00 WIB
-    newyork: [19 * 60, 24 * 60]     // 19:00 - 01:00 WIB
-  };
-
-  Object.entries(ranges).forEach(([id, r]) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    let active;
-
-    // New York: 19:00 - 01:00 WIB
-    if (id === "newyork") {
-      active = mins >= 19 * 60 || mins < 1 * 60;
-    } else {
-      active = mins >= r[0] && mins < r[1];
-    }
-
-    el.classList.toggle("active", active);
+  const now=new Date();
+  const wib=new Date(now.toLocaleString("en-US",{timeZone:"Asia/Jakarta"}));
+  const h=wib.getHours(),m=wib.getMinutes(),s=wib.getSeconds();
+  const mins=h*60+m;
+  document.getElementById("sessionTime").textContent=`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")} WIB`;
+  const ranges={tokyo:[6*60,13*60],london:[13*60,19*60]};
+  Object.entries(ranges).forEach(([id,r])=>{
+    const el=document.getElementById(id); if(!el)return;
+    el.classList.toggle("active",mins>=r[0]&&mins<r[1]);
   });
+  const ny=document.getElementById("newyork");
+  if(ny) ny.classList.toggle("active",mins>=19*60||mins<1*60);
 }
 function updatePulseState(){
   const active=[...entries.values()].filter(e=>!e.close_reason);
