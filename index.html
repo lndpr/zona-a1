@@ -1205,8 +1205,8 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     <div class="card intel-panel reveal">
       <div class="intel-title"><b>SESSION MONITOR</b><span id="sessionTime">LOCAL TIME</span></div>
       <div class="session-strip">
-        <div class="session" id="tokyo"><span class="session-dot"></span><b>TOKYO</b><span>00:00–09:00</span></div>
-        <div class="session" id="london"><span class="session-dot"></span><b>LONDON</b><span>08:00–17:00</span></div>
+        <div class="session" id="tokyo"><span class="session-dot"></span><b>TOKYO</b><span>00:00–07:00</span></div>
+        <div class="session" id="london"><span class="session-dot"></span><b>LONDON</b><span>07:00–13:00</span></div>
         <div class="session" id="newyork"><span class="session-dot"></span><b>NEW YORK</b><span>13:00–22:00</span></div>
       </div>
     </div>
@@ -1735,13 +1735,45 @@ setInterval(updateLiquidityHero,1200);setTimeout(updateLiquidityHero,500);
 
 /* ===== Intelligence Terminal live micro-state ===== */
 function updateSessionMonitor(){
-  const now=new Date(),h=now.getHours(),m=now.getMinutes();
-  const mins=h*60+m;
-  document.getElementById("sessionTime").textContent=now.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit",second:"2-digit"});
-  const ranges={tokyo:[0,9*60],london:[8*60,17*60],newyork:[13*60,22*60]};
-  Object.entries(ranges).forEach(([id,r])=>{
-    const el=document.getElementById(id); if(!el)return;
-    const active=mins>=r[0]&&mins<r[1];el.classList.toggle("active",active);
+  const now = new Date();
+
+  // Semua waktu menggunakan WIB / UTC+7
+  const wib = new Date(
+    now.toLocaleString("en-US", {
+      timeZone: "Asia/Jakarta"
+    })
+  );
+
+  const h = wib.getHours();
+  const m = wib.getMinutes();
+  const s = wib.getSeconds();
+  const mins = h * 60 + m;
+
+  // Tampilkan jam WIB
+  document.getElementById("sessionTime").textContent =
+    `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+
+  // SESSION WIB
+  const ranges = {
+    tokyo: [6 * 60, 13 * 60],      // 06:00 - 13:00 WIB
+    london: [13 * 60, 19 * 60],    // 13:00 - 19:00 WIB
+    newyork: [19 * 60, 24 * 60]     // 19:00 - 01:00 WIB
+  };
+
+  Object.entries(ranges).forEach(([id, r]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    let active;
+
+    // New York: 19:00 - 01:00 WIB
+    if (id === "newyork") {
+      active = mins >= 19 * 60 || mins < 1 * 60;
+    } else {
+      active = mins >= r[0] && mins < r[1];
+    }
+
+    el.classList.toggle("active", active);
   });
 }
 function updatePulseState(){
