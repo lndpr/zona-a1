@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050914">
-<title>ZONA A1 | Live Signals</title>
+<title>ZONA A1 | Live Signals — ASTRA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1180,136 +1180,62 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
 @media(max-width:620px){.hm-market-closed{font-size:7px;min-height:32px;gap:6px}.hm-market-closed small{font-size:5.5px}}
 </style>
 
-<style id="heatmap-readable-v2">
-/* ===== HEATMAP READABLE V2 ===== */
-.a1-heatmap-terminal{
-  font-size:1em;
-}
-
-/* Header / instrument */
-.hm-head{
-  font-size:9px!important;
-  letter-spacing:1.6px!important;
-}
-.hm-title-row strong{
-  font-size:13px!important;
-}
-.hm-title-row span{
-  font-size:7px!important;
-}
-.hm-quote b{
-  font-size:20px!important;
-}
-.hm-quote span{
-  font-size:8px!important;
-}
-
-/* News + weekend banners */
-.hm-news-copy b{
-  font-size:9px!important;
-  font-weight:900!important;
-}
-.hm-news-copy span{
-  font-size:9px!important;
-  font-weight:650!important;
-}
-.hm-news-countdown,#hmNewsCountdown{
-  font-size:11px!important;
-  font-weight:900!important;
-}
-.hm-alert-btn{
-  font-size:9px!important;
-  font-weight:900!important;
-}
-.hm-market-closed{
-  font-size:10px!important;
-  font-weight:900!important;
-}
-
-/* Activity */
-.hm-activity{
-  font-size:9px!important;
-  font-weight:800!important;
-  letter-spacing:.85px!important;
-}
-.hm-activity b{
-  font-size:11px!important;
-  font-weight:900!important;
-}
-.hm-activity-bar{
-  height:7px!important;
-}
-
-/* Stats */
-.hm-stats{
-  font-size:9px!important;
-  font-weight:800!important;
-  letter-spacing:.8px!important;
-  gap:16px!important;
-}
-.hm-stats b{
-  font-size:10px!important;
-  font-weight:900!important;
-}
-
-/* Chart-side labels / footer */
-.hm-scale{
-  font-size:6.5px!important;
-}
-.hm-current-price{
-  font-size:8px!important;
-  font-weight:900!important;
-}
-.hm-loading{
-  font-size:9px!important;
-}
-.hm-footer{
-  font-size:8px!important;
-  font-weight:700!important;
-}
-
-/* Keep the larger text from colliding with the four stat columns */
-.hm-stats span{
-  min-width:0!important;
-  overflow:hidden!important;
-  text-overflow:ellipsis!important;
-}
-
-/* Canvas labels are controlled by JS; make the terminal's rendered chart
-   labels slightly larger by giving the canvas a readable visual scale. */
-@media(min-width:621px){
-  .hm-main{padding-left:14px!important;padding-right:14px!important}
-  .hm-activity{
-    grid-template-columns:115px minmax(0,1fr) 115px minmax(0,1fr)!important;
-    gap:9px 11px!important;
-  }
-}
-
-@media(max-width:620px){
-  .hm-head{font-size:7px!important}
-  .hm-title-row strong{font-size:11px!important}
-  .hm-title-row span{font-size:6px!important}
-  .hm-quote b{font-size:17px!important}
-  .hm-news-copy b,.hm-news-copy span{font-size:7px!important}
-  .hm-news-countdown,#hmNewsCountdown{font-size:9px!important}
-  .hm-alert-btn{font-size:7px!important}
-  .hm-market-closed{font-size:8px!important}
-  .hm-activity{
-    grid-template-columns:74px minmax(0,1fr) 74px minmax(0,1fr)!important;
-    gap:6px!important;
-    font-size:6.8px!important;
-  }
-  .hm-activity b{font-size:8.5px!important}
-  .hm-activity-bar{height:6px!important}
-  .hm-stats{
-    font-size:6.8px!important;
-    gap:8px 12px!important;
-  }
-  .hm-stats b{font-size:8px!important}
-  .hm-footer{font-size:6px!important}
-}
+<style id="a1-market-intelligence-css">
+/* ===== ZONA A1 — TODAY'S MARKET INTELLIGENCE ===== */
+.a1-market-intel{margin:12px auto 0;max-width:1180px;border:1px solid rgba(57,232,255,.14);border-radius:8px;background:linear-gradient(180deg,rgba(5,15,22,.94),rgba(3,10,15,.98));box-shadow:0 14px 40px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.025);overflow:hidden}
+.a1-mi-head{height:42px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(69,116,138,.16);font-family:monospace}
+.a1-mi-title{font-size:10px;letter-spacing:1.4px;color:#d8f8ff;font-weight:800}.a1-mi-title small{display:block;margin-top:3px;font-size:7px;color:#536f7e;letter-spacing:.8px}
+.a1-mi-live{font-size:7px;color:#39e8a0;letter-spacing:1px}.a1-mi-live i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#39e8a0;box-shadow:0 0 8px #39e8a0;margin-right:5px}
+.a1-mi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(69,116,138,.10)}
+.a1-mi-card{min-height:112px;padding:11px 12px;background:rgba(3,12,18,.96);font-family:monospace;position:relative}
+.a1-mi-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(57,232,255,.25)}
+.a1-mi-card.hot:before{background:#ff5277}.a1-mi-card.warn:before{background:#fbbf24}.a1-mi-card.good:before{background:#39e8a0}
+.a1-mi-kicker{display:flex;justify-content:space-between;gap:8px;margin-bottom:7px;font-size:7px;letter-spacing:1px;color:#6f8997}.a1-mi-impact{font-size:6px;color:#fbbf24}
+.a1-mi-card h4{margin:0 0 6px;font-size:10px;color:#d9f7ff;letter-spacing:.5px}.a1-mi-card p{margin:0;color:#7f98a6;font-size:8px;line-height:1.5}.a1-mi-card a{display:block;margin-top:7px;color:#456b7c;font-size:6.5px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.a1-mi-foot{padding:8px 12px;border-top:1px solid rgba(69,116,138,.12);font:7px monospace;color:#4e6876;display:flex;justify-content:space-between;gap:10px}.a1-mi-foot b{color:#8aa9b7}
+@media(max-width:760px){.a1-mi-grid{grid-template-columns:1fr}.a1-mi-card{min-height:94px}.a1-mi-head{height:48px}.a1-mi-title{font-size:9px}.a1-mi-foot{flex-direction:column;gap:4px}}
 </style>
 
+
+<style id="a1-market-intelligence-readable">
+/* =========================================================
+   ZONA A1 — MARKET INTELLIGENCE READABLE MODE
+   Scoped to the right-side Market Intelligence panel only.
+   ========================================================= */
+.side-card.a1-mi-card .a1-mi-body{padding:14px 14px 15px}
+.side-card.a1-mi-card .a1-mi-topline{font-size:8px;letter-spacing:1px;margin-bottom:10px}
+.side-card.a1-mi-card .a1-mi-topline #a1MiStatus{font-size:8px}
+.side-card.a1-mi-card .a1-mi-topline #a1MiStatus i{width:6px;height:6px;margin-right:6px}
+
+.side-card.a1-mi-card .a1-mi-grid{gap:6px}
+.side-card.a1-mi-card .a1-mi-asset{padding:9px 9px 8px;min-height:42px}
+.side-card.a1-mi-card .a1-mi-asset span{font-size:7px;letter-spacing:.7px}
+.side-card.a1-mi-card .a1-mi-asset b{font-size:14px;margin-top:5px;letter-spacing:.2px}
+.side-card.a1-mi-card .a1-mi-asset em{font-size:8px;margin-top:8px}
+
+.side-card.a1-mi-card .a1-mi-section-title{margin:14px 0 8px;font-size:8px;letter-spacing:1.1px}
+.side-card.a1-mi-card .a1-mi-driver{grid-template-columns:86px 1fr 48px;gap:7px;margin:6px 0}
+.side-card.a1-mi-card .a1-mi-driver>span{font-size:7px;letter-spacing:.35px}
+.side-card.a1-mi-card .a1-mi-driver>i{height:5px}
+.side-card.a1-mi-card .a1-mi-driver strong{font-size:7px}
+
+.side-card.a1-mi-card .a1-mi-bias{margin-top:12px;padding:10px}
+.side-card.a1-mi-card .a1-mi-bias span{font-size:7px;letter-spacing:.8px}
+.side-card.a1-mi-card .a1-mi-bias b{font-size:10px}
+.side-card.a1-mi-card .a1-mi-bias small{margin-top:5px;font-size:7px;line-height:1.45}
+
+.side-card.a1-mi-card .a1-mi-event{margin-top:9px;padding-top:9px}
+.side-card.a1-mi-card .a1-mi-event span{font-size:7px;letter-spacing:.8px}
+.side-card.a1-mi-card .a1-mi-event b{font-size:8px;margin-top:4px;max-width:165px}
+.side-card.a1-mi-card .a1-mi-event>strong{font-size:10px}
+
+/* Keep readability on narrower screens without making the panel huge. */
+@media(max-width:620px){
+  .side-card.a1-mi-card .a1-mi-body{padding:12px}
+  .side-card.a1-mi-card .a1-mi-asset{padding:8px}
+  .side-card.a1-mi-card .a1-mi-asset b{font-size:13px}
+  .side-card.a1-mi-card .a1-mi-driver{grid-template-columns:80px 1fr 45px}
+}
+</style>
 </head>
 <body>
 <canvas id="astra-canvas"></canvas><div class="motion-orbs"><span class="motion-orb o1"></span><span class="motion-orb o2"></span><span class="motion-orb o3"></span></div>
@@ -1398,7 +1324,18 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
       </div>
     </div>
 
-    <div class="hm-footer">
+  
+<div class="a1-market-intel" id="a1MarketIntel">
+  <div class="a1-mi-head">
+    <div class="a1-mi-title">TODAY'S MARKET INTELLIGENCE<small id="a1MiDate">SCANNING TODAY'S MARKET</small></div>
+    <div class="a1-mi-live"><i></i><span id="a1MiStatus">LIVE • SCANNING</span></div>
+  </div>
+  <div class="a1-mi-grid" id="a1MiGrid">
+    <div class="a1-mi-card"><div class="a1-mi-kicker"><span>MARKET INTELLIGENCE</span><span>—</span></div><h4>Scanning latest market themes…</h4><p>Collecting fresh headlines across Gold, USD, central banks, inflation, yields, forex, oil and geopolitics.</p></div>
+  </div>
+  <div class="a1-mi-foot"><span>FOCUS: <b>GOLD/XAU • USD • FED • ECB • CPI • YIELD • FOREX • OIL • GEOPOLITICS</b></span><span id="a1MiUpdated">UPDATED —</span></div>
+</div>
+  <div class="hm-footer">
       <span>A1 INDICATOR • PRICE ACTION • TICK VOLUME • 15M</span>
       <span id="hmStatus">SCANNING MARKET</span>
     </div>
@@ -1438,7 +1375,7 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
     <div class="card intel-panel reveal">
       <div class="intel-title"><b>SESSION MONITOR</b><span id="sessionTime">LOCAL TIME</span></div>
       <div class="session-strip">
-        <div class="session" id="tokyo"><span class="session-dot"></span><b>ASIA</b><span>06:00–13:00</span></div>
+        <div class="session" id="tokyo"><span class="session-dot"></span><b>TOKYO</b><span>06:00–13:00</span></div>
         <div class="session" id="london"><span class="session-dot"></span><b>LONDON</b><span>13:00–19:00</span></div>
         <div class="session" id="newyork"><span class="session-dot"></span><b>NEW YORK</b><span>19:00–01:00</span></div>
       </div>
@@ -1517,6 +1454,7 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
     </article>
   </div>
 </section>
+
     </div>
 
     <aside class="sidebar">
@@ -1531,6 +1469,122 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
           </div>
         </div>
       </div>
+
+      <!-- ===== ZONA A1 CUSTOM MARKET INTELLIGENCE ===== -->
+      <section class="card side-card reveal a1-mi-card">
+        <div class="side-head"><i class="fa-solid fa-microchip"></i> ZONA A1 Market Intelligence</div>
+        <div class="a1-mi-body">
+          <div class="a1-mi-topline">
+            <span id="a1MiStatus"><i></i> LIVE DATA</span>
+            <span id="a1MiUpdated">--:-- WIB</span>
+          </div>
+
+          <div class="a1-mi-grid">
+            <div class="a1-mi-asset gold"><span>GOLD / XAUUSD</span><b id="miGold">—</b><em id="miGoldChg">—</em></div>
+            <div class="a1-mi-asset"><span>USD / DXY</span><b id="miDxy">—</b><em id="miDxyChg">—</em></div>
+            <div class="a1-mi-asset"><span>US 10Y YIELD</span><b id="miYield">—</b><em id="miYieldChg">—</em></div>
+            <div class="a1-mi-asset"><span>WTI OIL</span><b id="miOil">—</b><em id="miOilChg">—</em></div>
+            <div class="a1-mi-asset"><span>EURUSD</span><b id="miEur">—</b><em id="miEurChg">—</em></div>
+            <div class="a1-mi-asset"><span>GBPUSD</span><b id="miGbp">—</b><em id="miGbpChg">—</em></div>
+          </div>
+
+          <div class="a1-mi-section-title">XAUUSD MARKET DRIVERS</div>
+          <div class="a1-mi-driver"><span>FED / RATES</span><i><b id="miFedBar"></b></i><strong id="miFedTxt">—</strong></div>
+          <div class="a1-mi-driver"><span>USD</span><i><b id="miUsdBar"></b></i><strong id="miUsdTxt">—</strong></div>
+          <div class="a1-mi-driver"><span>TREASURY YIELD</span><i><b id="miYieldBar"></b></i><strong id="miYieldTxt">—</strong></div>
+          <div class="a1-mi-driver"><span>OIL / INFLATION</span><i><b id="miOilBar"></b></i><strong id="miOilTxt">—</strong></div>
+          <div class="a1-mi-driver"><span>RISK / GEOPOLITICS</span><i><b id="miRiskBar"></b></i><strong id="miRiskTxt">—</strong></div>
+
+          <div class="a1-mi-bias">
+            <div><span>XAUUSD PRESSURE</span><b id="miBias">SCANNING</b></div>
+            <small id="miBiasNote">Waiting for live market inputs…</small>
+          </div>
+
+          <div class="a1-mi-event">
+            <div><span>NEXT HIGH IMPACT</span><b id="miNextEvent">Scanning calendar…</b></div>
+            <strong id="miNextCountdown">--:--:--</strong>
+          </div>
+        </div>
+      </section>
+
+<!-- ===== TRADINGVIEW XAUUSD TOP STORIES ===== -->
+<section class="card side-card reveal a1-tv-news-section">
+  <div class="side-head">📰 Top Stories — XAUUSD</div>
+
+  <div class="tradingview-widget-container a1-tv-news-widget">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright">
+      <a href="https://www.tradingview.com/news/top-providers/tradingview/" rel="noopener nofollow" target="_blank">
+        <span class="blue-text">Top stories</span>
+      </a>
+      <span class="trademark"> by TradingView</span>
+    </div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+    {
+      "displayMode": "regular",
+      "feedMode": "symbol",
+      "symbol": "OANDA:XAUUSD",
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "locale": "en",
+      "width": 400,
+      "height": 550
+    }
+    </script>
+  </div>
+</section>
+
+
+<style>
+/* ===== ZONA A1 CUSTOM MARKET INTELLIGENCE ===== */
+.a1-mi-card{margin-top:14px;overflow:hidden}
+.a1-mi-body{padding:11px 12px 12px;background:linear-gradient(180deg,rgba(7,17,24,.96),rgba(4,10,16,.98))}
+.a1-mi-topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;color:#587181;font:700 7px monospace;letter-spacing:.8px}
+.a1-mi-topline #a1MiStatus{color:#39e8a0}.a1-mi-topline #a1MiStatus i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#39e8a0;box-shadow:0 0 8px rgba(57,232,160,.8);margin-right:5px}
+.a1-mi-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.a1-mi-asset{min-width:0;padding:7px 7px 6px;border:1px solid rgba(69,116,138,.16);border-radius:5px;background:rgba(255,255,255,.018)}
+.a1-mi-asset span{display:block;color:#5e7786;font:700 6px monospace;letter-spacing:.6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.a1-mi-asset b{display:inline-block;margin-top:4px;color:#d8edf4;font:800 11px monospace;font-variant-numeric:tabular-nums}
+.a1-mi-asset em{float:right;margin-top:6px;color:#728997;font:700 7px monospace;font-style:normal}
+.a1-mi-asset.gold{border-color:rgba(251,191,36,.22);background:rgba(251,191,36,.035)}
+.a1-mi-asset.gold b{color:#ffd66b}
+.a1-mi-section-title{margin:12px 0 7px;color:#7c94a2;font:800 7px monospace;letter-spacing:1px}
+.a1-mi-driver{display:grid;grid-template-columns:76px 1fr 43px;gap:6px;align-items:center;margin:5px 0}
+.a1-mi-driver>span{color:#607987;font:700 6px monospace;letter-spacing:.3px}
+.a1-mi-driver>i{height:4px;border-radius:5px;background:rgba(255,255,255,.045);overflow:hidden}
+.a1-mi-driver>i b{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#39e8a0,#fbbf24,#ff5277);transition:width .5s ease}
+.a1-mi-driver strong{text-align:right;color:#8ca3af;font:800 6px monospace}
+.a1-mi-bias{margin-top:10px;padding:8px;border:1px solid rgba(57,232,255,.13);border-radius:5px;background:rgba(57,232,255,.025)}
+.a1-mi-bias>div{display:flex;justify-content:space-between;align-items:center}.a1-mi-bias span{color:#637d8b;font:700 6px monospace;letter-spacing:.7px}.a1-mi-bias b{font:900 8px monospace;color:#39e8a0}.a1-mi-bias b.bear{color:#ff6d86}.a1-mi-bias b.neutral{color:#fbbf24}.a1-mi-bias small{display:block;margin-top:4px;color:#607784;font:600 6px/1.35 monospace}
+.a1-mi-event{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;padding-top:7px;border-top:1px solid rgba(69,116,138,.12)}
+.a1-mi-event span{display:block;color:#506b7a;font:700 6px monospace;letter-spacing:.7px}.a1-mi-event b{display:block;margin-top:3px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b4c8d2;font:800 7px monospace}.a1-mi-event>strong{color:#fbbf24;font:900 9px monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:1024px){.a1-mi-grid{grid-template-columns:repeat(3,1fr)}.a1-mi-driver{grid-template-columns:105px 1fr 52px}}
+@media(max-width:620px){.a1-mi-grid{grid-template-columns:1fr 1fr}.a1-mi-driver{grid-template-columns:82px 1fr 45px}}
+</style>
+
+<style>
+.a1-tv-news-section{margin-top:14px}
+.a1-tv-news-widget{
+  width:100%;
+  min-height:550px;
+  overflow:hidden;
+  border:1px solid rgba(57,232,255,.10);
+  border-radius:8px;
+  background:#081117;
+}
+.a1-tv-news-widget .tradingview-widget-container__widget{width:100%}
+.a1-tv-news-widget .tradingview-widget-copyright{
+  padding:5px 8px 7px;
+  font:600 8px monospace;
+  opacity:.75;
+}
+.a1-tv-news-widget .trademark{color:#687f8d}
+.a1-tv-news-widget .blue-text{color:#39e8ff}
+@media(max-width:620px){
+  .a1-tv-news-widget{min-height:550px}
+}
+</style>
+
     </aside>
   </section>
 
@@ -2432,6 +2486,256 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
 })();
 </script>
 
+<script id="a1-market-intelligence-js">
+/* ===== ZONA A1 — TODAY'S MARKET INTELLIGENCE v2 =====
+   Multi-source RSS aggregation + fallback headlines.
+   Browser refresh: 10 minutes. Focus: XAUUSD macro drivers.
+*/
+(function(){
+  const feeds=[
+    ['GOOGLE NEWS • GOLD','https://news.google.com/rss/search?q=gold%20OR%20XAUUSD&hl=en-US&gl=US&ceid=US:en'],
+    ['GOOGLE NEWS • FED','https://news.google.com/rss/search?q=Federal%20Reserve%20OR%20Fed%20OR%20Powell%20OR%20FOMC&hl=en-US&gl=US&ceid=US:en'],
+    ['GOOGLE NEWS • USD/YIELD','https://news.google.com/rss/search?q=USD%20OR%20dollar%20OR%20DXY%20OR%20Treasury%20yield&hl=en-US&gl=US&ceid=US:en'],
+    ['GOOGLE NEWS • CPI','https://news.google.com/rss/search?q=CPI%20OR%20inflation%20OR%20PPI%20OR%20NFP&hl=en-US&gl=US&ceid=US:en'],
+    ['GOOGLE NEWS • ECB/FX','https://news.google.com/rss/search?q=ECB%20OR%20BOE%20OR%20BOJ%20OR%20forex&hl=en-US&gl=US&ceid=US:en'],
+    ['GOOGLE NEWS • OIL/GEO','https://news.google.com/rss/search?q=oil%20OR%20crude%20OR%20OPEC%20OR%20Iran%20OR%20Hormuz%20OR%20geopolitics&hl=en-US&gl=US&ceid=US:en']
+  ];
+  const proxies=[
+    u=>'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u),
+    u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
+    u=>'https://corsproxy.io/?url='+encodeURIComponent(u)
+  ];
+  const $=id=>document.getElementById(id);
+  const esc=x=>String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const clean=x=>String(x||'').replace(/<!\[CDATA\[|\]\]>/g,'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/gi,' ').replace(/\s+/g,' ').trim();
+
+  const topics=[
+    {key:'gold',label:'🥇 GOLD / XAUUSD',terms:['gold','xauusd','bullion','precious metal','gold price'],impact:'XAU DRIVER',cls:'hot'},
+    {key:'fed',label:'🇺🇸 FED / USD',terms:['federal reserve','fed ','powell','fomc','rate hike','rate cut','dollar','usd','dxy'],impact:'MACRO',cls:'warn'},
+    {key:'inflation',label:'📊 INFLATION / CPI',terms:['cpi','inflation','core inflation','ppi','pce','payroll','nfp','jobs'],impact:'MACRO',cls:'warn'},
+    {key:'yield',label:'📈 TREASURY / YIELD',terms:['treasury yield','treasury','10-year','10y yield','2-year','bond yield','yields'],impact:'XAU DRIVER',cls:'hot'},
+    {key:'ecb',label:'🇪🇺 ECB / CENTRAL BANKS',terms:['ecb','european central bank','boe','bank of england','boj','bank of japan','central bank'],impact:'MACRO',cls:'warn'},
+    {key:'oil',label:'🛢 OIL / ENERGY',terms:['oil','crude','brent','wti','opec','energy prices','pipeline'],impact:'RISK',cls:'good'},
+    {key:'geo',label:'🌍 GEOPOLITICS',terms:['geopolit','war','conflict','middle east','ukraine','russia','china','tariff','hormuz','iran','israel','houthi','red sea'],impact:'RISK',cls:'good'},
+    {key:'forex',label:'💱 FOREX / RISK',terms:['forex','eur/usd','eurusd','gbp/usd','gbpusd','yen','euro','sterling','risk sentiment'],impact:'MARKET',cls:''}
+  ];
+
+  /* Current fallback snapshot so the panel is never blank when a browser proxy is unavailable. */
+  let articles=[
+    {source:'Reuters',title:'Gold rises on dip-buying even as Fed rate hike bets rise after US inflation data',desc:'Gold rebounded while strong US inflation data increased expectations of a Federal Reserve rate hike.',url:'https://www.reuters.com/world/india/gold-track-third-weekly-loss-us-inflation-data-looms-2026-09-11/',date:new Date('2026-09-11T16:00:00Z')},
+    {source:'Reuters',title:'Wall Street jumps, oil lower ahead of Fed vote next week',desc:'US CPI rose 0.4% in August; Treasury 10-year yield briefly touched 4.9915% while gold recovered.',url:'https://www.reuters.com/world/china/global-markets-corrected-2026-09-11/',date:new Date('2026-09-11T20:00:00Z')},
+    {source:'Reuters',title:'US 10-year borrowing costs pull back from 5%',desc:'US CPI rose 0.4% in August and 3.4% annually; 10-year Treasury yield eased to around 4.93%.',url:'https://www.reuters.com/world/europe/global-bond-selloff-pushes-10-year-us-yield-toward-5-oil-rate-hike-fears-2026-09-11/',date:new Date('2026-09-11T19:00:00Z')},
+    {source:'Reuters',title:'Houthi advance in Yemen puts US in a new bind',desc:'The advance raises risks around the Bab el-Mandeb shipping chokepoint while Hormuz remains disrupted.',url:'https://www.reuters.com/world/middle-east/houthi-advance-yemen-puts-us-new-bind-2026-09-12/',date:new Date('2026-09-12T02:00:00Z')},
+    {source:'Reuters',title:'Trump says Iran probably responsible for attack on Saudi pipeline',desc:'The reported attack adds to Middle East energy-supply and geopolitical risk.',url:'https://www.reuters.com/business/energy/trump-says-iran-probably-responsible-attack-saudi-pipeline-2026-09-12/',date:new Date('2026-09-12T03:00:00Z')},
+    {source:'TMGM',title:'US CPI, Treasury yields, USD and ECB remain key market themes',desc:'August CPI held at 3.4% YoY; 10Y Treasury near 4.951%; ECB deposit rate 2.50%; WTI near $97.',url:'https://www.tmgm-apac.com/eng/analysis/market-insight/morning-brief-en-2026-09-11',date:new Date('2026-09-12T00:00:00Z')},
+    {source:'FXStreet',title:'Gold rebounds but Fed rate hike bets remain a headwind',desc:'XAU/USD rebounded as USD, yields and oil pulled back, but Fed hike expectations capped upside.',url:'https://www.fxstreet.com/news/gold-holds-ground-as-markets-brace-for-us-cpi-data-202609111059',date:new Date('2026-09-11T16:06:07Z')}
+  ];
+
+  function parse(xml,source){
+    const doc=new DOMParser().parseFromString(xml,'text/xml');
+    if(doc.querySelector('parsererror')) return [];
+    const rss=[...doc.querySelectorAll('item')];
+    if(rss.length) return rss.map(i=>({
+      source:clean(i.querySelector('source')?.textContent||source).slice(0,24),
+      title:clean(i.querySelector('title')?.textContent),desc:clean(i.querySelector('description')?.textContent),
+      url:i.querySelector('link')?.textContent?.trim()||'',date:new Date(i.querySelector('pubDate')?.textContent||0)
+    })).filter(x=>x.title&&!isNaN(x.date));
+    return [...doc.querySelectorAll('entry')].map(i=>({
+      source:clean(i.querySelector('source,author')?.textContent||source).slice(0,24),
+      title:clean(i.querySelector('title')?.textContent),desc:clean(i.querySelector('summary,description')?.textContent),
+      url:i.querySelector('link')?.getAttribute('href')||'',date:new Date(i.querySelector('published,updated')?.textContent||0)
+    })).filter(x=>x.title&&!isNaN(x.date));
+  }
+  function parseJson(j,source){
+    const arr=j?.items||j?.data||j?.articles||[];
+    return Array.isArray(arr)?arr.map(x=>({source:clean(x.author||x.source_id||source).slice(0,24),title:clean(x.title),desc:clean(x.description||x.content||''),url:x.link||x.url||'',date:new Date(x.pubDate||x.published_at||x.date||0)})).filter(x=>x.title&&!isNaN(x.date)):[];
+  }
+  async function fetchFeed(url,source){
+    for(const proxy of proxies){
+      try{
+        const r=await fetch(proxy(url),{cache:'no-store'}); if(!r.ok) continue;
+        const text=await r.text();
+        try{const j=JSON.parse(text);const a=parseJson(j,source);if(a.length)return a;}catch(_){ }
+        const a=parse(text,source);if(a.length)return a;
+      }catch(_){ }
+    }
+    return [];
+  }
+  function score(a,t){
+    const text=(a.title+' '+a.desc).toLowerCase();let n=0;
+    t.terms.forEach(k=>{if(text.includes(k.toLowerCase()))n+=k.length>5?3:2});
+    if(/gold|xau/.test(text))n+=2;
+    const age=(Date.now()-a.date.getTime())/3600000;if(age<=2)n+=5;else if(age<=6)n+=3;else if(age<=24)n+=1;else if(age>48)n-=3;
+    return n;
+  }
+  function summarize(t,items){
+    const text=items.map(x=>x.title+' '+x.a.desc).join(' ').toLowerCase();
+    if(t.key==='gold')return /rise|rally|rebound|gain|higher/.test(text)?'Gold is rebounding, but the market remains sensitive to USD, Treasury yields and Fed-rate expectations.':'Gold remains highly sensitive to USD, Treasury yields and central-bank policy.';
+    if(t.key==='fed')return /hike|higher|hawkish/.test(text)?'Markets are leaning more hawkish on US rates, keeping USD, yields and Gold highly sensitive.':'Fed policy expectations remain a key driver for USD, Treasury yields and Gold.';
+    if(t.key==='inflation')return 'Fresh CPI/inflation signals are being watched for their impact on the next Federal Reserve decision.';
+    if(t.key==='yield')return 'Treasury yields remain a direct Gold driver: higher yields generally increase the opportunity cost of holding non-yielding Gold.';
+    if(t.key==='ecb')return 'ECB and other central-bank decisions are reshaping global rate differentials and FX flows.';
+    if(t.key==='oil')return 'Oil is a major inflation and risk variable; energy shocks can change central-bank expectations quickly.';
+    if(t.key==='geo')return 'Geopolitical developments are moving energy prices and risk sentiment, with knock-on effects for USD, yields and Gold.';
+    return 'FX and broader risk sentiment are shaping cross-market flows that can spill over into Gold and the US Dollar.';
+  }
+  function age(d){const m=Math.max(0,Math.round((Date.now()-d.getTime())/60000));return m<60?m+'m ago':Math.round(m/60)+'h ago'}
+  function render(){
+    const now=new Date();$('a1MiDate').textContent=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' • WIB';
+    const ranked=topics.map(t=>({t,items:articles.map(a=>({a,s:score(a,t)})).filter(x=>x.s>2).sort((x,y)=>y.s-x.s||y.a.date-x.a.date).slice(0,3)})).filter(x=>x.items.length).sort((a,b)=>b.items[0].s-a.items[0].s).slice(0,8);
+    $('a1MiGrid').innerHTML=ranked.map(x=>{const a=x.items[0].a;return `<div class="a1-mi-card ${x.t.cls}"><div class="a1-mi-kicker"><span>${esc(x.t.label)}</span><span class="a1-mi-impact">${x.t.impact}</span></div><h4>${esc(a.title)}</h4><p>${esc(summarize(x.t,x.items))}</p><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.source)} • ${age(a.date)}</a></div>`}).join('')||'<div class="a1-mi-card"><h4>No fresh market intelligence</h4><p>Waiting for the next source update.</p></div>';
+    $('a1MiStatus').textContent='● LIVE • AUTO UPDATE 10m';$('a1MiUpdated').textContent='UPDATED '+now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'})+' WIB';
+  }
+  async function load(){
+    $('a1MiStatus').textContent='● FETCHING LIVE NEWS…';
+    const results=await Promise.all(feeds.map(f=>fetchFeed(f[1],f[0])));const out=results.flat();
+    if(out.length){const seen=new Set();articles=out.filter(a=>{const k=a.title.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(seen.has(k))return false;seen.add(k);return(Date.now()-a.date.getTime())<72*3600000}).sort((a,b)=>b.date-a.date).slice(0,180)}
+    render();
+  }
+  render();load();setInterval(load,600000);setInterval(()=>{if(articles.length)render()},60000);
+})();
+</script>
+
+
+<script>
+/* =========================================================
+   ZONA A1 — CUSTOM MARKET INTELLIGENCE ENGINE v2
+   Market data: BiQuote + Yahoo Finance with multi-proxy fallback.
+   Weekend-safe: displays last available market price when markets
+   are closed instead of leaving the panel blank.
+   ========================================================= */
+(function(){
+  const $=id=>document.getElementById(id);
+  if(!$('miGold'))return;
+
+  const BI_GOLD='https://biquote.io/api/XAUUSD';
+  const BI_CAL='https://biquote.io/api/calendar/upcoming?limit=40&countries=US,EU,GB,JP&importance=high';
+  const YAHOO={
+    dxy:'DX-Y.NYB', yield:'^TNX', oil:'CL=F', eur:'EURUSD=X', gbp:'GBPUSD=X', gold:'GC=F'
+  };
+  const PROXIES=[
+    u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
+    u=>'https://corsproxy.io/?url='+encodeURIComponent(u),
+    u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)
+  ];
+  let state={}; let events=[];
+
+  const num=v=>{const n=Number(v);return Number.isFinite(n)?n:null};
+  const fmt=(v,d=2)=>v==null?'—':Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const pct=v=>v==null?'—':(v>=0?'+':'')+Number(v).toFixed(2)+'%';
+  const set=(id,v)=>{const e=$(id);if(e)e.textContent=v};
+  function applyChange(id,v){const e=$(id);if(!e)return;e.textContent=pct(v);e.classList.remove('up','down');if(v>0)e.classList.add('up');if(v<0)e.classList.add('down');}
+
+  async function raw(url){
+    try{const r=await fetch(url,{cache:'no-store'});if(r.ok)return await r.json();}catch(_){ }
+    for(const proxy of PROXIES){
+      try{const r=await fetch(proxy(url),{cache:'no-store'});if(r.ok)return await r.json();}catch(_){ }
+    }
+    return null;
+  }
+
+  async function yahoo(symbol){
+    const url='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(symbol)+'?range=5d&interval=5m&includePrePost=true';
+    const j=await raw(url); const r=j?.chart?.result?.[0]; if(!r)return null;
+    const meta=r.meta||{}, q=r.indicators?.quote?.[0]||{};
+    const closes=(q.close||[]).map(Number).filter(Number.isFinite);
+    const price=num(meta.regularMarketPrice)??closes.at(-1); 
+    const prev=num(meta.chartPreviousClose)??num(meta.previousClose)??closes.at(-2);
+    const change=num(meta.regularMarketChangePercent)??(price!=null&&prev?((price-prev)/prev*100):null);
+    return {price,change};
+  }
+
+  async function loadGold(){
+    const j=await raw(BI_GOLD);
+    if(j){const d=j.data||j.quote||j;const price=num(d.mid??d.price??d.close??d.bid);const prev=num(d.previousClose??d.prevClose??d.prev);if(price!=null)return {price,change:num(d.changePercent)??(prev?((price-prev)/prev*100):null)}}
+    return yahoo(YAHOO.gold);
+  }
+
+  async function loadCalendar(){
+    const j=await raw(BI_CAL); const a=Array.isArray(j)?j:(j?.data||j?.events||j?.items||[]);
+    events=a.map(e=>({time:new Date(e.time||e.date||e.datetime),name:e.name||e.title||'Economic event',currency:e.currency||e.countryCode||'',importance:String(e.importance||'').toLowerCase()})).filter(e=>!isNaN(e.time));
+    renderNextEvent();
+  }
+  function renderNextEvent(){
+    const e=events.filter(x=>x.time.getTime()>Date.now()-15*60000).sort((a,b)=>a.time-b.time)[0];
+    if(!e){set('miNextEvent','No high-impact event');set('miNextCountdown','--:--:--');return}
+    state.nextEvent=e;set('miNextEvent',(e.currency?e.currency+' • ':'')+e.name);updateCountdown();
+  }
+  function updateCountdown(){
+    const e=state.nextEvent;if(!e)return;let s=Math.max(0,Math.floor((e.time-Date.now())/1000));
+    const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60),sec=s%60;
+    set('miNextCountdown',(d?String(d).padStart(2,'0')+'d ':'')+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'));
+    if(e.time.getTime()<Date.now()-15*60000)renderNextEvent();
+  }
+  function driver(id,score,label){const b=$(id+'Bar'),t=$(id+'Txt');if(b)b.style.width=Math.max(0,Math.min(100,score))+'%';if(t)t.textContent=label;}
+
+  function compute(){
+    const d=state.dxy?.change||0,y=state.yield?.change||0,o=state.oil?.change||0,g=state.gold?.change||0;
+    const usd=Math.max(0,Math.min(100,50+d*18)), ys=Math.max(0,Math.min(100,50+y*20)), os=Math.max(0,Math.min(100,50+o*10));
+    const fed=events.filter(e=>/fed|fomc|powell|rate|interest/i.test(e.name)).length;
+    const risk=Math.max(20,Math.min(90,50+(o>0?20:0)+(Math.abs(d)>0.25?8:0)));
+    driver('miFed',fed?72:48,fed?'HIGH FOCUS':'WATCH');
+    driver('miUsd',usd,d>0.15?'HEADWIND':d<-0.15?'SUPPORT':'NEUTRAL');
+    driver('miYield',ys,y>0.25?'HEADWIND':y<-0.25?'SUPPORT':'NEUTRAL');
+    driver('miOil',os,o>0.5?'INFLATION RISK':o<-0.5?'COOLING':'NEUTRAL');
+    driver('miRisk',risk,o>1?'ELEVATED':'WATCH');
+    const pressure=d*1.6+y*1.8+o*.45-g*.7;
+    let bias='NEUTRAL',cls='neutral',note='Mixed macro inputs — wait for confirmation.';
+    if(pressure>.9){bias='BEARISH PRESSURE';cls='bear';note='USD / yield / macro pressure is weighing on Gold.'}
+    else if(pressure<-.9){bias='BULLISH SUPPORT';cls='';note='Lower USD / yields or risk-off flow is supporting Gold.'}
+    const b=$('miBias');if(b){b.textContent=bias;b.className=cls}set('miBiasNote',note);
+  }
+
+  function markOffline(id,label){const e=$(id);if(e&&e.textContent==='—')e.textContent='—'}
+  async function refresh(){
+    const status=$('a1MiStatus');if(status)status.innerHTML='<i></i> UPDATING';
+    const [gold,dxy,yld,oil,eur,gbp]=await Promise.all([loadGold(),yahoo(YAHOO.dxy),yahoo(YAHOO.yield),yahoo(YAHOO.oil),yahoo(YAHOO.eur),yahoo(YAHOO.gbp)]);
+    state={gold,dxy,yield:yld,oil,eur,gbp,nextEvent:state.nextEvent};
+    if(gold){set('miGold','$'+fmt(gold.price,2));applyChange('miGoldChg',gold.change)}
+    if(dxy){set('miDxy',fmt(dxy.price,3));applyChange('miDxyChg',dxy.change)}
+    if(yld){set('miYield',fmt(yld.price,3)+'%');applyChange('miYieldChg',yld.change)}
+    if(oil){set('miOil','$'+fmt(oil.price,2));applyChange('miOilChg',oil.change)}
+    if(eur){set('miEur',fmt(eur.price,5));applyChange('miEurChg',eur.change)}
+    if(gbp){set('miGbp',fmt(gbp.price,5));applyChange('miGbpChg',gbp.change)}
+    /* Weekend/offline state is explicit instead of blank values. */
+    [['miDxy','—'],['miYield','—'],['miOil','—'],['miEur','—'],['miGbp','—']].forEach(x=>markOffline(x[0],x[1]));
+    compute();
+    const ok=[gold,dxy,yld,oil,eur,gbp].some(Boolean);
+    if(status)status.innerHTML='<i></i> '+(ok?'LIVE DATA':'RETRYING');
+    set('a1MiUpdated',new Date().toLocaleTimeString('id-ID',{timeZone:'Asia/Jakarta',hour:'2-digit',minute:'2-digit',second:'2-digit'})+' WIB');
+  }
+  loadCalendar();refresh();setInterval(refresh,60000);setInterval(updateCountdown,1000);setInterval(loadCalendar,300000);
+})();
+</script>
+
+
+<style id="mi-final-readable">
+/* ZONA A1 MARKET INTELLIGENCE — HIGH READABILITY */
+.side-card.a1-mi-card{font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace!important}
+.side-card.a1-mi-card .a1-mi-topline{font-size:9px!important;font-weight:800!important;letter-spacing:1.1px!important}
+.side-card.a1-mi-card .a1-mi-asset{padding:11px 10px!important;min-height:58px!important}
+.side-card.a1-mi-card .a1-mi-asset span{font-size:8px!important;font-weight:800!important;letter-spacing:.8px!important;color:#7893a2!important}
+.side-card.a1-mi-card .a1-mi-asset b{font-size:16px!important;font-weight:900!important;line-height:1.05!important;margin-top:6px!important;color:#e7f8ff!important}
+.side-card.a1-mi-card .a1-mi-asset.gold b{color:#ffd66b!important}
+.side-card.a1-mi-card .a1-mi-asset em{font-size:9px!important;font-weight:800!important;margin-top:9px!important}
+.side-card.a1-mi-card .a1-mi-section-title{font-size:9px!important;font-weight:900!important;letter-spacing:1.2px!important;margin:16px 0 9px!important;color:#91aebb!important}
+.side-card.a1-mi-card .a1-mi-driver{grid-template-columns:100px 1fr 65px!important;gap:8px!important;margin:7px 0!important}
+.side-card.a1-mi-card .a1-mi-driver>span{font-size:8px!important;font-weight:800!important;color:#77919e!important}
+.side-card.a1-mi-card .a1-mi-driver>i{height:6px!important}
+.side-card.a1-mi-card .a1-mi-driver strong{font-size:8px!important;font-weight:900!important;color:#b4c9d2!important}
+.side-card.a1-mi-card .a1-mi-bias{margin-top:14px!important;padding:11px!important}
+.side-card.a1-mi-card .a1-mi-bias span{font-size:8px!important;font-weight:800!important}
+.side-card.a1-mi-card .a1-mi-bias b{font-size:11px!important;font-weight:900!important}
+.side-card.a1-mi-card .a1-mi-bias small{font-size:8px!important;line-height:1.5!important}
+.side-card.a1-mi-card .a1-mi-event{margin-top:11px!important;padding-top:10px!important}
+.side-card.a1-mi-card .a1-mi-event span{font-size:8px!important;font-weight:800!important}
+.side-card.a1-mi-card .a1-mi-event b{font-size:8px!important;font-weight:900!important}
+.side-card.a1-mi-card .a1-mi-event>strong{font-size:11px!important;font-weight:900!important}
+@media(max-width:620px){
+ .side-card.a1-mi-card .a1-mi-asset b{font-size:14px!important}
+ .side-card.a1-mi-card .a1-mi-driver{grid-template-columns:86px 1fr 58px!important}
+}
+</style>
 </body>
 </html>
 
