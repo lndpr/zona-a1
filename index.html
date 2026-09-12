@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050914">
-<title>ZONA A1 | Live Signals — ASTRA</title>
+<title>ZONA A1 | Live Signals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -619,6 +619,11 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     .promo-image.custom-image { height:auto !important; }
     .promo-image.custom-image img { height:auto !important; }
 }
+
+/* ===== STATIC BACKGROUND ===== */
+.aurora,.grid,.motion-orb{animation:none!important}
+.motion-orb.o1,.motion-orb.o2,.motion-orb.o3{transform:none!important}
+
 </style>
 
 <style>
@@ -910,7 +915,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
    ========================================================= */
 .a1-heatmap-core{
     width:min(1080px,96vw)!important;
-    height:475px!important;
+    height:650px!important;
     margin:30px auto 0!important;
     display:block!important;
     position:relative!important;
@@ -918,7 +923,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 .a1-heatmap-terminal{
     position:absolute;
     inset:0 0 auto;
-    height:425px;
+    height:600px;
     box-sizing:border-box;
     border:1px solid rgba(54,145,168,.38);
     border-radius:6px;
@@ -980,7 +985,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 }
 .hm-chart-wrap{
     position:relative;
-    height:285px;
+    height:410px;
     margin-top:9px;
     border:1px solid rgba(61,107,128,.22);
     background:rgba(2,8,13,.72);
@@ -1050,10 +1055,34 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     0%,100%{opacity:.45;transform:scale(.85)}
     50%{opacity:1;transform:scale(1.25)}
 }
+/* ===== HEATMAP INTELLIGENCE OVERLAYS ===== */
+.hm-alert-row{display:flex;gap:8px;align-items:center;margin-top:7px;height:30px}
+.hm-news-alert{flex:1;min-width:0;height:30px;display:flex;align-items:center;gap:7px;padding:0 9px;border:1px solid rgba(251,191,36,.18);border-radius:5px;background:rgba(251,191,36,.035);overflow:hidden;transition:.25s}
+.hm-news-alert.hot{border-color:rgba(255,82,112,.65);background:rgba(255,82,112,.08);box-shadow:0 0 24px rgba(255,82,112,.12);animation:hmNewsPulse 1s ease-in-out infinite}
+.hm-news-dot{width:5px;height:5px;flex:0 0 auto;border-radius:50%;background:#fbbf24;box-shadow:0 0 9px rgba(251,191,36,.8)}
+.hm-news-alert.hot .hm-news-dot{background:#ff5277;box-shadow:0 0 12px #ff5277;animation:hmPulse .6s infinite}
+.hm-news-alert.warn{border-color:rgba(251,191,36,.45);background:rgba(251,191,36,.065)}
+.hm-news-alert.warn .hm-news-dot{animation:hmPulse .9s infinite}
+body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;border:2px solid rgba(57,232,255,.7);box-shadow:inset 0 0 80px rgba(57,232,255,.12);animation:signalFlash .7s ease-out forwards}
+@keyframes signalFlash{0%{opacity:1}100%{opacity:0}}
+.hm-news-copy{display:flex;align-items:center;gap:7px;min-width:0;white-space:nowrap;overflow:hidden}
+.hm-news-copy b{font-size:6px;color:#fbbf24;letter-spacing:.8px}
+.hm-news-copy span{font-size:6px;color:#8195a4;overflow:hidden;text-overflow:ellipsis}
+.hm-news-alert.hot .hm-news-copy b{color:#ff8095}
+.hm-news-countdown{font-size:8px!important;color:#eafcff!important;font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+.hm-alert-btn{height:30px;padding:0 10px;border:1px solid rgba(57,232,255,.2);border-radius:5px;background:rgba(57,232,255,.045);color:#7f9aa8;font:700 7px monospace;letter-spacing:.7px;cursor:pointer;white-space:nowrap}
+.hm-alert-btn.on{color:#39e8a0;border-color:rgba(57,232,160,.35);background:rgba(57,232,160,.06);box-shadow:0 0 18px rgba(57,232,160,.08)}
+.hm-activity{display:grid;grid-template-columns:78px 1fr 78px 1fr;gap:7px;align-items:center;padding-top:6px;color:#506979;font-size:5.5px;letter-spacing:.7px}
+.hm-activity>div:first-child{text-align:left}.hm-activity>div:nth-child(3){text-align:right}
+.hm-activity b{font-size:7px;color:#8faab9;margin-left:4px}
+.hm-activity-bar{height:4px;background:rgba(255,255,255,.045);border-radius:4px;overflow:hidden}
+.hm-activity-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,rgba(25,180,125,.25),#39e8a0);border-radius:4px;transition:width .6s ease}
+.hm-activity-bar.sell i{background:linear-gradient(90deg,#ff5277,rgba(255,82,119,.2))}
+@keyframes hmNewsPulse{50%{filter:brightness(1.35)}}
 @media(max-width:620px){
-    .a1-heatmap-core{width:calc(100vw - 22px)!important;height:390px!important}
-    .a1-heatmap-terminal{height:350px}
-    .hm-chart-wrap{height:215px}
+    .a1-heatmap-core{width:calc(100vw - 22px)!important;height:475px!important}
+    .a1-heatmap-terminal{height:430px}
+    .hm-chart-wrap{height:285px}
     .hm-stats{font-size:5px}
     .hm-source{display:none}
 }
@@ -1066,6 +1095,218 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     display:none !important;
     content:none !important;
     animation:none !important;
+}
+
+/* READABILITY PASS — HEATMAP UI */
+.hm-alert-row{height:34px!important;margin-top:8px!important;gap:10px!important}
+.hm-news-alert{height:34px!important;padding:0 11px!important;gap:9px!important}
+.hm-news-copy{gap:9px!important}
+.hm-news-copy b{font-size:8px!important;font-weight:800!important;letter-spacing:1px!important;color:#ffd34d!important;text-shadow:0 0 10px rgba(251,191,36,.22)}
+.hm-news-copy span{font-size:8px!important;font-weight:600!important;color:#b4c5d1!important;letter-spacing:.15px!important}
+.hm-news-countdown,#hmNewsCountdown{font-size:10px!important;font-weight:800!important;color:#f3fbff!important}
+.hm-alert-btn{height:34px!important;font-size:8px!important;font-weight:800!important;padding:0 12px!important}
+.hm-activity{grid-template-columns:92px 1fr 92px 1fr!important;gap:9px!important;padding-top:8px!important;color:#8ea4b3!important;font-size:7px!important;font-weight:700!important;letter-spacing:.8px!important}
+.hm-activity b{font-size:9px!important;font-weight:800!important;color:#d8e7ef!important;margin-left:5px!important;text-shadow:0 0 8px rgba(216,231,239,.12)}
+.hm-activity-bar{height:5px!important;background:rgba(255,255,255,.075)!important}
+.hm-stats{padding-top:8px!important;color:#8da2b0!important;font-size:7px!important;font-weight:700!important;letter-spacing:.75px!important}
+.hm-stats b{color:#d5e5ed!important;font-weight:800!important;margin-left:4px!important}
+.hm-source{color:#7f96a5!important;font-size:7px!important;font-weight:600!important;letter-spacing:.65px!important}
+@media(max-width:620px){
+ .hm-news-copy b,.hm-news-copy span{font-size:6.5px!important}
+ .hm-news-countdown,#hmNewsCountdown{font-size:8px!important}
+ .hm-alert-btn{font-size:6.5px!important;padding:0 8px!important}
+ .hm-activity{grid-template-columns:70px 1fr 70px 1fr!important;font-size:6px!important;gap:5px!important}
+ .hm-activity b{font-size:7.5px!important}
+ .hm-stats{font-size:6px!important}
+ .hm-source{font-size:5.5px!important}
+}
+</style>
+
+
+<style>
+/* FINAL READABILITY / OVERLAP FIX */
+.a1-heatmap-core{height:690px!important}
+.a1-heatmap-terminal{height:640px!important}
+.hm-activity{
+  grid-template-columns:110px minmax(0,1fr) 110px minmax(0,1fr)!important;
+  gap:8px 10px!important;
+  padding-top:10px!important;
+  color:#a8bbc6!important;
+  font-size:8px!important;
+  font-weight:700!important;
+  letter-spacing:.75px!important;
+}
+.hm-activity>div{min-width:0}
+.hm-activity>div:first-child,.hm-activity>div:nth-child(3){white-space:nowrap}
+.hm-activity b{font-size:10px!important;font-weight:900!important;color:#e8f5fa!important;margin-left:5px!important}
+.hm-activity-bar{height:6px!important;background:rgba(255,255,255,.08)!important}
+.hm-stats{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;
+  padding-top:11px!important;
+  color:#9eb2bf!important;
+  font-size:8px!important;
+  font-weight:700!important;
+  letter-spacing:.7px!important;
+}
+.hm-stats span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-stats b{font-size:9px!important;color:#e3f0f5!important;font-weight:900!important;margin-left:4px!important}
+.hm-footer{height:30px!important;font-size:7px!important}
+@media(max-width:620px){
+  .a1-heatmap-core{height:500px!important}
+  .a1-heatmap-terminal{height:460px!important}
+  .hm-activity{grid-template-columns:78px minmax(0,1fr) 78px minmax(0,1fr)!important;gap:6px!important;font-size:6.5px!important}
+  .hm-activity b{font-size:8px!important}
+  .hm-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px 12px!important;font-size:6.5px!important}
+  .hm-stats b{font-size:7.5px!important}
+}
+</style>
+
+<style id="weekend-market-style">
+/* WEEKEND MARKET CLOSED */
+.hm-market-closed{
+  display:none;align-items:center;justify-content:center;gap:9px;
+  min-height:38px;margin:7px 0 0;padding:0 12px;
+  border:1px solid rgba(255,82,119,.38);border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,82,119,.09),rgba(255,193,7,.045),rgba(255,82,119,.09));
+  box-shadow:inset 0 0 22px rgba(255,82,119,.035),0 0 20px rgba(255,82,119,.04);
+  color:#ff8299;letter-spacing:1.1px;font:800 9px monospace;text-transform:uppercase;
+}
+.hm-market-closed.show{display:flex}
+.hm-market-closed .closed-dot{width:6px;height:6px;border-radius:50%;background:#ff5277;box-shadow:0 0 10px rgba(255,82,119,.8);animation:closedPulse 1.4s ease-in-out infinite}
+.hm-market-closed small{font-size:7px;font-weight:700;color:#aebdc7;letter-spacing:.6px}
+@keyframes closedPulse{50%{opacity:.45;transform:scale(.75)}}
+@media(max-width:620px){.hm-market-closed{font-size:7px;min-height:32px;gap:6px}.hm-market-closed small{font-size:5.5px}}
+</style>
+
+<style id="heatmap-readable-v2">
+/* ===== HEATMAP READABLE V2 ===== */
+.a1-heatmap-terminal{
+  font-size:1em;
+}
+
+/* Header / instrument */
+.hm-head{
+  font-size:9px!important;
+  letter-spacing:1.6px!important;
+}
+.hm-title-row strong{
+  font-size:13px!important;
+}
+.hm-title-row span{
+  font-size:7px!important;
+}
+.hm-quote b{
+  font-size:20px!important;
+}
+.hm-quote span{
+  font-size:8px!important;
+}
+
+/* News + weekend banners */
+.hm-news-copy b{
+  font-size:9px!important;
+  font-weight:900!important;
+}
+.hm-news-copy span{
+  font-size:9px!important;
+  font-weight:650!important;
+}
+.hm-news-countdown,#hmNewsCountdown{
+  font-size:11px!important;
+  font-weight:900!important;
+}
+.hm-alert-btn{
+  font-size:9px!important;
+  font-weight:900!important;
+}
+.hm-market-closed{
+  font-size:10px!important;
+  font-weight:900!important;
+}
+
+/* Activity */
+.hm-activity{
+  font-size:9px!important;
+  font-weight:800!important;
+  letter-spacing:.85px!important;
+}
+.hm-activity b{
+  font-size:11px!important;
+  font-weight:900!important;
+}
+.hm-activity-bar{
+  height:7px!important;
+}
+
+/* Stats */
+.hm-stats{
+  font-size:9px!important;
+  font-weight:800!important;
+  letter-spacing:.8px!important;
+  gap:16px!important;
+}
+.hm-stats b{
+  font-size:10px!important;
+  font-weight:900!important;
+}
+
+/* Chart-side labels / footer */
+.hm-scale{
+  font-size:6.5px!important;
+}
+.hm-current-price{
+  font-size:8px!important;
+  font-weight:900!important;
+}
+.hm-loading{
+  font-size:9px!important;
+}
+.hm-footer{
+  font-size:8px!important;
+  font-weight:700!important;
+}
+
+/* Keep the larger text from colliding with the four stat columns */
+.hm-stats span{
+  min-width:0!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+/* Canvas labels are controlled by JS; make the terminal's rendered chart
+   labels slightly larger by giving the canvas a readable visual scale. */
+@media(min-width:621px){
+  .hm-main{padding-left:14px!important;padding-right:14px!important}
+  .hm-activity{
+    grid-template-columns:115px minmax(0,1fr) 115px minmax(0,1fr)!important;
+    gap:9px 11px!important;
+  }
+}
+
+@media(max-width:620px){
+  .hm-head{font-size:7px!important}
+  .hm-title-row strong{font-size:11px!important}
+  .hm-title-row span{font-size:6px!important}
+  .hm-quote b{font-size:17px!important}
+  .hm-news-copy b,.hm-news-copy span{font-size:7px!important}
+  .hm-news-countdown,#hmNewsCountdown{font-size:9px!important}
+  .hm-alert-btn{font-size:7px!important}
+  .hm-market-closed{font-size:8px!important}
+  .hm-activity{
+    grid-template-columns:74px minmax(0,1fr) 74px minmax(0,1fr)!important;
+    gap:6px!important;
+    font-size:6.8px!important;
+  }
+  .hm-activity b{font-size:8.5px!important}
+  .hm-activity-bar{height:6px!important}
+  .hm-stats{
+    font-size:6.8px!important;
+    gap:8px 12px!important;
+  }
+  .hm-stats b{font-size:8px!important}
+  .hm-footer{font-size:6px!important}
 }
 </style>
 
@@ -1109,6 +1350,25 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
         </div>
       </div>
 
+
+      <div class="hm-market-closed" id="hmMarketClosed" role="status" aria-live="polite">
+        <span class="closed-dot"></span>
+        <span>MARKET CLOSED — WEEKEND</span>
+        <small id="hmMarketClosedMeta">XAUUSD / FOREX MARKET IS OFFLINE</small>
+      </div>
+
+      <div class="hm-alert-row">
+        <div class="hm-news-alert" id="hmNewsAlert">
+          <span class="hm-news-dot"></span>
+          <div class="hm-news-copy">
+            <b id="hmNewsTitle">HIGH IMPACT NEWS</b>
+            <span id="hmNewsMeta">Scanning economic calendar…</span>
+          </div>
+          <strong id="hmNewsCountdown">--:--</strong>
+        </div>
+        <button class="hm-alert-btn" id="hmAlertBtn" type="button" title="Enable signal sound">🔔 ALERT OFF</button>
+      </div>
+
       <div class="hm-chart-wrap">
         <canvas id="heatmapCanvas"></canvas>
         <div class="hm-current-line" id="hmCurrentLine"></div>
@@ -1121,6 +1381,13 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
         <div class="hm-gradient"></div>
         <span>LOW</span>
         <span>BUY / HIGH ACTIVITY</span>
+      </div>
+
+      <div class="hm-activity">
+        <div><span>BUY ACTIVITY</span><b id="hmBuyPct">—</b></div>
+        <div class="hm-activity-bar"><i id="hmBuyBar"></i></div>
+        <div><span>SELL ACTIVITY</span><b id="hmSellPct">—</b></div>
+        <div class="hm-activity-bar sell"><i id="hmSellBar"></i></div>
       </div>
 
       <div class="hm-stats">
@@ -1171,7 +1438,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
     <div class="card intel-panel reveal">
       <div class="intel-title"><b>SESSION MONITOR</b><span id="sessionTime">LOCAL TIME</span></div>
       <div class="session-strip">
-        <div class="session" id="tokyo"><span class="session-dot"></span><b>TOKYO</b><span>06:00–13:00</span></div>
+        <div class="session" id="tokyo"><span class="session-dot"></span><b>ASIA</b><span>06:00–13:00</span></div>
         <div class="session" id="london"><span class="session-dot"></span><b>LONDON</b><span>13:00–19:00</span></div>
         <div class="session" id="newyork"><span class="session-dot"></span><b>NEW YORK</b><span>19:00–01:00</span></div>
       </div>
@@ -1699,6 +1966,24 @@ setInterval(updateLiquidityHero,1200);setTimeout(updateLiquidityHero,500);
 })();
 
 
+
+/* ===== WEEKEND MARKET STATUS (WIB) ===== */
+function updateWeekendMarketStatus(){
+  const now=new Date();
+  const wib=new Date(now.toLocaleString("en-US",{timeZone:"Asia/Jakarta"}));
+  const day=wib.getDay(); // 0 Sunday, 6 Saturday
+  const closed=(day===0||day===6);
+  const banner=document.getElementById("hmMarketClosed");
+  const meta=document.getElementById("hmMarketClosedMeta");
+  const status=document.getElementById("hmStatus");
+  if(banner) banner.classList.toggle("show",closed);
+  if(meta) meta.textContent=closed?`WIB • ${day===6?"SATURDAY":"SUNDAY"} • WAIT FOR MARKET OPEN` : "XAUUSD / FOREX MARKET IS ONLINE";
+  if(status && closed) status.textContent="MARKET CLOSED • WEEKEND";
+  else if(status && status.textContent==="MARKET CLOSED • WEEKEND") status.textContent="SCANNING MARKET";
+}
+updateWeekendMarketStatus();
+setInterval(updateWeekendMarketStatus,1000);
+
 /* ===== Intelligence Terminal live micro-state ===== */
 function updateSessionMonitor(){
   const now=new Date();
@@ -1745,11 +2030,13 @@ function connectStream(){
   ws.onopen=()=>setLive(true);
   ws.onmessage=e=>{try{
     const s=JSON.parse(e.data),key=tradeKey(s);
+    const isBrandNew=!entries.has(key);
     let obj=entries.get(key)||{};
     Object.assign(obj,s);
     if(isClosed(s)){obj.close_reason=s.close_reason||obj.close_reason||"MANUAL";obj.closed_at=s.closed_at||s.created_at}
     entries.set(key,obj);
     render(obj,true);
+    if(isBrandNew && !isClosed(s)) playSignalAlert();
     updateTodayStats();
     updateFlowState();
     updatePulseState();
@@ -1813,9 +2100,11 @@ function closeDisclaimer(){document.getElementById("disclaimerPopup").classList.
  const c=document.getElementById("astra-canvas"),x=c.getContext("2d"),D=Math.min(window.devicePixelRatio||1,2);
  let w,h,pts=[],mouse={x:-9999,y:-9999};
  function resize(){w=innerWidth;h=innerHeight;c.width=w*D;c.height=h*D;x.setTransform(D,0,0,D,0,0);pts=Array.from({length:Math.min(110,Math.floor(w/11))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.4+.25,a:Math.random()*.5+.1}))}
- function frame(){x.clearRect(0,0,w,h);for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.hypot(dx,dy);if(dist<120){p.x+=dx/dist*.08;p.y+=dy/dist*.08}x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(80,220,255,${Math.min(.8,p.a+.15)})`;x.fill()}requestAnimationFrame(frame)}
+ function frame(){x.clearRect(0,0,w,h);for(const p of pts){x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(80,220,255,${Math.min(.8,p.a+.15)})`;x.fill()}}
  addEventListener("resize",resize);addEventListener("mousemove",e=>{mouse.x=e.clientX;mouse.y=e.clientY;const g=document.getElementById("cursorGlow");g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"});
- resize();frame();
+ resize();
+ // Render the particle field once; background remains static.
+ frame();
 })();
 
 /* Reveal on scroll */
@@ -1913,6 +2202,24 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
       ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();
     }
 
+    /* session overlay — all times shown in WIB */
+    let lastSession = "";
+    src.forEach((b,c)=>{
+      const dt = new Date(b.openTime || b.time || 0);
+      const wb = new Date(dt.toLocaleString("en-US", {timeZone:"Asia/Jakarta"}));
+      const hh = wb.getHours();
+      const session = hh >= 6 && hh < 13 ? "ASIA" : hh >= 13 && hh < 19 ? "LONDON" : (hh >= 19 || hh < 1) ? "NEW YORK" : "OFF";
+      const x=c*cw;
+      const fills={ASIA:"rgba(57,232,160,.018)",LONDON:"rgba(57,232,255,.018)","NEW YORK":"rgba(255,82,119,.018)",OFF:"rgba(120,140,160,.012)"};
+      ctx.fillStyle=fills[session]||fills.OFF;
+      ctx.fillRect(x,0,Math.max(1,cw+.5),h);
+      if(session!==lastSession && session!=="OFF"){
+        ctx.fillStyle=session==="ASIA"?"rgba(57,232,160,.5)":session==="LONDON"?"rgba(57,232,255,.5)":"rgba(255,82,119,.5)";
+        ctx.font="6px monospace";ctx.fillText(session, x+4, 9);
+        lastSession=session;
+      }
+    });
+
     /* heat field */
     src.forEach((b,c)=>{
       const o=+b.open,hg=+b.high,lw=+b.low,cl=+b.close;
@@ -1960,6 +2267,25 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
       }
     }
 
+    /* live ZONA A1 signal markers */
+    if(typeof entries !== "undefined" && entries.size){
+      [...entries.values()].filter(e=>!e.close_reason && Number.isFinite(+e.entry_price)).slice(-5).forEach(e=>{
+        const price=+e.entry_price;
+        if(price<lo || price>hi)return;
+        const t=e.created_at?new Date(String(e.created_at).endsWith("Z")?e.created_at:e.created_at+"Z"):new Date();
+        let x=w-cw*.5;
+        if(Number.isFinite(t.getTime())){
+          const idx=src.findIndex(b=>{const bt=new Date(b.openTime||0).getTime();return Math.abs(bt-t.getTime())<15*60*1000;});
+          if(idx>=0)x=idx*cw+cw*.5;
+        }
+        const y=clamp((hi-price)/(hi-lo)*h,8,h-8);
+        const buy=(e.direction||"").toUpperCase()==="BUY";
+        ctx.save();ctx.translate(x,y);ctx.fillStyle=buy?"#39e8a0":"#ff5277";ctx.shadowBlur=12;ctx.shadowColor=ctx.fillStyle;
+        ctx.beginPath();ctx.moveTo(0,buy?7:-7);ctx.lineTo(-5,buy?-1:1);ctx.lineTo(5,buy?-1:1);ctx.closePath();ctx.fill();ctx.shadowBlur=0;
+        ctx.font="700 6px monospace";ctx.fillText(`${buy?"BUY":"SELL"} ${e.zone||""}`.trim(),8,3);ctx.restore();
+      });
+    }
+
     /* compact price labels */
     ctx.fillStyle="rgba(130,160,175,.55)";
     ctx.font="6px monospace";
@@ -1981,8 +2307,86 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
     $("hmVolatility").textContent=range.toFixed(2)+"%";
     $("hmRange").textContent=(+last.high-+last.low).toFixed(2);
     $("hmStatus").textContent=live ? "LIVE XAUUSD" : "HISTORICAL SCAN";
+
+    const sample=bars.slice(-24);
+    let buy=0,sell=0;
+    sample.forEach(b=>{
+      const o=+b.open,c=+b.close,h=+b.high,l=+b.low,v=Math.max(1,+b.tickVolume||+b.volume||1);
+      if(![o,c,h,l].every(Number.isFinite))return;
+      const activity=v*(1+Math.abs(c-o)/(h-l||1));
+      if(c>=o)buy+=activity;else sell+=activity;
+    });
+    const total=buy+sell||1,bp=Math.round(buy/total*100),sp=100-bp;
+    $("hmBuyPct").textContent=bp+"%";$("hmSellPct").textContent=sp+"%";
+    $("hmBuyBar").style.width=bp+"%";$("hmSellBar").style.width=sp+"%";
     $("hmLoading").style.display="none";
   }
+
+  /* ===== HIGH IMPACT NEWS + SIGNAL SOUND ===== */
+  const NEWS_URL="https://biquote.io/api/calendar/upcoming?limit=40&countries=US,EU,GB,JP&importance=high";
+  let nextHighImpact=null, alertEnabled=false, audioCtx=null, newsTimer=null;
+  const alertBtn=$("hmAlertBtn");
+
+  function setAlertButton(){
+    if(!alertBtn)return;
+    alertBtn.textContent=alertEnabled?"🔔 ALERT ON":"🔕 ALERT OFF";
+    alertBtn.classList.toggle("on",alertEnabled);
+  }
+  function beep(freq=880,duration=.12,delay=0){
+    if(!alertEnabled)return;
+    try{
+      audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+      const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+      o.type="sine";o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime+delay);
+      g.gain.exponentialRampToValueAtTime(.08,audioCtx.currentTime+delay+.015);
+      g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+delay+duration);
+      o.connect(g);g.connect(audioCtx.destination);o.start(audioCtx.currentTime+delay);o.stop(audioCtx.currentTime+delay+duration+.02);
+    }catch(e){}
+  }
+  function playSignalAlert(){
+    beep(880,.10,0);beep(1180,.14,.15);
+    document.body.classList.remove("signal-alert-flash");void document.body.offsetWidth;document.body.classList.add("signal-alert-flash");
+  }
+  if(alertBtn){
+    alertBtn.addEventListener("click",async()=>{
+      try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")await audioCtx.resume();alertEnabled=!alertEnabled;if(alertEnabled)beep(880,.08,0);}catch(e){alertEnabled=!alertEnabled}
+      setAlertButton();
+    });
+    setAlertButton();
+  }
+
+  function fmtCountdown(ms){
+    const sec=Math.max(0,Math.floor(ms/1000)),d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60),s=sec%60;
+    if(d>0)return `${d}d ${String(h).padStart(2,"0")}h`;
+    if(h>0)return `${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}m`;
+    return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  }
+  function renderNews(){
+    const box=$("hmNewsAlert"),title=$("hmNewsTitle"),meta=$("hmNewsMeta"),cd=$("hmNewsCountdown");
+    if(!box||!title||!meta||!cd)return;
+    if(!nextHighImpact){box.classList.remove("hot","warn");title.textContent="HIGH IMPACT NEWS";meta.textContent="No upcoming high-impact release found";cd.textContent="--:--";return}
+    const ms=new Date(nextHighImpact.time).getTime()-Date.now();
+    if(ms<=0){nextHighImpact=null;renderNews();return}
+    const mins=ms/60000,cur=nextHighImpact.currency||nextHighImpact.countryCode||"NEWS";
+    title.textContent=`HIGH IMPACT • ${cur}`;
+    const wib=new Date(new Date(nextHighImpact.time).toLocaleString("en-US",{timeZone:"Asia/Jakarta"}));
+    const hh=String(wib.getHours()).padStart(2,"0"),mm=String(wib.getMinutes()).padStart(2,"0");
+    meta.textContent=`${nextHighImpact.name||"Economic Release"} • ${hh}:${mm} WIB`;
+    cd.textContent=fmtCountdown(ms);
+    box.classList.toggle("hot",mins<=10);box.classList.toggle("warn",mins>10&&mins<=30);
+  }
+  async function loadHighImpactNews(){
+    try{
+      const r=await fetch(NEWS_URL,{cache:"no-store"});if(!r.ok)throw new Error("NEWS "+r.status);
+      const data=await r.json();const now=Date.now();
+      const list=(Array.isArray(data)?data:[]).filter(e=>e&&e.time&&e.importance==="high"&&e.timeMode!=="date"&&e.timeMode!=="notime"&&e.timeMode!=="tentative");
+      nextHighImpact=list.map(e=>({...e})).filter(e=>new Date(e.time).getTime()>now).sort((a,b)=>new Date(a.time)-new Date(b.time))[0]||null;
+      renderNews();
+    }catch(e){
+      const meta=$("hmNewsMeta");if(meta)meta.textContent="Calendar feed unavailable";
+    }
+  }
+  setInterval(renderNews,1000);loadHighImpactNews();setInterval(loadHighImpactNews,300000);
 
   async function loadBars(){
     try{
@@ -2023,9 +2427,48 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
   loadBars(); loadTick();
   setInterval(loadTick,10000);
   setInterval(loadBars,60000);
+  setInterval(draw,1500);
   setTimeout(resizeCanvas,50);
 })();
 </script>
 
 </body>
 </html>
+
+<style id="heatmap-bottom-overlap-fix">
+/* FINAL BOTTOM SPACING FIX — prevent Activity / Stats from being clipped by footer */
+.a1-heatmap-core{
+  height:760px!important;
+}
+.a1-heatmap-terminal{
+  height:710px!important;
+}
+.hm-main{
+  padding-bottom:12px!important;
+}
+.hm-activity{
+  margin-top:2px!important;
+  padding-top:10px!important;
+}
+.hm-stats{
+  margin-top:3px!important;
+  padding-top:10px!important;
+  padding-bottom:8px!important;
+}
+.hm-footer{
+  position:absolute!important;
+  bottom:0!important;
+  height:32px!important;
+  box-sizing:border-box!important;
+  background:rgba(5,10,16,.96)!important;
+  z-index:5!important;
+}
+@media(max-width:620px){
+  .a1-heatmap-core{height:545px!important}
+  .a1-heatmap-terminal{height:505px!important}
+  .hm-main{padding-bottom:8px!important}
+  .hm-activity{margin-top:1px!important;padding-top:7px!important}
+  .hm-stats{margin-top:2px!important;padding-top:7px!important;padding-bottom:5px!important}
+  .hm-footer{height:28px!important}
+}
+</style>
