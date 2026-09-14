@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050914">
-<title>ZONA A1 | Live Signals </title>
+<title>ZONA A1 | Live Signals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -2803,14 +2803,14 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
   if(!$('a1NewsList'))return;
 
   const FEEDS=[
-    ['GOLD / XAUUSD','gold OR XAUUSD OR bullion','gold','hot'],
+    ['GOLD / XAUUSD','(XAUUSD OR bullion OR "gold price" OR "gold prices" OR "spot gold" OR "gold futures")','gold','hot'],
     ['FED / SUKU BUNGA','Federal Reserve OR Fed OR FOMC OR Powell OR interest rate','fed','warn'],
     ['INFLATION / DATA','CPI OR inflation OR PPI OR PCE OR payroll OR NFP','macro','warn'],
     ['USD / YIELD','USD OR dollar OR DXY OR Treasury yield OR 10-year yield','macro','hot'],
     ['OIL / ENERGY','oil OR crude OR Brent OR WTI OR OPEC','risk','good'],
     ['GEOPOLITICS','Iran OR Israel OR Middle East OR Hormuz OR Houthi OR geopolitics','risk','good'],
     ['CENTRAL BANKS','ECB OR BOJ OR BOE OR central bank OR monetary policy','macro','warn'],
-    ['FOREX / RISK','forex OR EURUSD OR GBPUSD OR yen OR risk sentiment','macro','info']
+    ['FOREX / RISK','(forex OR EURUSD OR GBPUSD OR yen OR "risk sentiment")','macro','info']
   ];
 
   const PROXIES=[
@@ -2964,6 +2964,15 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
     return [];
   }
 
+  const NON_MARKET=/\b(tennis|fifa|football|soccer|basketball|baseball|cricket|olympics?|olympic|medal|medalist|grand slam|wimbledon|us open tennis|french open|australian open|boxing|ufc|nfl|nba|nhl|mlb|premier league|champions league|athlete|athletics|match|tournament|player|coach|team|university athletics|award|awards|movie|film|music|album|concert)\b/i;
+  const GOLD_MARKET=/\b(xauusd|gold price|gold prices|spot gold|gold futures|gold bullion|bullion|precious metals?|troy ounce|per ounce|gold market|gold rises|gold falls|gold climbs|gold drops|gold gains|gold hits|gold slips|gold jumps)\b/i;
+  function isMarketRelevant(a){
+    const text=(a.title+' '+a.desc).replace(/\s+/g,' ').trim();
+    if(NON_MARKET.test(text)) return false;
+    if(a.cat==='gold' && !GOLD_MARKET.test(text)) return false;
+    return true;
+  }
+
   function relevance(a){
     const t=(a.title+' '+a.desc).toLowerCase();let s=0;
     const weights={
@@ -2982,7 +2991,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
 
   function category(a){
     const t=(a.title+' '+a.desc).toLowerCase();
-    if(/gold|xauusd|bullion/.test(t))return ['EMAS','hot'];
+    if(GOLD_MARKET.test(t))return ['EMAS','hot'];
     if(/fed|fomc|powell|federal reserve|rate hike|rate cut/.test(t))return ['FED','warn'];
     if(/cpi|inflation|ppi|pce|payroll|nfp|treasury|yield|dxy|dollar/.test(t))return ['MAKRO','warn'];
     if(/oil|crude|brent|wti|iran|israel|hormuz|houthi|middle east|geopolit/.test(t))return ['RISIKO','good'];
@@ -3039,13 +3048,16 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
     const seen=new Set();
     articles=pool.filter(a=>{
       const key=a.title.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-      if(!key||seen.has(key))return false;seen.add(key);return (Date.now()-a.date.getTime())<96*3600000;
+      if(!key||seen.has(key))return false;
+      if(!isMarketRelevant(a))return false;
+      seen.add(key);
+      return (Date.now()-a.date.getTime())<96*3600000;
     }).map(a=>({...a,rank:relevance(a)})).sort((a,b)=>b.rank-a.rank||b.date-a.date);
     if(!articles.length)articles=fallback;
     render();
     translateArticles();
     const now=new Date();
-    $('a1NewsStatus').textContent=incoming.length?'BERITA LIVE • DIURUTKAN UNTUK XAUUSD':'RINGKASAN PASAR CADANGAN';
+    $('a1NewsStatus').textContent=incoming.length?'BERITA LIVE':'RINGKASAN PASAR CADANGAN';
     $('a1NewsUpdated').textContent='UPDATED '+now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Jakarta'})+' WIB';
     $('a1NewsClock').textContent=resultStories.length?'HASIL LIVE':'OTOMATIS 10M';
     loading=false;
