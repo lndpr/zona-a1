@@ -5,186 +5,186 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Structure — HH, HL, LH, LL, BOS & CHoCH</title>
 <style>
-  :root {
-    --bg: #faf9f7;
-    --bg-card: #ffffff;
-    --text: #1c1a17;
-    --text-dim: #5c574f;
-    --accent: #b45309;
-    --accent-2: #0f766e;
-    --border: #e7e2d9;
-    --danger: #b91c1c;
-    --bull: #0f766e;
-    --bear: #b91c1c;
-    --line: #9a9284;
+ :root {
+  --bg: #faf9f7;
+  --bg-card: #ffffff;
+  --text: #1c1a17;
+  --text-dim: #5c574f;
+  --accent: #b45309;
+  --accent-2: #0f766e;
+  --border: #e7e2d9;
+  --danger: #b91c1c;
+  --bull: #0f766e;
+  --bear: #b91c1c;
+  --line: #9a9284;
+ }
+ @media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+   --bg: #161513;
+   --bg-card: #201e1a;
+   --text: #efece6;
+   --text-dim: #b3ac9e;
+   --accent: #e0a458;
+   --accent-2: #4fd1c5;
+   --border: #33302a;
+   --danger: #f87171;
+   --bull: #4fd1c5;
+   --bear: #f87171;
+   --line: #6b6558;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #161513;
-      --bg-card: #201e1a;
-      --text: #efece6;
-      --text-dim: #b3ac9e;
-      --accent: #e0a458;
-      --accent-2: #4fd1c5;
-      --border: #33302a;
-      --danger: #f87171;
-      --bull: #4fd1c5;
-      --bear: #f87171;
-      --line: #6b6558;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #161513;
-    --bg-card: #201e1a;
-    --text: #efece6;
-    --text-dim: #b3ac9e;
-    --accent: #e0a458;
-    --accent-2: #4fd1c5;
-    --border: #33302a;
-    --danger: #f87171;
-    --bull: #4fd1c5;
-    --bear: #f87171;
-    --line: #6b6558;
-  }
+ }
+ :root[data-theme="dark"] {
+  --bg: #161513;
+  --bg-card: #201e1a;
+  --text: #efece6;
+  --text-dim: #b3ac9e;
+  --accent: #e0a458;
+  --accent-2: #4fd1c5;
+  --border: #33302a;
+  --danger: #f87171;
+  --bull: #4fd1c5;
+  --bear: #f87171;
+  --line: #6b6558;
+ }
 
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Georgia", "Iowan Old Style", serif;
-    line-height: 1.7;
-  }
-  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+ * { box-sizing: border-box; }
+ body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Georgia", "Iowan Old Style", serif;
+  line-height: 1.7;
+ }
+ .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
 
-  .cover {
-    padding: 90px 24px 60px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-  }
-  .cover .kicker {
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .cover h1 {
-    font-size: clamp(30px, 6vw, 48px);
-    margin: 14px 0 8px;
-    letter-spacing: -0.5px;
-  }
-  .cover p.sub {
-    color: var(--text-dim);
-    font-size: 18px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+ .cover {
+  padding: 90px 24px 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+ }
+ .cover .kicker {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+ }
+ .cover h1 {
+  font-size: clamp(30px, 6vw, 48px);
+  margin: 14px 0 8px;
+  letter-spacing: -0.5px;
+ }
+ .cover p.sub {
+  color: var(--text-dim);
+  font-size: 18px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+ }
 
-  .toc {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px 28px;
-    margin-bottom: 56px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-  }
-  .toc h2 {
-    font-family: Georgia, serif;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-dim);
-    margin-top: 0;
-  }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin-bottom: 8px; }
-  .toc a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border); }
-  .toc a:hover { color: var(--accent); }
+ .toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 56px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+ }
+ .toc h2 {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  margin-top: 0;
+ }
+ .toc ol { margin: 0; padding-left: 20px; }
+ .toc li { margin-bottom: 8px; }
+ .toc a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border); }
+ .toc a:hover { color: var(--accent); }
 
-  h2.chapter {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    margin: 0 0 4px;
-  }
-  h1.chapter-title {
-    font-size: 28px;
-    margin: 0 0 22px;
-    padding-bottom: 18px;
-    border-bottom: 2px solid var(--border);
-  }
-  section { margin-bottom: 64px; scroll-margin-top: 20px; }
-  h3 { font-size: 19px; margin-top: 34px; }
-  p { margin: 14px 0; }
-  ul, ol.list { padding-left: 22px; }
-  li { margin-bottom: 8px; }
+ h2.chapter {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0 0 4px;
+ }
+ h1.chapter-title {
+  font-size: 28px;
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border);
+ }
+ section { margin-bottom: 64px; scroll-margin-top: 20px; }
+ h3 { font-size: 19px; margin-top: 34px; }
+ p { margin: 14px 0; }
+ ul, ol.list { padding-left: 22px; }
+ li { margin-bottom: 8px; }
 
-  .callout {
-    background: var(--bg-card);
-    border-left: 4px solid var(--accent-2);
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin: 22px 0;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 15px;
-  }
-  .callout strong { color: var(--accent-2); }
-  .warn { border-left-color: var(--danger); }
-  .warn strong { color: var(--danger); }
+ .callout {
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent-2);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 22px 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+ }
+ .callout strong { color: var(--accent-2); }
+ .warn { border-left-color: var(--danger); }
+ .warn strong { color: var(--danger); }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 14.5px;
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  table thead { background: var(--bg-card); }
-  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+ table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14.5px;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+ }
+ table thead { background: var(--bg-card); }
+ th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
 
-  .diagram {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 24px 0;
-  }
-  .diagram figcaption {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    text-align: center;
-    margin-top: 10px;
-  }
-  svg { width: 100%; height: auto; display: block; }
-  .lbl { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 15px; font-weight: 700; }
-  .lbl-sub { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 11px; }
+ .diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 24px 0;
+ }
+ .diagram figcaption {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 10px;
+ }
+ svg { width: 100%; height: auto; display: block; }
+ .lbl { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 15px; font-weight: 700; }
+ .lbl-sub { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 11px; }
 
-  .glossary dt {
-    font-weight: 700;
-    color: var(--accent);
-    margin-top: 14px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-  }
-  .glossary dd { margin: 2px 0 0; color: var(--text-dim); }
+ .glossary dt {
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 14px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+ }
+ .glossary dd { margin: 2px 0 0; color: var(--text-dim); }
 
-  footer {
-    text-align: center;
-    color: var(--text-dim);
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 13px;
-    padding-top: 40px;
-    border-top: 1px solid var(--border);
-  }
+ footer {
+  text-align: center;
+  color: var(--text-dim);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+ }
 
 /* ZONA A1 TERMINAL SKIN */
 :root{--bg:#050a0f;--bg-card:#09131b;--text:#e8f7fa;--text-dim:#8199a2;--accent:#00d9ff;--accent-2:#27e08b;--border:#17313f;--danger:#ff4d67;--bull:#27e08b;--bear:#ff4d67;--line:#35505b}
@@ -197,279 +197,321 @@ body{background:radial-gradient(circle at 15% 0%,#09202a 0,#050a0f 38%,#03070b 1
 
 <style id="a1-disclaimer-footer">
 .a1-legal-footer{
-  width:min(1180px,calc(100% - 36px));
-  margin:70px auto 0;
-  padding:28px 0 32px;
-  border-top:1px solid rgba(57,232,255,.12);
+ width:min(1180px,calc(100% - 36px));
+ margin:70px auto 0;
+ padding:28px 0 32px;
+ border-top:1px solid rgba(57,232,255,.12);
 }
 .a1-legal-box{
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;
-  background:linear-gradient(135deg,rgba(10,20,29,.78),rgba(3,9,15,.92));
-  padding:20px 22px;
-  box-shadow:0 12px 40px rgba(0,0,0,.18);
+ border:1px solid rgba(255,255,255,.08);
+ border-radius:14px;
+ background:linear-gradient(135deg,rgba(10,20,29,.78),rgba(3,9,15,.92));
+ padding:20px 22px;
+ box-shadow:0 12px 40px rgba(0,0,0,.18);
 }
 .a1-legal-title{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:10px;
-  color:#dffcff;
-  font:900 10px/1 Inter,system-ui,sans-serif;
-  letter-spacing:1.3px;
-  text-transform:uppercase;
+ display:flex;
+ align-items:center;
+ gap:8px;
+ margin-bottom:10px;
+ color:#dffcff;
+ font:900 10px/1 Inter,system-ui,sans-serif;
+ letter-spacing:1.3px;
+ text-transform:uppercase;
 }
 .a1-legal-title i{color:#f59e0b}
 .a1-legal-text{
-  margin:0;
-  color:#8091a3;
-  font:500 10px/1.8 Inter,system-ui,sans-serif;
+ margin:0;
+ color:#8091a3;
+ font:500 10px/1.8 Inter,system-ui,sans-serif;
 }
 .a1-legal-copy{
-  margin-top:15px;
-  padding-top:13px;
-  border-top:1px solid rgba(255,255,255,.06);
-  color:#5f7081;
-  font:500 9px/1.7 Inter,system-ui,sans-serif;
+ margin-top:15px;
+ padding-top:13px;
+ border-top:1px solid rgba(255,255,255,.06);
+ color:#5f7081;
+ font:500 9px/1.7 Inter,system-ui,sans-serif;
 }
 .a1-legal-copy strong{color:#8da0b3}
 @media(max-width:760px){
-  .a1-legal-footer{
-    width:calc(100% - 32px);
-    margin-top:45px;
-    padding-bottom:24px;
-  }
-  .a1-legal-box{padding:17px}
-  .a1-legal-text{font-size:9px;line-height:1.8}
+ .a1-legal-footer{
+  width:calc(100% - 32px);
+  margin-top:45px;
+  padding-bottom:24px;
+ }
+ .a1-legal-box{padding:17px}
+ .a1-legal-text{font-size:9px;line-height:1.8}
 }
 </style>
 
-</head>
+
+<style id="a1-mobile-final-fix">
+html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+body{min-width:0!important}
+@media(max-width:760px){
+ html,body{width:100%!important;min-width:0!important;overflow-x:hidden!important}
+ .nav,.nav-inner{width:100%!important;max-width:100%!important;min-width:0!important}
+ .a1-main-nav,.nav-right{display:none!important}
+ .a1-mobile-toggle{display:flex!important;flex:0 0 auto!important}
+ .a1-mobile-menu{
+  position:fixed!important;top:0!important;right:0!important;bottom:0!important;left:auto!important;
+  width:min(86vw,340px)!important;max-width:340px!important;min-width:0!important;
+  height:100dvh!important;max-height:100dvh!important;overflow-y:auto!important;overflow-x:hidden!important;
+  z-index:99999!important;transform:translateX(105%)!important;visibility:hidden!important;
+ }
+ .a1-mobile-menu.open,.a1-mobile-menu.active,.a1-mobile-menu.is-open,
+ body.mobile-menu-open .a1-mobile-menu{transform:translateX(0)!important;visibility:visible!important}
+ .a1-mobile-backdrop{
+  position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;
+  z-index:99998!important;display:none!important
+ }
+ .a1-mobile-backdrop.show,.a1-mobile-backdrop.active,
+ body.mobile-menu-open .a1-mobile-backdrop{display:block!important}
+ img,svg,canvas,video,iframe{max-width:100%!important}
+}
+</style>
+<style id="a1-no-reader-bars">
+.reader,.reader-bar,.racts,#reader,#readerTitle,#readerDl,#readerClose,#readerFrame{
+display:none!important;
+}
+</style></head>
 <body><nav class="nav"><div class="logo">ZONA <i>A1</i> <small>BY MATARYCLUB</small></div><div class="links"><a href="ebook.html">E-Book Library</a><a href="market-structure.html">Structure</a><a href="smart-money-concept.html">SMC</a><a href="trading-psychology.html">Psychology</a><a href="risk-management.html">Risk</a></div><a class="btn" href="ebook.html">← LIBRARY</a></nav>
 
 
 <div class="cover">
-  <div class="kicker">Panduan Price Action</div>
-  <h1>Market Structure</h1>
-  <p class="sub">Memahami HH, HL, LH, LL, Break of Structure (BOS), dan Change of Character (CHoCH) untuk membaca arah pasar.</p>
+ <div class="kicker">Panduan Price Action</div>
+ <h1>Market Structure</h1>
+ <p class="sub">Memahami HH, HL, LH, LL, Break of Structure (BOS), dan Change of Character (CHoCH) untuk membaca arah pasar.</p>
 </div>
 
 <div class="wrap">
 
-  <div class="toc">
-    <h2>Daftar Isi</h2>
-    <ol>
-      <li><a href="#bab1">Apa Itu Market Structure?</a></li>
-      <li><a href="#bab2">Swing High & Swing Low</a></li>
-      <li><a href="#bab3">Struktur Uptrend: HH & HL</a></li>
-      <li><a href="#bab4">Struktur Downtrend: LH & LL</a></li>
-      <li><a href="#bab5">Break of Structure (BOS)</a></li>
-      <li><a href="#bab6">Change of Character (CHoCH)</a></li>
-      <li><a href="#bab7">BOS vs CHoCH: Perbedaan Kunci</a></li>
-      <li><a href="#bab8">Menerapkan di Trading Plan</a></li>
-      <li><a href="#bab9">Kesalahan Umum</a></li>
-      <li><a href="#glossary">Glosarium Istilah</a></li>
-    </ol>
+ <div class="toc">
+  <h2>Daftar Isi</h2>
+  <ol>
+   <li><a href="#bab1">Apa Itu Market Structure?</a></li>
+   <li><a href="#bab2">Swing High & Swing Low</a></li>
+   <li><a href="#bab3">Struktur Uptrend: HH & HL</a></li>
+   <li><a href="#bab4">Struktur Downtrend: LH & LL</a></li>
+   <li><a href="#bab5">Break of Structure (BOS)</a></li>
+   <li><a href="#bab6">Change of Character (CHoCH)</a></li>
+   <li><a href="#bab7">BOS vs CHoCH: Perbedaan Kunci</a></li>
+   <li><a href="#bab8">Menerapkan di Trading Plan</a></li>
+   <li><a href="#bab9">Kesalahan Umum</a></li>
+   <li><a href="#glossary">Glosarium Istilah</a></li>
+  </ol>
+ </div>
+
+ <section id="bab1">
+  <h2 class="chapter">Bab 1</h2>
+  <h1 class="chapter-title">Apa Itu Market Structure?</h1>
+  <p>Market structure adalah cara membaca "kerangka" pergerakan harga dari titik swing high dan swing low yang terbentuk di chart. Alih-alih menebak arah harga dari satu candle, market structure melihat pola pergerakan harga secara keseluruhan — apakah harga sedang membentuk puncak dan lembah yang makin tinggi (uptrend), makin rendah (downtrend), atau bergerak datar (ranging).</p>
+  <p>Konsep ini jadi fondasi dari banyak pendekatan price action modern, termasuk Smart Money Concept (SMC) dan ICT, karena dari struktur inilah trader menentukan bias arah, area entry, dan kapan sebuah tren dianggap mulai berubah.</p>
+  <div class="callout">
+   <strong>Inti market structure:</strong> tren tidak bergerak lurus. Ia bergerak dalam rangkaian swing high dan swing low — dan pola dari rangkaian itulah yang disebut struktur.
   </div>
+ </section>
 
-  <section id="bab1">
-    <h2 class="chapter">Bab 1</h2>
-    <h1 class="chapter-title">Apa Itu Market Structure?</h1>
-    <p>Market structure adalah cara membaca "kerangka" pergerakan harga dari titik swing high dan swing low yang terbentuk di chart. Alih-alih menebak arah harga dari satu candle, market structure melihat pola pergerakan harga secara keseluruhan — apakah harga sedang membentuk puncak dan lembah yang makin tinggi (uptrend), makin rendah (downtrend), atau bergerak datar (ranging).</p>
-    <p>Konsep ini jadi fondasi dari banyak pendekatan price action modern, termasuk Smart Money Concept (SMC) dan ICT, karena dari struktur inilah trader menentukan bias arah, area entry, dan kapan sebuah tren dianggap mulai berubah.</p>
-    <div class="callout">
-      <strong>Inti market structure:</strong> tren tidak bergerak lurus. Ia bergerak dalam rangkaian swing high dan swing low — dan pola dari rangkaian itulah yang disebut struktur.
-    </div>
-  </section>
+ <section id="bab2">
+  <h2 class="chapter">Bab 2</h2>
+  <h1 class="chapter-title">Swing High & Swing Low</h1>
+  <p>Sebelum bicara HH/HL/LH/LL, dua elemen dasar harus dikenali dulu:</p>
+  <ul>
+   <li><strong>Swing high</strong> — titik harga tertinggi yang diapit oleh harga lebih rendah di sisi kiri dan kanannya.</li>
+   <li><strong>Swing low</strong> — titik harga terendah yang diapit oleh harga lebih tinggi di sisi kiri dan kanannya.</li>
+  </ul>
+  <p>Swing point ini bisa diidentifikasi di timeframe berapa pun, tapi hasilnya akan berbeda antar timeframe — swing high di timeframe M15 bisa jadi bukan apa-apa di timeframe H4. Konsistensi timeframe penting saat menganalisis struktur.</p>
+ </section>
 
-  <section id="bab2">
-    <h2 class="chapter">Bab 2</h2>
-    <h1 class="chapter-title">Swing High & Swing Low</h1>
-    <p>Sebelum bicara HH/HL/LH/LL, dua elemen dasar harus dikenali dulu:</p>
-    <ul>
-      <li><strong>Swing high</strong> — titik harga tertinggi yang diapit oleh harga lebih rendah di sisi kiri dan kanannya.</li>
-      <li><strong>Swing low</strong> — titik harga terendah yang diapit oleh harga lebih tinggi di sisi kiri dan kanannya.</li>
-    </ul>
-    <p>Swing point ini bisa diidentifikasi di timeframe berapa pun, tapi hasilnya akan berbeda antar timeframe — swing high di timeframe M15 bisa jadi bukan apa-apa di timeframe H4. Konsistensi timeframe penting saat menganalisis struktur.</p>
-  </section>
+ <section id="bab3">
+  <h2 class="chapter">Bab 3</h2>
+  <h1 class="chapter-title">Struktur Uptrend: HH & HL</h1>
+  <p><strong>Higher High (HH)</strong> adalah swing high baru yang posisinya lebih tinggi dari swing high sebelumnya. <strong>Higher Low (HL)</strong> adalah swing low baru yang posisinya lebih tinggi dari swing low sebelumnya. Selama harga terus membentuk HH dan HL secara bergantian, struktur dianggap dalam kondisi uptrend (bullish).</p>
 
-  <section id="bab3">
-    <h2 class="chapter">Bab 3</h2>
-    <h1 class="chapter-title">Struktur Uptrend: HH & HL</h1>
-    <p><strong>Higher High (HH)</strong> adalah swing high baru yang posisinya lebih tinggi dari swing high sebelumnya. <strong>Higher Low (HL)</strong> adalah swing low baru yang posisinya lebih tinggi dari swing low sebelumnya. Selama harga terus membentuk HH dan HL secara bergantian, struktur dianggap dalam kondisi uptrend (bullish).</p>
+  <figure class="diagram">
+   <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="30,200 130,90 210,150 320,50 400,110 520,25" fill="none" stroke="var(--line)" stroke-width="2.5"/>
+    <circle cx="30" cy="200" r="4" fill="var(--line)"/>
+    <circle cx="130" cy="90" r="5" fill="var(--bull)"/>
+    <circle cx="210" cy="150" r="5" fill="var(--bull)"/>
+    <circle cx="320" cy="50" r="5" fill="var(--bull)"/>
+    <circle cx="400" cy="110" r="5" fill="var(--bull)"/>
+    <circle cx="520" cy="25" r="5" fill="var(--bull)"/>
+    <text x="130" y="72" class="lbl" fill="var(--bull)" text-anchor="middle">HH1</text>
+    <text x="210" y="172" class="lbl" fill="var(--bull)" text-anchor="middle">HL1</text>
+    <text x="320" y="32" class="lbl" fill="var(--bull)" text-anchor="middle">HH2</text>
+    <text x="400" y="132" class="lbl" fill="var(--bull)" text-anchor="middle">HL2</text>
+    <text x="520" y="8" class="lbl" fill="var(--bull)" text-anchor="middle">HH3</text>
+   </svg>
+   <figcaption>Struktur uptrend: setiap puncak (HH) dan lembah (HL) baru terbentuk lebih tinggi dari sebelumnya.</figcaption>
+  </figure>
+ </section>
 
-    <figure class="diagram">
-      <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="30,200 130,90 210,150 320,50 400,110 520,25" fill="none" stroke="var(--line)" stroke-width="2.5"/>
-        <circle cx="30" cy="200" r="4" fill="var(--line)"/>
-        <circle cx="130" cy="90" r="5" fill="var(--bull)"/>
-        <circle cx="210" cy="150" r="5" fill="var(--bull)"/>
-        <circle cx="320" cy="50" r="5" fill="var(--bull)"/>
-        <circle cx="400" cy="110" r="5" fill="var(--bull)"/>
-        <circle cx="520" cy="25" r="5" fill="var(--bull)"/>
-        <text x="130" y="72" class="lbl" fill="var(--bull)" text-anchor="middle">HH1</text>
-        <text x="210" y="172" class="lbl" fill="var(--bull)" text-anchor="middle">HL1</text>
-        <text x="320" y="32" class="lbl" fill="var(--bull)" text-anchor="middle">HH2</text>
-        <text x="400" y="132" class="lbl" fill="var(--bull)" text-anchor="middle">HL2</text>
-        <text x="520" y="8" class="lbl" fill="var(--bull)" text-anchor="middle">HH3</text>
-      </svg>
-      <figcaption>Struktur uptrend: setiap puncak (HH) dan lembah (HL) baru terbentuk lebih tinggi dari sebelumnya.</figcaption>
-    </figure>
-  </section>
+ <section id="bab4">
+  <h2 class="chapter">Bab 4</h2>
+  <h1 class="chapter-title">Struktur Downtrend: LH & LL</h1>
+  <p><strong>Lower High (LH)</strong> adalah swing high baru yang posisinya lebih rendah dari swing high sebelumnya. <strong>Lower Low (LL)</strong> adalah swing low baru yang posisinya lebih rendah dari swing low sebelumnya. Selama pola LH dan LL terus terbentuk secara bergantian, struktur dianggap dalam kondisi downtrend (bearish).</p>
 
-  <section id="bab4">
-    <h2 class="chapter">Bab 4</h2>
-    <h1 class="chapter-title">Struktur Downtrend: LH & LL</h1>
-    <p><strong>Lower High (LH)</strong> adalah swing high baru yang posisinya lebih rendah dari swing high sebelumnya. <strong>Lower Low (LL)</strong> adalah swing low baru yang posisinya lebih rendah dari swing low sebelumnya. Selama pola LH dan LL terus terbentuk secara bergantian, struktur dianggap dalam kondisi downtrend (bearish).</p>
+  <figure class="diagram">
+   <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="30,40 130,150 210,95 320,190 400,140 520,225" fill="none" stroke="var(--line)" stroke-width="2.5"/>
+    <circle cx="30" cy="40" r="4" fill="var(--line)"/>
+    <circle cx="130" cy="150" r="5" fill="var(--bear)"/>
+    <circle cx="210" cy="95" r="5" fill="var(--bear)"/>
+    <circle cx="320" cy="190" r="5" fill="var(--bear)"/>
+    <circle cx="400" cy="140" r="5" fill="var(--bear)"/>
+    <circle cx="520" cy="225" r="5" fill="var(--bear)"/>
+    <text x="130" y="172" class="lbl" fill="var(--bear)" text-anchor="middle">LL1</text>
+    <text x="210" y="78" class="lbl" fill="var(--bear)" text-anchor="middle">LH1</text>
+    <text x="320" y="212" class="lbl" fill="var(--bear)" text-anchor="middle">LL2</text>
+    <text x="400" y="122" class="lbl" fill="var(--bear)" text-anchor="middle">LH2</text>
+    <text x="520" y="247" class="lbl" fill="var(--bear)" text-anchor="middle">LL3</text>
+   </svg>
+   <figcaption>Struktur downtrend: setiap puncak (LH) dan lembah (LL) baru terbentuk lebih rendah dari sebelumnya.</figcaption>
+  </figure>
+ </section>
 
-    <figure class="diagram">
-      <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="30,40 130,150 210,95 320,190 400,140 520,225" fill="none" stroke="var(--line)" stroke-width="2.5"/>
-        <circle cx="30" cy="40" r="4" fill="var(--line)"/>
-        <circle cx="130" cy="150" r="5" fill="var(--bear)"/>
-        <circle cx="210" cy="95" r="5" fill="var(--bear)"/>
-        <circle cx="320" cy="190" r="5" fill="var(--bear)"/>
-        <circle cx="400" cy="140" r="5" fill="var(--bear)"/>
-        <circle cx="520" cy="225" r="5" fill="var(--bear)"/>
-        <text x="130" y="172" class="lbl" fill="var(--bear)" text-anchor="middle">LL1</text>
-        <text x="210" y="78" class="lbl" fill="var(--bear)" text-anchor="middle">LH1</text>
-        <text x="320" y="212" class="lbl" fill="var(--bear)" text-anchor="middle">LL2</text>
-        <text x="400" y="122" class="lbl" fill="var(--bear)" text-anchor="middle">LH2</text>
-        <text x="520" y="247" class="lbl" fill="var(--bear)" text-anchor="middle">LL3</text>
-      </svg>
-      <figcaption>Struktur downtrend: setiap puncak (LH) dan lembah (LL) baru terbentuk lebih rendah dari sebelumnya.</figcaption>
-    </figure>
-  </section>
+ <section id="bab5">
+  <h2 class="chapter">Bab 5</h2>
+  <h1 class="chapter-title">Break of Structure (BOS)</h1>
+  <p><strong>Break of Structure (BOS)</strong> terjadi saat harga menembus swing point terakhir searah dengan tren yang sedang berjalan — misalnya dalam uptrend, harga menembus HH sebelumnya dan membentuk HH baru. BOS mengonfirmasi bahwa tren yang sedang berjalan masih berlanjut, bukan tanda pembalikan.</p>
 
-  <section id="bab5">
-    <h2 class="chapter">Bab 5</h2>
-    <h1 class="chapter-title">Break of Structure (BOS)</h1>
-    <p><strong>Break of Structure (BOS)</strong> terjadi saat harga menembus swing point terakhir searah dengan tren yang sedang berjalan — misalnya dalam uptrend, harga menembus HH sebelumnya dan membentuk HH baru. BOS mengonfirmasi bahwa tren yang sedang berjalan masih berlanjut, bukan tanda pembalikan.</p>
+  <figure class="diagram">
+   <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+    <line x1="30" y1="70" x2="560" y2="70" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <text x="565" y="74" class="lbl-sub" fill="var(--text-dim)">HH sebelumnya</text>
+    <polyline points="30,180 120,70 210,140 340,30 460,110" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+    <circle cx="120" cy="70" r="5" fill="var(--bull)"/>
+    <circle cx="210" cy="140" r="5" fill="var(--bull)"/>
+    <circle cx="340" cy="30" r="6" fill="var(--bull)"/>
+    <text x="340" y="14" class="lbl" fill="var(--bull)" text-anchor="middle">BOS ↑</text>
+    <text x="210" y="162" class="lbl-sub" fill="var(--text-dim)" text-anchor="middle">HL</text>
+   </svg>
+   <figcaption>BOS bullish: harga menembus ke atas HH sebelumnya — tren naik dianggap berlanjut.</figcaption>
+  </figure>
 
-    <figure class="diagram">
-      <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="70" x2="560" y2="70" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5,5"/>
-        <text x="565" y="74" class="lbl-sub" fill="var(--text-dim)">HH sebelumnya</text>
-        <polyline points="30,180 120,70 210,140 340,30 460,110" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
-        <circle cx="120" cy="70" r="5" fill="var(--bull)"/>
-        <circle cx="210" cy="140" r="5" fill="var(--bull)"/>
-        <circle cx="340" cy="30" r="6" fill="var(--bull)"/>
-        <text x="340" y="14" class="lbl" fill="var(--bull)" text-anchor="middle">BOS ↑</text>
-        <text x="210" y="162" class="lbl-sub" fill="var(--text-dim)" text-anchor="middle">HL</text>
-      </svg>
-      <figcaption>BOS bullish: harga menembus ke atas HH sebelumnya — tren naik dianggap berlanjut.</figcaption>
-    </figure>
+  <p>BOS umum dipakai sebagai konfirmasi untuk masuk posisi searah tren, misalnya menunggu BOS terbentuk baru mencari entry di area pullback (HL) berikutnya.</p>
+ </section>
 
-    <p>BOS umum dipakai sebagai konfirmasi untuk masuk posisi searah tren, misalnya menunggu BOS terbentuk baru mencari entry di area pullback (HL) berikutnya.</p>
-  </section>
+ <section id="bab6">
+  <h2 class="chapter">Bab 6</h2>
+  <h1 class="chapter-title">Change of Character (CHoCH)</h1>
+  <p><strong>Change of Character (CHoCH)</strong> terjadi saat harga menembus swing point berlawanan arah dengan tren yang sedang berjalan — misalnya dalam uptrend, harga gagal membentuk HH baru dan justru menembus ke bawah HL terakhir. Ini adalah sinyal awal bahwa karakter tren sedang berubah, dan berpotensi berbalik arah.</p>
 
-  <section id="bab6">
-    <h2 class="chapter">Bab 6</h2>
-    <h1 class="chapter-title">Change of Character (CHoCH)</h1>
-    <p><strong>Change of Character (CHoCH)</strong> terjadi saat harga menembus swing point berlawanan arah dengan tren yang sedang berjalan — misalnya dalam uptrend, harga gagal membentuk HH baru dan justru menembus ke bawah HL terakhir. Ini adalah sinyal awal bahwa karakter tren sedang berubah, dan berpotensi berbalik arah.</p>
+  <figure class="diagram">
+   <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
+    <line x1="30" y1="150" x2="560" y2="150" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <text x="565" y="154" class="lbl-sub" fill="var(--text-dim)">HL sebelumnya</text>
+    <polyline points="30,190 120,80 210,150 340,60 460,220" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+    <circle cx="120" cy="80" r="5" fill="var(--bull)"/>
+    <circle cx="210" cy="150" r="5" fill="var(--bull)"/>
+    <circle cx="340" cy="60" r="5" fill="var(--bull)"/>
+    <text x="340" y="44" class="lbl-sub" fill="var(--text-dim)" text-anchor="middle">gagal buat HH baru</text>
+    <circle cx="460" cy="220" r="6" fill="var(--bear)"/>
+    <text x="460" y="238" class="lbl" fill="var(--bear)" text-anchor="middle">CHoCH ↓</text>
+   </svg>
+   <figcaption>CHoCH bearish: harga gagal bikin HH baru lalu menembus ke bawah HL sebelumnya — potensi pembalikan tren.</figcaption>
+  </figure>
 
-    <figure class="diagram">
-      <svg viewBox="0 0 680 240" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="150" x2="560" y2="150" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5,5"/>
-        <text x="565" y="154" class="lbl-sub" fill="var(--text-dim)">HL sebelumnya</text>
-        <polyline points="30,190 120,80 210,150 340,60 460,220" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
-        <circle cx="120" cy="80" r="5" fill="var(--bull)"/>
-        <circle cx="210" cy="150" r="5" fill="var(--bull)"/>
-        <circle cx="340" cy="60" r="5" fill="var(--bull)"/>
-        <text x="340" y="44" class="lbl-sub" fill="var(--text-dim)" text-anchor="middle">gagal buat HH baru</text>
-        <circle cx="460" cy="220" r="6" fill="var(--bear)"/>
-        <text x="460" y="238" class="lbl" fill="var(--bear)" text-anchor="middle">CHoCH ↓</text>
-      </svg>
-      <figcaption>CHoCH bearish: harga gagal bikin HH baru lalu menembus ke bawah HL sebelumnya — potensi pembalikan tren.</figcaption>
-    </figure>
+  <p>CHoCH bukan kepastian pembalikan penuh, melainkan sinyal peringatan pertama untuk mulai waspada dan menyesuaikan bias arah, biasanya diikuti konfirmasi tambahan sebelum benar-benar dianggap tren baru.</p>
+ </section>
 
-    <p>CHoCH bukan kepastian pembalikan penuh, melainkan sinyal peringatan pertama untuk mulai waspada dan menyesuaikan bias arah, biasanya diikuti konfirmasi tambahan sebelum benar-benar dianggap tren baru.</p>
-  </section>
+ <section id="bab7">
+  <h2 class="chapter">Bab 7</h2>
+  <h1 class="chapter-title">BOS vs CHoCH: Perbedaan Kunci</h1>
+  <table>
+   <thead>
+    <tr><th>Aspek</th><th>BOS</th><th>CHoCH</th></tr>
+   </thead>
+   <tbody>
+    <tr><td>Arah break</td><td>Searah tren yang berjalan</td><td>Berlawanan arah tren yang berjalan</td></tr>
+    <tr><td>Makna</td><td>Tren berlanjut (continuation)</td><td>Potensi tren berubah (reversal signal)</td></tr>
+    <tr><td>Swing yang ditembus</td><td>Swing high/low searah tren (mis. HH lama saat uptrend)</td><td>Swing berlawanan (mis. HL saat uptrend gagal bertahan)</td></tr>
+    <tr><td>Sikap trader</td><td>Konfirmasi untuk cari entry lanjutan tren</td><td>Sinyal kehati-hatian, tunggu konfirmasi lanjutan</td></tr>
+   </tbody>
+  </table>
+  <div class="callout warn">
+   <strong>Penting:</strong> label BOS/CHoCH bisa berbeda antar sumber dan antar timeframe. Satu CHoCH di timeframe kecil bisa jadi cuma bagian dari pullback biasa di timeframe besar — selalu cek konteks timeframe lebih tinggi.
+  </div>
+ </section>
 
-  <section id="bab7">
-    <h2 class="chapter">Bab 7</h2>
-    <h1 class="chapter-title">BOS vs CHoCH: Perbedaan Kunci</h1>
-    <table>
-      <thead>
-        <tr><th>Aspek</th><th>BOS</th><th>CHoCH</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Arah break</td><td>Searah tren yang berjalan</td><td>Berlawanan arah tren yang berjalan</td></tr>
-        <tr><td>Makna</td><td>Tren berlanjut (continuation)</td><td>Potensi tren berubah (reversal signal)</td></tr>
-        <tr><td>Swing yang ditembus</td><td>Swing high/low searah tren (mis. HH lama saat uptrend)</td><td>Swing berlawanan (mis. HL saat uptrend gagal bertahan)</td></tr>
-        <tr><td>Sikap trader</td><td>Konfirmasi untuk cari entry lanjutan tren</td><td>Sinyal kehati-hatian, tunggu konfirmasi lanjutan</td></tr>
-      </tbody>
-    </table>
-    <div class="callout warn">
-      <strong>Penting:</strong> label BOS/CHoCH bisa berbeda antar sumber dan antar timeframe. Satu CHoCH di timeframe kecil bisa jadi cuma bagian dari pullback biasa di timeframe besar — selalu cek konteks timeframe lebih tinggi.
-    </div>
-  </section>
+ <section id="bab8">
+  <h2 class="chapter">Bab 8</h2>
+  <h1 class="chapter-title">Menerapkan di Trading Plan</h1>
+  <ul>
+   <li><strong>Tentukan bias dari timeframe lebih tinggi</strong> — identifikasi apakah struktur besar sedang uptrend, downtrend, atau ranging.</li>
+   <li><strong>Turun ke timeframe lebih kecil</strong> untuk mencari BOS sebagai konfirmasi searah bias, lalu cari entry di area pullback (HL saat uptrend, LH saat downtrend).</li>
+   <li><strong>Gunakan CHoCH sebagai sinyal exit atau peringatan</strong> — jika posisi masih terbuka searah tren lama dan CHoCH muncul, ini saat yang tepat mengevaluasi ulang posisi.</li>
+   <li><strong>Kombinasikan dengan area penting lain</strong> seperti support/resistance, order block, atau zona likuiditas untuk memperkuat validitas sinyal BOS/CHoCH.</li>
+  </ul>
+ </section>
 
-  <section id="bab8">
-    <h2 class="chapter">Bab 8</h2>
-    <h1 class="chapter-title">Menerapkan di Trading Plan</h1>
-    <ul>
-      <li><strong>Tentukan bias dari timeframe lebih tinggi</strong> — identifikasi apakah struktur besar sedang uptrend, downtrend, atau ranging.</li>
-      <li><strong>Turun ke timeframe lebih kecil</strong> untuk mencari BOS sebagai konfirmasi searah bias, lalu cari entry di area pullback (HL saat uptrend, LH saat downtrend).</li>
-      <li><strong>Gunakan CHoCH sebagai sinyal exit atau peringatan</strong> — jika posisi masih terbuka searah tren lama dan CHoCH muncul, ini saat yang tepat mengevaluasi ulang posisi.</li>
-      <li><strong>Kombinasikan dengan area penting lain</strong> seperti support/resistance, order block, atau zona likuiditas untuk memperkuat validitas sinyal BOS/CHoCH.</li>
-    </ul>
-  </section>
+ <section id="bab9">
+  <h2 class="chapter">Bab 9</h2>
+  <h1 class="chapter-title">Kesalahan Umum</h1>
+  <ol class="list">
+   <li>Menganalisis struktur hanya di satu timeframe tanpa konfirmasi dari timeframe lebih tinggi.</li>
+   <li>Langsung entry begitu melihat CHoCH tanpa menunggu konfirmasi tambahan, padahal CHoCH bisa gagal (false reversal).</li>
+   <li>Salah menandai swing point karena terlalu banyak noise di timeframe kecil.</li>
+   <li>Mengabaikan konteks — BOS/CHoCH di tengah kondisi ranging jauh lebih tidak reliable dibanding saat tren jelas terbentuk.</li>
+   <li>Terlalu kaku pada definisi, padahal cara menandai swing high/low bisa sedikit berbeda antar metode (misalnya jumlah candle konfirmasi swing).</li>
+  </ol>
+ </section>
 
-  <section id="bab9">
-    <h2 class="chapter">Bab 9</h2>
-    <h1 class="chapter-title">Kesalahan Umum</h1>
-    <ol class="list">
-      <li>Menganalisis struktur hanya di satu timeframe tanpa konfirmasi dari timeframe lebih tinggi.</li>
-      <li>Langsung entry begitu melihat CHoCH tanpa menunggu konfirmasi tambahan, padahal CHoCH bisa gagal (false reversal).</li>
-      <li>Salah menandai swing point karena terlalu banyak noise di timeframe kecil.</li>
-      <li>Mengabaikan konteks — BOS/CHoCH di tengah kondisi ranging jauh lebih tidak reliable dibanding saat tren jelas terbentuk.</li>
-      <li>Terlalu kaku pada definisi, padahal cara menandai swing high/low bisa sedikit berbeda antar metode (misalnya jumlah candle konfirmasi swing).</li>
-    </ol>
-  </section>
+ <section id="glossary">
+  <h2 class="chapter">Referensi</h2>
+  <h1 class="chapter-title">Glosarium Istilah</h1>
+  <dl class="glossary">
+   <dt>Swing High</dt><dd>Titik harga tertinggi yang diapit harga lebih rendah di kedua sisinya.</dd>
+   <dt>Swing Low</dt><dd>Titik harga terendah yang diapit harga lebih tinggi di kedua sisinya.</dd>
+   <dt>HH (Higher High)</dt><dd>Swing high baru yang lebih tinggi dari swing high sebelumnya.</dd>
+   <dt>HL (Higher Low)</dt><dd>Swing low baru yang lebih tinggi dari swing low sebelumnya.</dd>
+   <dt>LH (Lower High)</dt><dd>Swing high baru yang lebih rendah dari swing high sebelumnya.</dd>
+   <dt>LL (Lower Low)</dt><dd>Swing low baru yang lebih rendah dari swing low sebelumnya.</dd>
+   <dt>BOS (Break of Structure)</dt><dd>Penembusan swing point searah tren yang berjalan, menandakan tren berlanjut.</dd>
+   <dt>CHoCH (Change of Character)</dt><dd>Penembusan swing point berlawanan arah tren, sinyal awal potensi pembalikan.</dd>
+   <dt>Ranging</dt><dd>Kondisi harga bergerak menyamping tanpa struktur HH/HL atau LH/LL yang jelas.</dd>
+  </dl>
+ </section>
 
-  <section id="glossary">
-    <h2 class="chapter">Referensi</h2>
-    <h1 class="chapter-title">Glosarium Istilah</h1>
-    <dl class="glossary">
-      <dt>Swing High</dt><dd>Titik harga tertinggi yang diapit harga lebih rendah di kedua sisinya.</dd>
-      <dt>Swing Low</dt><dd>Titik harga terendah yang diapit harga lebih tinggi di kedua sisinya.</dd>
-      <dt>HH (Higher High)</dt><dd>Swing high baru yang lebih tinggi dari swing high sebelumnya.</dd>
-      <dt>HL (Higher Low)</dt><dd>Swing low baru yang lebih tinggi dari swing low sebelumnya.</dd>
-      <dt>LH (Lower High)</dt><dd>Swing high baru yang lebih rendah dari swing high sebelumnya.</dd>
-      <dt>LL (Lower Low)</dt><dd>Swing low baru yang lebih rendah dari swing low sebelumnya.</dd>
-      <dt>BOS (Break of Structure)</dt><dd>Penembusan swing point searah tren yang berjalan, menandakan tren berlanjut.</dd>
-      <dt>CHoCH (Change of Character)</dt><dd>Penembusan swing point berlawanan arah tren, sinyal awal potensi pembalikan.</dd>
-      <dt>Ranging</dt><dd>Kondisi harga bergerak menyamping tanpa struktur HH/HL atau LH/LL yang jelas.</dd>
-    </dl>
-  </section>
-
-  <footer>
-    Market Structure — HH, HL, LH, LL, BOS & CHoCH
-  </footer>
+ <footer>
+  Market Structure — HH, HL, LH, LL, BOS & CHoCH
+ </footer>
 
 </div>
 
 <footer class="a1-legal-footer">
-  <div class="a1-legal-box">
-    <div class="a1-legal-title">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      Trading Disclaimer
-    </div>
-    <p class="a1-legal-text">
-      Materi E-Book ZONA A1 disusun untuk tujuan edukasi dan informasi umum, bukan merupakan
-      nasihat keuangan, investasi, atau ajakan untuk melakukan transaksi tertentu. Trading
-      memiliki risiko dan dapat menyebabkan kerugian sebagian maupun seluruh modal. Hasil
-      pembelajaran, backtest, simulasi, atau contoh historis tidak menjamin hasil di masa depan.
-      Setiap keputusan trading, ukuran posisi, leverage, dan pengelolaan risiko sepenuhnya menjadi
-      tanggung jawab masing-masing pengguna.
-    </p>
-    <div class="a1-legal-copy">
-      <strong>ZONA A1 / BY MATARYCLUB</strong> — Gunakan materi sebagai referensi belajar dan
-      selalu sesuaikan strategi dengan profil risiko serta kondisi pasar masing-masing.
-    </div>
+ <div class="a1-legal-box">
+  <div class="a1-legal-title">
+   <i class="fa-solid fa-triangle-exclamation"></i>
+   Trading Disclaimer
   </div>
+  <p class="a1-legal-text">
+   Materi E-Book ZONA A1 disusun untuk tujuan edukasi dan informasi umum, bukan merupakan
+   nasihat keuangan, investasi, atau ajakan untuk melakukan transaksi tertentu. Trading
+   memiliki risiko dan dapat menyebabkan kerugian sebagian maupun seluruh modal. Hasil
+   pembelajaran, backtest, simulasi, atau contoh historis tidak menjamin hasil di masa depan.
+   Setiap keputusan trading, ukuran posisi, leverage, dan pengelolaan risiko sepenuhnya menjadi
+   tanggung jawab masing-masing pengguna.
+  </p>
+  <div class="a1-legal-copy">
+   <strong>ZONA A1 / BY MATARYCLUB</strong> — Gunakan materi sebagai referensi belajar dan
+   selalu sesuaikan strategi dengan profil risiko serta kondisi pasar masing-masing.
+  </div>
+ </div>
 </footer>
 
+
+<script id="a1-mobile-final-js">
+(function(){
+ const t=document.getElementById('a1MobileToggle'),c=document.getElementById('a1MobileClose'),
+ m=document.getElementById('a1MobileMenu'),b=document.getElementById('a1MobileBackdrop');
+ if(!t||!m)return;
+ function openM(){m.classList.add('open','active','is-open');if(b)b.classList.add('show','active');document.body.classList.add('mobile-menu-open');t.setAttribute('aria-expanded','true');m.setAttribute('aria-hidden','false')}
+ function closeM(){m.classList.remove('open','active','is-open');if(b)b.classList.remove('show','active');document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true')}
+ t.addEventListener('click',openM);if(c)c.addEventListener('click',closeM);if(b)b.addEventListener('click',closeM);
+ m.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+})();
+</script>
 </body>
 </html>

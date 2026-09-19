@@ -4,13 +4,7 @@
 .foot .actions{display:flex;gap:6px}
 .btn.read{background:#00d9ff;border-color:#00d9ff;color:#001016}
 .btn.dl{padding:10px 11px}
-.reader{position:fixed;inset:0;background:#000c;backdrop-filter:blur(3px);z-index:50;display:none}
-.reader.open{display:flex;flex-direction:column}
-.reader-bar{height:56px;flex:0 0 auto;background:#060c12;border-bottom:1px solid #17313f;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
-.reader-bar .rt{font-size:12px;font-weight:800;color:#00d9ff;letter-spacing:1px}
-.reader-bar .racts{display:flex;gap:8px;align-items:center}
-.reader-bar a.btn,.reader-bar button.btn{padding:8px 12px;font-size:10px}
-.reader iframe{flex:1 1 auto;width:100%;border:0;background:#0b1116}
+
 @media(max-width:800px){.links{display:none}.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.routine{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}.routine{grid-template-columns:1fr}.hero h1{font-size:48px}}
 .mini{background-size:cover;background-position:center}.cover{position:relative;overflow:hidden}.cover:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.05),transparent 70%);transform:skewX(-18deg)}.cover>*{position:relative;z-index:1}</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,429 +43,458 @@
 .a1-mobile-backdrop{display:none}
 
 @media (max-width:760px){
-  .a1-mobile-toggle{
-    display:grid!important;
-    place-items:center;
-    width:40px;
-    height:40px;
-    flex:0 0 40px;
-    border-radius:12px;
-    border:1px solid rgba(57,232,255,.32);
-    background:rgba(57,232,255,.06);
-    color:#dffcff;
-    font-size:15px;
-    cursor:pointer;
-    transition:.25s;
-  }
-  .a1-mobile-toggle:hover{
-    border-color:#39e8ff;
-    background:rgba(57,232,255,.12);
-    box-shadow:0 0 24px rgba(57,232,255,.14);
-  }
+ .a1-mobile-toggle{
+  display:grid!important;
+  place-items:center;
+  width:40px;
+  height:40px;
+  flex:0 0 40px;
+  border-radius:12px;
+  border:1px solid rgba(57,232,255,.32);
+  background:rgba(57,232,255,.06);
+  color:#dffcff;
+  font-size:15px;
+  cursor:pointer;
+  transition:.25s;
+ }
+ .a1-mobile-toggle:hover{
+  border-color:#39e8ff;
+  background:rgba(57,232,255,.12);
+  box-shadow:0 0 24px rgba(57,232,255,.14);
+ }
 
-  /* Hide the desktop nav and desktop status on small screens.
-     The hamburger replaces them. */
-  .a1-main-nav{display:none!important}
-  .nav-right .nav-status{display:none!important}
-  .nav-right{gap:8px!important}
+ /* Hide the desktop nav and desktop status on small screens.
+   The hamburger replaces them. */
+ .a1-main-nav{display:none!important}
+ .nav-right .nav-status{display:none!important}
+ .nav-right{gap:8px!important}
 
-  .a1-mobile-backdrop{
-    position:fixed;
-    inset:0;
-    z-index:998;
-    background:rgba(0,4,9,.72);
-    backdrop-filter:blur(4px);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .25s ease;
-  }
+ .a1-mobile-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:998;
+  background:rgba(0,4,9,.72);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+ }
 
-  .a1-mobile-menu{
-    position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    z-index:999;
-    width:min(330px,88vw);
-    padding:22px 18px;
-    display:flex!important;
-    flex-direction:column;
-    background:
-      radial-gradient(circle at 100% 0%,rgba(57,232,255,.12),transparent 35%),
-      linear-gradient(180deg,#07111a 0%,#02070d 100%);
-    border-left:1px solid rgba(57,232,255,.18);
-    box-shadow:-20px 0 70px rgba(0,0,0,.45);
-    transform:translateX(105%);
-    transition:transform .3s cubic-bezier(.22,.8,.2,1);
-    overflow-y:auto;
-  }
+ .a1-mobile-menu{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  z-index:999;
+  width:min(330px,88vw);
+  padding:22px 18px;
+  display:flex!important;
+  flex-direction:column;
+  background:
+   radial-gradient(circle at 100% 0%,rgba(57,232,255,.12),transparent 35%),
+   linear-gradient(180deg,#07111a 0%,#02070d 100%);
+  border-left:1px solid rgba(57,232,255,.18);
+  box-shadow:-20px 0 70px rgba(0,0,0,.45);
+  transform:translateX(105%);
+  transition:transform .3s cubic-bezier(.22,.8,.2,1);
+  overflow-y:auto;
+ }
 
-  body.a1-menu-open{overflow:hidden}
-  body.a1-menu-open .a1-mobile-menu{transform:translateX(0)}
-  body.a1-menu-open .a1-mobile-backdrop{
-    opacity:1;
-    pointer-events:auto;
-  }
+ body.a1-menu-open{overflow:hidden}
+ body.a1-menu-open .a1-mobile-menu{transform:translateX(0)}
+ body.a1-menu-open .a1-mobile-backdrop{
+  opacity:1;
+  pointer-events:auto;
+ }
 
-  .a1-mobile-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:2px 2px 20px;
-    border-bottom:1px solid rgba(255,255,255,.07);
-  }
-  .a1-mobile-title{
-    color:#f4fbff;
-    font-weight:900;
-    font-size:16px;
-    letter-spacing:-.5px;
-  }
-  .a1-mobile-title span{color:#22d3ee}
-  .a1-mobile-head small{
-    display:block;
-    margin-top:4px;
-    color:#6f8295;
-    font-size:8px;
-    letter-spacing:2px;
-  }
-  .a1-mobile-close{
-    width:38px;
-    height:38px;
-    border-radius:11px;
-    border:1px solid rgba(57,232,255,.2);
-    background:rgba(255,255,255,.035);
-    color:#bfefff;
-    cursor:pointer;
-    font-size:15px;
-  }
+ .a1-mobile-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:2px 2px 20px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+ }
+ .a1-mobile-title{
+  color:#f4fbff;
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:-.5px;
+ }
+ .a1-mobile-title span{color:#22d3ee}
+ .a1-mobile-head small{
+  display:block;
+  margin-top:4px;
+  color:#6f8295;
+  font-size:8px;
+  letter-spacing:2px;
+ }
+ .a1-mobile-close{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  border:1px solid rgba(57,232,255,.2);
+  background:rgba(255,255,255,.035);
+  color:#bfefff;
+  cursor:pointer;
+  font-size:15px;
+ }
 
-  .a1-mobile-links{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-    padding:20px 0;
-  }
-  .a1-mobile-links a{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    min-height:50px;
-    padding:0 15px;
-    border-radius:12px;
-    border:1px solid transparent;
-    color:#9aabba;
-    text-decoration:none;
-    font:800 11px/1 Inter,system-ui,sans-serif;
-    letter-spacing:.8px;
-    text-transform:uppercase;
-    transition:.2s;
-  }
-  .a1-mobile-links a i{
-    width:18px;
-    text-align:center;
-    color:#22d3ee;
-    font-size:13px;
-  }
-  .a1-mobile-links a:hover,
-  .a1-mobile-links a:active{
-    color:#effcff;
-    background:rgba(57,232,255,.06);
-    border-color:rgba(57,232,255,.14);
-  }
-  .a1-mobile-links a.mobile-rebate{
-    color:#9df5c7;
-    border-color:rgba(84,245,154,.1);
-    background:rgba(84,245,154,.025);
-  }
-  .a1-mobile-links a.mobile-rebate i{color:#4ade80}
+ .a1-mobile-links{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  padding:20px 0;
+ }
+ .a1-mobile-links a{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:50px;
+  padding:0 15px;
+  border-radius:12px;
+  border:1px solid transparent;
+  color:#9aabba;
+  text-decoration:none;
+  font:800 11px/1 Inter,system-ui,sans-serif;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  transition:.2s;
+ }
+ .a1-mobile-links a i{
+  width:18px;
+  text-align:center;
+  color:#22d3ee;
+  font-size:13px;
+ }
+ .a1-mobile-links a:hover,
+ .a1-mobile-links a:active{
+  color:#effcff;
+  background:rgba(57,232,255,.06);
+  border-color:rgba(57,232,255,.14);
+ }
+ .a1-mobile-links a.mobile-rebate{
+  color:#9df5c7;
+  border-color:rgba(84,245,154,.1);
+  background:rgba(84,245,154,.025);
+ }
+ .a1-mobile-links a.mobile-rebate i{color:#4ade80}
 
-  .a1-mobile-join{
-    margin-top:auto;
-    min-height:48px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    border-radius:12px;
-    border:1px solid rgba(57,232,255,.3);
-    background:linear-gradient(135deg,rgba(57,232,255,.13),rgba(63,124,255,.08));
-    color:#e6fcff;
-    text-decoration:none;
-    font:900 9px/1 Inter,system-ui,sans-serif;
-    letter-spacing:1px;
-  }
+ .a1-mobile-join{
+  margin-top:auto;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:12px;
+  border:1px solid rgba(57,232,255,.3);
+  background:linear-gradient(135deg,rgba(57,232,255,.13),rgba(63,124,255,.08));
+  color:#e6fcff;
+  text-decoration:none;
+  font:900 9px/1 Inter,system-ui,sans-serif;
+  letter-spacing:1px;
+ }
 }
 
 @media (min-width:761px){
-  .a1-mobile-toggle,
-  .a1-mobile-menu,
-  .a1-mobile-backdrop{display:none!important}
+ .a1-mobile-toggle,
+ .a1-mobile-menu,
+ .a1-mobile-backdrop{display:none!important}
 }
 </style>
 
 
 <style id="a1-mobile-scroll-fix">
 @media (max-width:760px){
-  html,body{min-height:100%;}
+ html,body{min-height:100%;}
 
-  .a1-mobile-menu{
-    position:fixed!important;
-    top:0!important;
-    right:0!important;
-    bottom:0!important;
-    height:100dvh!important;
-    max-height:100dvh!important;
-    width:min(330px,88vw)!important;
-    box-sizing:border-box!important;
-    overflow-y:auto!important;
-    overflow-x:hidden!important;
-    -webkit-overflow-scrolling:touch!important;
-    overscroll-behavior:contain!important;
-    padding-bottom:28px!important;
-    z-index:9999!important;
-  }
+ .a1-mobile-menu{
+  position:fixed!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  height:100dvh!important;
+  max-height:100dvh!important;
+  width:min(330px,88vw)!important;
+  box-sizing:border-box!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+  padding-bottom:28px!important;
+  z-index:9999!important;
+ }
 
-  .a1-mobile-menu .a1-mobile-head{
-    position:sticky;
-    top:0;
-    z-index:3;
-    flex:0 0 auto;
-    background:rgba(4,12,19,.96);
-    backdrop-filter:blur(14px);
-  }
+ .a1-mobile-menu .a1-mobile-head{
+  position:sticky;
+  top:0;
+  z-index:3;
+  flex:0 0 auto;
+  background:rgba(4,12,19,.96);
+  backdrop-filter:blur(14px);
+ }
 
-  .a1-mobile-links{
-    flex:0 0 auto!important;
-    overflow:visible!important;
-  }
+ .a1-mobile-links{
+  flex:0 0 auto!important;
+  overflow:visible!important;
+ }
 
-  .a1-mobile-join{
-    flex:0 0 auto!important;
-    margin-top:28px!important;
-    margin-bottom:4px!important;
-  }
+ .a1-mobile-join{
+  flex:0 0 auto!important;
+  margin-top:28px!important;
+  margin-bottom:4px!important;
+ }
 
-  .a1-mobile-backdrop{
-    z-index:9998!important;
-  }
+ .a1-mobile-backdrop{
+  z-index:9998!important;
+ }
 
-  /* Prevent the main page from stealing the swipe while drawer is open. */
-  body.a1-menu-open{
-    overflow:hidden!important;
-    touch-action:none;
-  }
-  body.a1-menu-open .a1-mobile-menu{
-    touch-action:auto;
-  }
+ /* Prevent the main page from stealing the swipe while drawer is open. */
+ body.a1-menu-open{
+  overflow:hidden!important;
+  touch-action:none;
+ }
+ body.a1-menu-open .a1-mobile-menu{
+  touch-action:auto;
+ }
 }
 </style>
 
 
 <style id="a1-disclaimer-footer">
 .a1-legal-footer{
-  width:min(1180px,calc(100% - 36px));
-  margin:70px auto 0;
-  padding:28px 0 32px;
-  border-top:1px solid rgba(57,232,255,.12);
+ width:min(1180px,calc(100% - 36px));
+ margin:70px auto 0;
+ padding:28px 0 32px;
+ border-top:1px solid rgba(57,232,255,.12);
 }
 .a1-legal-box{
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;
-  background:linear-gradient(135deg,rgba(10,20,29,.78),rgba(3,9,15,.92));
-  padding:20px 22px;
-  box-shadow:0 12px 40px rgba(0,0,0,.18);
+ border:1px solid rgba(255,255,255,.08);
+ border-radius:14px;
+ background:linear-gradient(135deg,rgba(10,20,29,.78),rgba(3,9,15,.92));
+ padding:20px 22px;
+ box-shadow:0 12px 40px rgba(0,0,0,.18);
 }
 .a1-legal-title{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:10px;
-  color:#dffcff;
-  font:900 10px/1 Inter,system-ui,sans-serif;
-  letter-spacing:1.3px;
-  text-transform:uppercase;
+ display:flex;
+ align-items:center;
+ gap:8px;
+ margin-bottom:10px;
+ color:#dffcff;
+ font:900 10px/1 Inter,system-ui,sans-serif;
+ letter-spacing:1.3px;
+ text-transform:uppercase;
 }
 .a1-legal-title i{color:#f59e0b}
 .a1-legal-text{
-  margin:0;
-  color:#8091a3;
-  font:500 10px/1.8 Inter,system-ui,sans-serif;
+ margin:0;
+ color:#8091a3;
+ font:500 10px/1.8 Inter,system-ui,sans-serif;
 }
 .a1-legal-copy{
-  margin-top:15px;
-  padding-top:13px;
-  border-top:1px solid rgba(255,255,255,.06);
-  color:#5f7081;
-  font:500 9px/1.7 Inter,system-ui,sans-serif;
+ margin-top:15px;
+ padding-top:13px;
+ border-top:1px solid rgba(255,255,255,.06);
+ color:#5f7081;
+ font:500 9px/1.7 Inter,system-ui,sans-serif;
 }
 .a1-legal-copy strong{color:#8da0b3}
 @media(max-width:760px){
-  .a1-legal-footer{
-    width:calc(100% - 32px);
-    margin-top:45px;
-    padding-bottom:24px;
-  }
-  .a1-legal-box{padding:17px}
-  .a1-legal-text{font-size:9px;line-height:1.8}
+ .a1-legal-footer{
+  width:calc(100% - 32px);
+  margin-top:45px;
+  padding-bottom:24px;
+ }
+ .a1-legal-box{padding:17px}
+ .a1-legal-text{font-size:9px;line-height:1.8}
 }
 </style>
 
-</head><body>
+
+<style id="a1-mobile-final-fix">
+html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+body{min-width:0!important}
+@media(max-width:760px){
+ html,body{width:100%!important;min-width:0!important;overflow-x:hidden!important}
+ .nav,.nav-inner{width:100%!important;max-width:100%!important;min-width:0!important}
+ .a1-main-nav,.nav-right{display:none!important}
+ .a1-mobile-toggle{display:flex!important;flex:0 0 auto!important}
+ .a1-mobile-menu{
+  position:fixed!important;top:0!important;right:0!important;bottom:0!important;left:auto!important;
+  width:min(86vw,340px)!important;max-width:340px!important;min-width:0!important;
+  height:100dvh!important;max-height:100dvh!important;overflow-y:auto!important;overflow-x:hidden!important;
+  z-index:99999!important;transform:translateX(105%)!important;visibility:hidden!important;
+ }
+ .a1-mobile-menu.open,.a1-mobile-menu.active,.a1-mobile-menu.is-open,
+ body.mobile-menu-open .a1-mobile-menu{transform:translateX(0)!important;visibility:visible!important}
+ .a1-mobile-backdrop{
+  position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;
+  z-index:99998!important;display:none!important
+ }
+ .a1-mobile-backdrop.show,.a1-mobile-backdrop.active,
+ body.mobile-menu-open .a1-mobile-backdrop{display:block!important}
+ img,svg,canvas,video,iframe{max-width:100%!important}
+}
+</style>
+<style id="a1-no-reader">
+.reader,.reader-bar,.reader iframe{display:none!important}
+</style><style id="a1-no-reader-bars">
+.reader,.reader-bar,.racts,#reader,#readerTitle,#readerDl,#readerClose,#readerFrame{
+display:none!important;
+}
+</style></head><body>
 <header class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="index.html#home" aria-label="ZONA A1 Home">
-      <div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div>
-      <div><div class="brand-name">ZONA <span>A1</span></div><span class="brand-sub">BY MATARYCLUB</span></div>
-    </a>
-    <nav class="a1-main-nav" aria-label="Main navigation">
-      <a class="a1-nav-link" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a><a class="a1-nav-link active" href="ebook.html"><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a>
-    </nav>
+ <div class="nav-inner">
+  <a class="brand" href="index.html#home" aria-label="ZONA A1 Home">
+   <div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div>
+   <div><div class="brand-name">ZONA <span>A1</span></div><span class="brand-sub">BY MATARYCLUB</span></div>
+  </a>
+  <nav class="a1-main-nav" aria-label="Main navigation">
+   <a class="a1-nav-link" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a><a class="a1-nav-link active" href="ebook.html"><span>E-Book</span></a>
+  </nav>
 <button class="a1-mobile-toggle" id="a1MobileToggle" type="button"
-        aria-label="Open navigation menu" aria-expanded="false">
-  <i class="fa-solid fa-bars"></i>
+    aria-label="Open navigation menu" aria-expanded="false">
+ <i class="fa-solid fa-bars"></i>
 </button>
 
 <div class="a1-mobile-backdrop" id="a1MobileBackdrop"></div>
 <aside class="a1-mobile-menu" id="a1MobileMenu" aria-hidden="true">
-  <div class="a1-mobile-head">
-    <div>
-      <div class="a1-mobile-title">ZONA <span>A1</span></div>
-      <small>BY MATARYCLUB</small>
-    </div>
-    <button class="a1-mobile-close" id="a1MobileClose" type="button" aria-label="Close menu">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
+ <div class="a1-mobile-head">
+  <div>
+   <div class="a1-mobile-title">ZONA <span>A1</span></div>
+   <small>BY MATARYCLUB</small>
   </div>
+  <button class="a1-mobile-close" id="a1MobileClose" type="button" aria-label="Close menu">
+   <i class="fa-solid fa-xmark"></i>
+  </button>
+ </div>
 
-  <div class="a1-mobile-links">
-    <a href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
-    <a href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a>
-    <a href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a>
-    <a href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a>
-    <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a>
-    <a class="mobile-rebate" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a>
-  </div>
+ <div class="a1-mobile-links">
+  <a href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+  <a href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a>
+  <a href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a>
+  <a href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a>
+  <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a>
+  
+ </div>
 
-  <a class="a1-mobile-join" href="rebate.html">
-    <i class="fa-solid fa-user-plus"></i> JOIN PROGRAM
-  </a>
+ 
 </aside>
 
-    <div class="nav-right">
-      <a class="a1-join-btn" href="rebate.html"><i class="fa-solid fa-user-plus"></i><span>Join Program</span></a>
-      <div class="nav-status"><span class="dot online"></span><span>LIVE</span></div>
-    </div>
+  <div class="nav-right">
+   
+   <div class="nav-status"><span class="dot online"></span><span>LIVE</span></div>
   </div>
+ </div>
 </header>
 
 <main class="wrap"><section class="hero"><div><div class="eyebrow">ZONA A1 / TRADING ACADEMY / DIGITAL LIBRARY</div><h1>START<br><span>FROM BASIC.</span></h1><p>Pelajari fondasi trading yang perlu dipahami pemula sebelum masuk ke strategi yang lebih kompleks.</p><div class="meta"><span class="tag free">FREE E-BOOK</span><span class="tag">BEGINNER</span><span class="tag">PDF</span></div><a class="btn primary" href="ZONA_A1_Basic_Trading_Untuk_Pemula.pdf" download>↓ DOWNLOAD E-BOOK</a></div><div class="cover"><small>ZONA A1 / MATARYCLUB</small><strong>BASIC<br>TRADING</strong><small>PANDUAN DASAR TRADING UNTUK PEMULA</small></div></section>
 <section class="section"><div class="head"><div><h2>TRADING LIBRARY</h2><p>Materi edukasi ZONA A1</p></div><input class="search" id="q" placeholder="Search e-book..."></div>
 <div class="filters"><button class="filter active" data-cat="all">ALL</button><button class="filter" data-cat="basic">BASIC</button><button class="filter" data-cat="structure">STRUCTURE</button><button class="filter" data-cat="smc">SMC</button><button class="filter" data-cat="psychology">PSYCHOLOGY</button><button class="filter" data-cat="risk">RISK</button><button class="filter" data-cat="system">MATARY SYSTEM</button></div>
 <div class="grid" id="grid">
-<div class="card" data-cat="basic" data-title="basic trading"><div class="mini"><img src="assets/01-basic-trading.svg" alt="ZONA A1 basic"><small>01 / BEGINNER</small><b>BASIC<br>TRADING</b></div><h3>Basic Trading untuk Pemula</h3><p>Fondasi market, candlestick, structure, SMC, risk, psychology, plan dan journal.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><button class="btn read" data-src="pengenalan-trading.html" data-title="BASIC TRADING">BACA</button><a class="btn dl" href="ZONA_A1_Basic_Trading_Untuk_Pemula.pdf" download title="Download PDF">↓</a></div></div></div>
-<div class="card" data-cat="structure" data-title="market structure"><div class="mini blue"><img src="assets/02-market-structure.svg" alt="ZONA A1 structure"><small>02 / STRUCTURE</small><b>MARKET<br>STRUCTURE</b></div><h3>Market Structure</h3><p>HH, HL, LH, LL, BOS dan CHoCH.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><button class="btn read" data-src="market-structure.html" data-title="MARKET STRUCTURE">BACA</button><a class="btn dl" href="market-structure.pdf" download title="Download PDF">↓</a></div></div></div>
-<div class="card" data-cat="smc" data-title="smart money concept"><div class="mini purple"><img src="assets/03-smart-money-concept.svg" alt="ZONA A1 smc"><small>03 / SMC</small><b>SMART<br>MONEY</b></div><h3>Smart Money Concept</h3><p>Liquidity, Order Block, FVG, sweep dan struktur.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><button class="btn read" data-src="smart-money-concept.html" data-title="SMART MONEY CONCEPT">BACA</button><a class="btn dl" href="smart-money-concept.pdf" download title="Download PDF">↓</a></div></div></div>
-<div class="card" data-cat="psychology" data-title="trading psychology"><div class="mini red"><img src="assets/04-trading-psychology.svg" alt="ZONA A1 psychology"><small>04 / MINDSET</small><b>TRADING<br>PSYCHOLOGY</b></div><h3>Trading Psychology</h3><p>FOMO, fear, greed, revenge trading dan disiplin.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><button class="btn read" data-src="trading-psychology.html" data-title="TRADING PSYCHOLOGY">BACA</button><a class="btn dl" href="trading-psychology.pdf" download title="Download PDF">↓</a></div></div></div>
-<div class="card" data-cat="risk" data-title="risk management"><div class="mini green"><img src="assets/05-risk-management.svg" alt="ZONA A1 risk"><small>05 / RISK</small><b>RISK<br>MANAGEMENT</b></div><h3>Risk Management</h3><p>Lot, SL, TP, R:R dan drawdown.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><button class="btn read" data-src="risk-management.html" data-title="RISK MANAGEMENT">BACA</button><a class="btn dl" href="risk-management.pdf" download title="Download PDF">↓</a></div></div></div>
-<div class="card" data-cat="system" data-title="matary trading system"><div class="mini gold"><img src="assets/06-matary-trading-system.svg" alt="ZONA A1 system"><small>06 / MATARY</small><b>MATARY<br>SYSTEM</b></div><h3>Matary Trading System</h3><p>Materi khusus workflow ZONA A1 setelah memahami fondasi.</p><div class="foot"><span class="access">MEMBER / VIP</span><button class="btn read" data-src="matary-trading-system.html" data-title="MATARY TRADING SYSTEM">BACA</button></div></div>
+<div class="card" data-cat="basic" data-title="basic trading"><div class="mini"><img src="assets/01-basic-trading.svg" alt="ZONA A1 basic"><small>01 / BEGINNER</small></div><h3>Basic Trading untuk Pemula</h3><p>Fondasi market, candlestick, structure, SMC, risk, psychology, plan dan journal.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><a class="btn read" href="pengenalan-trading.html" aria-label="Baca BASIC TRADING">BACA</a><a class="btn dl" href="ZONA_A1_Basic_Trading_Untuk_Pemula.pdf" download title="Download PDF">↓</a></div></div></div>
+<div class="card" data-cat="structure" data-title="market structure"><div class="mini blue"><img src="assets/02-market-structure.svg" alt="ZONA A1 structure"><small>02 / STRUCTURE</small></div><h3>Market Structure</h3><p>HH, HL, LH, LL, BOS dan CHoCH.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><a class="btn read" href="market-structure.html" aria-label="Baca MARKET STRUCTURE">BACA</a><a class="btn dl" href="market-structure.pdf" download title="Download PDF">↓</a></div></div></div>
+<div class="card" data-cat="smc" data-title="smart money concept"><div class="mini purple"><img src="assets/03-smart-money-concept.svg" alt="ZONA A1 smc"><small>03 / SMC</small></div><h3>Smart Money Concept</h3><p>Liquidity, Order Block, FVG, sweep dan struktur.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><a class="btn read" href="smart-money-concept.html" aria-label="Baca SMART MONEY CONCEPT">BACA</a><a class="btn dl" href="smart-money-concept.pdf" download title="Download PDF">↓</a></div></div></div>
+<div class="card" data-cat="psychology" data-title="trading psychology"><div class="mini red"><img src="assets/04-trading-psychology.svg" alt="ZONA A1 psychology"><small>04 / MINDSET</small></div><h3>Trading Psychology</h3><p>FOMO, fear, greed, revenge trading dan disiplin.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><a class="btn read" href="trading-psychology.html" aria-label="Baca TRADING PSYCHOLOGY">BACA</a><a class="btn dl" href="trading-psychology.pdf" download title="Download PDF">↓</a></div></div></div>
+<div class="card" data-cat="risk" data-title="risk management"><div class="mini green"><img src="assets/05-risk-management.svg" alt="ZONA A1 risk"><small>05 / RISK</small></div><h3>Risk Management</h3><p>Lot, SL, TP, R:R dan drawdown.</p><div class="foot"><span class="access">● FREE</span><div class="actions"><a class="btn read" href="risk-management.html" aria-label="Baca RISK MANAGEMENT">BACA</a><a class="btn dl" href="risk-management.pdf" download title="Download PDF">↓</a></div></div></div>
+<div class="card" data-cat="system" data-title="matary trading system"><div class="mini gold"><img src="assets/06-matary-trading-system.svg" alt="ZONA A1 system"><small>06 / MATARY</small></div><h3>Matary Trading System</h3><p>Materi khusus workflow ZONA A1 setelah memahami fondasi.</p><div class="foot"><span class="access">MEMBER / VIP</span><a class="btn read" href="matary-trading-system.html" aria-label="Baca MATARY TRADING SYSTEM">BACA</a></div></div>
 </div><div class="routine"><div><b>01 — BASIC</b><span>Pahami istilah dan market.</span></div><div><b>02 — STRUCTURE</b><span>Baca struktur harga.</span></div><div><b>03 — RISK</b><span>Lindungi modal.</span></div><div><b>04 — SYSTEM</b><span>Bangun setup konsisten.</span></div></div></section></main>
-<div class="reader" id="reader"><div class="reader-bar"><div class="rt" id="readerTitle">E-BOOK</div><div class="racts"><a class="btn dl" id="readerDl" href="#" download title="Download PDF">↓ PDF</a><button class="btn" id="readerClose">✕ TUTUP</button></div></div><iframe id="readerFrame" src="about:blank"></iframe></div>
-
 <footer><div class="wrap">ZONA A1 • BY MATARYCLUB<br>Educational content only. Trading involves risk. Past performance/backtest does not guarantee future results.</div></footer>
 <script>let cat='all',cards=[...document.querySelectorAll('.card')],q=document.getElementById('q');function render(){let x=q.value.toLowerCase();cards.forEach(c=>c.style.display=(cat==='all'||c.dataset.cat===cat)&&((c.dataset.title||'').includes(x)||c.innerText.toLowerCase().includes(x))?'block':'none')}document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');cat=b.dataset.cat;render()});q.oninput=render;document.querySelectorAll('.soon').forEach(b=>b.onclick=()=>alert('E-book ini sedang dipersiapkan. Mulai dari Basic Trading terlebih dahulu.'));
-const reader=document.getElementById('reader'),readerFrame=document.getElementById('readerFrame'),readerTitle=document.getElementById('readerTitle'),readerDl=document.getElementById('readerDl'),readerClose=document.getElementById('readerClose');
-document.querySelectorAll('.read').forEach(b=>b.onclick=()=>{
-  readerFrame.src=b.dataset.src;
-  readerTitle.textContent=b.dataset.title||'E-BOOK';
-  const pdfBtn=b.closest('.foot').querySelector('.dl');
-  readerDl.href=pdfBtn?pdfBtn.getAttribute('href'):'#';
-  reader.classList.add('open');
-  document.body.style.overflow='hidden';
-});
-function closeReader(){reader.classList.remove('open');readerFrame.src='about:blank';document.body.style.overflow='';}
-readerClose.onclick=closeReader;
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReader();});</script>
+</script>
 <script id="a1-mobile-menu-js">
 (function(){
-  const body = document.body;
-  const toggle = document.getElementById('a1MobileToggle');
-  const menu = document.getElementById('a1MobileMenu');
-  const backdrop = document.getElementById('a1MobileBackdrop');
-  const close = document.getElementById('a1MobileClose');
+ const body = document.body;
+ const toggle = document.getElementById('a1MobileToggle');
+ const menu = document.getElementById('a1MobileMenu');
+ const backdrop = document.getElementById('a1MobileBackdrop');
+ const close = document.getElementById('a1MobileClose');
 
-  if(!toggle || !menu) return;
+ if(!toggle || !menu) return;
 
-  function openMenu(){
-    body.classList.add('a1-menu-open');
-    toggle.setAttribute('aria-expanded','true');
-    toggle.setAttribute('aria-label','Close navigation menu');
-    toggle.innerHTML='<i class="fa-solid fa-xmark"></i>';
-    menu.setAttribute('aria-hidden','false');
-  }
-  function closeMenu(){
-    body.classList.remove('a1-menu-open');
-    toggle.setAttribute('aria-expanded','false');
-    toggle.setAttribute('aria-label','Open navigation menu');
-    toggle.innerHTML='<i class="fa-solid fa-bars"></i>';
-    menu.setAttribute('aria-hidden','true');
-  }
+ function openMenu(){
+  body.classList.add('a1-menu-open');
+  toggle.setAttribute('aria-expanded','true');
+  toggle.setAttribute('aria-label','Close navigation menu');
+  toggle.innerHTML='<i class="fa-solid fa-xmark"></i>';
+  menu.setAttribute('aria-hidden','false');
+ }
+ function closeMenu(){
+  body.classList.remove('a1-menu-open');
+  toggle.setAttribute('aria-expanded','false');
+  toggle.setAttribute('aria-label','Open navigation menu');
+  toggle.innerHTML='<i class="fa-solid fa-bars"></i>';
+  menu.setAttribute('aria-hidden','true');
+ }
 
-  toggle.addEventListener('click', function(){
-    body.classList.contains('a1-menu-open') ? closeMenu() : openMenu();
-  });
-  if(close) close.addEventListener('click', closeMenu);
-  if(backdrop) backdrop.addEventListener('click', closeMenu);
+ toggle.addEventListener('click', function(){
+  body.classList.contains('a1-menu-open') ? closeMenu() : openMenu();
+ });
+ if(close) close.addEventListener('click', closeMenu);
+ if(backdrop) backdrop.addEventListener('click', closeMenu);
 
-  menu.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', closeMenu);
-  });
+ menu.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click', closeMenu);
+ });
 
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeMenu();
-  });
+ document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeMenu();
+ });
 
-  window.addEventListener('resize', function(){
-    if(window.innerWidth > 760) closeMenu();
-  });
+ window.addEventListener('resize', function(){
+  if(window.innerWidth > 760) closeMenu();
+ });
 })();
 </script>
 
 
 <script id="a1-mobile-scroll-fix-js">
 (function(){
-  const menu = document.getElementById('a1MobileMenu');
-  if(!menu) return;
+ const menu = document.getElementById('a1MobileMenu');
+ if(!menu) return;
 
-  /* When opened, start at the top so all navigation items are reachable. */
-  const observer = new MutationObserver(function(){
-    if(document.body.classList.contains('a1-menu-open')){
-      menu.scrollTop = 0;
-    }
-  });
-  observer.observe(document.body,{attributes:true,attributeFilter:['class']});
+ /* When opened, start at the top so all navigation items are reachable. */
+ const observer = new MutationObserver(function(){
+  if(document.body.classList.contains('a1-menu-open')){
+   menu.scrollTop = 0;
+  }
+ });
+ observer.observe(document.body,{attributes:true,attributeFilter:['class']});
 })();
 </script>
 
 
 <footer class="a1-legal-footer">
-  <div class="a1-legal-box">
-    <div class="a1-legal-title">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      Trading Disclaimer
-    </div>
-    <p class="a1-legal-text">
-      Materi E-Book ZONA A1 disusun untuk tujuan edukasi dan informasi umum, bukan merupakan
-      nasihat keuangan, investasi, atau ajakan untuk melakukan transaksi tertentu. Trading
-      memiliki risiko dan dapat menyebabkan kerugian sebagian maupun seluruh modal. Hasil
-      pembelajaran, backtest, simulasi, atau contoh historis tidak menjamin hasil di masa depan.
-      Setiap keputusan trading, ukuran posisi, leverage, dan pengelolaan risiko sepenuhnya menjadi
-      tanggung jawab masing-masing pengguna.
-    </p>
-    <div class="a1-legal-copy">
-      <strong>ZONA A1 / BY MATARYCLUB</strong> — Gunakan materi sebagai referensi belajar dan
-      selalu sesuaikan strategi dengan profil risiko serta kondisi pasar masing-masing.
-    </div>
+ <div class="a1-legal-box">
+  <div class="a1-legal-title">
+   <i class="fa-solid fa-triangle-exclamation"></i>
+   Trading Disclaimer
   </div>
+  <p class="a1-legal-text">
+   Materi E-Book ZONA A1 disusun untuk tujuan edukasi dan informasi umum, bukan merupakan
+   nasihat keuangan, investasi, atau ajakan untuk melakukan transaksi tertentu. Trading
+   memiliki risiko dan dapat menyebabkan kerugian sebagian maupun seluruh modal. Hasil
+   pembelajaran, backtest, simulasi, atau contoh historis tidak menjamin hasil di masa depan.
+   Setiap keputusan trading, ukuran posisi, leverage, dan pengelolaan risiko sepenuhnya menjadi
+   tanggung jawab masing-masing pengguna.
+  </p>
+  <div class="a1-legal-copy">
+   <strong>ZONA A1 / BY MATARYCLUB</strong> — Gunakan materi sebagai referensi belajar dan
+   selalu sesuaikan strategi dengan profil risiko serta kondisi pasar masing-masing.
+  </div>
+ </div>
 </footer>
 
+
+<script id="a1-mobile-final-js">
+(function(){
+ const t=document.getElementById('a1MobileToggle'),c=document.getElementById('a1MobileClose'),
+ m=document.getElementById('a1MobileMenu'),b=document.getElementById('a1MobileBackdrop');
+ if(!t||!m)return;
+ function openM(){m.classList.add('open','active','is-open');if(b)b.classList.add('show','active');document.body.classList.add('mobile-menu-open');t.setAttribute('aria-expanded','true');m.setAttribute('aria-hidden','false')}
+ function closeM(){m.classList.remove('open','active','is-open');if(b)b.classList.remove('show','active');document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true')}
+ t.addEventListener('click',openM);if(c)c.addEventListener('click',closeM);if(b)b.addEventListener('click',closeM);
+ m.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+})();
+</script>
 </body></html>
