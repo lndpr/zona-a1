@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengenalan Trading — Panduan Dasar untuk Pemula</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --bg-card: #ffffff;
+    --text: #1c1a17;
+    --text-dim: #5c574f;
+    --accent: #b45309;
+    --accent-2: #0f766e;
+    --border: #e7e2d9;
+    --danger: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161513;
+      --bg-card: #201e1a;
+      --text: #efece6;
+      --text-dim: #b3ac9e;
+      --accent: #e0a458;
+      --accent-2: #4fd1c5;
+      --border: #33302a;
+      --danger: #f87171;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161513;
+    --bg-card: #201e1a;
+    --text: #efece6;
+    --text-dim: #b3ac9e;
+    --accent: #e0a458;
+    --accent-2: #4fd1c5;
+    --border: #33302a;
+    --danger: #f87171;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Georgia", "Iowan Old Style", serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* Cover */
+  .cover {
+    padding: 90px 24px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .cover .kicker {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .cover h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    margin: 14px 0 8px;
+    letter-spacing: -0.5px;
+  }
+  .cover p.sub {
+    color: var(--text-dim);
+    font-size: 18px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 56px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  .toc h2 {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-top: 0;
+  }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin-bottom: 8px; }
+  .toc a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border); }
+  .toc a:hover { color: var(--accent); }
+
+  h2.chapter {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin: 0 0 4px;
+  }
+  h1.chapter-title {
+    font-size: 30px;
+    margin: 0 0 22px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+  }
+  section { margin-bottom: 64px; scroll-margin-top: 20px; }
+  h3 { font-size: 20px; margin-top: 34px; }
+  p { margin: 14px 0; }
+  ul, ol.list { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+
+  .callout {
+    background: var(--bg-card);
+    border-left: 4px solid var(--accent-2);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 22px 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+  }
+  .callout strong { color: var(--accent-2); }
+  .warn {
+    border-left-color: var(--danger);
+    background: var(--bg-card);
+  }
+  .warn strong { color: var(--danger); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14.5px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  table thead { background: var(--bg-card); }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  .glossary dt {
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 14px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  .glossary dd { margin: 2px 0 0; color: var(--text-dim); }
+
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  code {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.9em;
+  }
+
+/* ZONA A1 TERMINAL SKIN */
+:root{--bg:#050a0f;--bg-card:#09131b;--text:#e8f7fa;--text-dim:#8199a2;--accent:#00d9ff;--accent-2:#27e08b;--border:#17313f;--danger:#ff4d67;--bull:#27e08b;--bear:#ff4d67;--line:#35505b}
+body{background:radial-gradient(circle at 15% 0%,#09202a 0,#050a0f 38%,#03070b 100%);color:var(--text);font-family:Segoe UI,Arial,sans-serif;line-height:1.75}
+.nav{height:68px;border-bottom:1px solid var(--border);background:rgba(4,10,15,.94);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:30;backdrop-filter:blur(12px)}
+.nav .logo{font-weight:900;letter-spacing:1px}.nav .logo i{color:#00d9ff;font-style:normal}.nav .links{display:flex;gap:20px;font-size:12px}.nav a{color:#8da7b0;text-decoration:none}.nav a:hover{color:#00d9ff}.nav .btn{padding:8px 12px;border:1px solid #216174;border-radius:6px;color:#dffaff;background:#071820;font-weight:800;font-size:10px}
+.wrap{max-width:900px;padding-bottom:70px}.cover{padding:72px 24px 50px;background:linear-gradient(145deg,#071219,#081d26);border:1px solid var(--border);border-radius:0 0 14px 14px;margin-bottom:28px;box-shadow:0 25px 70px rgba(0,217,255,.06)}.cover .kicker{color:#00d9ff;font-family:Segoe UI,Arial,sans-serif}.cover h1{font-family:Segoe UI,Arial,sans-serif;font-weight:900}.cover p.sub{font-family:Segoe UI,Arial,sans-serif;color:#8ca4ad}.toc,.callout,.diagram{background:#09131b;border-color:var(--border);box-shadow:none}.toc{font-family:Segoe UI,Arial,sans-serif}.toc h2,h2.chapter{font-family:Segoe UI,Arial,sans-serif;color:#00d9ff}.toc a{color:#cfe5ea}.callout{font-family:Segoe UI,Arial,sans-serif;border-left-color:#00d9ff}.warn{border-left-color:#ff4d67}.callout strong{color:#00d9ff}.warn strong{color:#ff4d67}.diagram{border-radius:10px}h1.chapter-title{font-family:Segoe UI,Arial,sans-serif}.glossary dt{color:#00d9ff;font-family:Segoe UI,Arial,sans-serif}footer{font-family:Segoe UI,Arial,sans-serif;border-color:var(--border)}
+@media(max-width:700px){.nav .links{display:none}.nav{padding:0 18px}.wrap{padding-left:16px;padding-right:16px}.cover{padding-top:50px}}
+</style>
+
+<style id="a1-disclaimer-footer">
+.a1-legal-footer{
+  width:min(1180px,calc(100% - 36px));
+  margin:70px auto 0;
+  padding:28px 0 32px;
+  border-top:1px solid rgba(57,232,255,.12);
+}
+.a1-legal-box{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(10,20,29,.78),rgba(3,9,15,.92));
+  padding:20px 22px;
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+}
+.a1-legal-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  color:#dffcff;
+  font:900 10px/1 Inter,system-ui,sans-serif;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+.a1-legal-title i{color:#f59e0b}
+.a1-legal-text{
+  margin:0;
+  color:#8091a3;
+  font:500 10px/1.8 Inter,system-ui,sans-serif;
+}
+.a1-legal-copy{
+  margin-top:15px;
+  padding-top:13px;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:#5f7081;
+  font:500 9px/1.7 Inter,system-ui,sans-serif;
+}
+.a1-legal-copy strong{color:#8da0b3}
+@media(max-width:760px){
+  .a1-legal-footer{
+    width:calc(100% - 32px);
+    margin-top:45px;
+    padding-bottom:24px;
+  }
+  .a1-legal-box{padding:17px}
+  .a1-legal-text{font-size:9px;line-height:1.8}
+}
+</style>
+
+</head>
+<body><nav class="nav"><div class="logo">ZONA <i>A1</i> <small>BY MATARYCLUB</small></div><div class="links"><a href="ebook.html">E-Book Library</a><a href="market-structure.html">Structure</a><a href="smart-money-concept.html">SMC</a><a href="trading-psychology.html">Psychology</a><a href="risk-management.html">Risk</a></div><a class="btn" href="ebook.html">← LIBRARY</a></nav>
+
+
+<div class="cover">
+  <div class="kicker">Panduan Dasar</div>
+  <h1>Pengenalan Trading</h1>
+  <p class="sub">Memahami dasar-dasar trading di pasar finansial — konsep, instrumen, analisis, dan manajemen risiko untuk pemula.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="toc">
+    <h2>Daftar Isi</h2>
+    <ol>
+      <li><a href="#bab1">Apa Itu Trading?</a></li>
+      <li><a href="#bab2">Trading vs Investasi</a></li>
+      <li><a href="#bab3">Jenis-Jenis Pasar Trading</a></li>
+      <li><a href="#bab4">Instrumen dan Cara Kerja Order</a></li>
+      <li><a href="#bab5">Analisis Fundamental</a></li>
+      <li><a href="#bab6">Analisis Teknikal</a></li>
+      <li><a href="#bab7">Manajemen Risiko & Money Management</a></li>
+      <li><a href="#bab8">Psikologi Trading</a></li>
+      <li><a href="#bab9">Kesalahan Umum Trader Pemula</a></li>
+      <li><a href="#bab10">Memulai: Langkah Praktis</a></li>
+      <li><a href="#glossary">Glosarium Istilah</a></li>
+    </ol>
+  </div>
+
+  <section id="bab1">
+    <h2 class="chapter">Bab 1</h2>
+    <h1 class="chapter-title">Apa Itu Trading?</h1>
+    <p>Trading adalah aktivitas membeli dan menjual instrumen finansial — seperti mata uang, saham, komoditas, atau aset kripto — dengan tujuan mengambil untung dari pergerakan harga dalam jangka waktu yang relatif pendek. Berbeda dengan bekerja untuk gaji tetap, hasil trading bergantung sepenuhnya pada kemampuan membaca pasar dan mengelola risiko.</p>
+    <p>Secara sederhana, trader mencoba menjawab dua pertanyaan di setiap posisi yang dibuka: <em>ke arah mana harga akan bergerak</em>, dan <em>berapa besar risiko yang siap ditanggung jika prediksi itu salah</em>. Trading yang konsisten bukan soal selalu benar, tapi soal disiplin menjalankan proses yang sama berulang-ulang.</p>
+    <div class="callout">
+      <strong>Inti dari trading:</strong> bukan mencari "sinyal ajaib", tapi membangun sistem — cara masuk posisi, cara keluar, dan cara membatasi kerugian — yang bisa dijalankan berulang secara konsisten.
+    </div>
+    <h3>Kenapa Orang Trading?</h3>
+    <ul>
+      <li>Potensi penghasilan tambahan atau penghasilan utama dari pergerakan pasar.</li>
+      <li>Fleksibilitas waktu — bisa dilakukan paruh waktu maupun penuh waktu.</li>
+      <li>Akses pasar global yang makin mudah lewat platform online dan broker retail.</li>
+      <li>Ketertarikan pada analisis data, pola, dan pengambilan keputusan berbasis probabilitas.</li>
+    </ul>
+  </section>
+
+  <section id="bab2">
+    <h2 class="chapter">Bab 2</h2>
+    <h1 class="chapter-title">Trading vs Investasi</h1>
+    <p>Banyak pemula menyamakan trading dengan investasi, padahal keduanya punya filosofi, horizon waktu, dan pendekatan risiko yang berbeda.</p>
+    <table>
+      <thead>
+        <tr><th>Aspek</th><th>Trading</th><th>Investasi</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Horizon waktu</td><td>Menit hingga beberapa minggu</td><td>Bulan hingga tahunan</td></tr>
+        <tr><td>Fokus analisis</td><td>Pergerakan harga jangka pendek (teknikal)</td><td>Nilai fundamental jangka panjang</td></tr>
+        <tr><td>Frekuensi transaksi</td><td>Tinggi — buka/tutup posisi berkali-kali</td><td>Rendah — beli lalu ditahan</td></tr>
+        <tr><td>Tujuan utama</td><td>Memanfaatkan volatilitas harga</td><td>Pertumbuhan nilai aset & compounding</td></tr>
+        <tr><td>Toleransi risiko per transaksi</td><td>Dibatasi ketat (stop loss)</td><td>Lebih longgar, fokus fluktuasi jangka panjang</td></tr>
+      </tbody>
+    </table>
+    <p>Tidak ada yang lebih "benar" — keduanya bisa saling melengkapi. Banyak trader juga memiliki portofolio investasi jangka panjang secara terpisah dari akun trading aktif mereka.</p>
+  </section>
+
+  <section id="bab3">
+    <h2 class="chapter">Bab 3</h2>
+    <h1 class="chapter-title">Jenis-Jenis Pasar Trading</h1>
+    <h3>Forex (Foreign Exchange)</h3>
+    <p>Pasar pertukaran mata uang, diperdagangkan berpasangan seperti EUR/USD atau XAU/USD (emas terhadap dolar). Buka 24 jam pada hari kerja, likuiditas sangat tinggi, dan populer karena leverage yang ditawarkan broker.</p>
+    <h3>Saham</h3>
+    <p>Kepemilikan sebagian kecil dari sebuah perusahaan. Trading saham bisa dilakukan secara harian (day trading) atau berbasis tren jangka menengah (swing trading), mengikuti jam bursa masing-masing negara.</p>
+    <h3>Kripto (Cryptocurrency)</h3>
+    <p>Aset digital seperti Bitcoin, Ethereum, hingga token di jaringan seperti Solana. Pasar buka 24/7, volatilitasnya tinggi, dan mencakup trading di exchange terpusat (CEX) maupun langsung on-chain lewat decentralized exchange (DEX).</p>
+    <h3>Komoditas</h3>
+    <p>Emas, perak, minyak, hingga produk agrikultur. Sering dipakai sebagai aset "safe haven" saat kondisi ekonomi tidak stabil.</p>
+    <h3>Derivatif (Futures & Options)</h3>
+    <p>Kontrak yang nilainya diturunkan dari aset lain. Memungkinkan spekulasi arah harga maupun hedging tanpa harus memiliki aset dasarnya secara langsung, tapi kompleksitas dan risikonya juga lebih tinggi.</p>
+  </section>
+
+  <section id="bab4">
+    <h2 class="chapter">Bab 4</h2>
+    <h1 class="chapter-title">Instrumen dan Cara Kerja Order</h1>
+    <h3>Long vs Short</h3>
+    <p><strong>Long</strong> berarti membeli dengan ekspektasi harga naik. <strong>Short</strong> berarti "menjual duluan" (biasanya dengan pinjaman aset dari broker) dengan ekspektasi harga turun, lalu membeli kembali di harga lebih rendah untuk mengambil selisihnya.</p>
+    <h3>Jenis Order Dasar</h3>
+    <ul>
+      <li><strong>Market order</strong> — eksekusi langsung di harga pasar saat itu.</li>
+      <li><strong>Limit order</strong> — eksekusi hanya jika harga mencapai level tertentu yang lebih menguntungkan.</li>
+      <li><strong>Stop order</strong> — order yang aktif setelah harga menyentuh level tertentu, umum dipakai untuk stop loss.</li>
+      <li><strong>Take profit</strong> — level otomatis untuk mengunci keuntungan.</li>
+      <li><strong>Stop loss</strong> — level otomatis untuk membatasi kerugian.</li>
+    </ul>
+    <h3>Leverage</h3>
+    <p>Leverage memungkinkan trader mengontrol posisi lebih besar dari modal yang dimiliki, misalnya leverage 1:100 berarti modal $100 bisa mengontrol posisi senilai $10.000. Leverage memperbesar potensi untung, tapi memperbesar potensi rugi dengan proporsi yang sama.</p>
+    <div class="callout warn">
+      <strong>Perhatian:</strong> leverage adalah pedang bermata dua. Leverage tinggi tanpa manajemen risiko yang jelas adalah penyebab paling umum akun trading pemula cepat habis.
+    </div>
+  </section>
+
+  <section id="bab5">
+    <h2 class="chapter">Bab 5</h2>
+    <h1 class="chapter-title">Analisis Fundamental</h1>
+    <p>Analisis fundamental menilai "nilai wajar" suatu aset berdasarkan faktor ekonomi, keuangan, dan berita yang memengaruhinya.</p>
+    <ul>
+      <li><strong>Forex:</strong> suku bunga bank sentral, data inflasi, ketenagakerjaan, kebijakan moneter.</li>
+      <li><strong>Saham:</strong> laporan keuangan perusahaan, prospek industri, sentimen manajemen.</li>
+      <li><strong>Kripto:</strong> adopsi jaringan, perkembangan teknologi, regulasi, aktivitas on-chain.</li>
+      <li><strong>Komoditas:</strong> penawaran-permintaan global, kondisi geopolitik, cuaca (untuk agrikultur).</li>
+    </ul>
+    <p>Analisis fundamental biasanya lebih relevan untuk horizon waktu menengah-panjang, karena efeknya terhadap harga sering tidak instan.</p>
+  </section>
+
+  <section id="bab6">
+    <h2 class="chapter">Bab 6</h2>
+    <h1 class="chapter-title">Analisis Teknikal</h1>
+    <p>Analisis teknikal mempelajari pergerakan harga historis dan volume untuk memperkirakan arah harga selanjutnya, dengan asumsi bahwa pola perilaku pasar cenderung berulang.</p>
+    <h3>Konsep Dasar</h3>
+    <ul>
+      <li><strong>Candlestick chart</strong> — menampilkan harga buka, tutup, tertinggi, dan terendah dalam satu periode.</li>
+      <li><strong>Support & resistance</strong> — area harga yang secara historis sering menahan pergerakan naik atau turun.</li>
+      <li><strong>Tren</strong> — arah dominan pergerakan harga: naik (bullish), turun (bearish), atau menyamping (sideways).</li>
+      <li><strong>Volume</strong> — jumlah transaksi yang terjadi, sering dipakai mengonfirmasi kekuatan suatu pergerakan.</li>
+    </ul>
+    <h3>Indikator Populer</h3>
+    <ul>
+      <li><strong>Moving Average (MA/EMA)</strong> — meratakan pergerakan harga untuk melihat arah tren.</li>
+      <li><strong>RSI (Relative Strength Index)</strong> — mengukur kondisi jenuh beli (overbought) atau jenuh jual (oversold).</li>
+      <li><strong>MACD</strong> — mengukur momentum dan potensi perubahan tren.</li>
+      <li><strong>Bollinger Bands</strong> — mengukur volatilitas harga relatif terhadap rata-ratanya.</li>
+    </ul>
+    <div class="callout">
+      <strong>Catatan penting:</strong> indikator adalah alat bantu, bukan jaminan. Kombinasi price action + konteks pasar biasanya lebih andal daripada mengandalkan satu indikator secara mentah-mentah.
+    </div>
+  </section>
+
+  <section id="bab7">
+    <h2 class="chapter">Bab 7</h2>
+    <h1 class="chapter-title">Manajemen Risiko & Money Management</h1>
+    <p>Ini adalah bagian yang paling sering diabaikan pemula, padahal justru paling menentukan apakah seseorang bisa bertahan lama di dunia trading.</p>
+    <h3>Prinsip Dasar</h3>
+    <ul>
+      <li><strong>Risk per trade</strong> — banyak trader profesional membatasi risiko di kisaran 1–2% dari modal per transaksi, agar rangkaian kerugian beruntun tidak menghabiskan akun.</li>
+      <li><strong>Risk/reward ratio</strong> — membandingkan potensi kerugian dengan potensi keuntungan sebelum masuk posisi, misalnya rasio 1:2 berarti menargetkan keuntungan dua kali lipat dari risiko yang diambil.</li>
+      <li><strong>Position sizing</strong> — menentukan besar posisi berdasarkan jarak stop loss dan persentase risiko yang sudah ditetapkan, bukan berdasarkan "perasaan yakin".</li>
+      <li><strong>Diversifikasi</strong> — tidak menaruh seluruh modal pada satu instrumen atau satu arah posisi saja.</li>
+    </ul>
+    <div class="callout warn">
+      <strong>Fakta penting:</strong> win rate tinggi tidak menjamin profit jika risk/reward-nya buruk. Sebaliknya, win rate rendah bisa tetap menguntungkan jika manajemen risikonya disiplin.
+    </div>
+  </section>
+
+  <section id="bab8">
+    <h2 class="chapter">Bab 8</h2>
+    <h1 class="chapter-title">Psikologi Trading</h1>
+    <p>Sistem trading yang bagus bisa gagal total di tangan trader yang tidak disiplin secara mental. Beberapa pola psikologis yang umum dihadapi:</p>
+    <ul>
+      <li><strong>Fear of missing out (FOMO)</strong> — masuk posisi karena takut ketinggalan momentum, tanpa analisis yang matang.</li>
+      <li><strong>Revenge trading</strong> — mencoba "balas dendam" setelah rugi dengan membuka posisi besar secara impulsif.</li>
+      <li><strong>Overconfidence</strong> — menaikkan ukuran posisi secara drastis setelah serangkaian kemenangan.</li>
+      <li><strong>Analysis paralysis</strong> — terlalu banyak mempertimbangkan indikator sehingga gagal mengambil keputusan tepat waktu.</li>
+    </ul>
+    <p>Mengatasi ini biasanya butuh aturan tertulis yang jelas — kapan masuk, kapan keluar, berapa risiko maksimal per hari — supaya keputusan tidak diambil berdasarkan emosi saat itu.</p>
+  </section>
+
+  <section id="bab9">
+    <h2 class="chapter">Bab 9</h2>
+    <h1 class="chapter-title">Kesalahan Umum Trader Pemula</h1>
+    <ol class="list">
+      <li>Trading tanpa rencana atau strategi yang teruji.</li>
+      <li>Tidak memasang stop loss, atau memindahkannya saat harga bergerak melawan posisi.</li>
+      <li>Menggunakan leverage terlalu besar relatif terhadap modal.</li>
+      <li>Overtrading — membuka terlalu banyak posisi karena bosan atau ingin "balik modal cepat".</li>
+      <li>Mengikuti sinyal orang lain tanpa memahami logikanya sendiri.</li>
+      <li>Tidak mencatat dan mengevaluasi hasil trading (trading journal).</li>
+      <li>Berpindah-pindah strategi setiap kali mengalami kerugian, tanpa memberi waktu strategi itu terbukti valid.</li>
+    </ol>
+  </section>
+
+  <section id="bab10">
+    <h2 class="chapter">Bab 10</h2>
+    <h1 class="chapter-title">Memulai: Langkah Praktis</h1>
+    <ol class="list">
+      <li><strong>Pelajari dasar-dasar pasar</strong> yang ingin ditekuni — forex, saham, atau kripto — termasuk jam operasional dan karakteristik volatilitasnya.</li>
+      <li><strong>Buka akun demo</strong> di broker/exchange terpercaya untuk berlatih tanpa risiko uang sungguhan.</li>
+      <li><strong>Susun rencana trading tertulis</strong> — kriteria masuk posisi, level stop loss/take profit, dan maksimal risiko per hari.</li>
+      <li><strong>Mulai dengan modal kecil</strong> saat pindah ke akun riil, sambil tetap menjalankan aturan yang sudah dibuat.</li>
+      <li><strong>Catat setiap transaksi</strong> dalam trading journal — alasan masuk, hasil, dan evaluasi apa yang bisa diperbaiki.</li>
+      <li><strong>Evaluasi berkala</strong> — tinjau performa mingguan/bulanan, bukan per transaksi, untuk melihat konsistensi sistem secara objektif.</li>
+    </ol>
+    <div class="callout">
+      <strong>Ingat:</strong> tidak ada strategi yang menang 100% dari waktu. Tujuan utama tahap awal bukan profit besar, tapi membangun proses yang bisa dipercaya dan diulang.
+    </div>
+  </section>
+
+  <section id="glossary">
+    <h2 class="chapter">Referensi</h2>
+    <h1 class="chapter-title">Glosarium Istilah</h1>
+    <dl class="glossary">
+      <dt>Pip</dt><dd>Satuan perubahan harga terkecil pada pasangan mata uang forex.</dd>
+      <dt>Spread</dt><dd>Selisih antara harga beli (ask) dan harga jual (bid) suatu instrumen.</dd>
+      <dt>Lot</dt><dd>Satuan standar ukuran posisi dalam trading forex/komoditas.</dd>
+      <dt>Drawdown</dt><dd>Penurunan nilai akun dari titik tertinggi sebelumnya, biasanya dinyatakan dalam persen.</dd>
+      <dt>Slippage</dt><dd>Selisih antara harga yang diharapkan saat order dan harga eksekusi aktual.</dd>
+      <dt>Margin call</dt><dd>Peringatan broker saat modal di akun mendekati batas minimum untuk menahan posisi terbuka.</dd>
+      <dt>Liquidity</dt><dd>Seberapa mudah suatu aset dibeli/dijual tanpa memengaruhi harga secara signifikan.</dd>
+      <dt>Backtest</dt><dd>Menguji strategi trading terhadap data harga historis sebelum dipakai di pasar riil.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    Pengenalan Trading — Panduan Dasar untuk Pemula
+  </footer>
+
+</div>
+
+<footer class="a1-legal-footer">
+  <div class="a1-legal-box">
+    <div class="a1-legal-title">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Trading Disclaimer
+    </div>
+    <p class="a1-legal-text">
+      Materi E-Book ZONA A1 disusun untuk tujuan edukasi dan informasi umum, bukan merupakan
+      nasihat keuangan, investasi, atau ajakan untuk melakukan transaksi tertentu. Trading
+      memiliki risiko dan dapat menyebabkan kerugian sebagian maupun seluruh modal. Hasil
+      pembelajaran, backtest, simulasi, atau contoh historis tidak menjamin hasil di masa depan.
+      Setiap keputusan trading, ukuran posisi, leverage, dan pengelolaan risiko sepenuhnya menjadi
+      tanggung jawab masing-masing pengguna.
+    </p>
+    <div class="a1-legal-copy">
+      <strong>ZONA A1 / BY MATARYCLUB</strong> — Gunakan materi sebagai referensi belajar dan
+      selalu sesuaikan strategi dengan profil risiko serta kondisi pasar masing-masing.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

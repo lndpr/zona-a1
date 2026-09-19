@@ -1246,6 +1246,340 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
 .a1-native-news-section .a1-news-foot{font-size:7.5px!important}
 .a1-result-name{font-size:10px!important}.a1-result-values span{font-size:7px!important}.a1-result-values b{font-size:10px!important}.a1-result-impact span{font-size:7px!important}.a1-result-impact b{font-size:10px!important}
 </style>
+
+<style id="a1-navigation-upgrade">
+/* ===== ZONA A1 MULTI-FEATURE NAVIGATION ===== */
+.nav{
+  background:rgba(2,7,13,.78)!important;
+  border-bottom:1px solid rgba(57,232,255,.11)!important;
+}
+.nav-inner{
+  height:72px!important;
+  gap:18px;
+}
+.brand{flex:0 0 auto}
+.a1-main-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  flex:1;
+}
+.a1-nav-link{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:10px 11px;
+  border:1px solid transparent;
+  border-radius:10px;
+  color:#8092a4;
+  font:800 9px/1 Inter,system-ui,sans-serif;
+  letter-spacing:.65px;
+  text-transform:uppercase;
+  transition:.25s;
+}
+.a1-nav-link i{font-size:10px}
+.a1-nav-link:hover,
+.a1-nav-link.active{
+  color:#eaffff;
+  background:rgba(57,232,255,.055);
+  border-color:rgba(57,232,255,.13);
+}
+.a1-nav-link.active:after{
+  content:"";
+  position:absolute;
+  left:12px;right:12px;bottom:-9px;
+  height:2px;
+  background:#39e8ff;
+  box-shadow:0 0 12px rgba(57,232,255,.7);
+}
+.a1-nav-link.rebate-link{
+  color:#9df5c7;
+  border-color:rgba(84,245,154,.12);
+  background:rgba(84,245,154,.025);
+}
+.a1-nav-link.rebate-link:hover{
+  color:#fff;
+  border-color:rgba(84,245,154,.35);
+  background:rgba(84,245,154,.07);
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:0 0 auto;
+}
+.a1-join-btn{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:9px 12px;
+  border-radius:10px;
+  border:1px solid rgba(57,232,255,.3);
+  background:linear-gradient(135deg,rgba(57,232,255,.12),rgba(63,124,255,.08));
+  color:#dffcff;
+  font:900 8px/1 Inter,system-ui,sans-serif;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  box-shadow:0 0 24px rgba(57,232,255,.07);
+  transition:.25s;
+}
+.a1-join-btn:hover{
+  border-color:#39e8ff;
+  box-shadow:0 0 28px rgba(57,232,255,.18);
+  transform:translateY(-1px);
+}
+@media(max-width:1000px){
+  .a1-nav-link span{display:none}
+  .a1-nav-link{padding:10px}
+}
+@media(max-width:760px){
+  .nav-inner{height:66px!important;gap:8px}
+  .a1-main-nav{
+    overflow-x:auto;
+    justify-content:flex-start;
+    scrollbar-width:none;
+  }
+  .a1-main-nav::-webkit-scrollbar{display:none}
+  .a1-nav-link{flex:0 0 auto;padding:9px}
+  .a1-nav-link.active:after{display:none}
+  .a1-join-btn span{display:none}
+  .a1-join-btn{padding:9px 10px}
+  .nav-status{display:none}
+  .brand-name{font-size:12px}
+  .brand-sub{font-size:7px}
+}
+@media(max-width:480px){
+  .a1-main-nav{display:none}
+  .nav-right{margin-left:auto}
+}
+</style>
+
+
+<style id="a1-mobile-menu">
+.a1-mobile-toggle,
+.a1-mobile-menu,
+.a1-mobile-backdrop{display:none}
+
+@media (max-width:760px){
+  .a1-mobile-toggle{
+    display:grid!important;
+    place-items:center;
+    width:40px;
+    height:40px;
+    flex:0 0 40px;
+    border-radius:12px;
+    border:1px solid rgba(57,232,255,.32);
+    background:rgba(57,232,255,.06);
+    color:#dffcff;
+    font-size:15px;
+    cursor:pointer;
+    transition:.25s;
+  }
+  .a1-mobile-toggle:hover{
+    border-color:#39e8ff;
+    background:rgba(57,232,255,.12);
+    box-shadow:0 0 24px rgba(57,232,255,.14);
+  }
+
+  /* Hide the desktop nav and desktop status on small screens.
+     The hamburger replaces them. */
+  .a1-main-nav{display:none!important}
+  .nav-right .nav-status{display:none!important}
+  .nav-right{gap:8px!important}
+
+  .a1-mobile-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:998;
+    background:rgba(0,4,9,.72);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+  }
+
+  .a1-mobile-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index:999;
+    width:min(330px,88vw);
+    padding:22px 18px;
+    display:flex!important;
+    flex-direction:column;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(57,232,255,.12),transparent 35%),
+      linear-gradient(180deg,#07111a 0%,#02070d 100%);
+    border-left:1px solid rgba(57,232,255,.18);
+    box-shadow:-20px 0 70px rgba(0,0,0,.45);
+    transform:translateX(105%);
+    transition:transform .3s cubic-bezier(.22,.8,.2,1);
+    overflow-y:auto;
+  }
+
+  body.a1-menu-open{overflow:hidden}
+  body.a1-menu-open .a1-mobile-menu{transform:translateX(0)}
+  body.a1-menu-open .a1-mobile-backdrop{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .a1-mobile-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 2px 20px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .a1-mobile-title{
+    color:#f4fbff;
+    font-weight:900;
+    font-size:16px;
+    letter-spacing:-.5px;
+  }
+  .a1-mobile-title span{color:#22d3ee}
+  .a1-mobile-head small{
+    display:block;
+    margin-top:4px;
+    color:#6f8295;
+    font-size:8px;
+    letter-spacing:2px;
+  }
+  .a1-mobile-close{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    border:1px solid rgba(57,232,255,.2);
+    background:rgba(255,255,255,.035);
+    color:#bfefff;
+    cursor:pointer;
+    font-size:15px;
+  }
+
+  .a1-mobile-links{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    padding:20px 0;
+  }
+  .a1-mobile-links a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-height:50px;
+    padding:0 15px;
+    border-radius:12px;
+    border:1px solid transparent;
+    color:#9aabba;
+    text-decoration:none;
+    font:800 11px/1 Inter,system-ui,sans-serif;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    transition:.2s;
+  }
+  .a1-mobile-links a i{
+    width:18px;
+    text-align:center;
+    color:#22d3ee;
+    font-size:13px;
+  }
+  .a1-mobile-links a:hover,
+  .a1-mobile-links a:active{
+    color:#effcff;
+    background:rgba(57,232,255,.06);
+    border-color:rgba(57,232,255,.14);
+  }
+  .a1-mobile-links a.mobile-rebate{
+    color:#9df5c7;
+    border-color:rgba(84,245,154,.1);
+    background:rgba(84,245,154,.025);
+  }
+  .a1-mobile-links a.mobile-rebate i{color:#4ade80}
+
+  .a1-mobile-join{
+    margin-top:auto;
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border-radius:12px;
+    border:1px solid rgba(57,232,255,.3);
+    background:linear-gradient(135deg,rgba(57,232,255,.13),rgba(63,124,255,.08));
+    color:#e6fcff;
+    text-decoration:none;
+    font:900 9px/1 Inter,system-ui,sans-serif;
+    letter-spacing:1px;
+  }
+}
+
+@media (min-width:761px){
+  .a1-mobile-toggle,
+  .a1-mobile-menu,
+  .a1-mobile-backdrop{display:none!important}
+}
+</style>
+
+
+<style id="a1-mobile-scroll-fix">
+@media (max-width:760px){
+  html,body{min-height:100%;}
+
+  .a1-mobile-menu{
+    position:fixed!important;
+    top:0!important;
+    right:0!important;
+    bottom:0!important;
+    height:100dvh!important;
+    max-height:100dvh!important;
+    width:min(330px,88vw)!important;
+    box-sizing:border-box!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    padding-bottom:28px!important;
+    z-index:9999!important;
+  }
+
+  .a1-mobile-menu .a1-mobile-head{
+    position:sticky;
+    top:0;
+    z-index:3;
+    flex:0 0 auto;
+    background:rgba(4,12,19,.96);
+    backdrop-filter:blur(14px);
+  }
+
+  .a1-mobile-links{
+    flex:0 0 auto!important;
+    overflow:visible!important;
+  }
+
+  .a1-mobile-join{
+    flex:0 0 auto!important;
+    margin-top:28px!important;
+    margin-bottom:4px!important;
+  }
+
+  .a1-mobile-backdrop{
+    z-index:9998!important;
+  }
+
+  /* Prevent the main page from stealing the swipe while drawer is open. */
+  body.a1-menu-open{
+    overflow:hidden!important;
+    touch-action:none;
+  }
+  body.a1-menu-open .a1-mobile-menu{
+    touch-action:auto;
+  }
+}
+</style>
+
 </head>
 <body>
 <canvas id="astra-canvas"></canvas><div class="motion-orbs"><span class="motion-orb o1"></span><span class="motion-orb o2"></span><span class="motion-orb o3"></span></div>
@@ -1253,16 +1587,55 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
 
 <header class="nav">
   <div class="container nav-inner">
-    <div class="brand">
+    <a class="brand" href="#home" aria-label="ZONA A1 Home">
       <div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div>
       <div><div class="brand-name">ZONA <span>A1</span></div><span class="brand-sub">BY MATARYCLUB</span></div>
+    </a>
+
+    <nav class="a1-main-nav" aria-label="Main navigation">
+      <a class="a1-nav-link active" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a><a class="a1-nav-link" href="ebook.html"><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a>
+    </nav>
+<button class="a1-mobile-toggle" id="a1MobileToggle" type="button"
+        aria-label="Open navigation menu" aria-expanded="false">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="a1-mobile-backdrop" id="a1MobileBackdrop"></div>
+<aside class="a1-mobile-menu" id="a1MobileMenu" aria-hidden="true">
+  <div class="a1-mobile-head">
+    <div>
+      <div class="a1-mobile-title">ZONA <span>A1</span></div>
+      <small>BY MATARYCLUB</small>
     </div>
-    <div class="nav-status"><span class="dot" id="navDot"></span><span id="navStatus">CONNECTING</span></div>
+    <button class="a1-mobile-close" id="a1MobileClose" type="button" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="a1-mobile-links">
+    <a href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+    <a href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a>
+    <a href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a>
+    <a href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a>
+    <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a>
+    <a class="mobile-rebate" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a>
+  </div>
+
+  <a class="a1-mobile-join" href="rebate.html">
+    <i class="fa-solid fa-user-plus"></i> JOIN PROGRAM
+  </a>
+</aside>
+
+
+    <div class="nav-right">
+      <a class="a1-join-btn" href="rebate.html"><i class="fa-solid fa-user-plus"></i><span>Join Program</span></a>
+      <div class="nav-status"><span class="dot" id="navDot"></span><span id="navStatus">CONNECTING</span></div>
+    </div>
   </div>
 </header>
 
 <main>
-<section class="hero reveal">
+<section class="hero reveal" id="home">
   <div class="eyebrow"><i class="fa-solid fa-circle"></i> ZONA A1 • LIVE TRADING ENGINE</div>
   <h1>Smart Money.<br><span class="gradient">Executed Live.</span></h1>
   <p>Real-time signal feed dari ZONA EA yang berjalan di MetaTrader 5. Dirancang dengan interface yang ringan, modern, dan fokus pada informasi penting.</p>
@@ -1381,7 +1754,7 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
 
 
 
-  <section class="intel-grid">
+  <section class="intel-grid" id="intelligence">
     <div class="card intel-panel reveal">
       <div class="intel-title"><b>SESSION MONITOR</b><span id="sessionTime">LOCAL TIME</span></div>
       <div class="session-strip">
@@ -1399,7 +1772,7 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
     </div>
   </section>
 
-  <section class="layout">
+  <section class="layout" id="signals">
     <div>
       
 <div class="live-hub reveal" id="liveHub">
@@ -1425,7 +1798,7 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
         <div class="calendar-grid" id="tradeCalendar"></div>
       </section>
 
-      <section class="promo-tools">
+      <section class="promo-tools" id="tools">
   <div class="promo-heading">
     <span>TOOLS &amp; EXECUTION</span>
     <h2>ZONA A1 <b>TRADING TOOLS</b></h2>
@@ -3073,6 +3446,93 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
   setInterval(()=>{if(articles.length||resultStories.length)render()},30000);
 })();
 </script>
+
+<script id="a1-navigation-js">
+(function(){
+  const links=[...document.querySelectorAll('.a1-nav-link')];
+  const targets=links
+    .map(a=>({a,id:a.getAttribute('href')}))
+    .filter(x=>x.id && x.id.startsWith('#'));
+  function setActive(id){
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+  }
+  targets.forEach(x=>{
+    x.a.addEventListener('click',()=>setActive(x.id));
+  });
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) setActive('#'+e.target.id);
+    });
+  },{rootMargin:'-25% 0px -60% 0px',threshold:0});
+  ['home','signals','intelligence','tools'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) obs.observe(el);
+  });
+})();
+</script>
+
+
+<script id="a1-mobile-menu-js">
+(function(){
+  const body = document.body;
+  const toggle = document.getElementById('a1MobileToggle');
+  const menu = document.getElementById('a1MobileMenu');
+  const backdrop = document.getElementById('a1MobileBackdrop');
+  const close = document.getElementById('a1MobileClose');
+
+  if(!toggle || !menu) return;
+
+  function openMenu(){
+    body.classList.add('a1-menu-open');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','Close navigation menu');
+    toggle.innerHTML='<i class="fa-solid fa-xmark"></i>';
+    menu.setAttribute('aria-hidden','false');
+  }
+  function closeMenu(){
+    body.classList.remove('a1-menu-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open navigation menu');
+    toggle.innerHTML='<i class="fa-solid fa-bars"></i>';
+    menu.setAttribute('aria-hidden','true');
+  }
+
+  toggle.addEventListener('click', function(){
+    body.classList.contains('a1-menu-open') ? closeMenu() : openMenu();
+  });
+  if(close) close.addEventListener('click', closeMenu);
+  if(backdrop) backdrop.addEventListener('click', closeMenu);
+
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 760) closeMenu();
+  });
+})();
+</script>
+
+
+<script id="a1-mobile-scroll-fix-js">
+(function(){
+  const menu = document.getElementById('a1MobileMenu');
+  if(!menu) return;
+
+  /* When opened, start at the top so all navigation items are reachable. */
+  const observer = new MutationObserver(function(){
+    if(document.body.classList.contains('a1-menu-open')){
+      menu.scrollTop = 0;
+    }
+  });
+  observer.observe(document.body,{attributes:true,attributeFilter:['class']});
+})();
+</script>
+
 </body>
 </html>
 

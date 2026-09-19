@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matary Trading System — Alur Teknik ZONA A1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><style id="a1-header-match">
+/* ===== ZONA A1 HEADER — MATCH INDEX.HTML ===== */
+.nav{position:sticky!important;top:0!important;z-index:50!important;background:rgba(2,7,13,.78)!important;backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(57,232,255,.11)!important}
+.nav-inner{width:min(1180px,calc(100% - 36px));margin:auto;height:72px!important;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;text-decoration:none;color:inherit}
+.brand-icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(34,211,238,.2),rgba(59,130,246,.2));border:1px solid rgba(34,211,238,.35);box-shadow:0 0 30px rgba(34,211,238,.12)}
+.brand-name{font-weight:900;letter-spacing:-.7px}.brand-name span{color:#22d3ee}
+.brand-sub{display:block;font-size:9px;color:#718096;letter-spacing:1.7px;margin-top:2px}
+.a1-main-nav{display:flex;align-items:center;justify-content:center;gap:4px;flex:1}
+.a1-nav-link{position:relative;display:flex;align-items:center;gap:7px;padding:10px 11px;border:1px solid transparent;border-radius:10px;color:#8092a4;font:800 9px/1 Inter,system-ui,sans-serif;letter-spacing:.65px;text-transform:uppercase;transition:.25s;text-decoration:none}
+.a1-nav-link i{font-size:10px}
+.a1-nav-link:hover,.a1-nav-link.active{color:#eaffff;background:rgba(57,232,255,.055);border-color:rgba(57,232,255,.13)}
+.a1-nav-link.active:after{content:"";position:absolute;left:12px;right:12px;bottom:-9px;height:2px;background:#39e8ff;box-shadow:0 0 12px rgba(57,232,255,.7)}
+.a1-nav-link.rebate-link{color:#9df5c7;border-color:rgba(84,245,154,.12);background:rgba(84,245,154,.025)}
+.a1-nav-link.rebate-link:hover{color:#fff;border-color:rgba(84,245,154,.35);background:rgba(84,245,154,.07)}
+.nav-right{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.a1-join-btn{display:flex;align-items:center;gap:7px;padding:9px 12px;border-radius:10px;border:1px solid rgba(57,232,255,.3);background:linear-gradient(135deg,rgba(57,232,255,.12),rgba(63,124,255,.08));color:#dffcff;font:900 8px/1 Inter,system-ui,sans-serif;letter-spacing:.8px;text-transform:uppercase;box-shadow:0 0 24px rgba(57,232,255,.07);transition:.25s;text-decoration:none}
+.a1-join-btn:hover{border-color:#39e8ff;box-shadow:0 0 28px rgba(57,232,255,.18);transform:translateY(-1px)}
+.nav-status{display:flex;align-items:center;gap:8px;color:#91a0b8;font-size:11px;font-weight:700;letter-spacing:1px}
+.dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;box-shadow:0 0 16px rgba(245,158,11,.8)}
+.dot.online{background:#4ade80;box-shadow:0 0 16px rgba(74,222,128,.85);animation:a1Pulse 1.5s infinite}
+@keyframes a1Pulse{50%{transform:scale(.72);opacity:.55}}
+@media(max-width:1000px){.a1-nav-link span{display:none}.a1-nav-link{padding:10px}}
+@media(max-width:760px){.nav-inner{height:66px!important;gap:8px}.a1-main-nav{overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.a1-main-nav::-webkit-scrollbar{display:none}.a1-nav-link{flex:0 0 auto;padding:9px}.a1-nav-link.active:after{display:none}.a1-join-btn span{display:none}.a1-join-btn{padding:9px 10px}.nav-status{display:none}.brand-name{font-size:12px}.brand-sub{font-size:7px}}
+@media(max-width:480px){.a1-main-nav{display:none}.nav-right{margin-left:auto}}
+</style><style id="a1-mobile-menu">
+.a1-mobile-toggle,
+.a1-mobile-menu,
+.a1-mobile-backdrop{display:none}
+
+@media (max-width:760px){
+  .a1-mobile-toggle{
+    display:grid!important;
+    place-items:center;
+    width:40px;
+    height:40px;
+    flex:0 0 40px;
+    border-radius:12px;
+    border:1px solid rgba(57,232,255,.32);
+    background:rgba(57,232,255,.06);
+    color:#dffcff;
+    font-size:15px;
+    cursor:pointer;
+    transition:.25s;
+  }
+  .a1-mobile-toggle:hover{
+    border-color:#39e8ff;
+    background:rgba(57,232,255,.12);
+    box-shadow:0 0 24px rgba(57,232,255,.14);
+  }
+
+  /* Hide the desktop nav and desktop status on small screens.
+     The hamburger replaces them. */
+  .a1-main-nav{display:none!important}
+  .nav-right .nav-status{display:none!important}
+  .nav-right{gap:8px!important}
+
+  .a1-mobile-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:998;
+    background:rgba(0,4,9,.72);
+    backdrop-filter:blur(4px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+  }
+
+  .a1-mobile-menu{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index:999;
+    width:min(330px,88vw);
+    padding:22px 18px;
+    display:flex!important;
+    flex-direction:column;
+    background:
+      radial-gradient(circle at 100% 0%,rgba(57,232,255,.12),transparent 35%),
+      linear-gradient(180deg,#07111a 0%,#02070d 100%);
+    border-left:1px solid rgba(57,232,255,.18);
+    box-shadow:-20px 0 70px rgba(0,0,0,.45);
+    transform:translateX(105%);
+    transition:transform .3s cubic-bezier(.22,.8,.2,1);
+    overflow-y:auto;
+  }
+
+  body.a1-menu-open{overflow:hidden}
+  body.a1-menu-open .a1-mobile-menu{transform:translateX(0)}
+  body.a1-menu-open .a1-mobile-backdrop{
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .a1-mobile-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 2px 20px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .a1-mobile-title{
+    color:#f4fbff;
+    font-weight:900;
+    font-size:16px;
+    letter-spacing:-.5px;
+  }
+  .a1-mobile-title span{color:#22d3ee}
+  .a1-mobile-head small{
+    display:block;
+    margin-top:4px;
+    color:#6f8295;
+    font-size:8px;
+    letter-spacing:2px;
+  }
+  .a1-mobile-close{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    border:1px solid rgba(57,232,255,.2);
+    background:rgba(255,255,255,.035);
+    color:#bfefff;
+    cursor:pointer;
+    font-size:15px;
+  }
+
+  .a1-mobile-links{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    padding:20px 0;
+  }
+  .a1-mobile-links a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-height:50px;
+    padding:0 15px;
+    border-radius:12px;
+    border:1px solid transparent;
+    color:#9aabba;
+    text-decoration:none;
+    font:800 11px/1 Inter,system-ui,sans-serif;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    transition:.2s;
+  }
+  .a1-mobile-links a i{
+    width:18px;
+    text-align:center;
+    color:#22d3ee;
+    font-size:13px;
+  }
+  .a1-mobile-links a:hover,
+  .a1-mobile-links a:active{
+    color:#effcff;
+    background:rgba(57,232,255,.06);
+    border-color:rgba(57,232,255,.14);
+  }
+  .a1-mobile-links a.mobile-rebate{
+    color:#9df5c7;
+    border-color:rgba(84,245,154,.1);
+    background:rgba(84,245,154,.025);
+  }
+  .a1-mobile-links a.mobile-rebate i{color:#4ade80}
+
+  .a1-mobile-join{
+    margin-top:auto;
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border-radius:12px;
+    border:1px solid rgba(57,232,255,.3);
+    background:linear-gradient(135deg,rgba(57,232,255,.13),rgba(63,124,255,.08));
+    color:#e6fcff;
+    text-decoration:none;
+    font:900 9px/1 Inter,system-ui,sans-serif;
+    letter-spacing:1px;
+  }
+}
+
+@media (min-width:761px){
+  .a1-mobile-toggle,
+  .a1-mobile-menu,
+  .a1-mobile-backdrop{display:none!important}
+}
+</style><style id="a1-mobile-scroll-fix">
+@media (max-width:760px){
+  html,body{min-height:100%;}
+
+  .a1-mobile-menu{
+    position:fixed!important;
+    top:0!important;
+    right:0!important;
+    bottom:0!important;
+    height:100dvh!important;
+    max-height:100dvh!important;
+    width:min(330px,88vw)!important;
+    box-sizing:border-box!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    padding-bottom:28px!important;
+    z-index:9999!important;
+  }
+
+  .a1-mobile-menu .a1-mobile-head{
+    position:sticky;
+    top:0;
+    z-index:3;
+    flex:0 0 auto;
+    background:rgba(4,12,19,.96);
+    backdrop-filter:blur(14px);
+  }
+
+  .a1-mobile-links{
+    flex:0 0 auto!important;
+    overflow:visible!important;
+  }
+
+  .a1-mobile-join{
+    flex:0 0 auto!important;
+    margin-top:28px!important;
+    margin-bottom:4px!important;
+  }
+
+  .a1-mobile-backdrop{
+    z-index:9998!important;
+  }
+
+  /* Prevent the main page from stealing the swipe while drawer is open. */
+  body.a1-menu-open{
+    overflow:hidden!important;
+    touch-action:none;
+  }
+  body.a1-menu-open .a1-mobile-menu{
+    touch-action:auto;
+  }
+}
+</style>
+<style id="a1-matary-theme">
+:root{--bg:#02070d;--card:#07121c;--text:#eaf8ff;--dim:#879aaa;--cyan:#39e8ff;--blue:#3f7cff;--green:#4ade80;--red:#ff5577;--gold:#f5c451;--border:rgba(57,232,255,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:radial-gradient(circle at 15% 10%,rgba(57,232,255,.07),transparent 30%),radial-gradient(circle at 90% 15%,rgba(63,124,255,.07),transparent 28%),linear-gradient(180deg,#02070d,#030910 60%,#02060b);font-family:Inter,system-ui,sans-serif;line-height:1.7}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(57,232,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(57,232,255,.025) 1px,transparent 1px);background-size:48px 48px}
+.matary-doc{width:min(1120px,calc(100% - 32px));margin:auto;padding:48px 0 70px}
+.matary-cover{padding:48px 32px 42px;margin-bottom:26px;border:1px solid var(--border);border-radius:18px;background:radial-gradient(circle at 85% 20%,rgba(57,232,255,.12),transparent 30%),linear-gradient(135deg,rgba(8,20,30,.94),rgba(2,8,14,.98));box-shadow:0 20px 70px rgba(0,0,0,.28)}
+.matary-cover .kicker{color:var(--cyan);font:800 9px/1 Inter,sans-serif;letter-spacing:2.2px;text-transform:uppercase}
+.matary-cover h1{color:#f4fbff;font:900 clamp(32px,5vw,58px)/1.02 Inter,sans-serif;letter-spacing:-2px;margin:15px 0 12px}
+.matary-cover .sub{max-width:800px;color:#91a5b7;font:500 14px/1.8 Inter,sans-serif}
+.matary-wrap{max-width:900px;margin:auto}
+.toc{background:linear-gradient(135deg,rgba(8,19,29,.9),rgba(3,10,17,.95))!important;border:1px solid var(--border)!important;border-radius:14px!important}
+.toc h2,h2.chapter{color:var(--cyan)!important;font-family:Inter,sans-serif!important}
+.toc a{color:#a9eefd!important}
+section{margin-bottom:48px!important;padding:28px 30px 30px;border:1px solid rgba(255,255,255,.065);border-radius:15px;background:rgba(4,11,18,.72);box-shadow:0 12px 45px rgba(0,0,0,.13);scroll-margin-top:90px}
+h2.chapter{font-size:9px!important;letter-spacing:2px!important}
+h1.chapter-title{color:#eefbff!important;font:900 27px/1.18 Inter,sans-serif!important;border-bottom:1px solid rgba(57,232,255,.12)!important}
+h3{color:#d9f7ff!important;font-family:Inter,sans-serif!important}
+p,li,dd{color:#a4b4c2!important;font:500 13px/1.85 Inter,sans-serif!important}
+strong{color:#e7fbff}
+.callout{background:rgba(57,232,255,.045)!important;border-left:3px solid var(--cyan)!important;border-radius:9px!important}
+.callout strong{color:var(--cyan)!important}.warn{background:rgba(255,85,119,.045)!important;border-left-color:var(--red)!important}.warn strong{color:#ff718c!important}.gold-box{background:rgba(245,196,81,.045)!important;border-left-color:var(--gold)!important}.gold-box strong{color:var(--gold)!important}
+table{width:100%!important;border-collapse:collapse!important;background:rgba(2,8,14,.7);border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden}
+th{background:rgba(57,232,255,.055)!important;color:#d9faff!important;font:800 10px/1.4 Inter,sans-serif!important}td{color:#9eafbd!important;font:500 11px/1.6 Inter,sans-serif!important}th,td{border:1px solid rgba(255,255,255,.065)!important;padding:10px 12px!important}
+.diagram{background:rgba(2,8,14,.7)!important;border:1px solid var(--border)!important;border-radius:13px!important}.diagram figcaption{color:#718697!important;font:500 10px/1.6 Inter,sans-serif!important}
+.glossary dt{color:var(--cyan)!important;font-family:Inter,sans-serif!important}.glossary dd{color:#8295a7!important}.checklist li::before{color:var(--cyan)!important}
+@media(max-width:760px){.matary-doc{width:calc(100% - 24px);padding:28px 0 50px}.matary-cover{padding:34px 20px 32px}.matary-cover h1{font-size:34px}section{padding:22px 18px 24px}.toc{padding:18px!important}table{display:block!important;overflow-x:auto!important}}
+</style><style id="a1-disclaimer-footer">
+.a1-legal-footer{
+  width:min(1180px,calc(100% - 36px));
+  margin:70px auto 0;
+  padding:28px 0 32px;
+  border-top:1px solid rgba(57,232,255,.12);
+}
+.a1-legal-box{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(10,20,29,.78),rgba(3,9,15,.92));
+  padding:20px 22px;
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+}
+.a1-legal-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  color:#dffcff;
+  font:900 10px/1 Inter,system-ui,sans-serif;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+.a1-legal-title i{color:#f59e0b}
+.a1-legal-text{
+  margin:0;
+  color:#8091a3;
+  font:500 10px/1.8 Inter,system-ui,sans-serif;
+}
+.a1-legal-copy{
+  margin-top:15px;
+  padding-top:13px;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:#5f7081;
+  font:500 9px/1.7 Inter,system-ui,sans-serif;
+}
+.a1-legal-copy strong{color:#8da0b3}
+@media(max-width:760px){
+  .a1-legal-footer{
+    width:calc(100% - 32px);
+    margin-top:45px;
+    padding-bottom:24px;
+  }
+  .a1-legal-box{padding:17px}
+  .a1-legal-text{font-size:9px;line-height:1.8}
+}
+</style>
+</head>
+
+<body><header class="nav"><div class="nav-inner"><a class="brand" href="index.html#home"><div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div><div><div class="brand-name">ZONA <span>A1</span></div><span class="brand-sub">BY MATARYCLUB</span></div></a><nav class="a1-main-nav"><a class="a1-nav-link" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a><a class="a1-nav-link active" href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a></nav><div class="nav-right"><a class="a1-join-btn" href="rebate.html"><i class="fa-solid fa-user-plus"></i><span>Join Program</span></a><div class="nav-status"><span class="dot online"></span><span>LIVE</span></div></div><button class="a1-mobile-toggle" id="a1MobileToggle" type="button" aria-label="Open navigation menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button></div></header><div class="a1-mobile-backdrop" id="a1MobileBackdrop"></div><aside class="a1-mobile-menu" id="a1MobileMenu" aria-hidden="true"><div class="a1-mobile-head"><div><div class="a1-mobile-title">ZONA <span>A1</span></div><small>BY MATARYCLUB</small></div><button class="a1-mobile-close" id="a1MobileClose" type="button"><i class="fa-solid fa-xmark"></i></button></div><div class="a1-mobile-links"><a href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a><a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a><a class="mobile-rebate" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a></div><a class="a1-mobile-join" href="rebate.html"><i class="fa-solid fa-user-plus"></i> JOIN PROGRAM</a></aside><main class="matary-doc"><div class="matary-cover"><div class="kicker">ZONA A1 / MATARYCLUB / ADVANCED SYSTEM</div><h1>Matary Trading System</h1><p class="sub">Alur teknik strategi ZONA A1 — dari trend filter, struktur BOS/CHoCH, dua zona entry, sampai manajemen risiko otomatis.</p></div><div class="matary-wrap">
+
+  <div class="toc">
+    <h2>Daftar Isi</h2>
+    <ol>
+      <li><a href="#bab1">Apa Itu Matary Trading System</a></li>
+      <li><a href="#bab2">Alur Besar Sistem</a></li>
+      <li><a href="#bab3">Langkah 1 — Trend Filter</a></li>
+      <li><a href="#bab4">Langkah 2 — Struktur & BOS/CHoCH</a></li>
+      <li><a href="#bab5">Langkah 3 — Dua Zona Entry: BR 1 & BR 2 (Block Rejection)</a></li>
+      <li><a href="#bab6">Langkah 4 — Entry Trigger</a></li>
+      <li><a href="#bab7">Langkah 5 — Manajemen Risiko: SL, TP1–TP3, R:R</a></li>
+      <li><a href="#bab8">Langkah 6 — Auto Break Even</a></li>
+      <li><a href="#bab9">Zone Freshness — Satu Zona, Satu Kesempatan</a></li>
+      <li><a href="#bab10">Aturan Wajib: No Break, No Entry</a></li>
+      <li><a href="#bab11">Dashboard & Next Action</a></li>
+      <li><a href="#bab12">Checklist Alur Lengkap</a></li>
+      <li><a href="#glossary">Glosarium Istilah</a></li>
+    </ol>
+  </div>
+
+  <section id="bab1">
+    <h2 class="chapter">Bab 1</h2>
+    <h1 class="chapter-title">Apa Itu Matary Trading System</h1>
+    <p>Matary Trading System adalah alur trading yang dipakai di balik indikator/strategi <strong>ZONA A1 Mataryclub</strong>. Sistem ini menggabungkan beberapa fondasi yang sudah dibahas di e-book sebelumnya — market structure (BOS/CHoCH) dan manajemen risiko — menjadi satu alur kerja yang terstruktur dan bisa diulang secara konsisten.</p>
+    <p>Intinya, sistem ini tidak menebak arah dari satu indikator saja. Ia menunggu konfirmasi arah dari struktur harga, lalu masuk hanya di dua area retracement spesifik yang sudah ditentukan, dengan manajemen risiko yang otomatis mengikuti dari awal sampai akhir posisi.</p>
+    <div class="callout">
+      <strong>Filosofi dasar:</strong> jangan kejar harga. Tunggu konfirmasi arah, lalu tunggu harga kembali ke area entry yang sudah disiapkan — bukan sebaliknya, mengejar harga yang sudah bergerak jauh.
+    </div>
+  </section>
+
+  <section id="bab2">
+    <h2 class="chapter">Bab 2</h2>
+    <h1 class="chapter-title">Alur Besar Sistem</h1>
+    <p>Sebelum masuk ke detail tiap komponen, berikut gambaran alur dari awal sampai posisi ditutup:</p>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 700 620" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+          </marker>
+        </defs>
+
+        <rect class="flowbox" x="180" y="10" width="340" height="56" rx="8"/>
+        <text x="350" y="32" class="flowtext" text-anchor="middle">1. TREND FILTER (HTF MA)</text>
+        <text x="350" y="50" class="flowsub" text-anchor="middle">Tentukan bias: hanya BUY di atas MA, SELL di bawah MA</text>
+        <path class="flowarrow" d="M350,66 L350,96"/>
+
+        <rect class="flowbox" x="180" y="96" width="340" height="56" rx="8"/>
+        <text x="350" y="118" class="flowtext" text-anchor="middle">2. DETEKSI STRUKTUR (SWING LEG)</text>
+        <text x="350" y="136" class="flowsub" text-anchor="middle">Cari swing high/low dari panjang leg yang ditentukan</text>
+        <path class="flowarrow" d="M350,152 L350,182"/>
+
+        <rect class="flowbox" x="180" y="182" width="340" height="56" rx="8"/>
+        <text x="350" y="204" class="flowtext" text-anchor="middle">3. BOS / CHoCH TERKONFIRMASI</text>
+        <text x="350" y="222" class="flowsub" text-anchor="middle">Harga close menembus swing high/low sebelumnya</text>
+        <path class="flowarrow" d="M350,238 L350,268"/>
+
+        <rect class="flowbox" x="180" y="268" width="340" height="56" rx="8"/>
+        <text x="350" y="290" class="flowtext" text-anchor="middle">4. UKUR LEG & BUAT 2 ZONA</text>
+        <text x="350" y="308" class="flowsub" text-anchor="middle">BR 1 (Block Rejection dalam) &amp; BR 2 (Block Rejection tengah)</text>
+        <path class="flowarrow" d="M350,324 L350,354"/>
+
+        <rect class="flowbox" x="180" y="354" width="340" height="56" rx="8"/>
+        <text x="350" y="376" class="flowtext" text-anchor="middle">5. TUNGGU RETEST KE ZONA</text>
+        <text x="350" y="394" class="flowsub" text-anchor="middle">Candle Close di dalam zona, atau Price Touch di tepi zona</text>
+        <path class="flowarrow" d="M350,410 L350,440"/>
+
+        <rect class="flowbox" x="180" y="440" width="340" height="56" rx="8"/>
+        <text x="350" y="462" class="flowtext" text-anchor="middle">6. ENTRY + SL/TP1/TP2/TP3</text>
+        <text x="350" y="480" class="flowsub" text-anchor="middle">SL di luar zona, TP berdasarkan kelipatan R:R</text>
+        <path class="flowarrow" d="M350,496 L350,526"/>
+
+        <rect class="flowbox" x="180" y="526" width="340" height="56" rx="8"/>
+        <text x="350" y="548" class="flowtext" text-anchor="middle">7. AUTO BREAK EVEN</text>
+        <text x="350" y="566" class="flowsub" text-anchor="middle">Setelah TP1 kena, SL pindah ke entry — sisa posisi risk-free</text>
+      </svg>
+      <figcaption>Alur lengkap Matary Trading System, dari penentuan bias sampai posisi risk-free.</figcaption>
+    </figure>
+  </section>
+
+  <section id="bab3">
+    <h2 class="chapter">Bab 3</h2>
+    <h1 class="chapter-title">Langkah 1 — Trend Filter</h1>
+    <p>Sebelum mencari sinyal apa pun, sistem ini mengecek arah tren di timeframe lebih tinggi (default: Daily) menggunakan moving average (bisa EMA, SMA, WMA, atau HMA, default panjang 200). Aturannya sederhana:</p>
+    <ul>
+      <li>Harga di <strong>atas</strong> MA → hanya posisi <strong>BUY</strong> yang diizinkan.</li>
+      <li>Harga di <strong>bawah</strong> MA → hanya posisi <strong>SELL</strong> yang diizinkan.</li>
+    </ul>
+    <p>Filter ini bisa dimatikan, tapi fungsinya penting: mencegah sistem mengambil sinyal melawan arah besar pasar. Tanpa filter ini, sinyal BOS/CHoCH di timeframe kecil bisa saja muncul di tengah kondisi tren besar yang berlawanan, yang secara statistik lebih berisiko.</p>
+  </section>
+
+  <section id="bab4">
+    <h2 class="chapter">Bab 4</h2>
+    <h1 class="chapter-title">Langkah 2 — Struktur & BOS/CHoCH</h1>
+    <p>Sistem mendeteksi swing high dan swing low menggunakan panjang leg tertentu (default 50 bar) — titik tertinggi/terendah dalam rentang tersebut ditandai sebagai swing point acuan. Begitu harga <strong>close</strong> menembus swing high sebelumnya, itu dianggap <strong>bullish break</strong> (bias berubah ke BUY). Sebaliknya, menembus swing low sebelumnya dianggap <strong>bearish break</strong> (bias berubah ke SELL).</p>
+    <p>Setiap kali break baru terjadi, sistem mereset seluruh zona dan status entry sebelumnya — artinya setiap BOS/CHoCH membuka "babak" baru yang independen dari sinyal-sinyal lama.</p>
+    <div class="callout">
+      <strong>Catatan:</strong> ini persis konsep BOS yang sudah dibahas di e-book <em>Market Structure</em> — swing high/low, lalu penembusan yang mengonfirmasi arah.
+    </div>
+  </section>
+
+  <section id="bab5">
+    <h2 class="chapter">Bab 5</h2>
+    <h1 class="chapter-title">Langkah 3 — Dua Zona Entry: BR 1 & BR 2 (Block Rejection)</h1>
+    <p>Setelah BOS/CHoCH terjadi, sistem mengukur "leg" — jarak dari titik ekstrem sebelumnya (trailing top/bottom) sampai titik BOS/CHoCH — lalu membentuk dua area <strong>Block Rejection</strong> di dalam leg tersebut. Area ini disebut "block" karena merepresentasikan zona harga yang berpotensi memicu reaksi/penolakan (rejection) saat harga kembali ke situ — bukan sekadar angka acak di tengah leg.</p>
+    <ul>
+      <li><strong>BR 1 — Block Rejection dalam</strong> — area yang posisinya lebih dekat ke titik ekstrem awal leg (retracement lebih dalam). Karena lebih dalam, jarak SL dari area ini relatif lebih kecil, tapi harga butuh pullback yang lebih signifikan agar sampai ke area ini.</li>
+      <li><strong>BR 2 — Block Rejection tengah</strong> — area yang posisinya lebih dekat ke titik tengah leg (retracement lebih dangkal). Karena lebih dangkal, area ini lebih sering tersentuh, tapi jarak SL dari area ini relatif lebih besar.</li>
+    </ul>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+        <line x1="70" y1="30" x2="70" y2="270" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="20" y="34" class="lbl-sub" fill="var(--text-dim)">100%</text>
+        <text x="20" y="274" class="lbl-sub" fill="var(--text-dim)">0%</text>
+
+        <rect x="70" y="30" width="560" height="46" fill="var(--gold)" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="350" y="58" class="lbl" fill="var(--accent)" text-anchor="middle">BR 1 — Block Rejection Dalam</text>
+
+        <rect x="70" y="128" width="560" height="34" fill="var(--eq)" stroke="var(--accent-2)" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="350" y="150" class="lbl" fill="var(--accent-2)" text-anchor="middle">BR 2 — Block Rejection Tengah</text>
+
+        <polyline points="70,270 180,90 300,180 450,50 560,120 630,30" fill="none" stroke="var(--line)" stroke-width="2.5"/>
+        <text x="70" y="286" class="lbl-sub" fill="var(--text-dim)">Bottom leg</text>
+        <text x="600" y="18" class="lbl-sub" fill="var(--text-dim)">Top leg</text>
+      </svg>
+      <figcaption>BR 1 (Block Rejection dalam) lebih dekat titik ekstrem leg, BR 2 (Block Rejection tengah) lebih dekat titik tengah leg — keduanya diukur dari leg antara titik ekstrem terakhir dan titik BOS/CHoCH.</figcaption>
+    </figure>
+
+    <p>Kedua zona ini bisa diaktifkan/dimatikan secara independen, dan masing-masing punya pengaturan TP dan SL buffer sendiri.</p>
+  </section>
+
+  <section id="bab6">
+    <h2 class="chapter">Bab 6</h2>
+    <h1 class="chapter-title">Langkah 4 — Entry Trigger</h1>
+    <p>Ada dua mode untuk menentukan kapan entry benar-benar dieksekusi saat harga memasuki zona:</p>
+    <table>
+      <thead>
+        <tr><th>Mode</th><th>Cara Kerja</th><th>Karakteristik</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Candle Close</strong></td><td>Entry market begitu candle close di dalam area zona (BR 1/BR 2)</td><td>Lebih menunggu konfirmasi, tapi bisa entry di harga yang sedikit lebih dalam/kurang optimal dari tepi zona</td></tr>
+        <tr><td><strong>Price Touch</strong></td><td>Limit order ditempatkan tepat di tepi zona (top untuk sell, bottom untuk buy)</td><td>Entry lebih presisi di harga terbaik, tapi berisiko tidak terisi bila harga tidak benar-benar menyentuh level limit</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="bab7">
+    <h2 class="chapter">Bab 7</h2>
+    <h1 class="chapter-title">Langkah 5 — Manajemen Risiko: SL, TP1–TP3, R:R</h1>
+    <p>Setiap zona (BR 1 dan BR 2) punya pengaturan risiko sendiri:</p>
+    <ul>
+      <li><strong>Stop Loss</strong> — ditempatkan di luar batas zona (dengan buffer persen tambahan) supaya tidak langsung kena noise kecil di tepi zona.</li>
+      <li><strong>TP1, TP2, TP3</strong> — masing-masing dihitung dari kelipatan risiko (R:R), default 1:1, 1:2, dan 1:3.</li>
+      <li><strong>Partial close</strong> — setiap TP menutup sebagian posisi (default 40% di TP1, 40% di TP2, sisa 20% lanjut ke TP3), bukan menutup semua sekaligus.</li>
+    </ul>
+    <div class="callout">
+      <strong>Kenapa partial close?</strong> Ini mengunci sebagian profit lebih awal (mengurangi tekanan psikologis dan risiko "profit hilang lagi"), sambil tetap membiarkan sisa posisi mengejar target yang lebih besar.
+    </div>
+  </section>
+
+  <section id="bab8">
+    <h2 class="chapter">Bab 8</h2>
+    <h1 class="chapter-title">Langkah 6 — Auto Break Even</h1>
+    <p>Begitu TP1 tercapai, sistem otomatis memindahkan stop loss ke harga entry (break even) — dengan opsi buffer tambahan. Efeknya: sisa posisi (yang menuju TP2/TP3) menjadi <strong>risk-free</strong> — dalam skenario terburuk, posisi hanya akan menghasilkan hasil impas di sisa lot itu, bukan kerugian tambahan.</p>
+    <p>Mekanisme ini penting karena mengurangi tekanan untuk "buru-buru menutup semua posisi" begitu profit awal muncul — trader (atau sistem) bisa membiarkan sisa posisi berjalan menuju target lebih jauh dengan lebih tenang.</p>
+  </section>
+
+  <section id="bab9">
+    <h2 class="chapter">Bab 9</h2>
+    <h1 class="chapter-title">Zone Freshness — Satu Zona, Satu Kesempatan</h1>
+    <p>Setiap zona (BR 1 dan BR 2) punya status "freshness" yang dilacak sepanjang satu siklus struktur:</p>
+    <table>
+      <thead>
+        <tr><th>Status</th><th>Arti</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>🟢 FRESH</td><td>Zona baru terbentuk dari BOS/CHoCH terbaru, belum pernah dipakai entry</td></tr>
+        <tr><td>🟡 USED</td><td>Zona sudah dipakai untuk entry sekali dalam siklus struktur ini</td></tr>
+        <tr><td>🔴 INVALID</td><td>Zona tidak relevan/tidak terbentuk untuk arah bias saat ini</td></tr>
+      </tbody>
+    </table>
+    <p>Artinya, satu zona (BR 1 maupun BR 2) hanya diperbolehkan memicu satu kali entry per siklus BOS/CHoCH. Status ini baru direset saat BOS/CHoCH baru terjadi. Aturan ini mencegah sistem membuka berkali-kali posisi di zona yang sama secara berulang selama harga masih berputar-putar di area itu.</p>
+  </section>
+
+  <section id="bab10">
+    <h2 class="chapter">Bab 10</h2>
+    <h1 class="chapter-title">Aturan Wajib: No Break, No Entry</h1>
+    <p>Ini adalah aturan inti yang menjaga seluruh alur di atas tetap disiplin. Sesederhana apa pun kelihatannya, pelanggaran terhadap aturan ini adalah penyebab paling umum sinyal palsu dan entry yang tidak seharusnya diambil.</p>
+    <div class="callout warn">
+      <strong>No Break, No Entry.</strong> Selama belum ada BOS/CHoCH baru yang terkonfirmasi, tidak ada entry yang boleh diambil — seberapa pun menariknya harga terlihat di chart saat itu. Breakout struktur adalah syarat mutlak, bukan opsional.
+    </div>
+    <h3>Jika Semua Zona Berstatus Invalid</h3>
+    <p>Ketika dashboard menunjukkan BR 1 dan BR 2 sama-sama berstatus 🔴 INVALID untuk kedua arah (BUY maupun SELL), itu tandanya belum ada struktur yang cukup jelas untuk membentuk zona entry yang valid. Dalam kondisi ini, satu-satunya langkah yang benar adalah <strong>menunggu BOS/CHoCH terbaru</strong> — bukan memaksakan entry di luar zona, dan bukan menurunkan standar hanya karena sudah lama tidak ada sinyal.</p>
+    <h3>Cara Memilih Zona yang Tepat</h3>
+    <p>Sebelum mempertimbangkan entry apa pun, selalu cek dashboard dan pastikan dua syarat berikut terpenuhi bersamaan:</p>
+    <ul>
+      <li>Zona (BR 1 atau BR 2) berstatus <strong>🟢 FRESH</strong> — belum pernah dipakai di siklus struktur berjalan.</li>
+      <li>Zona tersebut berstatus <strong>VALID</strong> sesuai arah bias yang sedang aktif (searah trend filter dan searah BOS/CHoCH terakhir).</li>
+    </ul>
+    <p>Kalau salah satu syarat ini tidak terpenuhi — zona sudah USED, atau statusnya INVALID — maka bukan zona itu yang dicari. Tunggu, dan biarkan struktur baru terbentuk lewat BOS/CHoCH berikutnya.</p>
+  </section>
+
+  <section id="bab11">
+    <h2 class="chapter">Bab 11</h2>
+    <h1 class="chapter-title">Dashboard & Next Action</h1>
+    <p>Seluruh kondisi di atas — trend filter, bias struktur, validitas zona, status waiting, dan freshness — dirangkum dalam satu dashboard yang menampilkan status BUY dan SELL secara berdampingan, lalu diringkas jadi satu sinyal akhir:</p>
+    <ul>
+      <li><strong>⏳ WAIT</strong> — belum ada BOS/CHoCH baru atau zona belum valid, sistem menunggu break swing berikutnya.</li>
+      <li><strong>🟢 BUY (Ready Entry)</strong> — bias bullish aktif, zona BR 1/BR 2 valid dan masih fresh, tinggal menunggu retest.</li>
+      <li><strong>🔴 SELL (Ready Entry)</strong> — bias bearish aktif, zona BR 1/BR 2 valid dan masih fresh, tinggal menunggu retest.</li>
+    </ul>
+    <p>Dashboard ini pada dasarnya adalah checklist otomatis dari seluruh syarat di bab-bab sebelumnya, supaya pengguna tidak perlu mengecek satu per satu secara manual di chart.</p>
+  </section>
+
+  <section id="bab12">
+    <h2 class="chapter">Bab 12</h2>
+    <h1 class="chapter-title">Checklist Alur Lengkap</h1>
+    <ul class="checklist">
+      <li>Cek arah tren HTF (MA) — tentukan apakah hanya BUY atau hanya SELL yang diizinkan.</li>
+      <li>Tunggu BOS (searah tren) atau CHoCH (perubahan bias) terkonfirmasi lewat penembusan swing high/low. <strong>No Break, No Entry</strong> — tanpa ini, tidak ada langkah selanjutnya.</li>
+      <li>Biarkan sistem mengukur leg dan membentuk dua zona: BR 1 (Block Rejection dalam) dan BR 2 (Block Rejection tengah).</li>
+      <li>Cek dashboard — cari zona yang berstatus <strong>FRESH</strong> dan <strong>VALID</strong> untuk arah bias yang sedang aktif. Jika semua zona INVALID, berhenti di sini dan tunggu BOS/CHoCH berikutnya.</li>
+      <li>Tunggu harga retest ke salah satu zona — sesuai mode Candle Close atau Price Touch.</li>
+      <li>Konfirmasi entry otomatis mengatur SL di luar zona, dan TP1/TP2/TP3 sesuai R:R yang ditentukan.</li>
+      <li>Setelah TP1 tercapai, biarkan Auto Break Even mengamankan sisa posisi.</li>
+      <li>Tunggu BOS/CHoCH berikutnya untuk siklus baru — jangan paksa entry ulang di zona yang sudah USED.</li>
+    </ul>
+  </section>
+
+  <section id="glossary">
+    <h2 class="chapter">Referensi</h2>
+    <h1 class="chapter-title">Glosarium Istilah</h1>
+    <dl class="glossary">
+      <dt>Trend Filter</dt><dd>Penyaring arah berdasarkan posisi harga terhadap moving average di timeframe lebih tinggi.</dd>
+      <dt>Swing Leg</dt><dd>Rentang harga antara titik ekstrem (tertinggi/terendah) yang dipakai sebagai dasar pengukuran zona retracement.</dd>
+      <dt>BOS / CHoCH</dt><dd>Penembusan swing point yang mengonfirmasi kelanjutan (BOS) atau perubahan (CHoCH) arah struktur.</dd>
+      <dt>Block Rejection (BR)</dt><dd>Area di dalam leg struktur yang berpotensi memicu reaksi/penolakan harga saat disentuh kembali; dasar dari zona BR 1 dan BR 2.</dd>
+      <dt>BR 1 (Block Rejection Dalam)</dt><dd>Area block rejection yang posisinya lebih dekat ke titik ekstrem leg — SL cenderung lebih kecil, butuh pullback lebih dalam.</dd>
+      <dt>BR 2 (Block Rejection Tengah)</dt><dd>Area block rejection yang posisinya lebih dekat ke titik tengah leg — lebih sering tersentuh, SL cenderung lebih besar.</dd>
+      <dt>No Break, No Entry</dt><dd>Aturan wajib: tanpa BOS/CHoCH terkonfirmasi, tidak ada entry yang boleh diambil.</dd>
+      <dt>Candle Close / Price Touch</dt><dd>Dua mode trigger entry — konfirmasi lewat penutupan candle, atau limit order di tepi zona.</dd>
+      <dt>R:R (Risk:Reward)</dt><dd>Rasio antara jarak risiko (SL) dan jarak target (TP) dari harga entry.</dd>
+      <dt>Partial Close</dt><dd>Menutup sebagian posisi di tiap level TP, bukan seluruhnya sekaligus.</dd>
+      <dt>Auto Break Even</dt><dd>Pemindahan otomatis SL ke harga entry setelah TP1 tercapai, membuat sisa posisi risk-free.</dd>
+      <dt>Zone Freshness</dt><dd>Status validitas zona (fresh/used/invalid) yang menentukan apakah zona masih boleh memicu entry baru.</dd>
+    </dl>
+  </section>
+
+  
+
+</div><footer class="a1-legal-footer">
+  <div class="a1-legal-box">
+    <div class="a1-legal-title">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Trading Disclaimer
+    </div>
+    <p class="a1-legal-text">
+      Materi E-Book ZONA A1 disusun untuk tujuan edukasi dan informasi umum, bukan merupakan
+      nasihat keuangan, investasi, atau ajakan untuk melakukan transaksi tertentu. Trading
+      memiliki risiko dan dapat menyebabkan kerugian sebagian maupun seluruh modal. Hasil
+      pembelajaran, backtest, simulasi, atau contoh historis tidak menjamin hasil di masa depan.
+      Setiap keputusan trading, ukuran posisi, leverage, dan pengelolaan risiko sepenuhnya menjadi
+      tanggung jawab masing-masing pengguna.
+    </p>
+    <div class="a1-legal-copy">
+      <strong>ZONA A1 / BY MATARYCLUB</strong> — Gunakan materi sebagai referensi belajar dan
+      selalu sesuaikan strategi dengan profil risiko serta kondisi pasar masing-masing.
+    </div>
+  </div>
+</footer>
+</main><script id="a1-mobile-menu-js">
+(function(){
+  const body = document.body;
+  const toggle = document.getElementById('a1MobileToggle');
+  const menu = document.getElementById('a1MobileMenu');
+  const backdrop = document.getElementById('a1MobileBackdrop');
+  const close = document.getElementById('a1MobileClose');
+
+  if(!toggle || !menu) return;
+
+  function openMenu(){
+    body.classList.add('a1-menu-open');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','Close navigation menu');
+    toggle.innerHTML='<i class="fa-solid fa-xmark"></i>';
+    menu.setAttribute('aria-hidden','false');
+  }
+  function closeMenu(){
+    body.classList.remove('a1-menu-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open navigation menu');
+    toggle.innerHTML='<i class="fa-solid fa-bars"></i>';
+    menu.setAttribute('aria-hidden','true');
+  }
+
+  toggle.addEventListener('click', function(){
+    body.classList.contains('a1-menu-open') ? closeMenu() : openMenu();
+  });
+  if(close) close.addEventListener('click', closeMenu);
+  if(backdrop) backdrop.addEventListener('click', closeMenu);
+
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 760) closeMenu();
+  });
+})();
+</script><script id="a1-mobile-scroll-fix-js">
+(function(){
+  const menu = document.getElementById('a1MobileMenu');
+  if(!menu) return;
+
+  /* When opened, start at the top so all navigation items are reachable. */
+  const observer = new MutationObserver(function(){
+    if(document.body.classList.contains('a1-menu-open')){
+      menu.scrollTop = 0;
+    }
+  });
+  observer.observe(document.body,{attributes:true,attributeFilter:['class']});
+})();
+</script></body></html>
