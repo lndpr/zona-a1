@@ -287,7 +287,327 @@ body{min-width:0!important}
 .reader,.reader-bar,.racts,#reader,#readerTitle,#readerDl,#readerClose,#readerFrame{
 display:none!important;
 }
-</style></head>
+</style>
+<style id="a1-chapter-upgrade">
+/* ===== ZONA A1 — CHAPTER PRESENTATION ===== */
+.matary-doc .matary-wrap > section,
+body > main > section,
+section{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.matary-doc .matary-wrap > section.a1-chapter-card{
+  padding:30px 30px 34px!important;
+  margin:0 0 26px!important;
+  border:1px solid rgba(57,232,255,.10)!important;
+  border-radius:18px!important;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(57,232,255,.055),transparent 30%),
+    linear-gradient(145deg,rgba(7,17,27,.94),rgba(3,10,17,.88))!important;
+  box-shadow:0 16px 55px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.a1-chapter-card:before{
+  content:"";
+  position:absolute;left:0;top:20px;bottom:20px;width:3px;
+  background:linear-gradient(180deg,#39e8ff,#3f7cff,transparent);
+  border-radius:0 4px 4px 0;
+  opacity:.8;
+}
+.a1-chapter-card:after{
+  content:"";
+  position:absolute;right:-80px;top:-80px;width:190px;height:190px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(57,232,255,.08),transparent 68%);
+  pointer-events:none;
+}
+.a1-chapter-head{
+  position:relative;z-index:2;
+  display:flex;align-items:center;gap:11px;
+  margin:0 0 17px;
+}
+.a1-chapter-no{
+  width:36px;height:36px;flex:0 0 36px;
+  display:grid;place-items:center;
+  border:1px solid rgba(57,232,255,.28);
+  border-radius:10px;
+  background:rgba(57,232,255,.055);
+  color:#39e8ff;
+  font:900 11px/1 Inter,sans-serif;
+  letter-spacing:.5px;
+  box-shadow:0 0 22px rgba(57,232,255,.06);
+}
+.a1-chapter-kicker{
+  color:#39e8ff;
+  font:900 9px/1 Inter,sans-serif;
+  letter-spacing:2.1px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.a1-chapter-line{
+  height:1px;flex:1;
+  background:linear-gradient(90deg,rgba(57,232,255,.28),transparent);
+}
+.a1-chapter-card h1.chapter-title{
+  position:relative;z-index:2;
+  margin:0 0 16px!important;
+  padding:0 0 15px!important;
+  color:#effaff!important;
+  font:900 clamp(25px,3vw,34px)/1.16 Inter,sans-serif!important;
+  letter-spacing:-.8px!important;
+  border-bottom:1px solid rgba(57,232,255,.11)!important;
+}
+.a1-chapter-card p{
+  position:relative;z-index:2;
+  max-width:880px;
+}
+.a1-chapter-card .callout,
+.a1-chapter-card .diagram,
+.a1-chapter-card table,
+.a1-chapter-card ul,
+.a1-chapter-card ol{
+  position:relative;z-index:2;
+}
+.a1-chapter-card .diagram{
+  margin:24px auto!important;
+}
+.a1-reference-card{
+  border-color:rgba(245,196,81,.13)!important;
+  background:linear-gradient(145deg,rgba(18,14,7,.72),rgba(4,10,16,.9))!important;
+}
+.a1-reference-card:before{
+  background:linear-gradient(180deg,#f5c451,#ff9f43,transparent);
+}
+.a1-reference-card .a1-chapter-no,
+.a1-reference-card .a1-chapter-kicker{
+  color:#f5c451;
+  border-color:rgba(245,196,81,.28);
+}
+.a1-reference-card h1.chapter-title{border-color:rgba(245,196,81,.12)!important}
+.a1-chapter-card figure{
+  max-width:100%!important;
+}
+.a1-chapter-card img,
+.a1-chapter-card svg,
+.a1-chapter-card canvas{
+  max-width:100%!important;
+  height:auto!important;
+}
+.a1-chapter-card blockquote{
+  margin:20px 0!important;
+  padding:16px 18px!important;
+  border-left:3px solid #39e8ff!important;
+  border-radius:10px!important;
+  background:rgba(57,232,255,.035)!important;
+}
+@media(max-width:760px){
+  .matary-doc .matary-wrap > section.a1-chapter-card{
+    padding:22px 17px 25px!important;
+    margin-bottom:18px!important;
+    border-radius:15px!important;
+  }
+  .a1-chapter-card:before{top:16px;bottom:16px}
+  .a1-chapter-head{gap:9px;margin-bottom:14px}
+  .a1-chapter-no{width:31px;height:31px;flex-basis:31px;font-size:10px;border-radius:9px}
+  .a1-chapter-kicker{font-size:8px;letter-spacing:1.7px}
+  .a1-chapter-card h1.chapter-title{
+    font-size:25px!important;
+    line-height:1.12!important;
+    letter-spacing:-.5px!important;
+  }
+  .a1-chapter-card p,
+  .a1-chapter-card li,
+  .a1-chapter-card dd{
+    font-size:13px!important;
+    line-height:1.8!important;
+  }
+}
+</style>
+
+<style id="a1-chapter-hero-final">
+/* ===== CHAPTER HERO — ZONA A1 ===== */
+.a1-chapter-card{
+  position:relative!important;
+}
+.a1-chapter-card .a1-chapter-head{
+  position:relative!important;
+  min-height:118px!important;
+  padding:0 0 18px!important;
+  margin:0 0 24px!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  gap:15px!important;
+  border-bottom:1px solid rgba(57,232,255,.13)!important;
+}
+.a1-chapter-card .a1-chapter-no{
+  position:relative!important;
+  width:92px!important;
+  height:92px!important;
+  flex:0 0 92px!important;
+  border-radius:20px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background:
+    radial-gradient(circle at 35% 25%,rgba(57,232,255,.18),transparent 45%),
+    linear-gradient(145deg,rgba(57,232,255,.10),rgba(8,19,29,.95))!important;
+  border:1px solid rgba(57,232,255,.34)!important;
+  color:#eafcff!important;
+  font:900 27px/1 Inter,sans-serif!important;
+  letter-spacing:-1px!important;
+  box-shadow:
+    0 0 0 1px rgba(57,232,255,.04),
+    0 14px 35px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+.a1-chapter-card .a1-chapter-no:before{
+  content:"BAB";
+  position:absolute;
+  top:12px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#39e8ff;
+  font:900 7px/1 Inter,sans-serif;
+  letter-spacing:2.3px;
+}
+.a1-chapter-card .a1-chapter-no:after{
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  right:10px;bottom:10px;
+  border-radius:50%;
+  background:#39e8ff;
+  box-shadow:0 0 16px rgba(57,232,255,.75);
+}
+.a1-chapter-card .a1-chapter-kicker{
+  align-self:center!important;
+  margin-top:22px!important;
+  color:#39e8ff!important;
+  font:900 11px/1 Inter,sans-serif!important;
+  letter-spacing:3px!important;
+  text-transform:uppercase!important;
+}
+.a1-chapter-card .a1-chapter-line{
+  display:none!important;
+}
+
+/* Giant chapter marker behind the title area */
+.a1-chapter-card h1.chapter-title{
+  position:relative!important;
+  margin-left:0!important;
+}
+.a1-chapter-card h1.chapter-title:before{
+  content:"CHAPTER";
+  display:block;
+  margin-bottom:7px;
+  color:rgba(57,232,255,.42);
+  font:900 9px/1 Inter,sans-serif;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+}
+.a1-chapter-card h1.chapter-title:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:76px;
+  height:3px;
+  border-radius:3px;
+  background:linear-gradient(90deg,#39e8ff,#3f7cff,transparent);
+  box-shadow:0 0 14px rgba(57,232,255,.25);
+}
+
+/* Make the first paragraph read like a chapter introduction */
+.a1-chapter-card h1.chapter-title + p{
+  font-size:15px!important;
+  line-height:1.85!important;
+  color:#a9bac8!important;
+}
+
+/* Reference section gets a distinct gold treatment */
+.a1-reference-card .a1-chapter-no{
+  color:#fff4ce!important;
+  border-color:rgba(245,196,81,.35)!important;
+  background:linear-gradient(145deg,rgba(245,196,81,.13),rgba(18,14,7,.94))!important;
+}
+.a1-reference-card .a1-chapter-no:before,
+.a1-reference-card .a1-chapter-kicker{
+  color:#f5c451!important;
+}
+.a1-reference-card .a1-chapter-no:after{
+  background:#f5c451!important;
+  box-shadow:0 0 16px rgba(245,196,81,.7)!important;
+}
+.a1-reference-card h1.chapter-title:after{
+  background:linear-gradient(90deg,#f5c451,#ff9f43,transparent)!important;
+}
+
+/* Mobile: chapter must remain visually dominant */
+@media(max-width:760px){
+  .a1-chapter-card .a1-chapter-head{
+    min-height:91px!important;
+    padding-bottom:14px!important;
+    margin-bottom:19px!important;
+    gap:11px!important;
+    align-items:flex-end!important;
+  }
+  .a1-chapter-card .a1-chapter-no{
+    width:67px!important;
+    height:67px!important;
+    flex-basis:67px!important;
+    border-radius:16px!important;
+    font-size:21px!important;
+  }
+  .a1-chapter-card .a1-chapter-no:before{
+    top:9px!important;
+    font-size:6px!important;
+    letter-spacing:1.8px!important;
+  }
+  .a1-chapter-card .a1-chapter-no:after{
+    width:6px!important;height:6px!important;
+    right:8px!important;bottom:8px!important;
+  }
+  .a1-chapter-card .a1-chapter-kicker{
+    margin-top:15px!important;
+    font-size:8px!important;
+    letter-spacing:2.2px!important;
+  }
+  .a1-chapter-card h1.chapter-title{
+    font-size:27px!important;
+    line-height:1.08!important;
+    padding-bottom:14px!important;
+  }
+  .a1-chapter-card h1.chapter-title:before{
+    font-size:7px!important;
+    letter-spacing:2.8px!important;
+    margin-bottom:6px!important;
+  }
+  .a1-chapter-card h1.chapter-title + p{
+    font-size:13px!important;
+    line-height:1.8!important;
+  }
+}
+</style>
+
+
+<style id="a1-chapter-line-clean-final">
+.a1-chapter-card:before{
+  display:none!important;
+  content:none!important;
+}
+.a1-chapter-card .a1-chapter-head{
+  border-bottom:0!important;
+}
+.a1-chapter-card h1.chapter-title{
+  border-bottom:1px solid rgba(57,232,255,.13)!important;
+}
+.a1-chapter-card h1.chapter-title:after{
+  bottom:-1px!important;
+  left:0!important;
+}
+</style>
+</head>
 <body><nav class="nav"><div class="logo">ZONA <i>A1</i> <small>BY MATARYCLUB</small></div><div class="links"><a href="ebook.html">E-Book Library</a><a href="market-structure.html">Structure</a><a href="smart-money-concept.html">SMC</a><a href="trading-psychology.html">Psychology</a><a href="risk-management.html">Risk</a></div><a class="btn" href="ebook.html">← LIBRARY</a></nav>
 
 
@@ -314,8 +634,8 @@ display:none!important;
   </ol>
  </div>
 
- <section id="bab1">
-  <h2 class="chapter">Bab 1</h2>
+ <section id="bab1" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">01</span><span class="a1-chapter-kicker">BAB 1</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Kenapa Risk Management Lebih Penting dari Strategi</h1>
   <p>Strategi menentukan kapan masuk dan keluar posisi. Risk management menentukan apakah trader masih punya modal untuk terus trading setelah rangkaian kerugian yang pasti akan terjadi cepat atau lambat — tidak ada strategi yang menang 100% dari waktu.</p>
   <p>Trader dengan win rate rendah tapi risk management disiplin bisa tetap bertahan dan profit jangka panjang. Sebaliknya, trader dengan win rate tinggi tapi risk management buruk bisa kehilangan seluruh modalnya hanya dari beberapa kali kerugian besar yang tidak terkendali.</p>
@@ -324,8 +644,8 @@ display:none!important;
   </div>
  </section>
 
- <section id="bab2">
-  <h2 class="chapter">Bab 2</h2>
+ <section id="bab2" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">02</span><span class="a1-chapter-kicker">BAB 2</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Lot & Position Sizing</h1>
   <p><strong>Lot</strong> adalah satuan ukuran standar dalam trading forex/komoditas yang menentukan seberapa besar nilai transaksi per pergerakan harga. Semakin besar lot yang dipakai, semakin besar pula nilai untung/rugi untuk setiap pergerakan harga yang sama.</p>
   <table>
@@ -341,8 +661,8 @@ display:none!important;
   <p><strong>Position sizing</strong> adalah proses menentukan lot yang dipakai berdasarkan jarak stop loss dan persentase risiko yang sudah ditetapkan — bukan berdasarkan "perasaan yakin" terhadap suatu posisi. Ini adalah penghubung langsung antara rencana risiko di atas kertas dan eksekusi nyata di akun trading.</p>
  </section>
 
- <section id="bab3">
-  <h2 class="chapter">Bab 3</h2>
+ <section id="bab3" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">03</span><span class="a1-chapter-kicker">BAB 3</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Stop Loss (SL)</h1>
   <p><strong>Stop Loss</strong> adalah level harga yang ditentukan di awal untuk otomatis menutup posisi jika harga bergerak melawan arah yang diharapkan, membatasi kerugian pada jumlah yang sudah diperhitungkan sebelumnya.</p>
   <h3>Prinsip Penempatan SL</h3>
@@ -356,15 +676,15 @@ display:none!important;
   </div>
  </section>
 
- <section id="bab4">
-  <h2 class="chapter">Bab 4</h2>
+ <section id="bab4" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">04</span><span class="a1-chapter-kicker">BAB 4</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Take Profit (TP)</h1>
   <p><strong>Take Profit</strong> adalah level harga yang ditentukan di awal untuk otomatis mengunci keuntungan saat target tercapai. TP idealnya ditentukan berdasarkan level teknikal yang realistis — seperti area liquidity, resistance/support berikutnya, atau target struktur — bukan sekadar angka yang "terasa cukup".</p>
   <p>TP yang baik biasanya sejalan dengan risk:reward ratio yang sudah direncanakan sejak sebelum entry, sehingga trader tahu persis potensi hasil dari setiap transaksi sebelum benar-benar membuka posisi.</p>
  </section>
 
- <section id="bab5">
-  <h2 class="chapter">Bab 5</h2>
+ <section id="bab5" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">05</span><span class="a1-chapter-kicker">BAB 5</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Risk:Reward Ratio (R:R)</h1>
   <p><strong>Risk:Reward Ratio</strong> membandingkan jarak dari entry ke stop loss (risiko) dengan jarak dari entry ke take profit (potensi hasil). Rasio 1:2 berarti risiko 1 satuan untuk potensi hasil 2 satuan.</p>
 
@@ -470,8 +790,8 @@ display:none!important;
   </div>
  </section>
 
- <section id="bab6">
-  <h2 class="chapter">Bab 6</h2>
+ <section id="bab6" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">06</span><span class="a1-chapter-kicker">BAB 6</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Drawdown</h1>
   <p><strong>Drawdown</strong> adalah penurunan nilai akun dari titik tertinggi sebelumnya (peak) ke titik terendah setelahnya, biasanya dinyatakan dalam persen. Drawdown adalah ukuran paling jujur untuk menilai seberapa besar risiko yang sebenarnya diambil sebuah strategi — bukan hanya dari hasil akhirnya.</p>
   <p>Semakin dalam drawdown, semakin besar pula persentase keuntungan yang dibutuhkan hanya untuk kembali ke modal semula — dan hubungan ini tidak linear.</p>
@@ -492,8 +812,8 @@ display:none!important;
   </div>
  </section>
 
- <section id="bab7">
-  <h2 class="chapter">Bab 7</h2>
+ <section id="bab7" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">07</span><span class="a1-chapter-kicker">BAB 7</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Menghitung Lot Berdasarkan Risiko</h1>
   <p>Alur paling umum untuk menentukan lot yang tepat dalam sebuah transaksi:</p>
   <ol class="list">
@@ -508,8 +828,8 @@ display:none!important;
   <p><em>Contoh:</em> modal $1.000, risiko 1% ($10), jarak SL 20 pip, nilai per pip micro lot $0.10 → lot yang dipakai = $10 ÷ (20 × $0.10) = 5 micro lot (0.05 lot standar).</p>
  </section>
 
- <section id="bab8">
-  <h2 class="chapter">Bab 8</h2>
+ <section id="bab8" class="a1-chapter-card">
+  <div class="a1-chapter-head"><span class="a1-chapter-no">08</span><span class="a1-chapter-kicker">BAB 8</span><span class="a1-chapter-line"></span></div>
   <h1 class="chapter-title">Kesalahan Umum</h1>
   <ol class="list">
    <li>Menentukan lot terlebih dahulu, baru menyesuaikan stop loss — seharusnya sebaliknya.</li>
@@ -521,7 +841,7 @@ display:none!important;
   </ol>
  </section>
 
- <section id="glossary">
+ <section id="glossary" class="a1-chapter-card a1-reference-card"><div class="a1-chapter-head"><span class="a1-chapter-no">REF</span><span class="a1-chapter-kicker">REFERENCE</span><span class="a1-chapter-line"></span></div>
   <h2 class="chapter">Referensi</h2>
   <h1 class="chapter-title">Glosarium Istilah</h1>
   <dl class="glossary">
@@ -574,6 +894,30 @@ display:none!important;
  function closeM(){m.classList.remove('open','active','is-open');if(b)b.classList.remove('show','active');document.body.classList.remove('mobile-menu-open');t.setAttribute('aria-expanded','false');m.setAttribute('aria-hidden','true')}
  t.addEventListener('click',openM);if(c)c.addEventListener('click',closeM);if(b)b.addEventListener('click',closeM);
  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+})();
+</script>
+
+<script id="a1-matary-diagram-center-final">
+(function(){
+  function fit(){
+    var mobile=window.innerWidth<=760;
+    document.querySelectorAll('.br-leg-diagram svg').forEach(function(svg){
+      svg.setAttribute('viewBox', mobile ? '55 30 790 365' : '0 0 900 410');
+      svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+      svg.style.width='100%';
+      svg.style.maxWidth='100%';
+      svg.style.minWidth='0';
+    });
+    document.querySelectorAll('.flow-diagram svg').forEach(function(svg){
+      svg.setAttribute('viewBox', mobile ? '120 0 660 980' : '0 0 900 980');
+      svg.setAttribute('preserveAspectRatio','xMidYMin meet');
+      svg.style.width='100%';
+      svg.style.maxWidth='100%';
+      svg.style.minWidth='0';
+    });
+  }
+  fit();
+  window.addEventListener('resize',fit);
 })();
 </script>
 </body>
