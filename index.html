@@ -9,6 +9,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style id="trade-calendar-month-nav-fix">
+.calendar-nav{
+ display:flex;
+ align-items:center;
+ justify-content:flex-end;
+ gap:6px;
+}
+.calendar-nav-btn{
+ width:24px;
+ height:24px;
+ border:1px solid rgba(57,232,255,.22);
+ border-radius:5px;
+ background:rgba(57,232,255,.04);
+ color:#9fdce7;
+ font-size:16px;
+ line-height:1;
+ cursor:pointer;
+}
+.calendar-nav-btn:hover{
+ background:rgba(57,232,255,.10);
+ border-color:rgba(57,232,255,.45);
+}
+.calendar-nav-btn:disabled{
+ opacity:.35;
+ cursor:not-allowed;
+}
+</style>
+
 <style>
 :root{
  --bg:#03050b;--panel:rgba(10,16,29,.72);--panel2:rgba(12,20,37,.88);
@@ -379,19 +407,6 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
  .core-status{bottom:-2px}
 }
 
-
-/* ===== TRADE PERFORMANCE MONTH SLIDER ===== */
-.trade-performance-slider{overflow:hidden}
-.trade-month-nav{display:flex;align-items:center;gap:8px}
-.month-arrow{width:27px;height:27px;border:1px solid rgba(57,232,255,.18);border-radius:8px;background:rgba(57,232,255,.035);color:#8da1b5;display:grid;place-items:center;cursor:pointer;transition:.2s}
-.month-arrow:hover{color:#39e8ff;border-color:rgba(57,232,255,.45);background:rgba(57,232,255,.08);box-shadow:0 0 16px rgba(57,232,255,.1)}
-.month-arrow:disabled{opacity:.28;cursor:not-allowed;box-shadow:none}
-.trade-slider-viewport{overflow:hidden;width:100%}
-.trade-slider-track{display:flex;width:100%;transition:transform .48s cubic-bezier(.2,.8,.2,1);will-change:transform}
-.trade-slide{width:100%;flex:0 0 100%;min-width:100%}
-.trade-slider-dots{display:flex;justify-content:center;gap:6px;margin-top:13px}
-.trade-dot{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:#334155;cursor:pointer;transition:.25s}
-.trade-dot.active{width:20px;border-radius:999px;background:#39e8ff;box-shadow:0 0 12px rgba(57,232,255,.55)}
 
 /* ===== TODAY ACTIVE INDICATOR ===== */
 #tradeCalendar .day.today{
@@ -1619,33 +1634,6 @@ body{min-width:0!important}
  img,svg,canvas,video,iframe{max-width:100%!important}
 }
 </style>
-<style id="a1-mobile-width-fix">
-/* ===== MOBILE WIDTH / NO-CROP FIX ===== */
-@media(max-width:760px){
- html,body{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
- .container,.layout,.layout>div,.card,.section-head,.feed,.calendar,.trade-performance-slider,.promo-heading,.promo-grid,.promo-card{width:100%!important;max-width:100%!important;min-width:0!important}
- .layout>div{overflow:hidden!important}
- .section-head{gap:10px;flex-wrap:wrap}
- .section-head h3{min-width:0;max-width:100%;font-size:13px}
- .section-tag{max-width:100%;white-space:normal;text-align:right}
- .today-line{width:100%!important;max-width:100%!important;min-width:0!important;justify-content:center!important;text-align:center!important;flex-wrap:wrap!important;white-space:normal!important;line-height:1.5!important;overflow-wrap:anywhere!important}
- .trade-month-nav{margin-left:auto;flex:0 0 auto;min-width:0}
- .trade-slider-viewport,.trade-slider-track,.trade-slide{min-width:0!important;max-width:100%!important}
- .trade-slider-track{width:100%!important}
- .trade-slide{width:100%!important;flex-basis:100%!important}
- .calendar-grid{width:100%!important;max-width:100%!important;min-width:0!important;grid-template-columns:repeat(7,minmax(0,1fr))!important}
- .day{min-width:0!important;overflow:hidden!important}
- .daynum,.dayresult{min-width:0!important;overflow:hidden!important}
- .dayresult{white-space:nowrap!important}
- .promo-heading{padding:0 6px!important;overflow:hidden!important}
- .promo-heading h2{font-size:18px!important;line-height:1.18!important;letter-spacing:-.5px!important;overflow-wrap:anywhere!important;word-break:normal!important}
- .promo-heading p{max-width:100%!important;overflow-wrap:anywhere!important}
- .promo-card{overflow:hidden!important}
- .promo-image img{max-width:100%!important;height:auto!important}
- .signal,.signal-empty,.intel-panel,.stats,.stat{min-width:0!important;max-width:100%!important}
- .signal-top,.signal-main,.chips{min-width:0!important;max-width:100%!important}
-}
-</style>
 </head>
 <body>
 <canvas id="astra-canvas"></canvas><div class="motion-orbs"><span class="motion-orb o1"></span><span class="motion-orb o2"></span><span class="motion-orb o3"></span></div>
@@ -1857,26 +1845,17 @@ body{min-width:0!important}
 
    
 
-<section class="calendar card reveal trade-performance-slider">
+<section class="calendar card reveal">
     <div class="section-head" style="margin-top:0">
       <h3>Trade Performance</h3>
-      <div class="trade-month-nav">
-        <button type="button" class="month-arrow" id="prevTradeMonth" aria-label="Bulan sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="calendar-nav">
+        <button type="button" class="calendar-nav-btn" id="calendarPrev" aria-label="Bulan sebelumnya">‹</button>
         <span class="section-tag" id="calendarMonth"></span>
-        <button type="button" class="month-arrow" id="nextTradeMonth" aria-label="Bulan berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
+        <button type="button" class="calendar-nav-btn" id="calendarNext" aria-label="Bulan berikutnya">›</button>
       </div>
     </div>
     <div class="today-line" id="todayLine">TODAY • memuat tanggal</div>
-    <div class="trade-slider-viewport">
-      <div class="trade-slider-track" id="tradeCalendarTrack">
-        <div class="trade-slide"><div class="calendar-grid" id="tradeCalendar"></div></div>
-        <div class="trade-slide"><div class="calendar-grid" id="previousTradeCalendar"></div></div>
-      </div>
-    </div>
-    <div class="trade-slider-dots">
-      <button type="button" class="trade-dot active" data-slide="0" aria-label="Bulan sekarang"></button>
-      <button type="button" class="trade-dot" data-slide="1" aria-label="Bulan sebelumnya"></button>
-    </div>
+    <div class="calendar-grid" id="tradeCalendar"></div>
    </section>
 
    <section class="promo-tools" id="tools">
@@ -2592,67 +2571,84 @@ function setHistoryTitle(date){
  const d=new Date(date+"T00:00:00");
  head.textContent="Riwayat Sinyal • "+d.toLocaleDateString("id-ID",{day:"2-digit",month:"short",year:"numeric"});
 }
-let tradeCalendarSlide=0;
-let tradeCalendarMonths=[];
+let calendarViewDate = new Date();
 
-function setTradeCalendarSlide(index,animate=true){
-  tradeCalendarSlide=Math.max(0,Math.min(1,index));
-  const track=document.getElementById("tradeCalendarTrack");
-  if(track){
-    track.style.transition=animate?"transform .48s cubic-bezier(.2,.8,.2,1)":"none";
-    track.style.transform=`translateX(-${tradeCalendarSlide*100}%)`;
-  }
-  const label=document.getElementById("calendarMonth");
-  const item=tradeCalendarMonths[tradeCalendarSlide];
-  if(label&&item)label.textContent=new Date(item.year,item.month,1).toLocaleString("id-ID",{month:"long",year:"numeric"}).toUpperCase();
-  document.querySelectorAll(".trade-dot").forEach((dot,i)=>dot.classList.toggle("active",i===tradeCalendarSlide));
-  const prev=document.getElementById("prevTradeMonth"),next=document.getElementById("nextTradeMonth");
-  if(prev)prev.disabled=tradeCalendarSlide===1;
-  if(next)next.disabled=tradeCalendarSlide===0;
+function setCalendarView(year, month){
+ const d=new Date(year,month,1);
+ calendarViewDate=d;
+ loadTradeCalendar();
+}
+
+function moveCalendarMonth(delta){
+ const d=new Date(calendarViewDate.getFullYear(),calendarViewDate.getMonth()+delta,1);
+ setCalendarView(d.getFullYear(),d.getMonth());
 }
 
 async function loadTradeCalendar(){
-  const now=new Date();
-  const currentYear=now.getFullYear(),currentMonth=now.getMonth();
-  const previousDate=new Date(currentYear,currentMonth-1,1);
-  tradeCalendarMonths=[
-    {year:currentYear,month:currentMonth},
-    {year:previousDate.getFullYear(),month:previousDate.getMonth()}
-  ];
-  await renderTradeCalendar("tradeCalendar","calendarMonth",currentYear,currentMonth);
-  await renderTradeCalendar("previousTradeCalendar","previousCalendarMonth",previousDate.getFullYear(),previousDate.getMonth());
-  setTradeCalendarSlide(0,false);
+ const box=document.getElementById("tradeCalendar");
+ if(!box)return;
 
-  document.getElementById("prevTradeMonth")?.addEventListener("click",()=>setTradeCalendarSlide(tradeCalendarSlide+1));
-  document.getElementById("nextTradeMonth")?.addEventListener("click",()=>setTradeCalendarSlide(tradeCalendarSlide-1));
-  document.querySelectorAll(".trade-dot").forEach(dot=>dot.addEventListener("click",()=>setTradeCalendarSlide(Number(dot.dataset.slide))));
+ const year=calendarViewDate.getFullYear();
+ const month=calendarViewDate.getMonth();
+
+ const monthLabel=document.getElementById("calendarMonth");
+ if(monthLabel){
+  monthLabel.textContent=new Date(year,month,1).toLocaleString("id-ID",{month:"long",year:"numeric"}).toUpperCase();
+ }
+
+ let stats=[];
+ try{
+  const r=await fetch(`${API_BASE}/api/trade-calendar?year=${year}&month=${month+1}`,{cache:"no-store"});
+  const data=await r.json();
+  stats=Array.isArray(data.calendar)?data.calendar:[];
+ }catch(e){
+  console.warn("Trade calendar load error",e);
+ }
+
+ box.innerHTML="";
+
+ /* Calendar starts Monday, matching the Indonesian weekly layout. */
+ const firstDay=(new Date(year,month,1).getDay()+6)%7;
+ const days=new Date(year,month+1,0).getDate();
+
+ for(let i=0;i<firstDay;i++){
+  box.innerHTML+=`<div class="day" style="visibility:hidden"></div>`;
+ }
+
+ for(let d=1;d<=days;d++){
+  const date=`${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+  const it=stats.find(x=>x.day===date);
+  const cls=it?(it.win>it.loss?"green":it.loss>it.win?"red":"neutral"):"";
+  const selectedCls=selectedHistoryDate===date?" selected-history":"";
+  const todayCls=date===todayDateKey()?" today":"";
+
+  box.innerHTML+=`<div class="day ${cls}${selectedCls}${todayCls}" onclick="loadDayHistory('${date}')">
+    <div class="daynum">${d}</div>
+    ${it?`<div class="dayresult"><span class="green">WIN ${it.win}</span><br><span class="red">LOSS ${it.loss}</span></div>`:""}
+  </div>`;
+ }
+
+ const prev=document.getElementById("calendarPrev");
+ const next=document.getElementById("calendarNext");
+ const now=new Date();
+ const currentMonth=new Date(now.getFullYear(),now.getMonth(),1);
+ const viewMonth=new Date(year,month,1);
+
+ if(prev)prev.disabled=false;
+ if(next)next.disabled=viewMonth>=currentMonth;
 }
 
-async function renderTradeCalendar(boxId,monthLabelId,year,month){
-  const box=document.getElementById(boxId);
-  if(!box)return;
-  const label=document.getElementById(monthLabelId);
-  if(label&&boxId==="tradeCalendar")label.textContent=new Date(year,month,1).toLocaleString("id-ID",{month:"long",year:"numeric"}).toUpperCase();
-  let stats=[];
-  try{
-    const r=await fetch(`${API_BASE}/api/trade-calendar?year=${year}&month=${month+1}`);
-    stats=(await r.json()).calendar||[];
-  }catch(e){}
-  box.innerHTML="";
-  const first=new Date(year,month,1).getDay(),days=new Date(year,month+1,0).getDate();
-  for(let i=0;i<first;i++)box.innerHTML+=`<div class="day" style="visibility:hidden"></div>`;
-  for(let d=1;d<=days;d++){
-    const date=`${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`,it=stats.find(x=>x.day===date);
-    const cls=it?(it.win>it.loss?"green":it.loss>it.win?"red":"neutral"):"";
-    const selectedCls=selectedHistoryDate===date?" selected-history":"";
-    box.innerHTML+=`<div class="day ${cls}${selectedCls}" onclick="loadDayHistory('${date}')"><div class="daynum">${d}</div>${it?`<div class="dayresult"><span class="green">WIN ${it.win}</span><br><span class="red">LOSS ${it.loss}</span></div>`:""}</div>`;
-  }
-}
+(function initCalendarNavigation(){
+ const prev=document.getElementById("calendarPrev");
+ const next=document.getElementById("calendarNext");
+ if(prev)prev.addEventListener("click",()=>moveCalendarMonth(-1));
+ if(next)next.addEventListener("click",()=>moveCalendarMonth(1));
+})();
 async function loadDayHistory(date){
  selectedHistoryDate=date;
  setHistoryTitle(date);
- document.querySelectorAll("#tradeCalendar .day, #previousTradeCalendar .day").forEach(el=>el.classList.remove("selected-history"));
- const selected=[...document.querySelectorAll("#tradeCalendar .day, #previousTradeCalendar .day")].find(el=>el.getAttribute("onclick")===`loadDayHistory('${date}')`);
+ document.querySelectorAll("#tradeCalendar .day").forEach(el=>el.classList.remove("selected-history"));
+ const selected=[...document.querySelectorAll("#tradeCalendar .day")].find(el=>el.getAttribute("onclick")===`loadDayHistory('${date}')`);
  if(selected)selected.classList.add("selected-history");
  feedHistory.innerHTML="";
  try{
@@ -2695,6 +2691,7 @@ function closeDisclaimer(){document.getElementById("disclaimerPopup").classList.
 /* Reveal on scroll */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.08});
 document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
+calendarViewDate=new Date(new Date().getFullYear(),new Date().getMonth(),1);
 updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(syncSignals,20000);setInterval(loadTradeCalendar,60000);setInterval(updateSessionMonitor,1000);setInterval(updatePulseState,1200);setInterval(updateTimeline,1800);updateSessionMonitor();updatePulseState();updateTimeline();startMarketPulse();setInterval(updateTodayLine,1000);setInterval(updateLiveHub,1200);
 </script>
 
@@ -3701,12 +3698,11 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  z-index:5!important;
 }
 @media(max-width:620px){
- /* Give the lower activity/stats block enough room on mobile. */
- .a1-heatmap-core{height:600px!important}
- .a1-heatmap-terminal{height:555px!important}
- .hm-main{padding-bottom:10px!important}
- .hm-activity{margin-top:3px!important;padding-top:8px!important}
- .hm-stats{margin-top:3px!important;padding-top:8px!important;padding-bottom:8px!important}
+ .a1-heatmap-core{height:545px!important}
+ .a1-heatmap-terminal{height:505px!important}
+ .hm-main{padding-bottom:8px!important}
+ .hm-activity{margin-top:1px!important;padding-top:7px!important}
+ .hm-stats{margin-top:2px!important;padding-top:7px!important;padding-bottom:5px!important}
  .hm-footer{height:28px!important}
 }
 </style>
@@ -3789,82 +3785,34 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
 }
 </style>
 
-
-<style id="mobile-final-spacing-fix">
+<style id="heatmap-text-mobile-final">
 @media(max-width:620px){
-  main > .container{
-    width:calc(100% - 26px) !important;
-    max-width:none !important;
-    margin-left:auto !important;
-    margin-right:auto !important;
+  /* Extra vertical room so ACTIVITY + BIAS/VOLATILITY/RANGE/UPDATED
+     sit above the terminal footer instead of being covered by it. */
+  .a1-heatmap-core{
+    height:590px !important;
   }
-  .layout,.layout > div,.feed,.section-head,.calendar,
-  .trade-performance-slider,.trade-slider-viewport,.trade-slide{
-    min-width:0 !important;
-    max-width:100% !important;
+  .a1-heatmap-terminal{
+    height:550px !important;
   }
-  .layout{width:100% !important}
-  .signal-empty,.live-hub{width:100% !important}
-  .trade-slider-track{width:200% !important}
-  .trade-slide{width:50% !important;flex:0 0 50% !important}
-  .calendar-grid{
-    width:100% !important;
-    grid-template-columns:repeat(7,minmax(0,1fr)) !important;
-    gap:4px !important;
+  .hm-main{
+    padding-bottom:16px !important;
   }
-  .day{
-    min-width:0 !important;
-    width:100% !important;
-    overflow:hidden !important;
+  .hm-activity{
+    margin-top:3px !important;
+    padding-top:9px !important;
   }
-  .section-head{overflow:hidden}
-  .section-head h3,.section-tag{min-width:0}
-  .trade-performance-slider{margin-top:16px !important}
-}
-</style>
-
-<style id="trade-performance-mobile-clean">
-@media(max-width:620px){
-  .trade-performance-slider{
-    width:100% !important;
-    box-sizing:border-box !important;
-    overflow:hidden !important;
+  .hm-stats{
+    margin-top:4px !important;
+    padding-top:9px !important;
+    padding-bottom:10px !important;
+    line-height:1.5 !important;
   }
-  .trade-slider-viewport{
-    width:100% !important;
-    max-width:100% !important;
-    overflow:hidden !important;
+  .hm-stats span{
+    white-space:nowrap !important;
   }
-  .trade-slider-track{
-    display:flex !important;
-    width:200% !important;
-    max-width:none !important;
-    transform:translateX(0) !important;
-  }
-  .trade-slider-track .trade-slide{
-    display:block !important;
-    width:50% !important;
-    min-width:50% !important;
-    max-width:50% !important;
-    flex:0 0 50% !important;
-    box-sizing:border-box !important;
-  }
-  .trade-slider-track .calendar-grid{
-    display:grid !important;
-    width:100% !important;
-    max-width:100% !important;
-    min-width:0 !important;
-    grid-template-columns:repeat(7,minmax(0,1fr)) !important;
-    gap:4px !important;
-    box-sizing:border-box !important;
-  }
-  .trade-slider-track .day{
-    width:auto !important;
-    min-width:0 !important;
-    max-width:none !important;
-    min-height:65px !important;
-    box-sizing:border-box !important;
-    padding:7px !important;
+  .hm-footer{
+    height:28px !important;
   }
 }
 </style>
