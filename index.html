@@ -387,8 +387,8 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 .month-arrow:hover{color:#39e8ff;border-color:rgba(57,232,255,.45);background:rgba(57,232,255,.08);box-shadow:0 0 16px rgba(57,232,255,.1)}
 .month-arrow:disabled{opacity:.28;cursor:not-allowed;box-shadow:none}
 .trade-slider-viewport{overflow:hidden;width:100%}
-.trade-slider-track{display:flex;width:200%;transition:transform .48s cubic-bezier(.2,.8,.2,1);will-change:transform}
-.trade-slide{width:50%;flex:0 0 50%;min-width:50%}
+.trade-slider-track{display:flex;width:100%;transition:transform .48s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.trade-slide{width:100%;flex:0 0 100%;min-width:100%}
 .trade-slider-dots{display:flex;justify-content:center;gap:6px;margin-top:13px}
 .trade-dot{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:#334155;cursor:pointer;transition:.25s}
 .trade-dot.active{width:20px;border-radius:999px;background:#39e8ff;box-shadow:0 0 12px rgba(57,232,255,.55)}
@@ -1619,6 +1619,33 @@ body{min-width:0!important}
  img,svg,canvas,video,iframe{max-width:100%!important}
 }
 </style>
+<style id="a1-mobile-width-fix">
+/* ===== MOBILE WIDTH / NO-CROP FIX ===== */
+@media(max-width:760px){
+ html,body{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
+ .container,.layout,.layout>div,.card,.section-head,.feed,.calendar,.trade-performance-slider,.promo-heading,.promo-grid,.promo-card{width:100%!important;max-width:100%!important;min-width:0!important}
+ .layout>div{overflow:hidden!important}
+ .section-head{gap:10px;flex-wrap:wrap}
+ .section-head h3{min-width:0;max-width:100%;font-size:13px}
+ .section-tag{max-width:100%;white-space:normal;text-align:right}
+ .today-line{width:100%!important;max-width:100%!important;min-width:0!important;justify-content:center!important;text-align:center!important;flex-wrap:wrap!important;white-space:normal!important;line-height:1.5!important;overflow-wrap:anywhere!important}
+ .trade-month-nav{margin-left:auto;flex:0 0 auto;min-width:0}
+ .trade-slider-viewport,.trade-slider-track,.trade-slide{min-width:0!important;max-width:100%!important}
+ .trade-slider-track{width:100%!important}
+ .trade-slide{width:100%!important;flex-basis:100%!important}
+ .calendar-grid{width:100%!important;max-width:100%!important;min-width:0!important;grid-template-columns:repeat(7,minmax(0,1fr))!important}
+ .day{min-width:0!important;overflow:hidden!important}
+ .daynum,.dayresult{min-width:0!important;overflow:hidden!important}
+ .dayresult{white-space:nowrap!important}
+ .promo-heading{padding:0 6px!important;overflow:hidden!important}
+ .promo-heading h2{font-size:18px!important;line-height:1.18!important;letter-spacing:-.5px!important;overflow-wrap:anywhere!important;word-break:normal!important}
+ .promo-heading p{max-width:100%!important;overflow-wrap:anywhere!important}
+ .promo-card{overflow:hidden!important}
+ .promo-image img{max-width:100%!important;height:auto!important}
+ .signal,.signal-empty,.intel-panel,.stats,.stat{min-width:0!important;max-width:100%!important}
+ .signal-top,.signal-main,.chips{min-width:0!important;max-width:100%!important}
+}
+</style>
 </head>
 <body>
 <canvas id="astra-canvas"></canvas><div class="motion-orbs"><span class="motion-orb o1"></span><span class="motion-orb o2"></span><span class="motion-orb o3"></span></div>
@@ -2573,7 +2600,7 @@ function setTradeCalendarSlide(index,animate=true){
   const track=document.getElementById("tradeCalendarTrack");
   if(track){
     track.style.transition=animate?"transform .48s cubic-bezier(.2,.8,.2,1)":"none";
-    track.style.transform=`translateX(-${tradeCalendarSlide*50}%)`;
+    track.style.transform=`translateX(-${tradeCalendarSlide*100}%)`;
   }
   const label=document.getElementById("calendarMonth");
   const item=tradeCalendarMonths[tradeCalendarSlide];
@@ -3674,11 +3701,12 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  z-index:5!important;
 }
 @media(max-width:620px){
- .a1-heatmap-core{height:545px!important}
- .a1-heatmap-terminal{height:505px!important}
- .hm-main{padding-bottom:8px!important}
- .hm-activity{margin-top:1px!important;padding-top:7px!important}
- .hm-stats{margin-top:2px!important;padding-top:7px!important;padding-bottom:5px!important}
+ /* Give the lower activity/stats block enough room on mobile. */
+ .a1-heatmap-core{height:600px!important}
+ .a1-heatmap-terminal{height:555px!important}
+ .hm-main{padding-bottom:10px!important}
+ .hm-activity{margin-top:3px!important;padding-top:8px!important}
+ .hm-stats{margin-top:3px!important;padding-top:8px!important;padding-bottom:8px!important}
  .hm-footer{height:28px!important}
 }
 </style>
@@ -3758,5 +3786,85 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  .a1-news-source,.a1-news-time{font-size:7.5px!important}
  .a1-news-tag{font-size:7px!important}
  .a1-news-foot{font-size:7px!important}
+}
+</style>
+
+
+<style id="mobile-final-spacing-fix">
+@media(max-width:620px){
+  main > .container{
+    width:calc(100% - 26px) !important;
+    max-width:none !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  .layout,.layout > div,.feed,.section-head,.calendar,
+  .trade-performance-slider,.trade-slider-viewport,.trade-slide{
+    min-width:0 !important;
+    max-width:100% !important;
+  }
+  .layout{width:100% !important}
+  .signal-empty,.live-hub{width:100% !important}
+  .trade-slider-track{width:200% !important}
+  .trade-slide{width:50% !important;flex:0 0 50% !important}
+  .calendar-grid{
+    width:100% !important;
+    grid-template-columns:repeat(7,minmax(0,1fr)) !important;
+    gap:4px !important;
+  }
+  .day{
+    min-width:0 !important;
+    width:100% !important;
+    overflow:hidden !important;
+  }
+  .section-head{overflow:hidden}
+  .section-head h3,.section-tag{min-width:0}
+  .trade-performance-slider{margin-top:16px !important}
+}
+</style>
+
+<style id="trade-performance-mobile-clean">
+@media(max-width:620px){
+  .trade-performance-slider{
+    width:100% !important;
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+  }
+  .trade-slider-viewport{
+    width:100% !important;
+    max-width:100% !important;
+    overflow:hidden !important;
+  }
+  .trade-slider-track{
+    display:flex !important;
+    width:200% !important;
+    max-width:none !important;
+    transform:translateX(0) !important;
+  }
+  .trade-slider-track .trade-slide{
+    display:block !important;
+    width:50% !important;
+    min-width:50% !important;
+    max-width:50% !important;
+    flex:0 0 50% !important;
+    box-sizing:border-box !important;
+  }
+  .trade-slider-track .calendar-grid{
+    display:grid !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    grid-template-columns:repeat(7,minmax(0,1fr)) !important;
+    gap:4px !important;
+    box-sizing:border-box !important;
+  }
+  .trade-slider-track .day{
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    min-height:65px !important;
+    box-sizing:border-box !important;
+    padding:7px !important;
+  }
 }
 </style>
