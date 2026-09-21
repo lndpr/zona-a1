@@ -380,6 +380,19 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 }
 
 
+/* ===== TRADE PERFORMANCE MONTH SLIDER ===== */
+.trade-performance-slider{overflow:hidden}
+.trade-month-nav{display:flex;align-items:center;gap:8px}
+.month-arrow{width:27px;height:27px;border:1px solid rgba(57,232,255,.18);border-radius:8px;background:rgba(57,232,255,.035);color:#8da1b5;display:grid;place-items:center;cursor:pointer;transition:.2s}
+.month-arrow:hover{color:#39e8ff;border-color:rgba(57,232,255,.45);background:rgba(57,232,255,.08);box-shadow:0 0 16px rgba(57,232,255,.1)}
+.month-arrow:disabled{opacity:.28;cursor:not-allowed;box-shadow:none}
+.trade-slider-viewport{overflow:hidden;width:100%}
+.trade-slider-track{display:flex;width:200%;transition:transform .48s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.trade-slide{width:50%;flex:0 0 50%;min-width:50%}
+.trade-slider-dots{display:flex;justify-content:center;gap:6px;margin-top:13px}
+.trade-dot{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:#334155;cursor:pointer;transition:.25s}
+.trade-dot.active{width:20px;border-radius:999px;background:#39e8ff;box-shadow:0 0 12px rgba(57,232,255,.55)}
+
 /* ===== TODAY ACTIVE INDICATOR ===== */
 #tradeCalendar .day.today{
  background:
@@ -1817,9 +1830,26 @@ body{min-width:0!important}
 
    
 
-<section class="calendar card reveal">
-    <div class="section-head" style="margin-top:0"><h3>Trade Performance</h3><span class="section-tag" id="calendarMonth"></span></div><div class="today-line" id="todayLine">TODAY • memuat tanggal</div>
-    <div class="calendar-grid" id="tradeCalendar"></div>
+<section class="calendar card reveal trade-performance-slider">
+    <div class="section-head" style="margin-top:0">
+      <h3>Trade Performance</h3>
+      <div class="trade-month-nav">
+        <button type="button" class="month-arrow" id="prevTradeMonth" aria-label="Bulan sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
+        <span class="section-tag" id="calendarMonth"></span>
+        <button type="button" class="month-arrow" id="nextTradeMonth" aria-label="Bulan berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="today-line" id="todayLine">TODAY • memuat tanggal</div>
+    <div class="trade-slider-viewport">
+      <div class="trade-slider-track" id="tradeCalendarTrack">
+        <div class="trade-slide"><div class="calendar-grid" id="tradeCalendar"></div></div>
+        <div class="trade-slide"><div class="calendar-grid" id="previousTradeCalendar"></div></div>
+      </div>
+    </div>
+    <div class="trade-slider-dots">
+      <button type="button" class="trade-dot active" data-slide="0" aria-label="Bulan sekarang"></button>
+      <button type="button" class="trade-dot" data-slide="1" aria-label="Bulan sebelumnya"></button>
+    </div>
    </section>
 
    <section class="promo-tools" id="tools">
@@ -2535,24 +2565,67 @@ function setHistoryTitle(date){
  const d=new Date(date+"T00:00:00");
  head.textContent="Riwayat Sinyal • "+d.toLocaleDateString("id-ID",{day:"2-digit",month:"short",year:"numeric"});
 }
+let tradeCalendarSlide=0;
+let tradeCalendarMonths=[];
+
+function setTradeCalendarSlide(index,animate=true){
+  tradeCalendarSlide=Math.max(0,Math.min(1,index));
+  const track=document.getElementById("tradeCalendarTrack");
+  if(track){
+    track.style.transition=animate?"transform .48s cubic-bezier(.2,.8,.2,1)":"none";
+    track.style.transform=`translateX(-${tradeCalendarSlide*50}%)`;
+  }
+  const label=document.getElementById("calendarMonth");
+  const item=tradeCalendarMonths[tradeCalendarSlide];
+  if(label&&item)label.textContent=new Date(item.year,item.month,1).toLocaleString("id-ID",{month:"long",year:"numeric"}).toUpperCase();
+  document.querySelectorAll(".trade-dot").forEach((dot,i)=>dot.classList.toggle("active",i===tradeCalendarSlide));
+  const prev=document.getElementById("prevTradeMonth"),next=document.getElementById("nextTradeMonth");
+  if(prev)prev.disabled=tradeCalendarSlide===1;
+  if(next)next.disabled=tradeCalendarSlide===0;
+}
+
 async function loadTradeCalendar(){
- const box=document.getElementById("tradeCalendar"),now=new Date(),year=now.getFullYear(),month=now.getMonth();
- document.getElementById("calendarMonth").textContent=now.toLocaleString("id-ID",{month:"long",year:"numeric"}).toUpperCase();
- let stats=[];try{const r=await fetch(`${API_BASE}/api/trade-calendar?year=${year}&month=${month+1}`);stats=(await r.json()).calendar||[]}catch(e){}
- box.innerHTML="";const first=new Date(year,month,1).getDay(),days=new Date(year,month+1,0).getDate();
- for(let i=0;i<first;i++)box.innerHTML+=`<div class="day" style="visibility:hidden"></div>`;
- for(let d=1;d<=days;d++){
-  const date=`${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`,it=stats.find(x=>x.day===date);
-  const cls=it?(it.win>it.loss?"green":it.loss>it.win?"red":"neutral"):"";
-  const selectedCls=selectedHistoryDate===date?" selected-history":"";
-  box.innerHTML+=`<div class="day ${cls}${selectedCls}" onclick="loadDayHistory('${date}')"><div class="daynum">${d}</div>${it?`<div class="dayresult"><span class="green">WIN ${it.win}</span><br><span class="red">LOSS ${it.loss}</span></div>`:""}</div>`;
- }
+  const now=new Date();
+  const currentYear=now.getFullYear(),currentMonth=now.getMonth();
+  const previousDate=new Date(currentYear,currentMonth-1,1);
+  tradeCalendarMonths=[
+    {year:currentYear,month:currentMonth},
+    {year:previousDate.getFullYear(),month:previousDate.getMonth()}
+  ];
+  await renderTradeCalendar("tradeCalendar","calendarMonth",currentYear,currentMonth);
+  await renderTradeCalendar("previousTradeCalendar","previousCalendarMonth",previousDate.getFullYear(),previousDate.getMonth());
+  setTradeCalendarSlide(0,false);
+
+  document.getElementById("prevTradeMonth")?.addEventListener("click",()=>setTradeCalendarSlide(tradeCalendarSlide+1));
+  document.getElementById("nextTradeMonth")?.addEventListener("click",()=>setTradeCalendarSlide(tradeCalendarSlide-1));
+  document.querySelectorAll(".trade-dot").forEach(dot=>dot.addEventListener("click",()=>setTradeCalendarSlide(Number(dot.dataset.slide))));
+}
+
+async function renderTradeCalendar(boxId,monthLabelId,year,month){
+  const box=document.getElementById(boxId);
+  if(!box)return;
+  const label=document.getElementById(monthLabelId);
+  if(label&&boxId==="tradeCalendar")label.textContent=new Date(year,month,1).toLocaleString("id-ID",{month:"long",year:"numeric"}).toUpperCase();
+  let stats=[];
+  try{
+    const r=await fetch(`${API_BASE}/api/trade-calendar?year=${year}&month=${month+1}`);
+    stats=(await r.json()).calendar||[];
+  }catch(e){}
+  box.innerHTML="";
+  const first=new Date(year,month,1).getDay(),days=new Date(year,month+1,0).getDate();
+  for(let i=0;i<first;i++)box.innerHTML+=`<div class="day" style="visibility:hidden"></div>`;
+  for(let d=1;d<=days;d++){
+    const date=`${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`,it=stats.find(x=>x.day===date);
+    const cls=it?(it.win>it.loss?"green":it.loss>it.win?"red":"neutral"):"";
+    const selectedCls=selectedHistoryDate===date?" selected-history":"";
+    box.innerHTML+=`<div class="day ${cls}${selectedCls}" onclick="loadDayHistory('${date}')"><div class="daynum">${d}</div>${it?`<div class="dayresult"><span class="green">WIN ${it.win}</span><br><span class="red">LOSS ${it.loss}</span></div>`:""}</div>`;
+  }
 }
 async function loadDayHistory(date){
  selectedHistoryDate=date;
  setHistoryTitle(date);
- document.querySelectorAll("#tradeCalendar .day").forEach(el=>el.classList.remove("selected-history"));
- const selected=[...document.querySelectorAll("#tradeCalendar .day")].find(el=>el.getAttribute("onclick")===`loadDayHistory('${date}')`);
+ document.querySelectorAll("#tradeCalendar .day, #previousTradeCalendar .day").forEach(el=>el.classList.remove("selected-history"));
+ const selected=[...document.querySelectorAll("#tradeCalendar .day, #previousTradeCalendar .day")].find(el=>el.getAttribute("onclick")===`loadDayHistory('${date}')`);
  if(selected)selected.classList.add("selected-history");
  feedHistory.innerHTML="";
  try{
