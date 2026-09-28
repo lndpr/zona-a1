@@ -1692,103 +1692,238 @@ body{min-width:0!important}
  <h1>Smart Money.<br><span class="gradient">Executed Live.</span></h1>
  <p>Real-time signal feed dari ZONA EA yang berjalan di MetaTrader 5. Dirancang dengan interface yang ringan, modern, dan fokus pada informasi penting.</p>
  
-<div class="core a1-heatmap-core" id="astraCore" aria-label="ZONA A1 market heatmap">
- <div class="a1-heatmap-terminal">
-  <div class="hm-head">
-   <div class="hm-brand"><span class="hm-live-dot"></span><span>A1 MARKET HEATMAP</span></div>
-   <div class="hm-source">XAUUSD • 15M • LIVE</div>
+<div class="a1-livechart" id="a1LiveChart" aria-label="ZONA A1 live chart dengan zona BR1 dan BR2">
+ <div class="a1-lc-head">
+  <span><span class="a1-lc-dot" id="a1lcDot"></span>ZONA A1 LIVE CHART</span>
+  <span id="a1lcClock">--:--:--</span>
+ </div>
+ <div class="a1-lc-price" id="a1lcPrice">-- <small>XAU/USD</small></div>
+ <div class="a1-lc-body">
+  <div class="a1-lc-chart-wrap"><div id="a1lcChart"></div></div>
+  <div class="a1-lc-side">
+   <div class="a1-lc-dash" id="a1lcDash"></div>
+   <div class="a1-lc-next wait" id="a1lcNext">MEMUAT...</div>
   </div>
-
-  <div class="hm-main">
-   <div class="hm-title-row">
-    <div>
-     <strong>XAUUSD</strong>
-     <span>PRICE ACTION HEATMAP</span>
-    </div>
-    <div class="hm-quote">
-     <b id="hmPrice">—</b>
-     <span id="hmChange">WAIT</span>
-    </div>
-   </div>
-
-
-   <div class="hm-market-closed" id="hmMarketClosed" role="status" aria-live="polite">
-    <span class="closed-dot"></span>
-    <span>MARKET CLOSED — WEEKEND</span>
-    <small id="hmMarketClosedMeta">XAUUSD / FOREX MARKET IS OFFLINE</small>
-   </div>
-
-   <div class="hm-alert-row">
-    <div class="hm-news-alert" id="hmNewsAlert">
-     <span class="hm-news-dot"></span>
-     <div class="hm-news-copy">
-      <b id="hmNewsTitle">HIGH IMPACT NEWS</b>
-      <span id="hmNewsMeta">Scanning economic calendar…</span>
-     </div>
-     <strong id="hmNewsCountdown">--:--</strong>
-    </div>
-    <button class="hm-alert-btn" id="hmAlertBtn" type="button" title="Enable signal sound">🔔 ALERT OFF</button>
-   </div>
-
-   <div class="hm-chart-wrap">
-    <canvas id="heatmapCanvas"></canvas>
-    <div class="hm-current-line" id="hmCurrentLine"></div>
-    <div class="hm-current-price" id="hmCurrentPrice">—</div>
-    <div class="hm-loading" id="hmLoading">LOADING MARKET DATA…</div>
-   </div>
-
-   <div class="hm-scale">
-    <span>SELL / HIGH ACTIVITY</span>
-    <div class="hm-gradient"></div>
-    <span>LOW</span>
-    <span>BUY / HIGH ACTIVITY</span>
-   </div>
-
-   <div class="hm-activity">
-    <div><span>BUY ACTIVITY</span><b id="hmBuyPct">—</b></div>
-    <div class="hm-activity-bar"><i id="hmBuyBar"></i></div>
-    <div><span>SELL ACTIVITY</span><b id="hmSellPct">—</b></div>
-    <div class="hm-activity-bar sell"><i id="hmSellBar"></i></div>
-   </div>
-
-   <div class="hm-stats">
-    <span>BIAS <b id="hmBias">NEUTRAL</b></span>
-    <span>VOLATILITY <b id="hmVolatility">—</b></span>
-    <span>RANGE <b id="hmRange">—</b></span>
-    <span>UPDATED <b id="hmUpdated">—</b></span>
-   </div>
-  </div>
-
- 
-<div class="a1-market-intel" id="a1MarketIntel">
- <div class="a1-mi-head">
-  <div class="a1-mi-title">TODAY'S MARKET INTELLIGENCE<small id="a1MiDate">SCANNING TODAY'S MARKET</small></div>
-  <div class="a1-mi-live"><i></i><span id="a1MiStatus">LIVE • SCANNING</span></div>
- </div>
- <div class="a1-mi-grid" id="a1MiGrid">
-  <div class="a1-mi-card"><div class="a1-mi-kicker"><span>MARKET INTELLIGENCE</span><span>—</span></div><h4>Scanning latest market themes…</h4><p>Collecting fresh headlines across Gold, USD, central banks, inflation, yields, forex, oil and geopolitics.</p></div>
- </div>
- <div class="a1-mi-foot"><span>FOCUS: <b>GOLD/XAU • USD • FED • ECB • CPI • YIELD • FOREX • OIL • GEOPOLITICS</b></span><span id="a1MiUpdated">UPDATED —</span></div>
-</div>
- <div class="hm-footer">
-   <span>A1 INDICATOR • PRICE ACTION • TICK VOLUME • 15M</span>
-   <span id="hmStatus">SCANNING MARKET</span>
-  </div>
- </div>
-
- <div class="core-status hm-core-status">
-  <strong>MARKET HEATMAP</strong>
-  <span>Activity concentration • price structure • directional bias</span>
- </div>
-
- <!-- Compatibility nodes for the existing legacy hero updater -->
- <div class="legacy-liq-compat" aria-hidden="true">
-  <span id="liqClock"></span><span id="liqPrice"></span><span id="liqMove"></span>
-  <span id="liqAsk"></span><span id="liqMid"></span><span id="liqBid"></span>
-  <span id="liqStructure"></span><span id="liqLiquidity"></span><span id="liqFlow"></span>
-  <span id="coreState"></span><span id="coreSub"></span>
  </div>
 </div>
+
+<style>
+ .a1-livechart{width:100%;align-self:stretch;border:1px solid rgba(148,163,184,.14);background:rgba(10,16,29,.85);border-radius:20px;max-width:1000px;margin:28px auto 0;overflow:hidden;text-align:left}
+ .a1-lc-head{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;border-bottom:1px solid rgba(148,163,184,.14);font-size:10.5px;font-weight:800;letter-spacing:1px;color:#9ba9bd;text-transform:uppercase}
+ .a1-lc-dot{width:7px;height:7px;border-radius:50%;background:#fbbf24;display:inline-block;margin-right:7px}
+ .a1-lc-dot.live{background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.8)}
+ .a1-lc-price{padding:12px 18px;font-size:22px;font-weight:900;color:#f8fbff;border-bottom:1px solid rgba(148,163,184,.14)}
+ .a1-lc-price small{display:block;font-size:10px;font-weight:700;color:#9ba9bd;margin-top:2px}
+ .a1-lc-body{display:grid;grid-template-columns:1fr 240px;gap:0}
+ @media(max-width:760px){.a1-lc-body{grid-template-columns:1fr}}
+ .a1-lc-chart-wrap{padding:14px;position:relative;min-width:0}
+ #a1lcChart{width:100%;height:420px;position:relative}
+ .a1-lc-side{border-left:1px solid rgba(148,163,184,.14);padding:14px;display:flex;flex-direction:column}
+ @media(max-width:760px){.a1-lc-side{border-left:none;border-top:1px solid rgba(148,163,184,.14)}}
+ .a1-lc-dash-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(148,163,184,.1);font-size:10.5px}
+ .a1-lc-dash-row:last-child{border-bottom:none}
+ .a1-lc-label{color:#9ba9bd;font-weight:700}
+ .a1-lc-badge{font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:999px}
+ .a1-lc-badge.bull{color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3)}
+ .a1-lc-badge.bear{color:#fb7185;background:rgba(251,113,133,.1);border:1px solid rgba(251,113,133,.3)}
+ .a1-lc-badge.none{color:#94a3b8;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.2)}
+ .a1-lc-badge.fresh{color:#4ade80}
+ .a1-lc-badge.used{color:#fbbf24}
+ .a1-lc-badge.invalid{color:#64748b}
+ .a1-lc-next{margin-top:auto;padding:12px;border-radius:12px;text-align:center;font-weight:900;font-size:13px}
+ .a1-lc-next.wait{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
+ .a1-lc-next.buy{background:rgba(74,222,128,.14);color:#4ade80;border:1px solid rgba(74,222,128,.35)}
+ .a1-lc-next.sell{background:rgba(251,113,133,.14);color:#fb7185;border:1px solid rgba(251,113,133,.35)}
+ .a1-lc-zone{position:absolute;left:0;right:0;pointer-events:none;border-radius:2px}
+ .a1-lc-zone .a1lz-label{position:absolute;right:5px;top:1px;font-size:8.5px;font-weight:800;letter-spacing:.4px}
+ .a1-lc-zone.buy{background:rgba(74,222,128,.10);border-top:1px dashed rgba(74,222,128,.5);border-bottom:1px dashed rgba(74,222,128,.5)}
+ .a1-lc-zone.buy .a1lz-label{color:#4ade80}
+ .a1-lc-zone.sell{background:rgba(251,113,133,.10);border-top:1px dashed rgba(251,113,133,.5);border-bottom:1px dashed rgba(251,113,133,.5)}
+ .a1-lc-zone.sell .a1lz-label{color:#fb7185}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<script src="zona-chart-engine.js"></script>
+<script>
+(function () {
+  // Worker yang sama dengan signal platform ZONA A1 (endpoint /api/candles & /api/price ditambahkan di situ)
+  const CHART_API_BASE = "https://zona-a1-signal-api.landungprakoso14.workers.dev";
+  const GRANULARITY = "5min";
+  const CANDLE_COUNT = 500;
+  const PRICE_POLL_MS = 2000;
+  const SWING_LENGTH = 50;
+  const GRANULARITY_SECONDS = 300;
+
+  const chartEl = document.getElementById("a1lcChart");
+  if (!chartEl || typeof LightweightCharts === "undefined") return;
+
+  const chart = LightweightCharts.createChart(chartEl, {
+    layout: { background: { color: "transparent" }, textColor: "#c9d4e3" },
+    grid: { vertLines: { color: "rgba(148,163,184,.06)" }, horzLines: { color: "rgba(148,163,184,.06)" } },
+    timeScale: { timeVisible: true, secondsVisible: false, borderColor: "rgba(148,163,184,.15)" },
+    rightPriceScale: { borderColor: "rgba(148,163,184,.15)" },
+    autoSize: true,
+  });
+  const candleSeries = chart.addCandlestickSeries({
+    upColor: "#4ade80", downColor: "#fb7185",
+    borderUpColor: "#4ade80", borderDownColor: "#fb7185",
+    wickUpColor: "#4ade80", wickDownColor: "#fb7185",
+  });
+
+  let candles = [];
+  let currentBar = null;
+  let br1Box, br2Box, swingHighLine, swingLowLine;
+
+  function bucketTime(unixSeconds) {
+    return Math.floor(unixSeconds / GRANULARITY_SECONDS) * GRANULARITY_SECONDS;
+  }
+
+  function ensureZoneEls() {
+    if (!br1Box) {
+      br1Box = document.createElement("div");
+      br1Box.className = "a1-lc-zone";
+      br1Box.innerHTML = '<span class="a1lz-label"></span>';
+      chartEl.appendChild(br1Box);
+    }
+    if (!br2Box) {
+      br2Box = document.createElement("div");
+      br2Box.className = "a1-lc-zone";
+      br2Box.innerHTML = '<span class="a1lz-label"></span>';
+      chartEl.appendChild(br2Box);
+    }
+  }
+
+  function positionZoneBox(box, top, bottom, buySide, tag) {
+    const yTop = candleSeries.priceToCoordinate(top);
+    const yBot = candleSeries.priceToCoordinate(bottom);
+    if (yTop == null || yBot == null) { box.style.display = "none"; return; }
+    box.style.display = "block";
+    box.style.top = Math.min(yTop, yBot) + "px";
+    box.style.height = Math.max(2, Math.abs(yBot - yTop)) + "px";
+    box.className = "a1-lc-zone " + (buySide ? "buy" : "sell");
+    box.querySelector(".a1lz-label").textContent = (buySide ? "BUY " : "SELL ") + tag;
+  }
+
+  function clearPriceLines() {
+    if (swingHighLine) { candleSeries.removePriceLine(swingHighLine); swingHighLine = null; }
+    if (swingLowLine) { candleSeries.removePriceLine(swingLowLine); swingLowLine = null; }
+  }
+
+  function freshBadge(status) {
+    if (status === 1) return '<span class="a1-lc-badge fresh">🟢 FRESH</span>';
+    if (status === 2) return '<span class="a1-lc-badge used">🟡 USED</span>';
+    return '<span class="a1-lc-badge invalid">🔴 INVALID</span>';
+  }
+
+  function renderDashboard(state) {
+    const biasCls = state.bias === 1 ? "bull" : state.bias === -1 ? "bear" : "none";
+    const dash = document.getElementById("a1lcDash");
+    dash.innerHTML =
+      '<div class="a1-lc-dash-row"><span class="a1-lc-label">Bias</span><span class="a1-lc-badge ' + biasCls + '">' + state.biasLabel + '</span></div>' +
+      '<div class="a1-lc-dash-row"><span class="a1-lc-label">BR1 Buy</span>' + freshBadge(state.freshness.br1.long) + '</div>' +
+      '<div class="a1-lc-dash-row"><span class="a1-lc-label">BR1 Sell</span>' + freshBadge(state.freshness.br1.short) + '</div>' +
+      '<div class="a1-lc-dash-row"><span class="a1-lc-label">BR2 Buy</span>' + freshBadge(state.freshness.br2.long) + '</div>' +
+      '<div class="a1-lc-dash-row"><span class="a1-lc-label">BR2 Sell</span>' + freshBadge(state.freshness.br2.short) + '</div>';
+
+    const nextEl = document.getElementById("a1lcNext");
+    nextEl.className = "a1-lc-next " + state.nextAction.toLowerCase();
+    nextEl.textContent =
+      state.nextAction === "WAIT" ? "⏳ WAIT BREAK SWING" :
+      state.nextAction === "BUY" ? "🟢 READY — ZONA BUY" : "🔴 READY — ZONA SELL";
+  }
+
+  function renderState(state) {
+    if (!state || !state.ready) return;
+    ensureZoneEls();
+    positionZoneBox(br1Box, state.zones.br1.top, state.zones.br1.bottom, state.zones.br1.buySide, "BR1");
+    positionZoneBox(br2Box, state.zones.br2.top, state.zones.br2.bottom, state.zones.br2.buySide, "BR2");
+
+    clearPriceLines();
+    if (state.swingHigh.level != null) {
+      swingHighLine = candleSeries.createPriceLine({
+        price: state.swingHigh.level, color: "#4ade80", lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed, title: "Swing High",
+      });
+    }
+    if (state.swingLow.level != null) {
+      swingLowLine = candleSeries.createPriceLine({
+        price: state.swingLow.level, color: "#fb7185", lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed, title: "Swing Low",
+      });
+    }
+
+    candleSeries.setMarkers(state.breaks.slice(-60).map((b) => ({
+      time: b.time,
+      position: b.type === "bull" ? "belowBar" : "aboveBar",
+      color: b.type === "bull" ? "#4ade80" : "#fb7185",
+      shape: b.type === "bull" ? "arrowUp" : "arrowDown",
+      text: b.type === "bull" ? "BOS↑" : "BOS↓",
+    })));
+
+    renderDashboard(state);
+  }
+
+  function setStatus(live) {
+    const dot = document.getElementById("a1lcDot");
+    if (dot) dot.className = "a1-lc-dot" + (live ? " live" : "");
+    const clock = document.getElementById("a1lcClock");
+    if (clock) clock.textContent = new Date().toLocaleTimeString("id-ID");
+  }
+
+  async function loadCandles() {
+    const res = await fetch(CHART_API_BASE + "/api/candles?interval=" + GRANULARITY + "&count=" + CANDLE_COUNT);
+    const data = await res.json();
+    candles = data.candles || [];
+    candleSeries.setData(candles);
+    if (candles.length) currentBar = Object.assign({}, candles[candles.length - 1]);
+    renderState(ZonaA1Engine.compute(candles, { swingLength: SWING_LENGTH }));
+    setStatus(true);
+  }
+
+  async function pollPrice() {
+    try {
+      const res = await fetch(CHART_API_BASE + "/api/price");
+      const p = await res.json();
+      if (p.error) throw new Error(p.error);
+
+      const priceEl = document.getElementById("a1lcPrice");
+      if (priceEl) {
+        priceEl.innerHTML = p.price.toFixed(2) + " <small>XAU/USD</small>";
+      }
+
+      const barTime = bucketTime(p.time);
+      if (!currentBar || currentBar.time !== barTime) {
+        currentBar = { time: barTime, open: p.price, high: p.price, low: p.price, close: p.price };
+        candles.push(currentBar);
+        if (candles.length > CANDLE_COUNT + 5) candles.shift();
+      } else {
+        currentBar.high = Math.max(currentBar.high, p.price);
+        currentBar.low = Math.min(currentBar.low, p.price);
+        currentBar.close = p.price;
+      }
+      candleSeries.update(currentBar);
+      renderState(ZonaA1Engine.compute(candles, { swingLength: SWING_LENGTH }));
+      setStatus(true);
+    } catch (err) {
+      console.error("ZONA A1 live chart:", err);
+      setStatus(false);
+    }
+  }
+
+  chart.timeScale().subscribeVisibleLogicalRangeChange(function () {
+    const state = ZonaA1Engine.compute(candles, { swingLength: SWING_LENGTH });
+    if (state.ready) {
+      positionZoneBox(br1Box, state.zones.br1.top, state.zones.br1.bottom, state.zones.br1.buySide, "BR1");
+      positionZoneBox(br2Box, state.zones.br2.top, state.zones.br2.bottom, state.zones.br2.buySide, "BR2");
+    }
+  });
+
+  loadCandles().then(function () {
+    setInterval(pollPrice, PRICE_POLL_MS);
+    setInterval(loadCandles, 5 * 60 * 1000);
+  });
+})();
+</script>
 
 </section>
 
