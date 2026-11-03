@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050914">
-<title>ZONA A1 | Live Signals</title>
+<title>ZONA A1 | Market Intelligence Terminal</title>
+<meta name="description" content="ZONA A1 — terminal market intelligence XAUUSD: signal live, kalender ekonomi high impact, berita pasar terbaru, dan tools trading by MataryClub.">
+<meta name="theme-color" content="#050b12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZONA A1 | Market Intelligence Terminal">
+<meta property="og:description" content="Signal live XAUUSD, kalender ekonomi, dan berita pasar terbaru dalam satu terminal.">
+<meta property="og:url" content="https://zonaa1.matary.id/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23061018'/%3E%3Ctext x='50' y='66' font-size='54' font-family='Arial' font-weight='900' text-anchor='middle' fill='%2339e8ff'%3EA1%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,6 +42,48 @@
  opacity:.35;
  cursor:not-allowed;
 }
+
+/* ===== ZONA A1 INFO MEMBER ===== */
+.a1-info{margin:65px auto 0;max-width:1100px;scroll-margin-top:90px}
+.a1-info-head{text-align:center;margin-bottom:26px}
+.a1-info-head h2{font-size:clamp(26px,4.5vw,40px);letter-spacing:-1.5px;margin:10px 0 8px}
+.a1-info-head p{color:var(--muted,#8da0b4);font-size:13px;max-width:620px;margin:0 auto;line-height:1.7}
+.a1-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.a1-info-item{padding:20px;text-align:left}
+.a1-info-item i{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;margin-bottom:14px;color:#54f59a;background:rgba(84,245,154,.06);border:1px solid rgba(84,245,154,.16)}
+.a1-info-item b{display:block;font-size:14px;margin-bottom:7px}
+.a1-info-item span{display:block;color:#8294a7;font-size:11px;line-height:1.75}
+.a1-info-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.a1-info-links a{display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:11px;border:1px solid rgba(57,232,255,.22);background:rgba(57,232,255,.05);color:#dffcff;font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;text-decoration:none;transition:.25s}
+.a1-info-links a:hover{border-color:#39e8ff;background:rgba(57,232,255,.1)}
+.a1-info-note{margin:18px auto 0;max-width:760px;text-align:center;color:#6f8194;font-size:10px;line-height:1.8}
+@media(max-width:900px){.a1-info-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.a1-info{margin-top:40px}.a1-info-grid{grid-template-columns:1fr}.a1-info-item{padding:17px}}
+
+/* ===== ZONA A1 RANGE ZONA (dari EA) ===== */
+.a1-zr{padding:22px;margin-top:16px}
+.a1-zr-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+.a1-zr-kicker{font:800 8px monospace;color:#39e8ff;letter-spacing:1.8px}
+.a1-zr-head h2{margin:7px 0 0;font-size:20px;letter-spacing:-.5px}
+.a1-zr-status{flex:0 0 auto;padding:6px 10px;border-radius:999px;border:1px solid rgba(251,191,36,.3);color:#fbbf24;font:800 8px monospace;letter-spacing:1.2px}
+.a1-zr-status[data-s="live"]{border-color:rgba(84,245,154,.35);color:#54f59a}
+.a1-zr-status[data-s="off"]{border-color:rgba(251,113,133,.35);color:#fb7185}
+.a1-zr-groups{display:grid;gap:12px}
+.a1-zr-group{border:1px solid rgba(148,163,184,.13);border-radius:14px;padding:14px;background:rgba(255,255,255,.015)}
+.a1-zr-gh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+.a1-zr-gh b{font-size:12px;letter-spacing:.8px}
+.a1-zr-gh small{font:700 8px monospace;color:#6f8194;letter-spacing:1.2px}
+.a1-zr-row{display:grid;grid-template-columns:54px 56px 1fr 1fr;gap:10px;align-items:center;padding:9px 0;border-top:1px solid rgba(148,163,184,.08);font-size:10px}
+.a1-zr-row:first-of-type{border-top:0}
+.a1-zr-tf{font:900 10px monospace;color:#dffcff}
+.a1-zr-bias{font:800 8px monospace;letter-spacing:1px;padding:4px 7px;border-radius:7px;text-align:center}
+.a1-zr-bias.buy{color:#54f59a;background:rgba(84,245,154,.08);border:1px solid rgba(84,245,154,.22)}
+.a1-zr-bias.sell{color:#fb7185;background:rgba(251,113,133,.08);border:1px solid rgba(251,113,133,.22)}
+.a1-zr-box small{display:block;font:700 7px monospace;color:#6f8194;letter-spacing:1.2px;margin-bottom:3px}
+.a1-zr-box span{color:#c5d3e0;font:600 10px monospace}
+.a1-zr-empty{color:#6f8194;font-size:10px;padding:4px 0}
+.a1-zr-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:14px;color:#6f8194;font-size:9px;line-height:1.6}
+@media(max-width:620px){.a1-zr{padding:17px}.a1-zr-row{grid-template-columns:44px 50px 1fr;}.a1-zr-row .a1-zr-box:last-child{grid-column:2 / span 2}}
 </style>
 
 <style>
@@ -85,7 +134,7 @@ a{color:inherit;text-decoration:none}
 @keyframes float{50%{transform:translateY(-9px) scale(1.04)}}
 .warning{margin:0 auto 22px;max-width:1180px;padding:14px 17px;border:1px solid rgba(251,191,36,.2);background:rgba(251,191,36,.045);border-radius:14px;color:#aeb9ca;font-size:11.5px;line-height:1.7}
 .warning strong{color:var(--gold)}
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:22px 0 18px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0 18px}
 .card{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,23,42,.76),rgba(6,10,19,.78));backdrop-filter:blur(18px);border-radius:var(--radius);box-shadow:var(--shadow)}
 .card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.045) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s}
 .card:hover:before{transform:translateX(120%)}
@@ -934,221 +983,7 @@ body[data-state="sell"] .live-hub{border-color:rgba(255,95,122,.22)}
 </style>
 
 
-<style>
-/* =========================================================
-  ZONA A1 — MARKET HEATMAP HERO
-  Data: BiQuote XAUUSD OHLC + live tick.
-  Heatmap is derived from candle direction/range/tick volume,
-  not an exchange order book.
-  ========================================================= */
-.a1-heatmap-core{
-  width:min(1080px,96vw)!important;
-  height:650px!important;
-  margin:30px auto 0!important;
-  display:block!important;
-  position:relative!important;
-}
-.a1-heatmap-terminal{
-  position:absolute;
-  inset:0 0 auto;
-  height:600px;
-  box-sizing:border-box;
-  border:1px solid rgba(54,145,168,.38);
-  border-radius:6px;
-  background:
-   radial-gradient(circle at 50% 50%,rgba(0,210,230,.035),transparent 55%),
-   #050a10;
-  overflow:hidden;
-  box-shadow:0 22px 80px rgba(0,0,0,.48),inset 0 0 70px rgba(0,190,220,.035);
-  font-family:monospace;
-  text-align:left;
-}
-.a1-heatmap-terminal:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-   linear-gradient(rgba(74,112,138,.035) 1px,transparent 1px),
-   linear-gradient(90deg,rgba(74,112,138,.035) 1px,transparent 1px);
-  background-size:44px 24px;
-  pointer-events:none;
-}
-.hm-head{
-  height:30px;
-  padding:0 13px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid rgba(69,116,138,.22);
-  color:#8094a5;
-  font-size:8px;
-  letter-spacing:1.5px;
-}
-.hm-brand{display:flex;align-items:center;gap:7px;color:#9fb3c2}
-.hm-live-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:#39e8a0;
-  box-shadow:0 0 10px rgba(57,232,160,.7);
-  animation:hmPulse 1.8s ease-in-out infinite;
-}
-.hm-source{color:#536879}
-.hm-main{padding:11px 13px 0;position:relative;z-index:2}
-.hm-title-row{
-  display:flex;align-items:center;justify-content:space-between;
-  height:32px;
-}
-.hm-title-row strong{
-  display:block;color:#e6f4f8;font-size:12px;letter-spacing:1.2px;
-}
-.hm-title-row span{
-  display:block;margin-top:3px;color:#5e7787;font-size:6px;letter-spacing:1.2px;
-}
-.hm-quote{text-align:right}
-.hm-quote b{
-  color:#eafcff;font-size:19px;letter-spacing:-.8px;
-  text-shadow:0 0 18px rgba(150,240,255,.12);
-}
-.hm-quote span{
-  display:block;font-size:7px;color:#39e8ff;margin-top:2px;
-}
-.hm-chart-wrap{
-  position:relative;
-  height:410px;
-  margin-top:9px;
-  border:1px solid rgba(61,107,128,.22);
-  background:rgba(2,8,13,.72);
-  overflow:hidden;
-}
-#heatmapCanvas{
-  display:block;
-  width:100%;
-  height:100%;
-}
-.hm-current-line{
-  position:absolute;left:0;right:0;height:1px;
-  background:rgba(57,232,255,.85);
-  box-shadow:0 0 10px rgba(57,232,255,.45);
-  pointer-events:none;
-}
-.hm-current-price{
-  position:absolute;right:0;
-  padding:3px 6px;
-  transform:translateY(-50%);
-  background:#0b1b25;
-  border:1px solid rgba(57,232,255,.42);
-  color:#bff8ff;
-  font-size:7px;
-  font-weight:800;
-}
-.hm-loading{
-  position:absolute;inset:0;display:grid;place-items:center;
-  color:#5d7b8c;font-size:8px;letter-spacing:1.5px;
-  background:rgba(2,8,13,.68);
-}
-.hm-scale{
-  height:20px;
-  display:flex;align-items:center;gap:8px;
-  color:#597181;font-size:5.5px;letter-spacing:.6px;
-}
-.hm-gradient{
-  height:4px;flex:1;border-radius:4px;
-  background:linear-gradient(90deg,#e84561,#7b334c,#152d3b,#197e6b,#39e8a0);
-  opacity:.85;
-}
-.hm-stats{
-  display:flex;justify-content:space-between;
-  padding-top:6px;
-  color:#516a79;font-size:6px;letter-spacing:.8px;
-}
-.hm-stats b{color:#8faab9;margin-left:3px}
-.hm-footer{
-  position:absolute;left:0;right:0;bottom:0;height:29px;
-  padding:0 13px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid rgba(69,116,138,.18);
-  color:#4c6574;font-size:6px;letter-spacing:1px;
-}
-.hm-footer span:last-child{color:#39e8ff}
-.hm-core-status{
-  bottom:1px!important;
-}
-.legacy-liq-compat{
-  position:absolute!important;
-  width:1px!important;height:1px!important;
-  overflow:hidden!important;
-  opacity:0!important;
-  pointer-events:none!important;
-}
-@keyframes hmPulse{
-  0%,100%{opacity:.45;transform:scale(.85)}
-  50%{opacity:1;transform:scale(1.25)}
-}
-/* ===== HEATMAP INTELLIGENCE OVERLAYS ===== */
-.hm-alert-row{display:flex;gap:8px;align-items:center;margin-top:7px;height:30px}
-.hm-news-alert{flex:1;min-width:0;height:30px;display:flex;align-items:center;gap:7px;padding:0 9px;border:1px solid rgba(251,191,36,.18);border-radius:5px;background:rgba(251,191,36,.035);overflow:hidden;transition:.25s}
-.hm-news-alert.hot{border-color:rgba(255,82,112,.65);background:rgba(255,82,112,.08);box-shadow:0 0 24px rgba(255,82,112,.12);animation:hmNewsPulse 1s ease-in-out infinite}
-.hm-news-dot{width:5px;height:5px;flex:0 0 auto;border-radius:50%;background:#fbbf24;box-shadow:0 0 9px rgba(251,191,36,.8)}
-.hm-news-alert.hot .hm-news-dot{background:#ff5277;box-shadow:0 0 12px #ff5277;animation:hmPulse .6s infinite}
-.hm-news-alert.warn{border-color:rgba(251,191,36,.45);background:rgba(251,191,36,.065)}
-.hm-news-alert.warn .hm-news-dot{animation:hmPulse .9s infinite}
-body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;border:2px solid rgba(57,232,255,.7);box-shadow:inset 0 0 80px rgba(57,232,255,.12);animation:signalFlash .7s ease-out forwards}
-@keyframes signalFlash{0%{opacity:1}100%{opacity:0}}
-.hm-news-copy{display:flex;align-items:center;gap:7px;min-width:0;white-space:nowrap;overflow:hidden}
-.hm-news-copy b{font-size:6px;color:#fbbf24;letter-spacing:.8px}
-.hm-news-copy span{font-size:6px;color:#8195a4;overflow:hidden;text-overflow:ellipsis}
-.hm-news-alert.hot .hm-news-copy b{color:#ff8095}
-.hm-news-countdown{font-size:8px!important;color:#eafcff!important;font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
-.hm-alert-btn{height:30px;padding:0 10px;border:1px solid rgba(57,232,255,.2);border-radius:5px;background:rgba(57,232,255,.045);color:#7f9aa8;font:700 7px monospace;letter-spacing:.7px;cursor:pointer;white-space:nowrap}
-.hm-alert-btn.on{color:#39e8a0;border-color:rgba(57,232,160,.35);background:rgba(57,232,160,.06);box-shadow:0 0 18px rgba(57,232,160,.08)}
-.hm-activity{display:grid;grid-template-columns:78px 1fr 78px 1fr;gap:7px;align-items:center;padding-top:6px;color:#506979;font-size:5.5px;letter-spacing:.7px}
-.hm-activity>div:first-child{text-align:left}.hm-activity>div:nth-child(3){text-align:right}
-.hm-activity b{font-size:7px;color:#8faab9;margin-left:4px}
-.hm-activity-bar{height:4px;background:rgba(255,255,255,.045);border-radius:4px;overflow:hidden}
-.hm-activity-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,rgba(25,180,125,.25),#39e8a0);border-radius:4px;transition:width .6s ease}
-.hm-activity-bar.sell i{background:linear-gradient(90deg,#ff5277,rgba(255,82,119,.2))}
-@keyframes hmNewsPulse{50%{filter:brightness(1.35)}}
-@media(max-width:620px){
-  .a1-heatmap-core{width:calc(100vw - 22px)!important;height:475px!important}
-  .a1-heatmap-terminal{height:430px}
-  .hm-chart-wrap{height:285px}
-  .hm-stats{font-size:5px}
-  .hm-source{display:none}
-}
 
-/* Remove legacy circular/orbit decoration around the heatmap */
-.a1-heatmap-core:before,
-.a1-heatmap-core:after,
-.a1-heatmap-core .core-orbit,
-.a1-heatmap-core .core-ball {
-  display:none !important;
-  content:none !important;
-  animation:none !important;
-}
-
-/* READABILITY PASS — HEATMAP UI */
-.hm-alert-row{height:34px!important;margin-top:8px!important;gap:10px!important}
-.hm-news-alert{height:34px!important;padding:0 11px!important;gap:9px!important}
-.hm-news-copy{gap:9px!important}
-.hm-news-copy b{font-size:8px!important;font-weight:800!important;letter-spacing:1px!important;color:#ffd34d!important;text-shadow:0 0 10px rgba(251,191,36,.22)}
-.hm-news-copy span{font-size:8px!important;font-weight:600!important;color:#b4c5d1!important;letter-spacing:.15px!important}
-.hm-news-countdown,#hmNewsCountdown{font-size:10px!important;font-weight:800!important;color:#f3fbff!important}
-.hm-alert-btn{height:34px!important;font-size:8px!important;font-weight:800!important;padding:0 12px!important}
-.hm-activity{grid-template-columns:92px 1fr 92px 1fr!important;gap:9px!important;padding-top:8px!important;color:#8ea4b3!important;font-size:7px!important;font-weight:700!important;letter-spacing:.8px!important}
-.hm-activity b{font-size:9px!important;font-weight:800!important;color:#d8e7ef!important;margin-left:5px!important;text-shadow:0 0 8px rgba(216,231,239,.12)}
-.hm-activity-bar{height:5px!important;background:rgba(255,255,255,.075)!important}
-.hm-stats{padding-top:8px!important;color:#8da2b0!important;font-size:7px!important;font-weight:700!important;letter-spacing:.75px!important}
-.hm-stats b{color:#d5e5ed!important;font-weight:800!important;margin-left:4px!important}
-.hm-source{color:#7f96a5!important;font-size:7px!important;font-weight:600!important;letter-spacing:.65px!important}
-@media(max-width:620px){
- .hm-news-copy b,.hm-news-copy span{font-size:6.5px!important}
- .hm-news-countdown,#hmNewsCountdown{font-size:8px!important}
- .hm-alert-btn{font-size:6.5px!important;padding:0 8px!important}
- .hm-activity{grid-template-columns:70px 1fr 70px 1fr!important;font-size:6px!important;gap:5px!important}
- .hm-activity b{font-size:7.5px!important}
- .hm-stats{font-size:6px!important}
- .hm-source{font-size:5.5px!important}
-}
-</style>
 
 
 <style>
@@ -1191,22 +1026,7 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
 }
 </style>
 
-<style id="weekend-market-style">
-/* WEEKEND MARKET CLOSED */
-.hm-market-closed{
- display:none;align-items:center;justify-content:center;gap:9px;
- min-height:38px;margin:7px 0 0;padding:0 12px;
- border:1px solid rgba(255,82,119,.38);border-radius:6px;
- background:linear-gradient(90deg,rgba(255,82,119,.09),rgba(255,193,7,.045),rgba(255,82,119,.09));
- box-shadow:inset 0 0 22px rgba(255,82,119,.035),0 0 20px rgba(255,82,119,.04);
- color:#ff8299;letter-spacing:1.1px;font:800 9px monospace;text-transform:uppercase;
-}
-.hm-market-closed.show{display:flex}
-.hm-market-closed .closed-dot{width:6px;height:6px;border-radius:50%;background:#ff5277;box-shadow:0 0 10px rgba(255,82,119,.8);animation:closedPulse 1.4s ease-in-out infinite}
-.hm-market-closed small{font-size:7px;font-weight:700;color:#aebdc7;letter-spacing:.6px}
-@keyframes closedPulse{50%{opacity:.45;transform:scale(.75)}}
-@media(max-width:620px){.hm-market-closed{font-size:7px;min-height:32px;gap:6px}.hm-market-closed small{font-size:5.5px}}
-</style>
+
 
 <style id="a1-market-intelligence-css">
 /* ===== ZONA A1 — TODAY'S MARKET INTELLIGENCE ===== */
@@ -1222,6 +1042,8 @@ body.signal-alert-flash:after{content:"";position:fixed;inset:0;z-index:9999;poi
 .a1-mi-card h4{margin:0 0 6px;font-size:10px;color:#d9f7ff;letter-spacing:.5px}.a1-mi-card p{margin:0;color:#7f98a6;font-size:8px;line-height:1.5}.a1-mi-card a{display:block;margin-top:7px;color:#456b7c;font-size:6.5px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.a1-mi-foot{padding:8px 12px;border-top:1px solid rgba(69,116,138,.12);font:7px monospace;color:#4e6876;display:flex;justify-content:space-between;gap:10px}.a1-mi-foot b{color:#8aa9b7}
 @media(max-width:760px){.a1-mi-grid{grid-template-columns:1fr}.a1-mi-card{min-height:94px}.a1-mi-head{height:48px}.a1-mi-title{font-size:9px}.a1-mi-foot{flex-direction:column;gap:4px}}
 </style>
+
+
 
 
 <style id="a1-market-intelligence-readable">
@@ -1634,6 +1456,127 @@ body{min-width:0!important}
  img,svg,canvas,video,iframe{max-width:100%!important}
 }
 </style>
+
+<style id="a1-mobile-responsive-polish">
+/* Mobile-first layout corrections: prevent horizontal overflow and make data readable */
+html,body{max-width:100%;overflow-x:hidden}
+img,iframe,video,canvas,svg{max-width:100%}
+.container,.layout,.main,.content,.sidebar,.card,.side-card{min-width:0;max-width:100%}
+@media(max-width:760px){
+  .container{width:calc(100% - 24px)!important}
+  .nav-inner{min-width:0}
+  .brand{gap:8px;min-width:0}
+  .brand-icon{width:34px;height:34px;flex:0 0 34px;border-radius:10px}
+  .brand-name{font-size:12px;letter-spacing:-.3px}
+  .brand-sub{letter-spacing:.8px;white-space:nowrap}
+  .hero{padding:48px 0 28px!important}
+  .hero h1{font-size:clamp(34px,10vw,56px)!important;letter-spacing:-1.8px!important;overflow-wrap:anywhere}
+  .hero p{font-size:13px;line-height:1.7;padding:0 4px}
+  .eyebrow{font-size:8px;letter-spacing:.8px;max-width:100%;flex-wrap:wrap;justify-content:center}
+  .core{width:135px;height:135px;margin-top:24px}
+  .core-ball{width:58px;height:58px}
+  .warning{font-size:10px;margin-bottom:16px;padding:12px}
+  .stats{gap:8px;margin-top:14px}
+  .stat{padding:12px!important;min-height:84px}
+  .label{font-size:8px;letter-spacing:.7px;line-height:1.45}
+  .value{font-size:17px;overflow-wrap:anywhere}
+  .layout{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+  .sidebar{display:flex;flex-direction:column;gap:14px}
+  .sidebar>.side-card{width:100%;margin:0}
+  .section-head{gap:8px;align-items:flex-start}
+  .section-head h3{font-size:12px;line-height:1.4}
+  .signal{padding:14px 12px 14px 16px!important}
+  .signal-main{gap:9px;min-width:0}
+  .symbol{font-size:13px;overflow-wrap:anywhere}
+  .chips{gap:4px}
+  .chip{font-size:8px;padding:4px 6px}
+  .routine{margin-top:38px;padding:0 2px}
+  .routine h2{font-size:29px;letter-spacing:-1px}
+  .routine p{font-size:12px;line-height:1.7}
+  .disclaimer{margin:25px auto 40px;font-size:9px;padding:13px}
+  .calendar{padding:12px!important}
+  .calendar-grid{gap:3px!important}
+  .day{min-width:0;min-height:52px!important;padding:5px!important;border-radius:8px!important}
+  .dayresult{font-size:6px!important;overflow-wrap:anywhere}
+  .a1-calendar-card{border-radius:16px!important}
+  .a1-calendar-head{align-items:center!important;gap:8px!important;padding:12px!important;flex-wrap:wrap}
+  .a1-calendar-icon{width:32px;height:32px;flex-basis:32px}
+  .a1-calendar-heading{flex:1 1 130px}
+  .a1-calendar-heading b{font-size:9px!important;letter-spacing:.7px!important}
+  .a1-calendar-heading small{font-size:6px!important;letter-spacing:.55px!important;line-height:1.5}
+  .a1-calendar-live{margin-left:40px!important;font-size:6px!important}
+  .a1-cal-overview{align-items:flex-start!important;gap:10px!important;padding:12px!important}
+  .a1-cal-overview-main{min-width:0;flex:1}
+  .a1-cal-overview-main>span{font-size:6px;letter-spacing:.7px;line-height:1.5}
+  .a1-cal-overview-main>b{font-size:25px!important}
+  .a1-cal-overview-main>small{font-size:7px;line-height:1.5}
+  .a1-cal-overview-side{min-width:0;max-width:58%;align-items:flex-end!important}
+  .a1-cal-overview-side>span:last-child{max-width:100%!important;font-size:7px!important;overflow-wrap:anywhere}
+  .a1-cal-toolbar{padding:10px 12px!important;gap:9px!important}
+  .a1-cal-filters{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:5px!important}
+  .a1-cal-filter{padding:8px 4px!important;font-size:7px!important;letter-spacing:.3px!important;min-width:0}
+  .a1-cal-time-label{font-size:7px!important;white-space:normal!important;line-height:1.5}
+  .a1-cal-table-wrap{overflow:visible!important;width:100%}
+  .a1-cal-table-head{display:none!important}
+  .a1-cal-event{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px 8px!important;min-width:0!important;padding:13px 12px!important}
+  .a1-cal-when{grid-column:1/-1;display:grid!important;grid-template-columns:auto 1fr;align-items:center;gap:5px 9px!important}
+  .a1-cal-when>b{font-size:12px!important}
+  .a1-cal-when>small{font-size:7px!important;text-align:right}
+  .a1-cal-country{grid-column:1/-1;font-size:7px!important}
+  .a1-cal-event-main{grid-column:1/-1;gap:7px!important}
+  .a1-cal-event-main>a{font-size:11px!important;line-height:1.5!important}
+  .a1-cal-event-main>small{font-size:7px!important;line-height:1.5}
+  .a1-cal-high{font-size:6px!important}
+  .a1-cal-value{display:flex;flex-direction:column;gap:5px;font-size:9px!important;min-width:0;overflow-wrap:anywhere}
+  .a1-cal-value:before{font:700 6px/1.3 monospace;letter-spacing:.5px;color:#688b9a}
+  .a1-cal-event>.a1-cal-value:nth-child(3):before{content:'PREVIOUS'}
+  .a1-cal-event>.a1-cal-value:nth-child(4):before{content:'FORECAST'}
+  .a1-cal-event>.a1-cal-value:nth-child(5):before{content:'ACTUAL'}
+  .a1-cal-footer{display:flex!important;flex-direction:column;align-items:flex-start;gap:7px!important;line-height:1.6;font-size:7px!important;overflow-wrap:anywhere}
+  .a1-mi-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .a1-mi-card{min-width:0}
+  .a1-mi-driver{grid-template-columns:70px minmax(0,1fr) 40px!important;gap:6px!important}
+  .a1-tv-chart-container{height:420px!important;min-height:420px!important}
+  .a1-tv-chart-container .tradingview-widget-container__widget,.a1-tv-chart-container iframe{min-height:420px!important}
+  .a1-tv-chart-toolbar{gap:8px}
+  .popup{padding:12px}
+  .popup-box{padding:22px 16px;border-radius:18px}
+}
+@media(max-width:380px){
+  .container{width:calc(100% - 18px)!important}
+  .stats{gap:6px}
+  .stat{padding:10px!important}
+  .value{font-size:15px}
+  .a1-calendar-live{margin-left:0!important}
+  .a1-cal-overview{flex-direction:column!important}
+  .a1-cal-overview-side{max-width:100%;align-items:flex-start!important;text-align:left!important}
+  .a1-cal-event{gap:9px 6px!important;padding:12px 9px!important}
+  .a1-cal-value{font-size:8px!important}
+  .a1-mi-grid{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+
+<style id="a1-daily-css">
+.a1-daily{padding:26px 28px;margin-top:22px}
+.a1-daily-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.a1-daily-kicker{font:800 9px monospace;letter-spacing:2px;color:#39e8ff}
+.a1-daily-kicker i{margin-right:6px}
+.a1-daily h2{margin:8px 0 0;font-size:22px;line-height:1.25;letter-spacing:-.4px}
+.a1-daily-meta{display:flex;gap:8px;align-items:center}
+.a1-daily-pair{padding:7px 11px;border:1px solid rgba(148,163,184,.18);border-radius:999px;font:800 10px monospace;color:#aab9c8}
+.a1-daily-bias{padding:7px 12px;border-radius:999px;font:900 10px monospace;letter-spacing:1px;color:#aab9c8;background:rgba(148,163,184,.12)}
+.a1-daily-bias[data-bias="bullish"]{color:#4ade80;background:rgba(74,222,128,.12)}
+.a1-daily-bias[data-bias="bearish"]{color:#fb7185;background:rgba(251,113,133,.12)}
+.a1-daily-sum{margin:14px 0 0;color:#9fb0c1;font-size:13px;line-height:1.85;white-space:pre-line}
+.a1-daily-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.a1-daily-box{padding:13px 14px;border:1px solid rgba(148,163,184,.12);border-radius:14px;background:rgba(255,255,255,.02)}
+.a1-daily-box small,.a1-daily-scen small{display:block;font:800 8px monospace;letter-spacing:1.6px;color:#6b7d8f;margin-bottom:6px}
+.a1-daily-box div{font:800 13px/1.5 monospace;color:#e6eef7;word-break:break-word}
+.a1-daily-scen{margin-top:18px}
+.a1-daily-scen ul{margin:0;padding-left:18px;color:#9fb0c1;font-size:12px;line-height:1.9}
+.a1-daily-foot{display:flex;justify-content:space-between;gap:10px 18px;flex-wrap:wrap;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);color:#5f7081;font-size:10px;line-height:1.7}
+@media(max-width:760px){.a1-daily{padding:20px}.a1-daily-grid{grid-template-columns:repeat(2,1fr)}.a1-daily h2{font-size:19px}}
+</style>
 </head>
 <body>
 <canvas id="astra-canvas"></canvas><div class="motion-orbs"><span class="motion-orb o1"></span><span class="motion-orb o2"></span><span class="motion-orb o3"></span></div>
@@ -1647,7 +1590,7 @@ body{min-width:0!important}
   </a>
 
   <nav class="a1-main-nav" aria-label="Main navigation">
-   <a class="a1-nav-link active" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a><a class="a1-nav-link" href="ebook.html"><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a>
+   <a class="a1-nav-link active" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#info-member"><i class="fa-solid fa-circle-info"></i><span>Info Member</span></a><a class="a1-nav-link" href="ebook.html"><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="upgrade.html"><i class="fa-solid fa-circle-check"></i><span>UPGRADE PLAN</span></a>
   </nav>
 <button class="a1-mobile-toggle" id="a1MobileToggle" type="button"
     aria-label="Open navigation menu" aria-expanded="false">
@@ -1670,8 +1613,8 @@ body{min-width:0!important}
   <a href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
   <a href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a>
   <a href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a>
-  <a href="index.html#tools"><i class="fa-solid fa-layer-group"></i><span>Tools</span></a>
-  <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a><a class="mobile-rebate" href="rebate.html"><i class="fa-solid fa-gift"></i><span>Rebate Sharing</span></a>
+  <a href="index.html#info-member"><i class="fa-solid fa-circle-info"></i><span>Info Member</span></a>
+  <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a><a class="mobile-rebate" href="upgrade.html"><i class="fa-solid fa-circle-check"></i><span>Fasilitas</span></a>
   
  </div>
 
@@ -1692,105 +1635,12 @@ body{min-width:0!important}
  <h1>Smart Money.<br><span class="gradient">Executed Live.</span></h1>
  <p>Real-time signal feed dari ZONA EA yang berjalan di MetaTrader 5. Dirancang dengan interface yang ringan, modern, dan fokus pada informasi penting.</p>
  
-<div class="core a1-heatmap-core" id="astraCore" aria-label="ZONA A1 market heatmap">
- <div class="a1-heatmap-terminal">
-  <div class="hm-head">
-   <div class="hm-brand"><span class="hm-live-dot"></span><span>A1 MARKET HEATMAP</span></div>
-   <div class="hm-source">XAUUSD • 15M • LIVE</div>
-  </div>
 
-  <div class="hm-main">
-   <div class="hm-title-row">
-    <div>
-     <strong>XAUUSD</strong>
-     <span>PRICE ACTION HEATMAP</span>
-    </div>
-    <div class="hm-quote">
-     <b id="hmPrice">—</b>
-     <span id="hmChange">WAIT</span>
-    </div>
-   </div>
-
-
-   <div class="hm-market-closed" id="hmMarketClosed" role="status" aria-live="polite">
-    <span class="closed-dot"></span>
-    <span>MARKET CLOSED — WEEKEND</span>
-    <small id="hmMarketClosedMeta">XAUUSD / FOREX MARKET IS OFFLINE</small>
-   </div>
-
-   <div class="hm-alert-row">
-    <div class="hm-news-alert" id="hmNewsAlert">
-     <span class="hm-news-dot"></span>
-     <div class="hm-news-copy">
-      <b id="hmNewsTitle">HIGH IMPACT NEWS</b>
-      <span id="hmNewsMeta">Scanning economic calendar…</span>
-     </div>
-     <strong id="hmNewsCountdown">--:--</strong>
-    </div>
-    <button class="hm-alert-btn" id="hmAlertBtn" type="button" title="Enable signal sound">🔔 ALERT OFF</button>
-   </div>
-
-   <div class="hm-chart-wrap">
-    <canvas id="heatmapCanvas"></canvas>
-    <div class="hm-current-line" id="hmCurrentLine"></div>
-    <div class="hm-current-price" id="hmCurrentPrice">—</div>
-    <div class="hm-loading" id="hmLoading">LOADING MARKET DATA…</div>
-   </div>
-
-   <div class="hm-scale">
-    <span>SELL / HIGH ACTIVITY</span>
-    <div class="hm-gradient"></div>
-    <span>LOW</span>
-    <span>BUY / HIGH ACTIVITY</span>
-   </div>
-
-   <div class="hm-activity">
-    <div><span>BUY ACTIVITY</span><b id="hmBuyPct">—</b></div>
-    <div class="hm-activity-bar"><i id="hmBuyBar"></i></div>
-    <div><span>SELL ACTIVITY</span><b id="hmSellPct">—</b></div>
-    <div class="hm-activity-bar sell"><i id="hmSellBar"></i></div>
-   </div>
-
-   <div class="hm-stats">
-    <span>BIAS <b id="hmBias">NEUTRAL</b></span>
-    <span>VOLATILITY <b id="hmVolatility">—</b></span>
-    <span>RANGE <b id="hmRange">—</b></span>
-    <span>UPDATED <b id="hmUpdated">—</b></span>
-   </div>
-  </div>
-
- 
-<div class="a1-market-intel" id="a1MarketIntel">
- <div class="a1-mi-head">
-  <div class="a1-mi-title">TODAY'S MARKET INTELLIGENCE<small id="a1MiDate">SCANNING TODAY'S MARKET</small></div>
-  <div class="a1-mi-live"><i></i><span id="a1MiStatus">LIVE • SCANNING</span></div>
- </div>
- <div class="a1-mi-grid" id="a1MiGrid">
-  <div class="a1-mi-card"><div class="a1-mi-kicker"><span>MARKET INTELLIGENCE</span><span>—</span></div><h4>Scanning latest market themes…</h4><p>Collecting fresh headlines across Gold, USD, central banks, inflation, yields, forex, oil and geopolitics.</p></div>
- </div>
- <div class="a1-mi-foot"><span>FOCUS: <b>GOLD/XAU • USD • FED • ECB • CPI • YIELD • FOREX • OIL • GEOPOLITICS</b></span><span id="a1MiUpdated">UPDATED —</span></div>
-</div>
- <div class="hm-footer">
-   <span>A1 INDICATOR • PRICE ACTION • TICK VOLUME • 15M</span>
-   <span id="hmStatus">SCANNING MARKET</span>
-  </div>
- </div>
-
- <div class="core-status hm-core-status">
-  <strong>MARKET HEATMAP</strong>
-  <span>Activity concentration • price structure • directional bias</span>
- </div>
-
- <!-- Compatibility nodes for the existing legacy hero updater -->
- <div class="legacy-liq-compat" aria-hidden="true">
-  <span id="liqClock"></span><span id="liqPrice"></span><span id="liqMove"></span>
-  <span id="liqAsk"></span><span id="liqMid"></span><span id="liqBid"></span>
-  <span id="liqStructure"></span><span id="liqLiquidity"></span><span id="liqFlow"></span>
-  <span id="coreState"></span><span id="coreSub"></span>
- </div>
-</div>
 
 </section>
+
+
+
 
 <div class="container">
  <div class="warning reveal"><strong>⚠ RISK NOTICE</strong> — Sinyal live hanya untuk informasi dan edukasi. Bukan ajakan atau rekomendasi transaksi. Setiap keputusan dan risiko trading sepenuhnya menjadi tanggung jawab pengguna.</div>
@@ -1798,13 +1648,224 @@ body{min-width:0!important}
  <section class="stats reveal">
   <div class="card stat"><div class="label">Connection</div><div class="value" id="statusText"><span class="dot" style="display:inline-block;margin-right:7px"></span> Connecting</div></div>
   <div class="card stat"><div class="label">Sinyal Hari Ini</div><div class="value" id="todayCount">0</div></div>
-  <div class="card stat"><div class="label">Win</div><div class="value green" id="winCount">0</div></div>
-  <div class="card stat"><div class="label">Loss</div><div class="value red" id="lossCount">0</div></div>
   <div class="card stat"><div class="label">Platform</div><div class="value">MetaTrader 5</div></div>
  
 </section>
 
+<!-- ===== ZONA LIVE DASHBOARD ===== -->
+<section class="card a1-zones-panel reveal" id="a1LiveZones">
+ <div class="a1-zones-head">
+  <div>
+   <div class="side-head"><i class="fa-solid fa-layer-group"></i> ZONA A1 • LIVE ZONES</div>
+   <p>Blok rejection BR1 dan BR2 per timeframe, dikirim langsung dari EA MetaTrader 5.</p>
+  </div>
+  <div class="a1-zones-controls">
+   <select id="a1ZoneSymbol" aria-label="Pilih symbol">
+    <option value="XAUUSD">XAUUSD</option><option value="XAUUSDm">XAUUSDm</option><option value="EURUSD">EURUSD</option>
+    <option value="GBPUSD">GBPUSD</option><option value="USDJPY">USDJPY</option>
+    <option value="AUDUSD">AUDUSD</option><option value="USDCAD">USDCAD</option>
+    <option value="NZDUSD">NZDUSD</option><option value="USDCHF">USDCHF</option>
+   </select>
+   <button type="button" id="a1ZoneRefresh"><i class="fa-solid fa-rotate"></i> REFRESH</button>
+  </div>
+ </div>
+ <div class="a1-zones-meta">
+  <span id="a1ZonesConnection" class="a1-zone-connection"><i></i> MENUNGGU DATA</span>
+  <span id="a1ZonesUpdated">Update: —</span>
+ </div>
+ <div class="a1-zone-overview" id="a1ZoneOverview">
+  <div class="a1-zone-kpi"><span>TIMEFRAME AKTIF</span><b id="a1KpiTf">—</b></div>
+  <div class="a1-zone-kpi"><span>BIAS BUY</span><b id="a1KpiBuy">—</b></div>
+  <div class="a1-zone-kpi"><span>BIAS SELL</span><b id="a1KpiSell">—</b></div>
+  <div class="a1-zone-kpi"><span>ZONA FRESH</span><b id="a1KpiFresh">—</b></div>
+ </div>
+ <div id="a1ZonesContent" class="a1-zones-content">
+  <div class="a1-zones-empty"><i class="fa-solid fa-satellite-dish"></i><b>Menunggu data zona</b><span>Pastikan EA ZONA A1 aktif dan pengiriman zona ke Worker sudah dikonfigurasi.</span></div>
+ </div>
+ <div class="a1-zones-foot">Data dikirim EA secara berkala. Zona merupakan area pantauan, bukan instruksi entry.</div>
+</section>
+<style id="a1-live-zones-style">
+.a1-zones-panel{margin:20px 0;padding:clamp(16px,2.2vw,24px);border:1px solid rgba(57,232,255,.2);background:linear-gradient(145deg,rgba(9,25,37,.96),rgba(5,14,24,.96));}
+.a1-zones-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.a1-zones-head .side-head{margin:0;color:#d8f7ff;font-weight:800;letter-spacing:.7px}
+.a1-zones-head p{margin:7px 0 0;color:#7895a5;font-size:12px}
+.a1-zones-controls{display:flex;gap:8px;align-items:center}
+.a1-zones-controls select,.a1-zones-controls button{height:36px;border:1px solid rgba(95,174,198,.25);border-radius:8px;background:#0a1b28;color:#d9f7ff;padding:0 12px;font-size:11px;font-weight:800}
+.a1-zones-controls button{cursor:pointer;color:#55e7f5}
+.a1-zones-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:14px 0 12px;margin-top:14px;border-top:1px solid rgba(255,255,255,.06);color:#718b9b;font:700 10px ui-monospace,monospace}
+.a1-zone-connection{display:flex;align-items:center;gap:7px}
+.a1-zone-connection i{width:7px;height:7px;border-radius:50%;background:#e5a34d;box-shadow:0 0 9px currentColor}
+.a1-zone-connection.online i{background:#36d99a}.a1-zone-connection.offline i{background:#f06b72}
+.a1-zones-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.a1-zone-card{border:1px solid rgba(105,159,181,.18);border-radius:12px;padding:15px;background:rgba(4,13,22,.65);min-width:0}
+.a1-zone-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px}
+.a1-zone-name{font-size:13px;font-weight:900;letter-spacing:.8px;color:#e4f7ff}
+.a1-zone-bias{font:800 9px ui-monospace,monospace;padding:5px 8px;border-radius:6px;background:rgba(48,211,151,.1);color:#51dfa9}
+.a1-zone-bias.sell{background:rgba(244,105,119,.1);color:#ff8992}.a1-zone-bias.wait{background:rgba(229,163,77,.1);color:#e9b96f}
+.a1-zone-prices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.a1-zone-price{padding:10px;border-radius:8px;background:rgba(255,255,255,.035)}
+.a1-zone-price span{display:block;color:#718b9b;font:700 9px ui-monospace,monospace;margin-bottom:6px}
+.a1-zone-price b{font:800 clamp(12px,1.2vw,15px) ui-monospace,monospace;color:#e6f8ff;overflow-wrap:anywhere}
+.a1-zone-status{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);font:800 9px ui-monospace,monospace;color:#8da8b6}
+.a1-zone-status strong{color:#51dfa9}.a1-zone-status strong.used{color:#e9b96f}.a1-zone-status strong.invalid{color:#ff8992}
+.a1-zone-swing{margin-top:10px;color:#6f8998;font:700 9px ui-monospace,monospace}
+.a1-zones-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:28px 14px;color:#7f9aaa}
+.a1-zones-empty i{font-size:22px;color:#4c9eae}.a1-zones-empty b{font-size:12px;color:#c5e2eb}.a1-zones-empty span{font-size:10px;line-height:1.6;max-width:440px}
+.a1-zones-foot{margin-top:12px;color:#617b8b;font-size:9px;line-height:1.6}
+@media(max-width:620px){.a1-zones-content{grid-template-columns:1fr}.a1-zones-head .side-head{font-size:10px}.a1-zones-head p{font-size:10px}.a1-zones-meta{font-size:8px}.a1-zone-card{padding:12px}}
+</style>
+<style id="a1-live-zones-premium-style">
+#a1LiveZones{position:relative;isolation:isolate;overflow:hidden;border:1px solid rgba(66,214,238,.22);border-radius:20px;background:radial-gradient(ellipse at 5% 0%,rgba(20,115,139,.16),transparent 38%),linear-gradient(145deg,#081522 0%,#07111d 58%,#091725 100%);box-shadow:0 22px 65px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.035)}
+#a1LiveZones:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(110deg,transparent 20%,rgba(70,220,240,.025) 50%,transparent 80%)}
+.a1-zones-head{padding:3px 2px 16px;border-bottom:1px solid rgba(130,190,210,.12)}
+.a1-zones-head .side-head{font-size:12px;letter-spacing:1.35px;color:#e8fbff}.a1-zones-head .side-head i{color:#42d9ed;margin-right:7px}
+.a1-zones-head p{font-size:11px;color:#8aa5b5;letter-spacing:.1px}
+.a1-zones-controls select,.a1-zones-controls button{height:39px;border-radius:10px;background:#0b2030;border-color:rgba(92,190,213,.24);font-size:10px;transition:.2s}
+.a1-zones-controls button:hover{background:#103246;border-color:rgba(66,214,238,.55);transform:translateY(-1px)}
+.a1-zones-meta{margin-top:0;padding:13px 2px 12px;border:0;color:#7894a5;font-size:9px}
+.a1-zone-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:0 0 14px}
+.a1-zone-kpi{padding:12px 13px;border:1px solid rgba(112,175,198,.13);border-radius:12px;background:linear-gradient(145deg,rgba(17,39,55,.82),rgba(9,25,38,.88));min-width:0}
+.a1-zone-kpi span{display:block;color:#7897a8;font:800 8px ui-monospace,monospace;letter-spacing:1px;margin-bottom:7px}.a1-zone-kpi b{font:800 19px ui-monospace,monospace;color:#e7f7fc}.a1-zone-kpi:nth-child(2) b{color:#45dfa9}.a1-zone-kpi:nth-child(3) b{color:#ff7889}.a1-zone-kpi:nth-child(4) b{color:#48d9ed}
+.a1-zones-content{display:grid;grid-template-columns:1fr;gap:12px}
+.a1-tf-panel{border:1px solid rgba(104,164,188,.17);border-radius:15px;padding:13px;background:linear-gradient(135deg,rgba(11,29,43,.82),rgba(6,18,29,.92));box-shadow:0 8px 24px rgba(0,0,0,.12);animation:a1ZoneIn .35s ease both}
+.a1-tf-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:1px 2px 12px;margin-bottom:11px;border-bottom:1px solid rgba(130,190,210,.11)}
+.a1-tf-title{display:flex;align-items:center;gap:9px}.a1-tf-code{font:900 14px ui-monospace,monospace;color:#e9faff;letter-spacing:.3px}.a1-tf-group{font:700 9px ui-monospace,monospace;color:#7f9dad;letter-spacing:1px}.a1-tf-dot{width:7px;height:7px;border-radius:50%;background:#42d9ed;box-shadow:0 0 12px rgba(66,217,237,.65)}
+.a1-tf-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.a1-zone-card{padding:14px;border-radius:12px;border:1px solid rgba(112,175,198,.14);background:rgba(4,14,24,.72);transition:border-color .2s,transform .2s}.a1-zone-card:hover{border-color:rgba(66,214,238,.34);transform:translateY(-2px)}
+.a1-zone-card-head{margin-bottom:12px}.a1-zone-name{font-size:11px;letter-spacing:.9px}.a1-zone-bias{border-radius:20px;padding:5px 10px;font-size:8px;letter-spacing:.6px}
+.a1-zone-price{padding:12px;border-radius:9px;background:linear-gradient(145deg,rgba(23,43,58,.75),rgba(12,28,41,.8));border:1px solid rgba(120,175,195,.07)}.a1-zone-price span{font-size:8px;letter-spacing:.8px}.a1-zone-price b{font-size:clamp(13px,1.35vw,17px);letter-spacing:.1px}
+.a1-zone-status{font-size:8px;margin-top:11px;padding-top:10px}.a1-zone-swing{font-size:8px;color:#7793a3}.a1-zones-empty{border:1px dashed rgba(105,180,200,.2);border-radius:14px;background:rgba(5,18,29,.5);padding:36px 16px}.a1-zones-empty i{font-size:25px;color:#43cfe3}.a1-zones-empty b{font-size:13px}.a1-zones-empty span{font-size:10px;color:#819baa}
+@keyframes a1ZoneIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.a1-zone-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.a1-zone-kpi b{font-size:17px}.a1-tf-cards{grid-template-columns:1fr}.a1-zones-head{align-items:flex-start}.a1-zones-controls{width:100%}.a1-zones-controls select{flex:1;min-width:0}}
+@media(prefers-reduced-motion:reduce){.a1-tf-panel{animation:none}.a1-zone-card{transition:none}}
+</style>
+<style id="a1-live-zones-v3-style">
+/* LIVE ZONES v3 — aksen emas (BR1) & tosca (BR2), range bar, KPI lebih hidup */
+#a1LiveZones{box-shadow:0 26px 70px rgba(0,0,0,.34),0 0 0 1px rgba(66,214,238,.05),inset 0 1px rgba(255,255,255,.05)}
+#a1LiveZones:after{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#f1c56b 28%,#42d9ed 72%,transparent);opacity:.75}
+.a1-zones-head .side-head{font-size:13px;letter-spacing:1.6px;color:#f1fdff}
+.a1-zones-head .side-head i{color:#42d9ed;filter:drop-shadow(0 0 8px rgba(66,217,237,.55))}
+.a1-zone-connection{padding:6px 11px;border-radius:999px;border:1px solid rgba(229,163,77,.28);background:rgba(229,163,77,.08);color:#e9b96f}
+.a1-zone-connection.online{border-color:rgba(54,217,154,.35);background:rgba(54,217,154,.09);color:#58e8b4}
+.a1-zone-connection.offline{border-color:rgba(240,107,114,.35);background:rgba(240,107,114,.09);color:#ff8d94}
+.a1-zone-connection.online i{animation:a1Pulse 1.8s ease-out infinite}
+@keyframes a1Pulse{0%{box-shadow:0 0 0 0 rgba(54,217,154,.6)}100%{box-shadow:0 0 0 8px rgba(54,217,154,0)}}
+.a1-zone-kpi{position:relative;overflow:hidden;padding:14px 15px 14px 17px}
+.a1-zone-kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#42d9ed}
+.a1-zone-kpi:nth-child(1):before{background:#f1c56b}.a1-zone-kpi:nth-child(2):before{background:#36d99a}.a1-zone-kpi:nth-child(3):before{background:#ff7889}
+.a1-zone-kpi:nth-child(1) b{color:#f6d58b}
+.a1-zone-kpi b{font-size:24px;line-height:1}
+.a1-tf-panel{position:relative;padding:15px;border-radius:16px}
+.a1-tf-code{font-size:15px;padding:4px 10px;border-radius:8px;background:rgba(66,217,237,.1);border:1px solid rgba(66,217,237,.22)}
+.a1-zone-card{position:relative;overflow:hidden;padding:15px 15px 13px 18px}
+.a1-zone-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
+.a1-zone-card.br1:before{background:linear-gradient(#f6d58b,#c9923a)}.a1-zone-card.br2:before{background:linear-gradient(#6ff0ff,#1f98b3)}
+.a1-zone-card.br1{background:linear-gradient(135deg,rgba(241,197,107,.07),rgba(4,14,24,.78) 55%)}
+.a1-zone-card.br2{background:linear-gradient(135deg,rgba(66,217,237,.07),rgba(4,14,24,.78) 55%)}
+.a1-zone-card.br1 .a1-zone-name{color:#f6d58b}.a1-zone-card.br2 .a1-zone-name{color:#7eeaf7}
+.a1-zone-name{font-size:11.5px;font-weight:900}
+.a1-zone-price.hi b{color:#8ff0c6}.a1-zone-price.lo b{color:#ff9aa5}
+.a1-zone-price b{font-size:clamp(14px,1.5vw,19px)}
+.a1-zone-range{position:relative;height:6px;margin:14px 0 6px;border-radius:99px;background:rgba(255,255,255,.07)}
+.a1-zone-range i{position:absolute;top:-1px;bottom:-1px;border-radius:99px;box-shadow:0 0 12px currentColor}
+.a1-zone-card.br1 .a1-zone-range i{background:#f1c56b;color:rgba(241,197,107,.55)}
+.a1-zone-card.br2 .a1-zone-range i{background:#42d9ed;color:rgba(66,217,237,.55)}
+.a1-zone-range-lbl{display:flex;justify-content:space-between;font:700 8px ui-monospace,monospace;color:#5f7b8b;letter-spacing:.5px}
+.a1-zone-status{font-size:9px;align-items:center}
+.a1-zone-status em{font-style:normal;color:#d5eef6}
+.a1-zone-status strong{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(54,217,154,.1);letter-spacing:.6px}
+.a1-zone-status strong i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.a1-zone-status strong.used{background:rgba(233,185,111,.1)}.a1-zone-status strong.invalid{background:rgba(255,137,146,.1)}
+.a1-zone-card:hover{box-shadow:0 12px 30px rgba(0,0,0,.28)}
+@media(max-width:760px){.a1-zone-kpi b{font-size:20px}.a1-zones-head .side-head{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.a1-zone-connection.online i{animation:none}}
+</style>
+<style id="a1-live-zones-v6-style">
+/* LIVE ZONES v6 — kartu blok rejection dengan "slab" zona (BR1 emas, BR2 tosca) */
+.a1-zone-range,.a1-zone-range-lbl{display:none}
+#a1LiveZones{background:radial-gradient(ellipse at 0% 0%,rgba(241,197,107,.10),transparent 36%),radial-gradient(ellipse at 100% 0%,rgba(66,217,237,.12),transparent 40%),linear-gradient(160deg,#08151f,#060f19 60%,#08141f)}
+.a1-tf-panel{padding:0;overflow:hidden;border-radius:18px;border:1px solid rgba(112,175,198,.2);background:linear-gradient(180deg,rgba(13,33,48,.9),rgba(6,17,27,.95));container-type:inline-size}
+.a1-tf-head{padding:14px 16px;margin:0;border-bottom:1px solid rgba(130,190,210,.12);background:linear-gradient(90deg,rgba(66,217,237,.08),transparent 60%)}
+.a1-tf-code{font-size:17px;padding:5px 12px;border-radius:10px;background:linear-gradient(135deg,rgba(66,217,237,.22),rgba(66,217,237,.06));border:1px solid rgba(66,217,237,.4);box-shadow:0 0 18px rgba(66,217,237,.15)}
+.a1-tf-head>.a1-zone-bias{font-size:11px;letter-spacing:1.2px;padding:7px 16px;border:1px solid currentColor;background:transparent;box-shadow:0 0 16px -4px currentColor}
+.a1-zt-wrap{padding:14px 16px 16px}
+.a1-zt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.a1-zt{position:relative;padding:14px 14px 13px;border-radius:16px;border:1px solid rgba(112,175,198,.16);overflow:hidden;min-width:0}
+.a1-zt.br1{background:linear-gradient(160deg,rgba(241,197,107,.14),rgba(4,14,24,.8) 62%);border-color:rgba(241,197,107,.28)}
+.a1-zt.br2{background:linear-gradient(160deg,rgba(66,217,237,.14),rgba(4,14,24,.8) 62%);border-color:rgba(66,217,237,.28)}
+.a1-zt-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.a1-zt-top>b{font:900 20px ui-monospace,monospace;letter-spacing:.5px}
+.a1-zt.br1 .a1-zt-top>b{color:#f6d58b;text-shadow:0 0 18px rgba(241,197,107,.5)}.a1-zt.br2 .a1-zt-top>b{color:#7eeaf7;text-shadow:0 0 18px rgba(66,217,237,.5)}
+.a1-zt-st{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font:800 9px ui-monospace,monospace;letter-spacing:.6px}
+.a1-zt-st i{width:6px;height:6px;border-radius:50%;background:currentColor}
+.a1-zt-st.fresh{color:#51dfa9;background:rgba(54,217,154,.12)}.a1-zt-st.used{color:#e9b96f;background:rgba(233,185,111,.12)}.a1-zt-st.invalid{color:#ff8992;background:rgba(255,137,146,.12)}
+.a1-zt-line{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.a1-zt-line span{font:700 9px ui-monospace,monospace;letter-spacing:1px;color:#7893a3}
+.a1-zt-line b{font:900 clamp(16px,2vw,22px) ui-monospace,monospace;overflow-wrap:anywhere}
+.a1-zt-line.hi b{color:#8ff0c6}.a1-zt-line.lo b{color:#ff9aa5}
+.a1-zt-slab{position:relative;height:46px;margin:8px 0;border-radius:8px;display:flex;align-items:center;justify-content:center;border-top:2px dashed rgba(143,240,198,.55);border-bottom:2px dashed rgba(255,154,165,.55)}
+.a1-zt.br1 .a1-zt-slab{background:linear-gradient(180deg,rgba(241,197,107,.35),rgba(241,197,107,.12));box-shadow:0 0 28px rgba(241,197,107,.18)}
+.a1-zt.br2 .a1-zt-slab{background:linear-gradient(180deg,rgba(66,217,237,.35),rgba(66,217,237,.12));box-shadow:0 0 28px rgba(66,217,237,.18)}
+.a1-zt-slab em{font:800 11px ui-monospace,monospace;font-style:normal;color:#fff;padding:4px 10px;border-radius:99px;background:rgba(3,11,19,.7);border:1px solid rgba(255,255,255,.14)}
+.a1-zt.empty{display:flex;flex-direction:column;justify-content:center;min-height:170px;border-style:dashed}
+.a1-zt-na{font-size:11px;color:#6b8798}
+.a1-zt-rel{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(120,180,200,.12);font:700 10px ui-monospace,monospace;color:#9db8c6}
+.a1-zt-rel b{color:#e9faff}
+@container (max-width:430px){.a1-zt-grid{grid-template-columns:1fr}.a1-zt-wrap{padding:12px}.a1-zt-slab{height:38px}}
+@media(max-width:620px){.a1-zt-grid{grid-template-columns:1fr}.a1-zt-wrap{padding:12px}}
+</style>
 
+
+
+<!-- ===== ZONA A1 INTERACTIVE TRADINGVIEW CHART ===== -->
+<section class="card a1-tv-chart-section reveal" id="a1TradingChart">
+ <div class="side-head"><i class="fa-solid fa-chart-candlestick"></i> ZONA A1 • INTERACTIVE MARKET CHART <span class="a1-tv-chart-note">POWERED BY TRADINGVIEW</span></div>
+ <div class="a1-tv-chart-toolbar">
+  <span>Chart interaktif • Candlestick • Multi-timeframe • Symbol search</span>
+  <a href="https://www.tradingview.com/chart/" target="_blank" rel="noopener noreferrer">BUKA FULL CHART ↗</a>
+ </div>
+ <div class="tradingview-widget-container a1-tv-chart-container">
+  <div id="tradingview_a1_chart" class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+  {
+   "autosize": true,
+   "symbol": "OANDA:XAUUSD",
+   "interval": "15",
+   "timezone": "Asia/Jakarta",
+   "theme": "dark",
+   "style": "1",
+   "locale": "id",
+   "withdateranges": true,
+   "hide_side_toolbar": false,
+   "allow_symbol_change": true,
+   "save_image": true,
+   "details": true,
+   "hotlist": false,
+   "calendar": false,
+   "support_host": "https://www.tradingview.com"
+  }
+  </script>
+ </div>
+ <div class="a1-tv-chart-foot">Catatan: harga dan ketersediaan simbol mengikuti penyedia data TradingView.</div>
+
+</section>
+<style>
+
+.a1-tv-chart-section{margin:20px 0;overflow:hidden;border-color:rgba(57,232,255,.18)}
+.a1-tv-chart-section .side-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.a1-tv-chart-section .side-head i{color:var(--cyan)}
+.a1-tv-chart-note{margin-left:auto;font-size:8px;color:#668294;letter-spacing:1px}
+.a1-tv-chart-toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 16px;color:#7f98a9;font-size:10px;border-bottom:1px solid var(--line)}
+.a1-tv-chart-toolbar a{color:#39e8ff;font-weight:800;white-space:nowrap}
+.a1-tv-chart-container{height:620px;min-height:620px;width:100%;background:#050914;position:relative}
+.a1-tv-chart-container .tradingview-widget-container__widget{height:100%;min-height:620px;width:100%}
+.a1-tv-chart-container iframe{border:0;width:100%!important;height:100%!important;min-height:620px!important;display:block}
+@media(max-width:620px){.a1-tv-chart-container{height:560px;min-height:560px}.a1-tv-chart-container .tradingview-widget-container__widget{min-height:560px}.a1-tv-chart-container iframe{min-height:560px!important}}
+.a1-tv-chart-foot{padding:10px 15px;color:#64798b;font-size:9px;line-height:1.6;border-top:1px solid var(--line)}
+@media(max-width:620px){.a1-tv-chart-container{height:500px}.a1-tv-chart-toolbar{align-items:flex-start;flex-direction:column}.a1-tv-chart-note{margin-left:0}}
+
+
+</style>
 
  <section class="intel-grid" id="intelligence">
   <div class="card intel-panel reveal">
@@ -1858,60 +1919,77 @@ body{min-width:0!important}
     <div class="calendar-grid" id="tradeCalendar"></div>
    </section>
 
-   <section class="promo-tools" id="tools">
- <div class="promo-heading">
-  <span>TOOLS &amp; EXECUTION</span>
-  <h2>ZONA A1 <b>TRADING TOOLS</b></h2>
-  <p>Gunakan indikator untuk membaca zona, dan EA untuk membantu eksekusi setup ZONA A1.</p>
- </div>
- <div class="promo-grid">
-  <article class="promo-card">
-   <div class="promo-image custom-image">
-    <!-- GANTI indicator.jpg DENGAN GAMBAR INDIKATOR SIR -->
-    <img src="assets/indicator.png" alt="TradingView chart panel with a dark interface, highlighted ZONA A1 price zones, buy and sell markers, and the text ZONA A1 Indicator in a clean trading dashboard style, designed to help traders read market structure and setup areas.">
+   <section class="a1-daily card reveal" id="analisa">
+  <div class="a1-daily-head">
+   <div>
+    <span class="a1-daily-kicker"><i class="fa-solid fa-robot"></i> ANALISA HARIAN · AGENT ZONA A1</span>
+    <h2 id="a1DailyTitle">Analisa Hari Ini</h2>
    </div>
-   <div class="promo-body">
-    <div class="promo-kicker">TRADINGVIEW INDICATOR</div><h3>ZONA A1 Indicator</h3>
-    <p>Visual zona dan setup ZONA A1 langsung di chart TradingView untuk membantu membaca area yang sedang dipantau.</p>
-    <a class="promo-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc81T_y5wE3Cg04NkLSWG7xOouzL95vcqDLQu1kyEGo60qEtw/viewform?usp=publish-editor" target="_blank" rel="noopener"><span>PAKAI INDIKATOR</span><b>↗</b></a>
+   <div class="a1-daily-meta">
+    <span class="a1-daily-pair" id="a1DailyPair">XAUUSD</span>
+    <span class="a1-daily-bias" id="a1DailyBias" data-bias="netral">MEMUAT</span>
    </div>
-  </article>
-  <article class="promo-card">
-   <div class="promo-image custom-image">
-    <!-- GANTI ea.jpg DENGAN GAMBAR EA SIR -->
-    <img src="assets/ea.png" alt="MetaTrader 5 trading workspace showing the ZONA A1 Expert Advisor interface, automated trade controls, chart overlays, and a professional dark terminal environment with focused, technical trading tone and the text ZONA A1 Expert Advisor.">
-   </div>
-   <div class="promo-body">
-    <div class="promo-kicker">METATRADER 5</div><h3>ZONA A1 Expert Advisor</h3>
-    <p>EA untuk membantu menjalankan setup ZONA A1 secara terstruktur di MetaTrader 5.</p>
-    <a
- class="promo-btn promo-btn-ea"
- href="https://docs.google.com/forms/d/e/1FAIpQLScevFzwv3V2Es4eRKjmwM0vSjUv8dcVmCwVrO-slLMIzZktvw/viewform?usp=dialog"
- target="_blank"
- rel="noopener noreferrer"
->
- <span>DOWNLOAD EA</span>
- <b>↓</b>
-</a></div>
-   <div class="disclaimer reveal"><strong>Risk Disclaimer:</strong> Hasil backtest adalah simulasi historis dan tidak menjamin hasil di masa depan. Kondisi pasar dapat berubah dan performa EA/indikator pada akun live dapat berbeda. Trading forex dan gold memiliki risiko tinggi. Gunakan manajemen risiko dan pahami produk sebelum melakukan transaksi.</div>
-  </article>
- </div>
-</section>
+  </div>
+  <p class="a1-daily-sum" id="a1DailySum">Memuat analisa dari Agent…</p>
+  <div class="a1-daily-grid" id="a1DailyGrid" hidden>
+   <div class="a1-daily-box"><small>RESISTANCE</small><div id="a1DailyRes">—</div></div>
+   <div class="a1-daily-box"><small>SUPPORT</small><div id="a1DailySup">—</div></div>
+   <div class="a1-daily-box"><small>ZONA BR1</small><div id="a1DailyBr1">—</div></div>
+   <div class="a1-daily-box"><small>ZONA BR2</small><div id="a1DailyBr2">—</div></div>
+  </div>
+  <div class="a1-daily-scen" id="a1DailyScenWrap" hidden>
+   <small>SKENARIO</small>
+   <ul id="a1DailyScen"></ul>
+  </div>
+  <div class="a1-daily-foot">
+   <span id="a1DailyUpdated">Menunggu update Agent</span>
+   <span>Analisa market untuk edukasi, bukan ajakan transaksi. Risiko trading ditanggung pengguna.</span>
+  </div>
+ </section>
+
+   <section class="a1-zr card reveal" id="zona-range">
+    <div class="a1-zr-head">
+     <div>
+      <span class="a1-zr-kicker"><i class="fa-solid fa-layer-group"></i> RANGE ZONA · XAUUSD</span>
+      <h2>Zona Valid per Timeframe</h2>
+     </div>
+     <span class="a1-zr-status" id="a1ZrStatus" data-s="wait">MEMUAT</span>
+    </div>
+    <div class="a1-zr-groups" id="a1ZrGroups"></div>
+    <div class="a1-zr-foot">
+     <span id="a1ZrUpdated">Menunggu data dari EA</span>
+     <span>Hanya zona yang belum ditembus. Referensi edukasi, bukan ajakan transaksi.</span>
+    </div>
+   </section>
+
+
 
   </div>
 
   <aside class="sidebar">
-   <div class="card side-card reveal">
-    <div class="side-head"><i class="fa-solid fa-calendar-days"></i> Economic Calendar</div>
-    <div class="tv-wrap">
-     <div class="tradingview-widget-container" style="height:100%;width:100%">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-      {"colorTheme":"dark","isTransparent":true,"locale":"en","countryFilter":"us,gb,jp","importanceFilter":"0,1","width":"100%","height":"520"}
-      </script>
-     </div>
+   <section class="card side-card reveal a1-calendar-card" id="a1EconomicCalendar">
+    <div class="side-head a1-calendar-head">
+     <span class="a1-calendar-icon"><i class="fa-solid fa-calendar-days"></i></span>
+     <span class="a1-calendar-heading"><b>ECONOMIC CALENDAR</b><small>HIGH-IMPACT RELEASES · WAKTU WIB</small></span>
+     <span class="a1-calendar-live" id="a1CalStatus"><i></i> CONNECTING</span>
     </div>
-   </div>
+    <div class="a1-cal-overview">
+     <div class="a1-cal-overview-main"><span>MARKET MOVING EVENTS</span><b id="a1CalCount">—</b><small>High impact only · Scheduled releases</small></div>
+     <div class="a1-cal-overview-side"><span class="a1-cal-big-impact"><i></i> HIGH IMPACT</span><span id="a1CalNext">Memuat agenda berikutnya…</span></div>
+    </div>
+    <div class="a1-cal-toolbar">
+     <div class="a1-cal-filters" role="group" aria-label="Filter kalender">
+      <button type="button" class="a1-cal-filter active" data-window="today">HARI INI</button>
+      <button type="button" class="a1-cal-filter" data-window="7">7 HARI</button>
+      <button type="button" class="a1-cal-filter" data-window="14">14 HARI</button>
+     </div>
+     <span class="a1-cal-time-label"><i class="fa-regular fa-clock"></i> WIB · ASIA/JAKARTA</span>
+    </div>
+    <div class="a1-cal-table-wrap">
+     <div id="a1CalEvents" class="a1-cal-events"><div class="a1-cal-state"><span class="a1-cal-spinner"></span><b>Mengambil jadwal high impact…</b><small>Menghubungkan ke sumber kalender ekonomi</small></div></div>
+    </div>
+    <div class="a1-cal-footer"><span id="a1CalUpdated">MENUNGGU DATA</span><span>DATA: <a href="https://www.tradingview.com/economic-calendar/" target="_blank" rel="noopener noreferrer">TRADINGVIEW ECONOMIC CALENDAR ↗</a></span></div>
+   </section>
 
    <!-- ===== ZONA A1 CUSTOM MARKET INTELLIGENCE ===== -->
    <section class="card side-card reveal a1-mi-card">
@@ -1952,19 +2030,27 @@ body{min-width:0!important}
 
 <!-- ===== ZONA A1 NATIVE TOP STORIES ===== -->
 <section class="card side-card reveal a1-native-news-section">
- <div class="side-head"><span>📰</span> ZONA A1 BERITA UTAMA <small id="a1NewsClock">OTOMATIS 10M</small></div>
+ <div class="side-head"><span>📰</span> ZONA A1 BERITA UTAMA <small id="a1NewsClock" title="Klik untuk refresh sekarang" style="cursor:pointer">OTOMATIS 2M ↻</small></div>
  <div class="a1-news-toolbar">
   <button class="a1-news-filter active" data-filter="all">SEMUA</button>
   <button class="a1-news-filter" data-filter="gold">EMAS</button>
   <button class="a1-news-filter" data-filter="fed">FED</button>
   <button class="a1-news-filter" data-filter="macro">MAKRO</button>
   <button class="a1-news-filter" data-filter="risk">RISIKO</button>
+  <button class="a1-news-filter" data-filter="stocks">SAHAM INDO</button>
  </div>
  <div class="a1-news-status"><i></i><span id="a1NewsStatus">MEMINDAI BERITA PASAR</span><b id="a1NewsCount">0 BERITA</b></div>
  <div id="a1NewsList" class="a1-news-list"></div>
- <div class="a1-news-foot"><span>Sumber: Google News RSS + feed pasar publik</span><span id="a1NewsUpdated">—</span></div>
+ <div class="a1-news-foot"><span>Sumber: Google News · Bing News · media pasar (via server ZONA A1) · refresh otomatis 2 menit</span><span id="a1NewsUpdated">—</span></div>
 </section>
 
+
+
+<style id="a1-pre-news-analysis-css">
+.a1-pre-news-analysis{margin:4px 10px 10px;padding:12px;border:1px solid rgba(57,232,255,.2);border-radius:9px;background:linear-gradient(135deg,rgba(7,27,35,.98),rgba(5,14,22,.98));box-shadow:inset 0 0 22px rgba(57,232,255,.025)}
+.a1-pna-top,.a1-pna-main{display:flex;justify-content:space-between;align-items:center;gap:8px}.a1-pna-top span{font:900 9px monospace;letter-spacing:1px;color:#9beeff}.a1-pna-top small{font:800 7px monospace;color:#6b8794}.a1-pna-main{margin-top:11px;align-items:flex-end}.a1-pna-main small{display:block;color:#718b98;font:800 7px monospace;letter-spacing:.8px}.a1-pna-main b{display:block;margin-top:4px;font:900 16px monospace;letter-spacing:.2px}.a1-pna-main b.bull{color:#39e8a0}.a1-pna-main b.bear{color:#ff6d86}.a1-pna-main b.neutral{color:#fbbf24}.a1-pna-main>span{font:800 7px monospace;color:#8099a5;text-align:right}.a1-pre-news-analysis p{margin:10px 0 0;color:#a2b8c2;font:600 9px/1.55 system-ui,sans-serif}.a1-pna-foot{margin-top:9px;padding-top:8px;border-top:1px solid rgba(69,116,138,.16);color:#577582;font:700 6.5px/1.5 monospace;letter-spacing:.45px}
+@media(max-width:620px){.a1-pre-news-analysis{margin:4px 8px 9px;padding:11px}.a1-pna-top span{font-size:8px}.a1-pna-main b{font-size:14px}.a1-pna-main>span{max-width:112px;line-height:1.4}.a1-pre-news-analysis p{font-size:10px}}
+</style>
 
 <style>
 /* ===== ZONA A1 CUSTOM MARKET INTELLIGENCE ===== */
@@ -2068,6 +2154,30 @@ body{min-width:0!important}
  </section>
 
  
+
+  <section class="a1-info reveal" id="info-member">
+   <div class="a1-info-head">
+    <div class="eyebrow">INFO MEMBER</div>
+    <h2>Pegangan Trading Harian.</h2>
+    <p>Ringkasan praktis cara memakai fitur ZONA A1 dan kebiasaan yang membantu trading tetap disiplin.</p>
+   </div>
+   <div class="a1-info-grid">
+    <div class="card a1-info-item"><i class="fa-solid fa-layer-group"></i><b>Baca Zona dengan Benar</b><span>Zona BR1 dan BR2 adalah area pantauan di chart, bukan perintah entry. Harga masuk zona belum tentu berbalik, tunggu konfirmasi sebelum bertindak.</span></div>
+    <div class="card a1-info-item"><i class="fa-solid fa-calendar-days"></i><b>Cek Economic Calendar</b><span>Lihat kalender di sidebar sebelum entry. Rilis High Impact bisa membuat harga bergerak cepat dan spread melebar, jadi pertimbangkan menahan diri di sekitar jam rilis.</span></div>
+    <div class="card a1-info-item"><i class="fa-solid fa-robot"></i><b>Manfaatkan Analisa Harian</b><span>Analisa dari Agent memuat bias, support, resistance, dan skenario. Pakai sebagai bahan pertimbangan, keputusan transaksi tetap di tangan kamu.</span></div>
+    <div class="card a1-info-item"><i class="fa-solid fa-shield-halved"></i><b>Tentukan Risiko Dulu</b><span>Putuskan batas risiko per trade sebelum entry dan selalu pakai stop loss. Jangan menambah lot untuk mengejar kerugian.</span></div>
+    <div class="card a1-info-item"><i class="fa-solid fa-flask"></i><b>Uji di Demo Dulu</b><span>Sebelum dipakai di akun real, coba tools di akun demo agar paham perilaku setup, parameter, dan tampilan dashboard.</span></div>
+    <div class="card a1-info-item"><i class="fa-solid fa-book-open"></i><b>Catat Jurnal Trading</b><span>Tulis alasan entry, hasil, dan kondisi emosi. Evaluasi mingguan membantu melihat pola kesalahan yang sering berulang.</span></div>
+   </div>
+   <div class="a1-info-links">
+    <a href="panduan.html"><i class="fa-solid fa-compass"></i> Panduan Lengkap</a>
+    <a href="ebook.html"><i class="fa-solid fa-book-open"></i> E-Book</a>
+    <a href="upgrade.html"><i class="fa-solid fa-circle-check"></i> Fasilitas</a>
+   </div>
+   <p class="a1-info-note">Informasi ini bersifat edukasi dan bukan ajakan transaksi. ZONA A1 tidak menerima pendaftaran IB maupun titip dana. Trading memiliki risiko tinggi dan setiap keputusan menjadi tanggung jawab pengguna.</p>
+  </section>
+
+
 </div>
 </main>
 
@@ -2075,7 +2185,7 @@ body{min-width:0!important}
  <div class="popup-box">
   <div class="popup-icon">⚠</div>
   <h2>DISCLAIMER</h2>
-  <p>ZONA A1 merupakan platform tools dan edukasi trading. ZONA A1 tidak menerima penitipan dana, tidak mengelola dana pengguna, tidak menyediakan layanan investasi, dan tidak menjanjikan keuntungan tertentu.</p>
+  <p>ZONA A1 merupakan platform tools dan edukasi trading. ZONA A1 tidak menerima pendaftaran IB, tidak menerima penitipan dana, tidak mengelola dana pengguna, tidak menyediakan layanan investasi, dan tidak menjanjikan keuntungan tertentu.</p>
   <p>Seluruh tools dan informasi hanya untuk edukasi dan analisa pasar. Trading memiliki risiko tinggi dan setiap keputusan transaksi menjadi tanggung jawab masing-masing pengguna.</p>
   <button onclick="closeDisclaimer()">Saya Mengerti</button>
  </div>
@@ -2220,7 +2330,7 @@ function setAstraState(state, detail){
   sell:["SELL SIGNAL","Bearish setup • live position detected"]
  };
  const l=labels[state]||labels.scanning;
- title.textContent=l[0]; sub.textContent=detail||l[1];
+ if(title)title.textContent=l[0]; if(sub)sub.textContent=detail||l[1];
  if(hubTitle){hubTitle.textContent=active.length?`${active.length} LIVE SIGNAL${active.length>1?"S":""}`:"MARKET SCANNING"}
  if(hubSub){hubSub.textContent=active.length?"Position aktif • monitoring entry, SL & TP":"Tidak ada signal aktif • engine tetap scanning"}
 }
@@ -2692,7 +2802,409 @@ function closeDisclaimer(){document.getElementById("disclaimerPopup").classList.
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.08});
 document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
 calendarViewDate=new Date(new Date().getFullYear(),new Date().getMonth(),1);
+
+
 updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(syncSignals,20000);setInterval(loadTradeCalendar,60000);setInterval(updateSessionMonitor,1000);setInterval(updatePulseState,1200);setInterval(updateTimeline,1800);updateSessionMonitor();updatePulseState();updateTimeline();startMarketPulse();setInterval(updateTodayLine,1000);setInterval(updateLiveHub,1200);
+</script>
+
+
+
+<style id="a1-economic-calendar-premium">
+#a1EconomicCalendar{overflow:hidden;border:1px solid rgba(57,232,255,.23)!important;border-radius:14px!important;background:radial-gradient(ellipse at 0 0,rgba(13,87,112,.23),transparent 45%),linear-gradient(180deg,#07131d,#030a11)!important;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.a1-calendar-head{display:flex!important;align-items:center;gap:11px;padding:15px 16px!important;border-bottom:1px solid rgba(71,133,157,.2)!important;background:rgba(3,12,20,.72)}
+.a1-calendar-icon{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border:1px solid rgba(57,232,255,.32);border-radius:10px;background:rgba(57,232,255,.07);color:#39e8ff;font-size:15px}
+.a1-calendar-heading{display:flex;flex-direction:column;gap:5px;min-width:0}
+.a1-calendar-heading b{font:800 11px/1.1 monospace;letter-spacing:1.4px;color:#e2f7ff}
+.a1-calendar-heading small{font:600 7px/1.2 monospace;letter-spacing:1.1px;color:#6e91a3}
+.a1-calendar-live{display:flex;align-items:center;gap:6px;margin-left:auto;white-space:nowrap;padding:6px 8px;border:1px solid rgba(57,232,160,.22);border-radius:6px;color:#56e6b6;font:700 7px monospace;letter-spacing:.5px}
+.a1-calendar-live i,.a1-cal-big-impact i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#56e6b6;box-shadow:0 0 8px rgba(86,230,182,.7)}
+.a1-cal-overview{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 16px;background:linear-gradient(90deg,rgba(13,34,46,.7),rgba(6,16,24,.2));border-bottom:1px solid rgba(71,133,157,.16)}
+.a1-cal-overview-main{display:flex;flex-direction:column;gap:5px}.a1-cal-overview-main>span{font:700 7px monospace;letter-spacing:1.2px;color:#7897a7}.a1-cal-overview-main>b{font:800 28px/1 monospace;color:#f0faff;letter-spacing:-1px}.a1-cal-overview-main>small{font:500 8px monospace;color:#6f8b9b}
+.a1-cal-overview-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right}.a1-cal-big-impact{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid rgba(255,95,111,.27);border-radius:5px;background:rgba(255,74,92,.08);color:#ff8490;font:800 7px monospace;letter-spacing:.7px}.a1-cal-big-impact i{background:#ff6476;box-shadow:0 0 8px rgba(255,100,118,.65)}.a1-cal-overview-side>span:last-child{font:600 8px monospace;color:#9ab4c1}
+.a1-cal-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(71,133,157,.15)}
+.a1-cal-filters{display:flex;gap:5px;flex-wrap:wrap}.a1-cal-filter{padding:7px 9px;border:1px solid rgba(71,133,157,.2);border-radius:5px;background:#07141e;color:#7e9aa9;font:700 7px monospace;letter-spacing:.6px;cursor:pointer}.a1-cal-filter:hover,.a1-cal-filter.active{color:#48e5f5;border-color:rgba(57,232,255,.45);background:rgba(57,232,255,.08)}
+.a1-cal-time-label{font:700 7px monospace;letter-spacing:.5px;color:#7794a3;white-space:nowrap}.a1-cal-time-label i{color:#39dff1;margin-right:4px}
+.a1-cal-table-wrap{width:100%;overflow-x:hidden}.a1-cal-table-head,.a1-cal-event{display:grid;grid-template-columns:minmax(74px,.78fr) minmax(130px,2.1fr) minmax(55px,.65fr) minmax(55px,.65fr) minmax(55px,.65fr);gap:8px;align-items:center;min-width:0}
+.a1-cal-table-head{padding:10px 14px;background:rgba(3,11,17,.8);color:#5f8192;font:700 7px monospace;letter-spacing:.6px;border-bottom:1px solid rgba(71,133,157,.16)}
+.a1-cal-event{padding:12px 14px;border-bottom:1px solid rgba(71,133,157,.12);transition:background .15s}.a1-cal-event:last-child{border-bottom:0}.a1-cal-event:hover{background:rgba(57,232,255,.035)}
+.a1-cal-when{display:flex;flex-direction:column;gap:5px}.a1-cal-when b{font:800 11px monospace;color:#e5f7ff}.a1-cal-when small{font:600 7px monospace;color:#6e91a3}.a1-cal-country{display:inline-flex;align-items:center;gap:5px;color:#8ca9b8;font:700 7px monospace;letter-spacing:.6px}
+.a1-cal-event-main{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}.a1-cal-event-main>a{color:#dceef5;text-decoration:none;font:700 9px/1.45 monospace;overflow-wrap:anywhere}.a1-cal-event-main>a:hover{color:#4ce6f5}.a1-cal-event-main small{font:500 7px monospace;color:#668493}
+.a1-cal-high{display:inline-flex;padding:3px 5px;border-radius:3px;border:1px solid rgba(255,92,108,.25);background:rgba(255,92,108,.08);color:#ff8390;font:800 6px monospace;letter-spacing:.6px}
+.a1-cal-value{font:700 8px monospace;color:#9eb6c2;overflow-wrap:anywhere;min-width:0;white-space:normal}.a1-cal-value.empty{color:#425b68}
+.a1-cal-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;min-height:150px;text-align:center;color:#a7c0cc;font:700 9px monospace}.a1-cal-state small{font:500 8px monospace;color:#688695}.a1-cal-spinner{width:18px;height:18px;border:2px solid rgba(57,232,255,.16);border-top-color:#39e8ff;border-radius:50%;animation:a1calspin .8s linear infinite}@keyframes a1calspin{to{transform:rotate(360deg)}}
+.a1-cal-footer{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-top:1px solid rgba(71,133,157,.16);background:rgba(3,10,16,.5);font:700 7px monospace;letter-spacing:.5px;color:#5f8191}.a1-cal-footer a{color:#39dff1;text-decoration:none}.a1-cal-footer a:hover{text-decoration:underline}
+@media(max-width:600px){
+ .a1-calendar-head{padding:12px 10px!important;gap:8px}.a1-calendar-heading b{font-size:9px;letter-spacing:.7px}.a1-calendar-live{font-size:6px;padding:5px}.a1-cal-overview{padding:12px 10px}.a1-cal-overview-main>b{font-size:24px}.a1-cal-overview-side>span:last-child{max-width:155px;line-height:1.5}.a1-cal-toolbar{padding:9px 10px;align-items:flex-start;flex-direction:column}
+ .a1-cal-table-wrap{overflow-x:hidden}.a1-cal-table-head{display:none!important}.a1-cal-event{display:grid;grid-template-columns:minmax(74px,.7fr) minmax(0,1.5fr);gap:10px;min-width:0;padding:14px 10px;align-items:start}
+ .a1-cal-when{grid-column:1;grid-row:1}.a1-cal-event-main{grid-column:2;grid-row:1}.a1-cal-event-main>a{font-size:9px;line-height:1.5}
+ .a1-cal-value{display:inline-flex;flex-direction:column;gap:5px;min-width:0;margin-top:2px;padding-top:9px;border-top:1px solid rgba(71,133,157,.13);font-size:8px;overflow-wrap:anywhere}
+ .a1-cal-event .a1-cal-value:nth-child(3){grid-column:1;grid-row:2}.a1-cal-event .a1-cal-value:nth-child(4){grid-column:2;grid-row:2}.a1-cal-event .a1-cal-value:nth-child(5){grid-column:1 / -1;grid-row:3}
+ .a1-cal-value:nth-child(3)::before{content:'SEBELUMNYA';font:700 6px monospace;letter-spacing:.6px;color:#678b9c}.a1-cal-value:nth-child(4)::before{content:'PERKIRAAN';font:700 6px monospace;letter-spacing:.6px;color:#678b9c}.a1-cal-value:nth-child(5)::before{content:'AKTUAL';font:700 6px monospace;letter-spacing:.6px;color:#678b9c}
+ .a1-cal-footer{padding:10px;flex-wrap:wrap;font-size:6px}
+}
+</style>
+
+
+<script id="a1-worker-config">
+/* URL Worker signal-platform (zona-a1-signal-api) — endpoint /api/news/rss dan /api/news/fetch. Ganti kalau subdomain beda. */
+window.A1_NEWS_WORKER='https://zona-a1-signal-api.landungprakoso14.workers.dev';
+</script>
+<style id="a1-economic-calendar-cards-v3">
+/* ===== ECONOMIC CALENDAR — CARD LAYOUT V3 (Previous / Forecast / Actual selalu tampil) ===== */
+#a1EconomicCalendar .a1-cal-table-wrap{overflow:visible}
+#a1EconomicCalendar .a1-cal-events{display:flex;flex-direction:column;gap:8px;padding:10px 10px 12px;max-height:640px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(57,232,255,.22) transparent}
+.a1c-day{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;margin:4px 0 0;padding:6px 2px;background:linear-gradient(180deg,#07131d 70%,transparent);color:#7fb4c6;font:800 8.5px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1.1px}
+.a1c-day:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(57,232,255,.28),transparent)}
+.a1c-item{position:relative;padding:12px 12px 11px;border:1px solid rgba(71,133,157,.2);border-left:3px solid #2b6b80;border-radius:10px;background:linear-gradient(180deg,rgba(9,23,33,.96),rgba(4,12,19,.98));transition:border-color .18s,background .18s,transform .18s}
+.a1c-item:hover{border-color:rgba(57,232,255,.4);background:linear-gradient(180deg,rgba(11,29,41,.98),rgba(5,14,22,.98))}
+.a1c-item.released{border-left-color:#39e8a0}.a1c-item.waiting{border-left-color:#fbbf24}.a1c-item.upcoming{border-left-color:#39e8ff}
+.a1c-item.next{border-color:rgba(57,232,255,.5);box-shadow:0 0 0 1px rgba(57,232,255,.12),0 8px 24px rgba(0,0,0,.28)}
+.a1c-top{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px}
+.a1c-time{font:900 15px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:#effaff;letter-spacing:-.3px}
+.a1c-cur{padding:3px 6px;border-radius:4px;border:1px solid rgba(57,232,255,.3);background:rgba(57,232,255,.08);color:#5eeaff;font:800 9px/1 ui-monospace,Consolas,monospace;letter-spacing:.6px}
+.a1c-country{color:#7f9fae;font:700 8.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.6px}
+.a1c-state{margin-left:auto;color:#7f9fae;font:800 8px/1 ui-monospace,Consolas,monospace;letter-spacing:.5px;white-space:nowrap}
+.a1c-item.released .a1c-state{color:#4fe3a8}.a1c-item.waiting .a1c-state{color:#fbbf24}.a1c-item.upcoming .a1c-state{color:#59dff0}
+.a1c-title{display:block;margin:9px 0 0;color:#e6f6fc;text-decoration:none;font:800 12px/1.45 Inter,system-ui,sans-serif;overflow-wrap:anywhere}
+.a1c-title:hover{color:#4ce6f5}
+.a1c-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:7px}
+.a1c-high{padding:3px 6px;border-radius:3px;border:1px solid rgba(255,92,108,.28);background:rgba(255,92,108,.09);color:#ff8794;font:800 7.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.6px}
+.a1c-period{color:#6f8f9e;font:600 8.5px/1.3 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+.a1c-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:11px}
+.a1c-stat{min-width:0;padding:8px 8px 7px;border:1px solid rgba(71,133,157,.18);border-radius:7px;background:rgba(255,255,255,.022)}
+.a1c-stat>span{display:block;color:#6b8c9b;font:800 7.5px/1 ui-monospace,Consolas,monospace;letter-spacing:.8px}
+.a1c-stat>b{display:flex;align-items:center;gap:4px;margin-top:6px;color:#e2f3fa;font:800 13px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.a1c-stat.na>b{color:#3f5a67;font-weight:700}
+.a1c-stat.act{border-color:rgba(57,232,160,.28);background:rgba(57,232,160,.05)}
+.a1c-stat.act>b{color:#6df0bd}
+.a1c-stat.act.pending{border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.035)}
+.a1c-stat.act.pending>b{color:#a8884a;font-size:9px;font-weight:800;letter-spacing:.4px}
+.a1c-stat b i{font-style:normal;font-size:9px}.a1c-stat b i.up{color:#4ade80}.a1c-stat b i.down{color:#fb7185}
+.a1c-analysis{margin-top:9px;padding:9px 10px;border:1px solid rgba(91,218,194,.22);border-radius:8px;display:flex;flex-direction:column;gap:5px;font-size:10px;line-height:1.5;color:#aab8c8}
+.a1c-analysis b{font-size:9px;letter-spacing:.08em;color:#64e5cf}
+.a1c-analysis.bear{border-color:rgba(255,94,125,.35)}.a1c-analysis.bear b{color:#ff7e96}
+.a1c-analysis.bull{border-color:rgba(43,218,161,.35)}.a1c-analysis.bull b{color:#54e6b0}
+.a1c-analysis.neutral b{color:#f4ca65}
+@media(max-width:600px){
+ #a1EconomicCalendar .a1-cal-events{max-height:none;overflow:visible;padding:8px 8px 10px}
+ .a1c-time{font-size:14px}.a1c-title{font-size:12.5px}.a1c-stat>b{font-size:13px}
+}
+@media(max-width:360px){.a1c-stat>b{font-size:11.5px}.a1c-stat{padding:7px 6px}}
+</style>
+
+<script id="a1-economic-calendar-data">
+(()=>{
+ const root=document.getElementById('a1EconomicCalendar'); if(!root)return;
+ const FC_URL='https://www.financecalendar.com/wp-json/fc/v1/calendar';
+ const countries='US,GB,EU,DE,JP,CA,AU,CN,CH,NZ,NO,SE,IN,HK';
+ let events=[],windowDays='today',busy=false,updatedText='MENUNGGU DATA';
+ const $=id=>document.getElementById(id);
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const fmtDate=(d,opts)=>new Intl.DateTimeFormat('id-ID',{timeZone:'Asia/Jakarta',...opts}).format(d);
+ const dateKey=d=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jakarta',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(d);const v={};p.forEach(x=>v[x.type]=x.value);return `${v.year}-${v.month}-${v.day}`;};
+ const parseDate=e=>{
+  const raw=e.release_at_utc||e.time_utc||e.release_at||e.datetime||e.date_time||e.release_datetime||e.timestamp||null;
+  if(raw){const d=typeof raw==='number'?new Date(raw<1e12?raw*1000:raw):new Date(raw);if(!isNaN(d))return d;}
+  // Some calendar providers separate date and time into different fields.
+  if(e.date){const candidate=new Date(String(e.date)+(e.time?'T'+String(e.time):''));if(!isNaN(candidate))return candidate;}
+  return null;
+ };
+
+ /* ---------- helpers nilai ---------- */
+ const isMissing=v=>v===null||v===undefined||['','-','—','n/a','na','null','tba','tbd','undefined'].includes(String(v).trim().toLowerCase());
+ const scalar=v=>{if(v&&typeof v==='object'){return pick(v.value,v.amount,v.formatted,v.display,v.text,v.actual,v.forecast,v.previous);}return v;};
+ const pick=(...v)=>v.map(scalar).find(x=>!isMissing(x));
+ const decimalsOf=v=>{const s=String(v);const i=s.indexOf('.');return i<0?0:Math.min(3,s.length-i-1);};
+ const fmtValue=(v,e)=>{
+  if(isMissing(v))return '';
+  const raw=String(v).trim();
+  if(!/^-?\d+(\.\d+)?$/.test(raw))return raw;                 // sudah berformat (mis. "0.4%", "225K")
+  const n=Number(raw); const dg=Number.isFinite(+e?.digits)&&e.digits!==null&&e.digits!==''?+e.digits:decimalsOf(raw);
+  let out=n.toLocaleString('en-US',{minimumFractionDigits:dg,maximumFractionDigits:dg});
+  const m=String(e?.multiplier||'').toLowerCase();
+  if(m==='thousands')out+='K';else if(m==='millions')out+='M';else if(m==='billions')out+='B';
+  if(String(e?.unit||'').toLowerCase()==='percent')out+='%';
+  return out;
+ };
+ const normalizeEvent=e=>{
+  const vals=e.values||e.result||e.data||e.results||{};
+  const prior=pick(e.prior,e.previous,e.previous_value,e.previousValue,e.prior_value,e.priorValue,e.last,e.last_value,e.previous_period,e.previous_release,e.prev,vals.prior,vals.previous,vals.previous_value,vals.previousValue,vals.prior_value,vals.prev);
+  const consensus=pick(e.consensus,e.forecast,e.forecast_value,e.forecastValue,e.expected,e.expected_value,e.consensus_value,e.estimate,e.estimate_value,e.market_expectation,e.expected_value_formatted,vals.consensus,vals.forecast,vals.forecast_value,vals.forecastValue,vals.expected,vals.estimate);
+  const actual=pick(e.actual,e.actual_value,e.actualValue,e.actual_result,e.actualResult,e.result_value,e.release_value,e.released_value,e.result,e.current,e.current_value,e.latest,e.latest_value,e.value,vals.actual,vals.actual_value,vals.actualValue,vals.actual_result,vals.result_value,vals.release_value,vals.value,vals.result);
+  return {...e,prior,consensus,actual,status:pick(e.status,e.release_status,e.event_status,'')};
+ };
+ const eventName=e=>e.title||e.name||e.series_name||e.event||e.event_name||'Economic release';
+ const COUNTRY={US:'USA',GB:'UK',EU:'EUROZONE',DE:'GERMANY',JP:'JAPAN',CA:'CANADA',AU:'AUSTRALIA',CN:'CHINA',CH:'SWITZERLAND',NZ:'NEW ZEALAND',NO:'NORWAY',SE:'SWEDEN',IN:'INDIA',HK:'HONG KONG'};
+ const CCY={US:'USD',GB:'GBP',EU:'EUR',DE:'EUR',JP:'JPY',CA:'CAD',AU:'AUD',CN:'CNY',CH:'CHF',NZ:'NZD',NO:'NOK',SE:'SEK',IN:'INR',HK:'HKD'};
+ const countryName=c=>COUNTRY[String(c||'').toUpperCase()]||c||'GLOBAL';
+ const currencyFor=e=>{const d=String(e.currency||'').toUpperCase();if(/^[A-Z]{3}$/.test(d))return d;return CCY[String(e.country||'').toUpperCase()]||d;};
+
+ /* ---------- fetch dengan timeout + fallback proxy ---------- */
+ const proxies=[...(window.A1_NEWS_WORKER?[u=>window.A1_NEWS_WORKER.replace(/\/$/,'')+'/api/news/fetch?url='+encodeURIComponent(u)]:[]),u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),u=>'https://corsproxy.io/?url='+encodeURIComponent(u)];
+ async function fetchJSON(url,useProxy){
+  const once=async u=>{const c=new AbortController();const t=setTimeout(()=>c.abort(),9000);try{const r=await fetch(u,{cache:'no-store',signal:c.signal});if(!r.ok)return null;return await r.json();}catch(_){return null;}finally{clearTimeout(t);}};
+  let j=await once(url); if(j)return j;
+  if(useProxy){for(const p of proxies){j=await once(p(url));if(j)return j;}}
+  return null;
+ }
+
+ /* ---------- sumber tambahan: dinormalisasi ke {cur,title,time,prev,fcst,act} ---------- */
+ const asArray=j=>Array.isArray(j)?j:(j?.events||j?.data||j?.items||j?.result||j?.results||[]);
+ const toRow=(cur,title,time,prev,fcst,act,src)=>{const raw=time&&typeof time==='object'?(time.utc||time.timestamp||time.date||time.time):time;const d=raw instanceof Date?raw:(typeof raw==='number'?new Date(raw<1e12?raw*1000:raw):new Date(raw));return {cur:String(cur||'').toUpperCase(),title:String(title||''),time:d,prev:scalar(prev),fcst:scalar(fcst),act:scalar(act),src};};
+ const currencyAliases={US:'USD',USA:'USD',EU:'EUR',EUROZONE:'EUR',GB:'GBP',UK:'GBP',CA:'CAD',AU:'AUD',JP:'JPY',NZ:'NZD',CH:'CHF',CN:'CNY'};
+ const normCur=v=>{const x=String(v||'').trim().toUpperCase();return currencyAliases[x]||x;};
+ const dateOnly=e=>{const d=parseDate(e);return d?dateKey(d):String(e.date||e.release_date||'').slice(0,10);};
+ function mergeHistoricalEvents(list,history){
+  if(!Array.isArray(history)||!history.length)return list;
+  return list.map(e=>{
+   if(!isMissing(e.prior)&&!isMissing(e.consensus)&&!isMissing(e.actual))return e;
+   const cur=normCur(currencyFor(e)),name=eventName(e),day=dateOnly(e),id=String(e.id||e.event_id||'').toLowerCase();
+   let best=null,score=-1;
+   for(const raw of history){
+    const h=normalizeEvent(raw),hid=String(h.id||h.event_id||'').toLowerCase();
+    const hc=normCur(currencyFor(h)||h.currency||h.country),hd=dateOnly(h);
+    const sameId=id&&hid&&id===hid, sameDay=day&&hd&&day===hd;
+    const title=titleScore(name,eventName(h));
+    // Require a strong identifier or same date + closely matching event title; never borrow another period's result.
+    if(!sameId&&!(sameDay&&title>=0.45))continue;
+    if(hc&&cur&&hc!==cur)continue;
+    const sc=(sameId?2:0)+(sameDay?1:0)+title;
+    if(sc>score){score=sc;best=h;}
+   }
+   if(!best)return e;
+   return {...e,prior:pick(e.prior,best.prior,best.previous,best.previous_value),consensus:pick(e.consensus,best.consensus,best.forecast,best.forecast_value),actual:pick(e.actual,best.actual,best.actual_value),source_url:e.source_url||best.source_url||best.url||'https://biquote.io/docs/',_historySource:'Finance Calendar history'};
+  });
+ }
+ async function loadExtraSources(){
+  // Primary: BiQuote range API. Fallback: ShowMyTrades. Merge matching events so
+  // a published Actual from either feed can fill a blank value from the other.
+  const now=new Date();
+  const from=new Date(now.getTime()-48*3600000).toISOString();
+  const to=new Date(now.getTime()+14*86400000).toISOString();
+  const primaryUrl=`https://biquote.io/api/calendar?importance=high&countries=US&from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
+  const fallbackUrl='https://showmytrades.com/api/public/calendar/v1?currency=USD&impact=high&days=14';
+  const [primaryResult,fallbackResult]=await Promise.allSettled([fetchJSON(primaryUrl,false),fetchJSON(fallbackUrl,false)]);
+  const primary=primaryResult.status==='fulfilled'&&primaryResult.value?asArray(primaryResult.value):[];
+  const fallbackRaw=fallbackResult.status==='fulfilled'&&fallbackResult.value?asArray(fallbackResult.value):[];
+  const countryCurrency={US:'USD',USA:'USD',EU:'EUR',EUR:'EUR',GB:'GBP',UK:'GBP',JP:'JPY',CA:'CAD',AU:'AUD',NZ:'NZD',CH:'CHF',CN:'CNY',DE:'EUR'};
+  const biRows=primary.map(x=>{
+    const country=String(x.countryCode||x.country_code||x.country||'').toUpperCase();
+    const currency=String(x.currency||countryCurrency[country]||country).toUpperCase();
+    return {...toRow(currency,x.name||x.title||x.series_name||x.event,x.time||x.datetime||x.date||x.release_at||x.timestamp,
+      pick(x.previous,x.prev,x.prior,x.previous_value,x.previousValue,x.revisedPrevious),
+      pick(x.forecast,x.consensus,x.estimate,x.forecast_value,x.forecastValue,x.expected),
+      pick(x.actual,x.actual_value,x.actual_result,x.actualResult,x.result_value,x.release_value,x.released_value,x.result,x.current_value,x.value),
+      'BiQuote'),country,impact:String(x.importance||x.impact||'high').toLowerCase(),url:x.sourceUrl||'https://biquote.io/docs/',status:x.status||'',period:x.period||'',digits:x.digits,unit:x.unit,multiplier:x.multiplier};
+  });
+  const smtRows=fallbackRaw.map(x=>{
+    const currency=String(x.currency||'').toUpperCase();
+    return {...toRow(currency,x.title||x.name||x.event,x.time||x.datetime||x.date||((Number(x.ts)||0)*1000),
+      pick(x.previous,x.prior,x.previous_value,x.previousValue),pick(x.forecast,x.consensus,x.estimate,x.forecast_value,x.expected),
+      pick(x.actual,x.actual_value,x.actualValue,x.result,x.value),'ShowMyTrades'),impact:String(x.impact||'high').toLowerCase(),url:'https://showmytrades.com/tools/economic-calendar',status:x.status||'',period:x.period||''};
+  });
+  const valid=r=>r.cur&&r.title&&r.time instanceof Date&&!isNaN(r.time.getTime())&&(!r.impact||r.impact==='high');
+  const rows=[...biRows.filter(r=>valid(r)&&String(r.cur).toUpperCase()==='USD')];
+  const key=r=>`${normCur(r.cur)}|${dateKey(r.time)}|${tokenize(r.title).base.sort().join(' ')}`;
+  for(const f of smtRows.filter(r=>valid(r)&&String(r.cur).toUpperCase()==='USD')){
+    const k=key(f); let best=-1;
+    for(let i=0;i<rows.length;i++){
+      const r=rows[i];
+      if(normCur(r.cur)!==normCur(f.cur)||dateKey(r.time)!==dateKey(f.time))continue;
+      const score=titleScore(r.title,f.title);
+      if(score>=0.45&&score>best)best=i;
+    }
+    if(best>=0){
+      const r=rows[best];
+      rows[best]={...r,prev:pick(r.prev,f.prev),fcst:pick(r.fcst,f.fcst),act:pick(r.act,f.act),url:r.url||f.url,
+        src:(r.src==='BiQuote'?'BiQuote + ShowMyTrades':f.src)};
+    }else rows.push(f);
+  }
+  if(!rows.length)throw new Error('BiQuote dan ShowMyTrades tidak mengembalikan event kalender yang valid');
+  return rows;
+ }
+
+ /* ---------- pencocokan judul event lintas sumber ---------- */
+ const SYN=[[/consumer price index/g,' cpi '],[/non[- ]?farm( employment change| payrolls?)?/g,' nfp '],[/gross domestic product/g,' gdp '],[/producer price index/g,' ppi '],[/purchasing managers'? index/g,' pmi '],[/personal consumption expenditures?( price index)?/g,' pce '],[/federal funds rate|fomc (interest )?rate|interest rate decision|cash rate|official bank rate|main refinancing rate|overnight rate|policy rate|rate decision|rate statement|monetary policy statement/g,' rate '],[/unemployment rate/g,' unemployment '],[/y\/y|yoy|year[- ]over[- ]year|annual(ized)?/g,' yoy '],[/m\/m|mom|month[- ]over[- ]month|monthly/g,' mom '],[/q\/q|qoq|quarter[- ]over[- ]quarter|quarterly/g,' qoq ']];
+ const STOP=new Set(['the','of','for','and','from','in','to','a','s','report','release','data','flash','prelim','preliminary','final','revised','change','us','usa','uk','eu','german','germany','eurozone','canada','canadian','australia','australian','japan','japanese','china','chinese','swiss','switzerland','zealand','new','united','states','kingdom','bank']);
+ const MONTH=/^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*$|^(19|20)\d\d$|^q[1-4]$/;
+ const QUAL=new Set(['yoy','mom','qoq']);
+ function tokenize(v){
+  let s=String(v||'').toLowerCase().replace(/[()]/g,' ');
+  SYN.forEach(([re,to])=>{s=s.replace(re,to);});
+  const all=s.replace(/[^a-z0-9]+/g,' ').trim().split(/\s+/).filter(w=>w&&!STOP.has(w)&&!MONTH.test(w));
+  return {base:[...new Set(all.filter(w=>!QUAL.has(w)))],qual:[...new Set(all.filter(w=>QUAL.has(w)))]};
+ }
+ function titleScore(a,b){
+  const A=tokenize(a),B=tokenize(b); if(!A.base.length||!B.base.length)return 0;
+  const common=A.base.filter(w=>B.base.includes(w)).length;
+  let sc=common/Math.max(A.base.length,B.base.length);
+  if(A.qual.length&&B.qual.length){sc=A.qual.some(q=>B.qual.includes(q))?Math.min(1,sc+.1):sc*.4;}
+  return sc;
+ }
+ function mergeFromRows(list,rows){
+  return list.map(e=>{
+   if(!isMissing(e.prior)&&!isMissing(e.consensus)&&!isMissing(e.actual))return e;
+   const cur=normCur(currencyFor(e)),name=eventName(e),t=parseDate(e),day=t?dateKey(t):dateOnly(e);
+   let best=null,bestVal=-1;
+   rows.forEach(r=>{
+    if(normCur(r.cur)!==cur)return;
+    const rday=r.time?dateKey(r.time):'';
+    const delta=t&&r.time?Math.abs(r.time.getTime()-t.getTime()):Infinity;
+    const sameDay=!!day&&day===rday;
+    const sc=titleScore(name,r.title);
+    // Prefer same local calendar date with a reasonably close event name; allow timezone differences.
+    const ok=(sameDay&&sc>=.30)||(delta<=6*3600000&&sc>=.34)||(delta<=36*3600000&&sc>=.68);
+    if(!ok)return;
+    const val=sc+(sameDay?.25:0)-Math.min(delta,36*3600000)/(36*3600000)*.12;
+    if(val>bestVal){bestVal=val;best=r;}
+   });
+   if(!best)return e;
+   return {...e,prior:pick(e.prior,best.prev),consensus:pick(e.consensus,best.fcst),actual:pick(e.actual,best.act),_src:[...(e._src||[]),best.src]};
+  });
+ }
+
+ /* ---------- render ---------- */
+ const relTime=ms=>{
+  const m=Math.round(ms/60000);
+  if(m>=0){if(m<1)return 'sekarang';if(m<60)return `dalam ${m}m`;const h=Math.floor(m/60);return h<24?`dalam ${h}j ${m%60}m`:`dalam ${Math.floor(h/24)}h`;}
+  const a=-m;return a<60?`${a}m lalu`:a<1440?`${Math.floor(a/60)}j lalu`:`${Math.floor(a/1440)}h lalu`;
+ };
+ const numOf=v=>{const n=parseFloat(String(v??'').replace(/[^0-9.\-]/g,''));return Number.isFinite(n)?n:null;};
+ function calendarResultAnalysis(e, actual, forecast, previous){
+  const country=String(e.country||'').toUpperCase();
+  const currency=String(currencyFor(e)||'').toUpperCase();
+  if(!(country==='US'||currency==='USD'))return '';
+  const a=isMissing(actual)?null:numOf(actual);
+  const f=isMissing(forecast)?null:numOf(forecast);
+  const p=isMissing(previous)?null:numOf(previous);
+  const name=eventName(e).toLowerCase();
+  const inverse=/unemployment|jobless claims|initial claims|continuing claims/.test(name);
+  // Prioritaskan kejutan Actual vs Forecast setelah rilis. Sebelum rilis,
+  // gunakan Forecast vs Previous sebagai indikasi ekspektasi, bukan sinyal pasti.
+  let comparison=null,mode='';
+  if(a!==null&&f!==null){comparison=a-f;mode='HASIL RILIS · ACTUAL VS FORECAST';}
+  else if(f!==null&&p!==null){comparison=f-p;mode='BIAS PERKIRAAN · FORECAST VS PREVIOUS';}
+  else return '';
+  const eps=1e-9;
+  if(Math.abs(comparison)<eps){
+   const phase=mode.startsWith('HASIL')?'Actual sesuai forecast':'Forecast sama dengan previous';
+   return `<div class="a1c-analysis neutral"><b>BIAS USD: NETRAL · XAUUSD: WAIT</b><span>${mode}. ${phase}; belum ada perbedaan angka yang memberi arah jelas. Tunggu konfirmasi price action dan data pendukung.</span></div>`;
+  }
+  const dataStronger=comparison>0;
+  const usdStronger=dataStronger!==inverse;
+  const usdBias=usdStronger?'USD BULLISH':'USD BEARISH';
+  const goldBias=usdStronger?'XAUUSD SELL BIAS':'XAUUSD BUY BIAS';
+  const cls=usdStronger?'bear':'bull';
+  const desc=mode.startsWith('HASIL')
+   ? (usdStronger?'Actual lebih kuat dari forecast, cenderung mendukung USD dan menekan emas.':'Actual lebih lemah dari forecast, cenderung melemahkan USD dan mendukung emas.')
+   : (usdStronger?'Forecast lebih kuat dari previous, ekspektasi awal cenderung mendukung USD dan menekan emas.':'Forecast lebih lemah dari previous, ekspektasi awal cenderung melemahkan USD dan mendukung emas.');
+  return `<div class="a1c-analysis ${cls}"><b>${usdBias} · ${goldBias}</b><span>${mode}. ${desc} ${mode.startsWith('BIAS PERKIRAAN')?'Ini hanya indikasi sebelum rilis, bukan reaksi aktual. ':''}Konfirmasi dengan price action, momentum, dan spread.</span></div>`;
+ }
+ function statBox(label,val,cls,extra){
+  const has=!isMissing(val);
+  return `<div class="a1c-stat ${cls||''} ${has?'':'na'}"><span>${label}</span><b>${has?esc(val):'—'}${extra||''}</b></div>`;
+ }
+ function render(){
+  const now=Date.now(),today=dateKey(new Date());
+  const filtered=events.filter(e=>{
+   const d=parseDate(e);
+   if(windowDays==='today')return (e.date===today)||(d&&dateKey(d)===today);
+   if(!d)return false;
+   const delta=d.getTime()-now;
+   return delta>=-24*3600000&&delta<=Number(windowDays)*86400000;
+  }).sort((a,b)=>(parseDate(a)?.getTime()??Infinity)-(parseDate(b)?.getTime()??Infinity));
+  $('a1CalCount').textContent=filtered.length.toString().padStart(2,'0');
+  const next=filtered.find(e=>parseDate(e)&&parseDate(e).getTime()>=now);
+  $('a1CalNext').textContent=next?`${eventName(next)} · ${fmtDate(parseDate(next),{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})} WIB`:'Tidak ada rilis high impact terjadwal';
+  const shown=filtered.slice(0,60);
+  const nP=shown.filter(e=>!isMissing(e.prior)).length,nF=shown.filter(e=>!isMissing(e.consensus)).length;
+  $('a1CalUpdated').textContent=updatedText+(shown.length?` · PREV ${nP}/${shown.length} · FCST ${nF}/${shown.length}`:'');
+  if(!filtered.length){
+   $('a1CalEvents').innerHTML=`<div class="a1-cal-state"><b>Tidak ada rilis high impact ${windowDays==='today'?'hari ini':'pada rentang ini'}</b><small>Agenda berikutnya akan muncul saat tersedia dari sumber kalender.</small></div>`;
+   return;
+  }
+  let lastDay='';
+  $('a1CalEvents').innerHTML=shown.map(e=>{
+   const d=parseDate(e),time=d?fmtDate(d,{hour:'2-digit',minute:'2-digit'}):'TBA';
+   const dayKey=d?dateKey(d):(e.date||''),dayHead=d?fmtDate(d,{weekday:'long',day:'2-digit',month:'short'}).toUpperCase():(e.date||'TANGGAL TBA');
+   const head=(windowDays!=='today'&&dayKey!==lastDay)?`<div class="a1c-day"><span>${esc(dayHead)}</span></div>`:'';
+   lastDay=dayKey;
+   const url=e.source_url||e.url||'https://biquote.io/docs/';
+   const released=!isMissing(e.actual),past=d&&d.getTime()<=now;
+   const state=released?'released':(past?'waiting':'upcoming');
+   const stateLabel=released?'RILIS':(past?'MENUNGGU ACTUAL':'AKAN RILIS');
+   const isNext=next===e;
+   const prev=fmtValue(e.prior,e),fc=fmtValue(e.consensus,e),ac=fmtValue(e.actual,e);
+   let arrow='';
+   const a=numOf(ac),f=numOf(fc);
+   if(released&&a!==null&&f!==null&&a!==f)arrow=a>f?'<i class="up" title="Di atas forecast">▲</i>':'<i class="down" title="Di bawah forecast">▼</i>';
+   const actualBox=released?statBox('ACTUAL',ac,'act',arrow):`<div class="a1c-stat act pending"><span>ACTUAL</span><b>${past?'MENARIK DATA ACTUAL…':'BELUM RILIS'}</b></div>`;
+   return head+`<article class="a1c-item ${state}${isNext?' next':''}">
+    <div class="a1c-top"><span class="a1c-time">${esc(time)}</span><span class="a1c-cur">${esc(currencyFor(e)||'—')}</span><span class="a1c-country">${esc(countryName(e.country))}</span><span class="a1c-state">${stateLabel}${d?` · ${esc(relTime(d.getTime()-now))}`:''}</span></div>
+    <a class="a1c-title" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(eventName(e))}</a>
+    <div class="a1c-meta"><span class="a1c-high">HIGH IMPACT</span>${e.period||e.category?`<span class="a1c-period">${esc(e.period||e.category)}</span>`:''}</div>
+    <div class="a1c-stats">${statBox('PREVIOUS',prev)}${statBox('FORECAST',fc)}${actualBox}</div>
+    ${calendarResultAnalysis(e,ac,fc,prev)}
+   </article>`;
+  }).join('');
+ }
+
+ /* ---------- load ---------- */
+ async function load(){
+  if(busy)return;busy=true;
+  const status=$('a1CalStatus');
+  status.innerHTML='<i></i> MEMUAT KALENDER USD';
+  try{
+   const sourceRows=(await loadExtraSources()).filter(x=>String(x.cur).toUpperCase()==='USD');
+   const countryForCurrency={USD:'US',EUR:'EU',GBP:'GB',JPY:'JP',AUD:'AU',NZD:'NZ',CAD:'CA',CHF:'CH',CNY:'CN',NOK:'NO',SEK:'SE',INR:'IN',HKD:'HK'};
+   const fromNow=Date.now()-24*3600000,toNow=Date.now()+14*86400000;
+   const rows=sourceRows.filter(x=>x.time.getTime()>=fromNow&&x.time.getTime()<=toNow).map((x,i)=>({
+    id:'tradingview-'+i,
+    country:countryForCurrency[x.cur]||x.cur,
+    currency:x.cur,
+    title:x.title,
+    name:x.title,
+    release_at_utc:x.time.toISOString(),
+    date:x.time.toISOString().slice(0,10),
+    prior:x.prev,
+    previous:x.prev,
+    consensus:x.fcst,
+    forecast:x.fcst,
+    actual:x.act,
+    impact:'high',
+    status:'scheduled',
+    source_url:sourceRows.find(r=>r.cur===x.cur&&r.title===x.title)?.url||'https://biquote.io/docs/',
+    _calendarSource:'BiQuote / ShowMyTrades'
+   }));
+   const dedup=new Map();
+   for(const e of rows){
+    const key=String(e.currency)+'|'+String(e.date)+'|'+String(e.title).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+    if(!dedup.has(key))dedup.set(key,e);
+   }
+   events=[...dedup.values()].sort((a,b)=>(parseDate(a)?.getTime()||0)-(parseDate(b)?.getTime()||0));
+   if(events.length){
+    status.innerHTML='<i style="background:#56e6b6;box-shadow:0 0 8px rgba(86,230,182,.5)"></i> KALENDER USD · ACTIVE';
+    updatedText='USD CALENDAR · '+fmtDate(new Date(),{hour:'2-digit',minute:'2-digit',second:'2-digit'})+' WIB · AUTO 30S';
+    $('a1CalUpdated').textContent=updatedText;
+    render();
+   }else{
+    status.innerHTML='<i style="background:#fbbf24;box-shadow:0 0 8px rgba(251,191,36,.5)"></i> USD CALENDAR · NO DATA';
+    updatedText='KALENDER USD BELUM MENGIRIM DATA';
+    $('a1CalUpdated').textContent=updatedText;
+    $('a1CalEvents').innerHTML='<div class="a1-cal-state"><b>Data kalender belum tersedia</b><small>BiQuote dan ShowMyTrades tidak mengembalikan event yang valid. Periksa koneksi API atau coba lagi nanti.</small><a href="https://biquote.io/docs/" target="_blank" rel="noopener" style="color:#39dff1">Buka dokumentasi BiQuote ↗</a></div>';
+   }
+  }catch(err){
+   console.warn('Finance Calendar API failed',err);
+   status.innerHTML='<i style="background:#ff6476;box-shadow:0 0 8px rgba(255,100,118,.6)"></i> USD CALENDAR · OFFLINE';
+   updatedText='GAGAL MEMUAT KALENDER USD';$('a1CalUpdated').textContent=updatedText;
+   $('a1CalEvents').innerHTML='<div class="a1-cal-state"><b>Kalender belum dapat dimuat</b><small>API kalender USD tidak merespons. Periksa koneksi browser atau CORS.</small><a href="https://biquote.io/docs/" target="_blank" rel="noopener" style="color:#39dff1">Buka dokumentasi BiQuote ↗</a></div>';
+  }finally{busy=false;}
+ }
+
+ root.querySelectorAll('.a1-cal-filter').forEach(btn=>btn.addEventListener('click',()=>{windowDays=btn.dataset.window;root.querySelectorAll('.a1-cal-filter').forEach(b=>b.classList.toggle('active',b===btn));render();}));
+ setInterval(()=>{if(events.length)render();},60000); // refresh countdown "dalam Xm"
+ load();setInterval(load,30000);
+})();
 </script>
 
 <!-- ==================== TRADING DISCLAIMER FOOTER ==================== -->
@@ -2719,410 +3231,9 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
 </footer>
 
 
-<script>
-/* =========================================================
-  ZONA A1 — MARKET HEATMAP DATA ENGINE
-  Source: BiQuote public XAUUSD feed.
-  Uses 15-minute OHLC bars + live XAUUSD tick.
-  Heat intensity = directional candle activity weighted by tick volume.
-  ========================================================= */
-(function(){
- const OHLC_URL = "https://biquote.io/api/XAUUSD/ohlc?interval=15m&limit=120";
- const TICK_URL = "https://biquote.io/api/XAUUSD";
- const canvas = document.getElementById("heatmapCanvas");
- if(!canvas) return;
 
- const ctx = canvas.getContext("2d");
- const $ = id => document.getElementById(id);
- let bars = [];
- let live = null;
 
- function resizeCanvas(){
-  const r = canvas.getBoundingClientRect();
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = Math.max(1, Math.floor(r.width*dpr));
-  canvas.height = Math.max(1, Math.floor(r.height*dpr));
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  draw();
- }
 
- function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-
- function draw(){
-  const w=canvas.clientWidth,h=canvas.clientHeight;
-  if(!w||!h)return;
-  ctx.clearRect(0,0,w,h);
-
-  if(!bars.length){
-   ctx.fillStyle="rgba(90,120,135,.5)";
-   ctx.font="8px monospace";
-   ctx.fillText("WAITING FOR XAUUSD DATA",14,20);
-   return;
-  }
-
-  const highs=bars.map(b=>+b.high).filter(Number.isFinite);
-  const lows=bars.map(b=>+b.low).filter(Number.isFinite);
-  let hi=Math.max(...highs), lo=Math.min(...lows);
-  const current=live?.mid || bars[0]?.close;
-  const pad=(hi-lo)*.035 || 1;
-  hi+=pad; lo-=pad;
-
-  const cols=Math.min(72,bars.length);
-  const src=bars.slice(-cols);
-  const rows=20;
-  const cw=w/cols, rh=h/rows;
-
-  /* grid */
-  ctx.strokeStyle="rgba(70,110,130,.10)";
-  ctx.lineWidth=1;
-  for(let r=0;r<=rows;r++){
-   const y=r*rh+.5;
-   ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();
-  }
-  for(let c=0;c<=cols;c+=6){
-   const x=c*cw+.5;
-   ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();
-  }
-
-  /* session overlay — all times shown in WIB */
-  let lastSession = "";
-  src.forEach((b,c)=>{
-   const dt = new Date(b.openTime || b.time || 0);
-   const wb = new Date(dt.toLocaleString("en-US", {timeZone:"Asia/Jakarta"}));
-   const hh = wb.getHours();
-   const session = hh >= 6 && hh < 13 ? "ASIA" : hh >= 13 && hh < 19 ? "LONDON" : (hh >= 19 || hh < 1) ? "NEW YORK" : "OFF";
-   const x=c*cw;
-   const fills={ASIA:"rgba(57,232,160,.018)",LONDON:"rgba(57,232,255,.018)","NEW YORK":"rgba(255,82,119,.018)",OFF:"rgba(120,140,160,.012)"};
-   ctx.fillStyle=fills[session]||fills.OFF;
-   ctx.fillRect(x,0,Math.max(1,cw+.5),h);
-   if(session!==lastSession && session!=="OFF"){
-    ctx.fillStyle=session==="ASIA"?"rgba(57,232,160,.5)":session==="LONDON"?"rgba(57,232,255,.5)":"rgba(255,82,119,.5)";
-    ctx.font="6px monospace";ctx.fillText(session, x+4, 9);
-    lastSession=session;
-   }
-  });
-
-  /* heat field */
-  src.forEach((b,c)=>{
-   const o=+b.open,hg=+b.high,lw=+b.low,cl=+b.close;
-   if(![o,hg,lw,cl].every(Number.isFinite))return;
-   const volume=Math.max(1,+b.tickVolume||+b.volume||1);
-   const volNorm=clamp(Math.log1p(volume)/8,.18,1);
-   const dir=cl>=o?1:-1;
-   const body=Math.abs(cl-o)/(hg-lw||1);
-   const intensity=clamp(.20+body*.65+volNorm*.25,.18,1);
-
-   const yHigh=(hi-hg)/(hi-lo)*h;
-   const yLow=(hi-lw)/(hi-lo)*h;
-   const top=Math.max(0,yHigh), bottom=Math.min(h,yLow);
-   const x=c*cw;
-
-   const g=ctx.createLinearGradient(0,top,0,bottom);
-   if(dir>0){
-    g.addColorStop(0,`rgba(25,190,130,${.08+intensity*.24})`);
-    g.addColorStop(.5,`rgba(57,232,160,${.10+intensity*.34})`);
-    g.addColorStop(1,`rgba(10,80,70,${.04+intensity*.16})`);
-   }else{
-    g.addColorStop(0,`rgba(255,82,112,${.10+intensity*.30})`);
-    g.addColorStop(.5,`rgba(210,55,85,${.08+intensity*.28})`);
-    g.addColorStop(1,`rgba(80,25,45,${.04+intensity*.16})`);
-   }
-   ctx.fillStyle=g;
-   ctx.fillRect(x,top,Math.max(1,cw+.5),Math.max(2,bottom-top));
-
-   /* activity core */
-   const yClose=(hi-cl)/(hi-lo)*h;
-   ctx.fillStyle=dir>0
-    ? `rgba(57,232,160,${.20+intensity*.42})`
-    : `rgba(255,82,112,${.20+intensity*.42})`;
-   ctx.fillRect(x+cw*.12,Math.max(0,yClose-rh*.35),Math.max(1,cw*.76),Math.max(2,rh*.7));
-  });
-
-  /* current price line */
-  if(Number.isFinite(current)){
-   const y=clamp((hi-current)/(hi-lo)*h,0,h);
-   const line=$("hmCurrentLine"),label=$("hmCurrentPrice");
-   if(line)line.style.top=y+"px";
-   if(label){
-    label.style.top=y+"px";
-    label.textContent=current.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
-   }
-  }
-
-  /* live ZONA A1 signal markers */
-  if(typeof entries !== "undefined" && entries.size){
-   [...entries.values()].filter(e=>!e.close_reason && Number.isFinite(+e.entry_price)).slice(-5).forEach(e=>{
-    const price=+e.entry_price;
-    if(price<lo || price>hi)return;
-    const t=e.created_at?new Date(String(e.created_at).endsWith("Z")?e.created_at:e.created_at+"Z"):new Date();
-    let x=w-cw*.5;
-    if(Number.isFinite(t.getTime())){
-     const idx=src.findIndex(b=>{const bt=new Date(b.openTime||0).getTime();return Math.abs(bt-t.getTime())<15*60*1000;});
-     if(idx>=0)x=idx*cw+cw*.5;
-    }
-    const y=clamp((hi-price)/(hi-lo)*h,8,h-8);
-    const buy=(e.direction||"").toUpperCase()==="BUY";
-    ctx.save();ctx.translate(x,y);ctx.fillStyle=buy?"#39e8a0":"#ff5277";ctx.shadowBlur=12;ctx.shadowColor=ctx.fillStyle;
-    ctx.beginPath();ctx.moveTo(0,buy?7:-7);ctx.lineTo(-5,buy?-1:1);ctx.lineTo(5,buy?-1:1);ctx.closePath();ctx.fill();ctx.shadowBlur=0;
-    ctx.font="700 6px monospace";ctx.fillText(`${buy?"BUY":"SELL"} ${e.zone||""}`.trim(),8,3);ctx.restore();
-   });
-  }
-
-  /* compact price labels */
-  ctx.fillStyle="rgba(130,160,175,.55)";
-  ctx.font="6px monospace";
-  for(let i=0;i<5;i++){
-   const p=hi-(hi-lo)*(i/4);
-   const y=(i/4)*h+8;
-   ctx.fillText(p.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}),5,y);
-  }
- }
-
- function updateStats(){
-  if(!bars.length)return;
-  const first=bars[0], last=bars[bars.length-1];
-  const change=((+last.close-+first.open)/(+first.open||1))*100;
-  const range=((+last.high-+last.low)/(+last.close||1))*100;
-
-  $("hmBias").textContent=change>0.08?"BUY":change<-0.08?"SELL":"NEUTRAL";
-  $("hmBias").style.color=change>0.08?"#39e8a0":change<-0.08?"#ff5277":"#8bdbea";
-  $("hmVolatility").textContent=range.toFixed(2)+"%";
-  $("hmRange").textContent=(+last.high-+last.low).toFixed(2);
-  $("hmStatus").textContent=live ? "LIVE XAUUSD" : "HISTORICAL SCAN";
-
-  const sample=bars.slice(-24);
-  let buy=0,sell=0;
-  sample.forEach(b=>{
-   const o=+b.open,c=+b.close,h=+b.high,l=+b.low,v=Math.max(1,+b.tickVolume||+b.volume||1);
-   if(![o,c,h,l].every(Number.isFinite))return;
-   const activity=v*(1+Math.abs(c-o)/(h-l||1));
-   if(c>=o)buy+=activity;else sell+=activity;
-  });
-  const total=buy+sell||1,bp=Math.round(buy/total*100),sp=100-bp;
-  $("hmBuyPct").textContent=bp+"%";$("hmSellPct").textContent=sp+"%";
-  $("hmBuyBar").style.width=bp+"%";$("hmSellBar").style.width=sp+"%";
-  $("hmLoading").style.display="none";
- }
-
- /* ===== HIGH IMPACT NEWS + SIGNAL SOUND ===== */
- const NEWS_URL="https://biquote.io/api/calendar/upcoming?limit=40&countries=US,EU,GB,JP&importance=high";
- let nextHighImpact=null, alertEnabled=false, audioCtx=null, newsTimer=null;
- const alertBtn=$("hmAlertBtn");
-
- function setAlertButton(){
-  if(!alertBtn)return;
-  alertBtn.textContent=alertEnabled?"🔔 ALERT ON":"🔕 ALERT OFF";
-  alertBtn.classList.toggle("on",alertEnabled);
- }
- function beep(freq=880,duration=.12,delay=0){
-  if(!alertEnabled)return;
-  try{
-   audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
-   const o=audioCtx.createOscillator(),g=audioCtx.createGain();
-   o.type="sine";o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime+delay);
-   g.gain.exponentialRampToValueAtTime(.08,audioCtx.currentTime+delay+.015);
-   g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+delay+duration);
-   o.connect(g);g.connect(audioCtx.destination);o.start(audioCtx.currentTime+delay);o.stop(audioCtx.currentTime+delay+duration+.02);
-  }catch(e){}
- }
- function playSignalAlert(){
-  beep(880,.10,0);beep(1180,.14,.15);
-  document.body.classList.remove("signal-alert-flash");void document.body.offsetWidth;document.body.classList.add("signal-alert-flash");
- }
- if(alertBtn){
-  alertBtn.addEventListener("click",async()=>{
-   try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")await audioCtx.resume();alertEnabled=!alertEnabled;if(alertEnabled)beep(880,.08,0);}catch(e){alertEnabled=!alertEnabled}
-   setAlertButton();
-  });
-  setAlertButton();
- }
-
- function fmtCountdown(ms){
-  const sec=Math.max(0,Math.floor(ms/1000)),d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60),s=sec%60;
-  if(d>0)return `${d}d ${String(h).padStart(2,"0")}h`;
-  if(h>0)return `${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}m`;
-  return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
- }
- function renderNews(){
-  const box=$("hmNewsAlert"),title=$("hmNewsTitle"),meta=$("hmNewsMeta"),cd=$("hmNewsCountdown");
-  if(!box||!title||!meta||!cd)return;
-  if(!nextHighImpact){box.classList.remove("hot","warn");title.textContent="HIGH IMPACT NEWS";meta.textContent="No upcoming high-impact release found";cd.textContent="--:--";return}
-  const ms=new Date(nextHighImpact.time).getTime()-Date.now();
-  if(ms<=0){nextHighImpact=null;renderNews();return}
-  const mins=ms/60000,cur=nextHighImpact.currency||nextHighImpact.countryCode||"NEWS";
-  title.textContent=`HIGH IMPACT • ${cur}`;
-  const wib=new Date(new Date(nextHighImpact.time).toLocaleString("en-US",{timeZone:"Asia/Jakarta"}));
-  const hh=String(wib.getHours()).padStart(2,"0"),mm=String(wib.getMinutes()).padStart(2,"0");
-  meta.textContent=`${nextHighImpact.name||"Economic Release"} • ${hh}:${mm} WIB`;
-  cd.textContent=fmtCountdown(ms);
-  box.classList.toggle("hot",mins<=10);box.classList.toggle("warn",mins>10&&mins<=30);
- }
- async function loadHighImpactNews(){
-  try{
-   const r=await fetch(NEWS_URL,{cache:"no-store"});if(!r.ok)throw new Error("NEWS "+r.status);
-   const data=await r.json();const now=Date.now();
-   const list=(Array.isArray(data)?data:[]).filter(e=>e&&e.time&&e.importance==="high"&&e.timeMode!=="date"&&e.timeMode!=="notime"&&e.timeMode!=="tentative");
-   nextHighImpact=list.map(e=>({...e})).filter(e=>new Date(e.time).getTime()>now).sort((a,b)=>new Date(a.time)-new Date(b.time))[0]||null;
-   renderNews();
-  }catch(e){
-   const meta=$("hmNewsMeta");if(meta)meta.textContent="Calendar feed unavailable";
-  }
- }
- setInterval(renderNews,1000);loadHighImpactNews();setInterval(loadHighImpactNews,300000);
-
- async function loadBars(){
-  try{
-   const r=await fetch(OHLC_URL,{cache:"no-store"});
-   if(!r.ok)throw new Error("OHLC "+r.status);
-   const d=await r.json();
-   bars=(d.bars||[]).filter(b=>Number.isFinite(+b.open)&&Number.isFinite(+b.high)&&Number.isFinite(+b.low)&&Number.isFinite(+b.close)).reverse();
-   updateStats();draw();
-  }catch(err){
-   const load=$("hmLoading");
-   if(load)load.textContent="MARKET DATA TEMPORARILY UNAVAILABLE";
-  }
- }
-
- async function loadTick(){
-  try{
-   const r=await fetch(TICK_URL,{cache:"no-store"});
-   if(!r.ok)throw new Error("TICK "+r.status);
-   const d=await r.json();
-   live=d;
-   const p=+d.mid;
-   if(Number.isFinite(p)){
-    $("hmPrice").textContent=p.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
-    const day=+d.dayDiffPercent;
-    const ch=$("hmChange");
-    if(Number.isFinite(day)){
-     ch.textContent=(day>=0?"+":"")+day.toFixed(2)+"%";
-     ch.style.color=day>=0?"#39e8a0":"#ff5277";
-    }
-   }
-   const ts=d.timestamp?new Date(d.timestamp):new Date();
-   $("hmUpdated").textContent=ts.toLocaleTimeString("id-ID",{hour12:false});
-   draw();
-  }catch(err){}
- }
-
- window.addEventListener("resize",resizeCanvas);
- loadBars(); loadTick();
- setInterval(loadTick,10000);
- setInterval(loadBars,60000);
- setInterval(draw,1500);
- setTimeout(resizeCanvas,50);
-})();
-</script>
-
-<script id="a1-market-intelligence-js">
-/* ===== ZONA A1 — TODAY'S MARKET INTELLIGENCE v2 =====
-  Multi-source RSS aggregation + fallback headlines.
-  Browser refresh: 10 minutes. Focus: XAUUSD macro drivers.
-*/
-(function(){
- const feeds=[
-  ['GOOGLE NEWS • GOLD','https://news.google.com/rss/search?q=gold%20OR%20XAUUSD&hl=en-US&gl=US&ceid=US:en'],
-  ['GOOGLE NEWS • FED','https://news.google.com/rss/search?q=Federal%20Reserve%20OR%20Fed%20OR%20Powell%20OR%20FOMC&hl=en-US&gl=US&ceid=US:en'],
-  ['GOOGLE NEWS • USD/YIELD','https://news.google.com/rss/search?q=USD%20OR%20dollar%20OR%20DXY%20OR%20Treasury%20yield&hl=en-US&gl=US&ceid=US:en'],
-  ['GOOGLE NEWS • CPI','https://news.google.com/rss/search?q=CPI%20OR%20inflation%20OR%20PPI%20OR%20NFP&hl=en-US&gl=US&ceid=US:en'],
-  ['GOOGLE NEWS • ECB/FX','https://news.google.com/rss/search?q=ECB%20OR%20BOE%20OR%20BOJ%20OR%20forex&hl=en-US&gl=US&ceid=US:en'],
-  ['GOOGLE NEWS • OIL/GEO','https://news.google.com/rss/search?q=oil%20OR%20crude%20OR%20OPEC%20OR%20Iran%20OR%20Hormuz%20OR%20geopolitics&hl=en-US&gl=US&ceid=US:en']
- ];
- const proxies=[
-  u=>'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u),
-  u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
-  u=>'https://corsproxy.io/?url='+encodeURIComponent(u)
- ];
- const $=id=>document.getElementById(id);
- const esc=x=>String(x||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
- const clean=x=>String(x||'').replace(/<!\[CDATA\[|\]\]>/g,'').replace(/<[^>]*>/g,' ').replace(/&nbsp;/gi,' ').replace(/\s+/g,' ').trim();
-
- const topics=[
-  {key:'gold',label:'🥇 GOLD / XAUUSD',terms:['gold','xauusd','bullion','precious metal','gold price'],impact:'XAU DRIVER',cls:'hot'},
-  {key:'fed',label:'🇺🇸 FED / USD',terms:['federal reserve','fed ','powell','fomc','rate hike','rate cut','dollar','usd','dxy'],impact:'MACRO',cls:'warn'},
-  {key:'inflation',label:'📊 INFLATION / CPI',terms:['cpi','inflation','core inflation','ppi','pce','payroll','nfp','jobs'],impact:'MACRO',cls:'warn'},
-  {key:'yield',label:'📈 TREASURY / YIELD',terms:['treasury yield','treasury','10-year','10y yield','2-year','bond yield','yields'],impact:'XAU DRIVER',cls:'hot'},
-  {key:'ecb',label:'🇪🇺 ECB / CENTRAL BANKS',terms:['ecb','european central bank','boe','bank of england','boj','bank of japan','central bank'],impact:'MACRO',cls:'warn'},
-  {key:'oil',label:'🛢 OIL / ENERGY',terms:['oil','crude','brent','wti','opec','energy prices','pipeline'],impact:'RISK',cls:'good'},
-  {key:'geo',label:'🌍 GEOPOLITICS',terms:['geopolit','war','conflict','middle east','ukraine','russia','china','tariff','hormuz','iran','israel','houthi','red sea'],impact:'RISK',cls:'good'},
-  {key:'forex',label:'💱 FOREX / RISK',terms:['forex','eur/usd','eurusd','gbp/usd','gbpusd','yen','euro','sterling','risk sentiment'],impact:'MARKET',cls:''}
- ];
-
- /* Current fallback snapshot so the panel is never blank when a browser proxy is unavailable. */
- let articles=[
-  {source:'Reuters',title:'Gold rises on dip-buying even as Fed rate hike bets rise after US inflation data',desc:'Gold rebounded while strong US inflation data increased expectations of a Federal Reserve rate hike.',url:'https://www.reuters.com/world/india/gold-track-third-weekly-loss-us-inflation-data-looms-2026-09-11/',date:new Date('2026-09-11T16:00:00Z')},
-  {source:'Reuters',title:'Wall Street jumps, oil lower ahead of Fed vote next week',desc:'US CPI rose 0.4% in August; Treasury 10-year yield briefly touched 4.9915% while gold recovered.',url:'https://www.reuters.com/world/china/global-markets-corrected-2026-09-11/',date:new Date('2026-09-11T20:00:00Z')},
-  {source:'Reuters',title:'US 10-year borrowing costs pull back from 5%',desc:'US CPI rose 0.4% in August and 3.4% annually; 10-year Treasury yield eased to around 4.93%.',url:'https://www.reuters.com/world/europe/global-bond-selloff-pushes-10-year-us-yield-toward-5-oil-rate-hike-fears-2026-09-11/',date:new Date('2026-09-11T19:00:00Z')},
-  {source:'Reuters',title:'Houthi advance in Yemen puts US in a new bind',desc:'The advance raises risks around the Bab el-Mandeb shipping chokepoint while Hormuz remains disrupted.',url:'https://www.reuters.com/world/middle-east/houthi-advance-yemen-puts-us-new-bind-2026-09-12/',date:new Date('2026-09-12T02:00:00Z')},
-  {source:'Reuters',title:'Trump says Iran probably responsible for attack on Saudi pipeline',desc:'The reported attack adds to Middle East energy-supply and geopolitical risk.',url:'https://www.reuters.com/business/energy/trump-says-iran-probably-responsible-attack-saudi-pipeline-2026-09-12/',date:new Date('2026-09-12T03:00:00Z')},
-  {source:'TMGM',title:'US CPI, Treasury yields, USD and ECB remain key market themes',desc:'August CPI held at 3.4% YoY; 10Y Treasury near 4.951%; ECB deposit rate 2.50%; WTI near $97.',url:'https://www.tmgm-apac.com/eng/analysis/market-insight/morning-brief-en-2026-09-11',date:new Date('2026-09-12T00:00:00Z')},
-  {source:'FXStreet',title:'Gold rebounds but Fed rate hike bets remain a headwind',desc:'XAU/USD rebounded as USD, yields and oil pulled back, but Fed hike expectations capped upside.',url:'https://www.fxstreet.com/news/gold-holds-ground-as-markets-brace-for-us-cpi-data-202609111059',date:new Date('2026-09-11T16:06:07Z')}
- ];
-
- function parse(xml,source){
-  const doc=new DOMParser().parseFromString(xml,'text/xml');
-  if(doc.querySelector('parsererror')) return [];
-  const rss=[...doc.querySelectorAll('item')];
-  if(rss.length) return rss.map(i=>({
-   source:clean(i.querySelector('source')?.textContent||source).slice(0,24),
-   title:clean(i.querySelector('title')?.textContent),desc:clean(i.querySelector('description')?.textContent),
-   url:i.querySelector('link')?.textContent?.trim()||'',date:new Date(i.querySelector('pubDate')?.textContent||0)
-  })).filter(x=>x.title&&!isNaN(x.date));
-  return [...doc.querySelectorAll('entry')].map(i=>({
-   source:clean(i.querySelector('source,author')?.textContent||source).slice(0,24),
-   title:clean(i.querySelector('title')?.textContent),desc:clean(i.querySelector('summary,description')?.textContent),
-   url:i.querySelector('link')?.getAttribute('href')||'',date:new Date(i.querySelector('published,updated')?.textContent||0)
-  })).filter(x=>x.title&&!isNaN(x.date));
- }
- function parseJson(j,source){
-  const arr=j?.items||j?.data||j?.articles||[];
-  return Array.isArray(arr)?arr.map(x=>({source:clean(x.author||x.source_id||source).slice(0,24),title:clean(x.title),desc:clean(x.description||x.content||''),url:x.link||x.url||'',date:new Date(x.pubDate||x.published_at||x.date||0)})).filter(x=>x.title&&!isNaN(x.date)):[];
- }
- async function fetchFeed(url,source){
-  for(const proxy of proxies){
-   try{
-    const r=await fetch(proxy(url),{cache:'no-store'}); if(!r.ok) continue;
-    const text=await r.text();
-    try{const j=JSON.parse(text);const a=parseJson(j,source);if(a.length)return a;}catch(_){ }
-    const a=parse(text,source);if(a.length)return a;
-   }catch(_){ }
-  }
-  return [];
- }
- function score(a,t){
-  const text=(a.title+' '+a.desc).toLowerCase();let n=0;
-  t.terms.forEach(k=>{if(text.includes(k.toLowerCase()))n+=k.length>5?3:2});
-  if(/gold|xau/.test(text))n+=2;
-  const age=(Date.now()-a.date.getTime())/3600000;if(age<=2)n+=5;else if(age<=6)n+=3;else if(age<=24)n+=1;else if(age>48)n-=3;
-  return n;
- }
- function summarize(t,items){
-  const text=items.map(x=>x.title+' '+x.a.desc).join(' ').toLowerCase();
-  if(t.key==='gold')return /rise|rally|rebound|gain|higher/.test(text)?'Gold is rebounding, but the market remains sensitive to USD, Treasury yields and Fed-rate expectations.':'Gold remains highly sensitive to USD, Treasury yields and central-bank policy.';
-  if(t.key==='fed')return /hike|higher|hawkish/.test(text)?'Markets are leaning more hawkish on US rates, keeping USD, yields and Gold highly sensitive.':'Fed policy expectations remain a key driver for USD, Treasury yields and Gold.';
-  if(t.key==='inflation')return 'Fresh CPI/inflation signals are being watched for their impact on the next Federal Reserve decision.';
-  if(t.key==='yield')return 'Treasury yields remain a direct Gold driver: higher yields generally increase the opportunity cost of holding non-yielding Gold.';
-  if(t.key==='ecb')return 'ECB and other central-bank decisions are reshaping global rate differentials and FX flows.';
-  if(t.key==='oil')return 'Oil is a major inflation and risk variable; energy shocks can change central-bank expectations quickly.';
-  if(t.key==='geo')return 'Geopolitical developments are moving energy prices and risk sentiment, with knock-on effects for USD, yields and Gold.';
-  return 'FX and broader risk sentiment are shaping cross-market flows that can spill over into Gold and the US Dollar.';
- }
- function age(d){const m=Math.max(0,Math.round((Date.now()-d.getTime())/60000));return m<60?m+'m ago':Math.round(m/60)+'h ago'}
- function render(){
-  const now=new Date();$('a1MiDate').textContent=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+' • WIB';
-  const ranked=topics.map(t=>({t,items:articles.map(a=>({a,s:score(a,t)})).filter(x=>x.s>2).sort((x,y)=>y.s-x.s||y.a.date-x.a.date).slice(0,3)})).filter(x=>x.items.length).sort((a,b)=>b.items[0].s-a.items[0].s).slice(0,8);
-  $('a1MiGrid').innerHTML=ranked.map(x=>{const a=x.items[0].a;return `<div class="a1-mi-card ${x.t.cls}"><div class="a1-mi-kicker"><span>${esc(x.t.label)}</span><span class="a1-mi-impact">${x.t.impact}</span></div><h4>${esc(a.title)}</h4><p>${esc(summarize(x.t,x.items))}</p><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.source)} • ${age(a.date)}</a></div>`}).join('')||'<div class="a1-mi-card"><h4>No fresh market intelligence</h4><p>Waiting for the next source update.</p></div>';
-  $('a1MiStatus').textContent='● LIVE • AUTO UPDATE 10m';$('a1MiUpdated').textContent='UPDATED '+now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'})+' WIB';
- }
- async function load(){
-  $('a1MiStatus').textContent='● FETCHING LIVE NEWS…';
-  const results=await Promise.all(feeds.map(f=>fetchFeed(f[1],f[0])));const out=results.flat();
-  if(out.length){const seen=new Set();articles=out.filter(a=>{const k=a.title.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();if(seen.has(k))return false;seen.add(k);return(Date.now()-a.date.getTime())<72*3600000}).sort((a,b)=>b.date-a.date).slice(0,180)}
-  render();
- }
- render();load();setInterval(load,600000);setInterval(()=>{if(articles.length)render()},60000);
-})();
-</script>
 
 
 <script>
@@ -3137,7 +3248,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  if(!$('miGold'))return;
 
  const BI_GOLD='https://biquote.io/api/XAUUSD';
- const BI_CAL='https://biquote.io/api/calendar/upcoming?limit=40&countries=US,EU,GB,JP&importance=high';
+ const BI_CAL='https://biquote.io/api/calendar/upcoming?limit=40&countries=US,EU,GB,JP,ID&importance=high';
  const YAHOO={
   dxy:'DX-Y.NYB', yield:'^TNX', oil:'CL=F', eur:'EURUSD=X', gbp:'GBPUSD=X', gold:'GC=F'
  };
@@ -3304,14 +3415,15 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
   ['OIL / ENERGY','oil OR crude OR Brent OR WTI OR OPEC','risk','good'],
   ['GEOPOLITICS','Iran OR Israel OR Middle East OR Hormuz OR Houthi OR geopolitics','risk','good'],
   ['CENTRAL BANKS','ECB OR BOJ OR BOE OR central bank OR monetary policy','macro','warn'],
-  ['FOREX / RISK','(forex OR EURUSD OR GBPUSD OR yen OR "risk sentiment")','macro','info']
+  ['FOREX / RISK','(forex OR EURUSD OR GBPUSD OR yen OR "risk sentiment")','macro','info'],
+  ['SAHAM INDONESIA / IDX','(saham Indonesia OR IHSG OR IDX OR BEI OR emiten OR saham bank OR BBCA OR BBRI OR BMRI OR BBNI OR TLKM OR ASII OR GOTO OR AMMN OR ADRO OR saham dividen)','stocks','info']
  ];
 
  const PROXIES=[
-  u=>'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u),
   u=>'https://api.allorigins.win/raw?url='+encodeURIComponent(u),
   u=>'https://corsproxy.io/?url='+encodeURIComponent(u),
-  u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)
+  u=>'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u),
+  u=>'https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(u)   // cache panjang → dipakai terakhir
  ];
 
 
@@ -3330,6 +3442,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  }
 
  function surpriseScore(e){
+  if(e.actual===null||e.actual===undefined||String(e.actual).trim()===''||e.forecast===null||e.forecast===undefined||String(e.forecast).trim()==='')return null;
   const a=Number(e.actual),f=Number(e.forecast);
   if(!Number.isFinite(a)||!Number.isFinite(f)||f===0)return null;
   return ((a-f)/Math.abs(f))*100;
@@ -3338,7 +3451,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  function classifyImpact(e){
   const t=(e.name||'').toLowerCase();
   const score=surpriseScore(e);
-  if(score===null)return {label:'NEUTRAL',cls:'neutral',drivers:'Perbandingan aktual/perkiraan tidak tersedia'};
+  if(score===null)return {label:'MENUNGGU DATA',cls:'neutral',drivers:'Sumber belum mengirim angka aktual dan/atau perkiraan; bias BUY/SELL belum dihitung'};
   const hotterIsBearishGold=/(cpi|inflation|pce|ppi|core|average hourly earnings|wage|payroll|employment cost|retail sales|gdp|ism|pmi)/.test(t);
   const dovishIsBullishGold=/(unemployment|jobless claims)/.test(t);
   const rateDecision=/(interest rate|policy rate|federal funds|rate decision|fed)/.test(t);
@@ -3361,20 +3474,45 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  async function loadCalendarResults(){
   if(calendarLoading)return; calendarLoading=true;
   try{
-   const now=new Date(), from=new Date(now.getTime()-3*3600000), to=new Date(now.getTime()+2*3600000);
-   const url=CALENDAR_URL+'?from='+encodeURIComponent(from.toISOString())+'&to='+encodeURIComponent(to.toISOString())+'&countries=US,EU,GB,JP&importance=high&limit=100';
+   // Use the same calendar source as the agenda; look back 24h so releases that passed earlier today remain visible.
+   const now=new Date(), from=new Date(now.getTime()-24*3600000), to=new Date(now.getTime()+1000);
+   const day=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+   const url='https://www.financecalendar.com/wp-json/fc/v1/calendar?country=US,GB,EU,DE,JP,CA,AU,CN,CH,NZ,NO,SE,IN,HK&impact=high&from='+day(from)+'&to='+day(to)+'&tz=Asia%2FJakarta&limit=200';
    const r=await fetch(url,{cache:'no-store'}); if(!r.ok)throw new Error('CAL '+r.status);
-   const data=await r.json();
-   const events=Array.isArray(data)?data:[];
-   resultStories=events.filter(e=>{
+   const data=await r.json(); if(!Array.isArray(data.events))throw new Error('Invalid calendar response');
+   // Calendar schedules may omit result values. Pull the historical-results endpoint too,
+   // then merge by stable event id or matching series/date/name before rendering.
+   let historyEvents=[];
+   try{
+    const hurl='https://www.financecalendar.com/wp-json/fc/v1/history?series=au-cpi,ca-rate-decision,fomc&from='+day(from)+'&to='+day(to)+'&limit=100&tz=Asia%2FJakarta';
+    const hr=await fetch(hurl,{cache:'no-store'});
+    if(hr.ok){const hd=await hr.json();historyEvents=Array.isArray(hd.events)?hd.events:[];}
+   }catch(historyErr){console.warn('Historical results endpoint unavailable',historyErr);}
+   const merged=data.events.map(rawEvent=>{
+    const e=normalizeEvent(rawEvent);
+    const raw=e.release_at_utc||e.time_utc||e.release_at||e.datetime||e.date_time||null;
+    const t=raw?new Date(raw):new Date(NaN);
+    const id=String(e.id||'').toLowerCase(), name=String(e.title||e.name||e.series_name||e.event||'').toLowerCase();
+    const hist=historyEvents.find(h=>{
+      const hid=String(h.id||'').toLowerCase(), hn=String(h.title||h.name||h.series_name||'').toLowerCase();
+      const ht=String(h.date||'').slice(0,10), et=String(e.date||raw||'').slice(0,10);
+      return (id && hid && id===hid) || (ht && et && ht===et && hn && name && (hn.includes(name)||name.includes(hn)));
+    })||{};
+    const pick=(...vals)=>vals.find(v=>v!==null&&v!==undefined&&String(v).trim()!=='');
+    return {...e, name:e.title||e.name||e.series_name||e.event||'Rilis ekonomi high impact', time:Number.isNaN(t.getTime())?'':t.toISOString(), actual:pick(e.actual,e.actual_value,hist.actual,hist.actual_value), forecast:pick(e.consensus,e.forecast,e.forecast_value,hist.consensus,hist.forecast,hist.forecast_value), previous:pick(e.prior,e.previous,e.previous_value,hist.prior,hist.previous,hist.previous_value), countryCode:e.country||'', currency:e.currency||e.country||'', sourceUrl:e.source_url||e.url||hist.source_url||hist.url||''};
+   });
+   const mapped=merged;
+   // Keep every recently released high-impact event visible, even if the provider has not populated actual yet.
+   resultStories=mapped.filter(e=>{
     const t=new Date(e.time).getTime();
-    return e && e.importance==='high' && e.actual!==null && e.actual!==undefined && Number.isFinite(t) && t<=Date.now() && (Date.now()-t)<=90*60000;
-   }).sort((a,b)=>new Date(b.time)-new Date(a.time)).slice(0,4).map(e=>({...e,_impact:classifyImpact(e)}));
+    return String(e.impact||'').toLowerCase()==='high' && Number.isFinite(t) && t<=Date.now() && (Date.now()-t)<=24*3600000 && String(e.status||'').toLowerCase()!=='cancelled';
+   }).sort((a,b)=>new Date(b.time)-new Date(a.time)).slice(0,8).map(e=>({...e,_impact:classifyImpact(e)}));
    render();
    await Promise.all(resultStories.map(async e=>{e.nameID=await translateID(e.name||'')}));
    render();
   }catch(err){
-   // Keep the last known release cards if the calendar feed briefly fails.
+   // Preserve last known result cards if the calendar feed briefly fails.
+   console.warn('High-impact result feed unavailable',err);
   }finally{calendarLoading=false}
  }
 
@@ -3408,14 +3546,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  let loading=false;
  let calendarLoading=false;
 
- const fallback=[
-  {source:'Reuters',title:'Gold edges higher on weaker dollar, US inflation data in focus',desc:'Gold remains sensitive to the US dollar, inflation expectations and the Federal Reserve rate path.',url:'https://www.reuters.com/',date:new Date('2026-09-12T00:00:00Z'),cat:'gold',cls:'hot'},
-  {source:'Reuters',title:'Currency markets subdued as oil shock lifts global yields; ECB, U.S. inflation eyed',desc:'Oil and inflation are keeping global yields and central-bank expectations in focus.',url:'https://www.reuters.com/',date:new Date('2026-09-12T00:00:00Z'),cat:'macro',cls:'warn'},
-  {source:'Reuters',title:'US 10-year borrowing costs pull back from 5%',desc:'The benchmark 10-year Treasury yield eased after the August CPI report, but long-term yield pressure remains a market concern.',url:'https://www.reuters.com/',date:new Date('2026-09-11T00:00:00Z'),cat:'macro',cls:'hot'},
-  {source:'Reuters',title:'Middle East energy risk keeps oil and inflation expectations in focus',desc:'Geopolitical developments are affecting oil, inflation expectations and broader risk sentiment.',url:'https://www.reuters.com/',date:new Date('2026-09-12T00:00:00Z'),cat:'risk',cls:'good'}
- ];
-
- function parseRSS(text,source,cat,cls){
+  function parseRSS(text,source,cat,cls){
   const doc=new DOMParser().parseFromString(text,'text/xml');
   if(doc.querySelector('parsererror'))return [];
   const items=[...doc.querySelectorAll('item')];
@@ -3435,25 +3566,42 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
   })).filter(x=>x.title&&!isNaN(x.date));
  }
 
+ function parseDateSafe(v){
+  if(!v)return new Date(NaN);
+  const s=String(v).trim();
+  if(/^\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(:\d{2})?$/.test(s))return new Date(s.replace(' ','T')+'Z');
+  return new Date(s);
+ }
+
  function parseJSON(j,source,cat,cls){
   const arr=j?.items||j?.articles||j?.data||[];
   return Array.isArray(arr)?arr.map(x=>({
    source:clean(x.author||x.source_id||x.source||source).slice(0,28),
    title:stripTitle(x.title),desc:clean(x.description||x.content||'').slice(0,260),
-   url:x.link||x.url||'',date:new Date(x.pubDate||x.published_at||x.published||x.date||0),cat,cls
+   url:x.link||x.url||'',date:parseDateSafe(x.pubDate||x.published_at||x.published||x.date),cat,cls
   })).filter(x=>x.title&&!isNaN(x.date)):[];
  }
 
  async function getFeed(feed){
   const [source,q,cat,cls]=feed;
-  const rss='https://news.google.com/rss/search?q='+encodeURIComponent(q)+'&hl=en-US&gl=US&ceid=US:en';
-  for(const proxy of PROXIES){
+  const isID=cat==='stocks';
+  const W=String(window.A1_NEWS_WORKER||'').replace(/\/$/,'');
+  if(W){
+   const c0=new AbortController(),t0=setTimeout(()=>c0.abort(),12000);
    try{
-    const r=await fetch(proxy(rss),{cache:'no-store'});if(!r.ok)continue;
+    const wr=await fetch(W+'/api/news/rss?q='+encodeURIComponent(q)+'&lang='+(isID?'id':'en')+'&cat='+encodeURIComponent(cat),{cache:'no-store',signal:c0.signal});
+    if(wr.ok){const wj=await wr.json();const wa=parseJSON({items:wj.items},source,cat,cls);if(wa.length)return wa;}
+   }catch(_){ }finally{clearTimeout(t0);}
+  }
+  const rss='https://news.google.com/rss/search?q='+encodeURIComponent(q+' when:2d')+(isID?'&hl=id&gl=ID&ceid=ID:id':'&hl=en-US&gl=US&ceid=US:en')+'&_t='+Math.floor(Date.now()/60000);
+  for(const proxy of PROXIES){
+   const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),9000);
+   try{
+    const r=await fetch(proxy(rss),{cache:'no-store',signal:ctl.signal});if(!r.ok)continue;
     const text=await r.text();
     try{const j=JSON.parse(text);const a=parseJSON(j,source,cat,cls);if(a.length)return a}catch(_){ }
     const a=parseRSS(text,source,cat,cls);if(a.length)return a;
-   }catch(_){ }
+   }catch(_){ }finally{clearTimeout(to);}
   }
   return [];
  }
@@ -3470,13 +3618,14 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  function relevance(a){
   const t=(a.title+' '+a.desc).toLowerCase();let s=0;
   const weights={
+   'ihsg':9,'idx':5,'bei':5,'saham':4,'emiten':5,'bbca':6,'bbri':6,'bmri':6,'bbni':5,'tlkm':5,'asii':5,'goto':4,'ammn':5,'dividen':4,
    'gold':9,'xauusd':10,'bullion':7,'federal reserve':8,'fomc':9,'powell':7,'rate hike':7,'rate cut':7,
    'cpi':8,'inflation':6,'ppi':5,'pce':5,'treasury':6,'10-year':7,'yield':5,'dxy':7,'dollar':4,
    'oil':4,'crude':4,'brent':4,'wti':4,'hormuz':7,'iran':6,'israel':5,'middle east':5,'geopolit':6,
    'ecb':4,'boj':4,'boe':4,'central bank':4,'forex':3
   };
   Object.keys(weights).forEach(k=>{if(t.includes(k))s+=weights[k]});
-  if(a.cat==='gold')s+=7;if(a.cat==='fed')s+=5;if(a.cat==='risk')s+=3;
+  if(a.cat==='gold')s+=7;if(a.cat==='fed')s+=5;if(a.cat==='risk')s+=3;if(a.cat==='stocks')s+=6;
   const h=(Date.now()-a.date.getTime())/3600000;
   if(h<=1)s+=12;else if(h<=3)s+=9;else if(h<=6)s+=6;else if(h<=12)s+=4;else if(h<=24)s+=2;else if(h>72)s-=8;
   if(/reuters|dow jones|marketwatch|trading economics/i.test(a.source))s+=3;
@@ -3485,6 +3634,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
 
  function category(a){
   const t=(a.title+' '+a.desc).toLowerCase();
+  if(a.cat==='stocks' || /ihsg|idx|bei|emiten|saham indonesia|bbca|bbri|bmri|bbni|tlkm|asii|goto|ammn|adaro|bank mandiri|bank central asia|bank rakyat indonesia/.test(t))return ['SAHAM INDO','info'];
   if(GOLD_MARKET.test(t))return ['EMAS','hot'];
   if(/fed|fomc|powell|federal reserve|rate hike|rate cut/.test(t))return ['FED','warn'];
   if(/cpi|inflation|ppi|pce|payroll|nfp|treasury|yield|dxy|dollar/.test(t))return ['MAKRO','warn'];
@@ -3507,7 +3657,7 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  }
 
  async function translateArticles(){
-  const targets=articles.slice(0,8);
+  const targets=articles.slice(0,14);
   await Promise.all(targets.map(async a=>{
    a.titleID=await translateID(a.title);
    a.descID=await translateID(a.desc||'');
@@ -3515,8 +3665,23 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
   render();
  }
 
+ function updatePreNewsAnalysis(){
+  const bias=$('a1PnaBias'),state=$('a1PnaState'),confidence=$('a1PnaConfidence'),reason=$('a1PnaReason');
+  if(!bias||!state||!confidence||!reason)return;
+  const valid=resultStories.filter(e=>e._impact && ['bull','bear'].includes(e._impact.cls));
+  if(!valid.length){bias.textContent='WAIT / NO SIGNAL';bias.className='neutral';state.textContent='MENUNGGU RILIS';confidence.textContent='BELUM ADA KEJUTAN DATA';reason.textContent='Belum ada rilis high-impact terbaru dengan data aktual dan perkiraan yang bisa dibandingkan. Tunggu data valid; jangan membuat keputusan BUY/SELL hanya dari headline.';return;}
+  const bull=valid.filter(e=>e._impact.cls==='bull').length,bear=valid.filter(e=>e._impact.cls==='bear').length;
+  const latest=valid[0],impact=latest._impact;
+  if(bull>bear){bias.textContent='BUY BIAS • XAUUSD';bias.className='bull';confidence.textContent=bull===valid.length?'SELARAS':'CAMPURAN';}
+  else if(bear>bull){bias.textContent='SELL BIAS • XAUUSD';bias.className='bear';confidence.textContent=bear===valid.length?'SELARAS':'CAMPURAN';}
+  else{bias.textContent='WAIT / MIXED';bias.className='neutral';confidence.textContent='ARAH BERTENTANGAN';}
+  state.textContent=valid.length+' RILIS TERBACA';
+  reason.textContent='Dasar: '+valid.length+' rilis high-impact terbaru yang memiliki aktual vs perkiraan. Rilis terbaru: '+(latest.nameID||latest.name||'data makro')+' → '+impact.label+'. Ini bias awal berbasis kejutan data, bukan sinyal entry otomatis; konfirmasi struktur harga, momentum, dan spread.';
+ }
+
  function render(){
-  const list=articles.filter(a=>active==='all'||a.cat===active).slice(0,8);
+  const base=articles.filter(a=>active==='all'||a.cat===active);
+  const list=active==='all'?pickTop(base,8):base.slice(0,8);
   const resultsHtml=active==='all' ? resultStories.map(renderResultStory).join('') : '';
   $('a1NewsCount').textContent=(list.length+resultStories.filter(()=>active==='all').length)+' STORIES';
   if(!list.length && !resultsHtml){$('a1NewsList').innerHTML='<div class="a1-news-empty">TIDAK ADA BERITA PASAR YANG SESUAI.<br>MENUNGGU PEMBARUAN SUMBER BERIKUTNYA.</div>';return}
@@ -3530,39 +3695,70 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
     <p class="a1-news-desc">${desc}</p>
    </a>`;
   }).join('');
+  updatePreNewsAnalysis();
  }
 
 
+ const LIVE_KEY='a1news:last-live';
+ const keyOf=a=>a.title.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ const topicScore=a=>relevance({...a,date:new Date()})-12;      // skor topik tanpa bonus kesegaran
+ function pickTop(list,n){
+  const cnt={},out=[];
+  for(const a of list){if((cnt[a.cat]||0)>=3)continue;cnt[a.cat]=(cnt[a.cat]||0)+1;out.push(a);if(out.length>=n)break;}
+  for(const a of list){if(out.length>=n)break;if(!out.includes(a))out.push(a);}
+  return out.sort((x,y)=>y.date-x.date);
+ }
+ function saveLive(list){try{localStorage.setItem(LIVE_KEY,JSON.stringify({t:Date.now(),a:list.slice(0,40).map(a=>({...a,date:a.date.toISOString()}))}))}catch(e){}}
+ function loadSavedLive(){
+  try{const j=JSON.parse(localStorage.getItem(LIVE_KEY)||'null');if(!j||!Array.isArray(j.a))return [];
+   return j.a.map(a=>({...a,date:new Date(a.date),_live:true})).filter(a=>!isNaN(a.date)&&(Date.now()-a.date.getTime())<72*3600000);}catch(e){return [];}
+ }
+ let lastLoad=0;
+
  async function load(){
-  if(loading)return;loading=true;
-  $('a1NewsStatus').textContent='MENGAMBIL BERITA PASAR';
-  const results=await Promise.all(FEEDS.map(getFeed));
-  const incoming=results.flat();
-  const pool=incoming.length?incoming:fallback;
-  const seen=new Set();
-  articles=pool.filter(a=>{
-   const key=a.title.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-   if(!key||seen.has(key))return false;
-   if(!isMarketRelevant(a))return false;
-   seen.add(key);
-   return (Date.now()-a.date.getTime())<96*3600000;
-  }).map(a=>({...a,rank:relevance(a)})).sort((a,b)=>b.rank-a.rank||b.date-a.date);
-  if(!articles.length)articles=fallback;
-  render();
-  translateArticles();
-  const now=new Date();
-  $('a1NewsStatus').textContent=incoming.length?'BERITA LIVE':'RINGKASAN PASAR CADANGAN';
-  $('a1NewsUpdated').textContent='UPDATED '+now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Jakarta'})+' WIB';
-  $('a1NewsClock').textContent=resultStories.length?'HASIL LIVE':'OTOMATIS 10M';
-  loading=false;
+  if(loading)return;loading=true;lastLoad=Date.now();
+  $('a1NewsStatus').textContent='MENGAMBIL BERITA TERBARU';
+  try{
+   const results=await Promise.all(FEEDS.map(getFeed));
+   const okFeeds=results.filter(r=>r.length).length;
+   const seen=new Set(),fresh=[];
+   results.flat().forEach(a=>{
+    const k=keyOf(a);if(!k||seen.has(k)||!isMarketRelevant(a))return;
+    const ageMs=Date.now()-a.date.getTime();
+    if(ageMs<-10*60000||ageMs>=72*3600000)return;
+    if(ageMs<0)a.date=new Date();
+    seen.add(k);fresh.push({...a,_live:true});
+   });
+   if(fresh.length){
+    // gabung dengan berita live sebelumnya supaya feed yang gagal sesaat tidak menghapus berita
+    const prev=articles.filter(a=>a._live&&!seen.has(keyOf(a))&&(Date.now()-a.date.getTime())<72*3600000);
+    articles=[...fresh,...prev].filter(a=>topicScore(a)>=4).map(a=>({...a,rank:relevance(a)})).sort((a,b)=>b.date-a.date).slice(0,60);
+    saveLive(articles);
+    $('a1NewsStatus').textContent='BERITA LIVE • TERBARU DULU • '+okFeeds+'/'+FEEDS.length+' FEED';
+   }else if(articles.some(a=>a._live)){
+    $('a1NewsStatus').textContent='BERITA LIVE • FEED SEMENTARA TIDAK TERSEDIA';
+   }else{
+    articles=[];
+    $('a1NewsStatus').textContent='FEED BELUM TERSAMBUNG • MENCOBA LAGI OTOMATIS';
+    setTimeout(load,20000);
+   }
+   render();
+   translateArticles();
+   const now=new Date();
+   $('a1NewsUpdated').textContent='UPDATED '+now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Jakarta'})+' WIB';
+   $('a1NewsClock').textContent=(resultStories.length?'HASIL LIVE':'OTOMATIS 2M')+' ↻';
+  }finally{loading=false;}
  }
 
  document.querySelectorAll('.a1-news-filter').forEach(btn=>btn.addEventListener('click',()=>{
   document.querySelectorAll('.a1-news-filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');active=btn.dataset.filter;render();
  }));
 
- articles=fallback.slice();render();translateArticles();load();loadCalendarResults();
- setInterval(load,600000);
+ (()=>{const saved=loadSavedLive();articles=saved.sort((a,b)=>b.date-a.date);})();
+ render();translateArticles();load();loadCalendarResults();
+ $('a1NewsClock').addEventListener('click',()=>{lastLoad=0;load();loadCalendarResults();});
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastLoad>60000)load();});
+ setInterval(load,120000);
  setInterval(loadCalendarResults,60000);
  setInterval(()=>{if(articles.length||resultStories.length)render()},30000);
 })();
@@ -3666,46 +3862,170 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeM));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 })();
 </script>
+
+
+
+<script id="a1-daily-js">
+(function(){
+  // Agent menulis file ini (JSON). Ganti URL kalau hostingnya beda.
+  var A1_ANALISA_URL='analisa.json';
+  var $=function(id){return document.getElementById(id)};
+  function list(v){return Array.isArray(v)?v.filter(Boolean).join(' · '):(v||'')}
+  function empty(msg){
+    $('a1DailySum').textContent=msg;
+    $('a1DailyBias').textContent='BELUM ADA';
+    $('a1DailyBias').dataset.bias='netral';
+    $('a1DailyGrid').hidden=true;$('a1DailyScenWrap').hidden=true;
+  }
+  function render(d){
+    if(!d||typeof d!=='object'){return empty('Analisa hari ini belum tersedia.')}
+    var bias=String(d.bias||'netral').toLowerCase();
+    if(['bullish','bearish','netral'].indexOf(bias)<0)bias='netral';
+    $('a1DailyTitle').textContent=d.judul||'Analisa Hari Ini';
+    $('a1DailyPair').textContent=d.pair||'XAUUSD';
+    $('a1DailyBias').textContent=bias.toUpperCase();
+    $('a1DailyBias').dataset.bias=bias;
+    $('a1DailySum').textContent=d.ringkasan||'';
+    var lv=d.level||{},zn=d.zona||{};
+    $('a1DailyRes').textContent=list(lv.resistance)||'—';
+    $('a1DailySup').textContent=list(lv.support)||'—';
+    $('a1DailyBr1').textContent=list(zn.br1)||'—';
+    $('a1DailyBr2').textContent=list(zn.br2)||'—';
+    $('a1DailyGrid').hidden=false;
+    var ul=$('a1DailyScen');ul.textContent='';
+    var sk=Array.isArray(d.skenario)?d.skenario:[];
+    sk.forEach(function(s){if(!s)return;var li=document.createElement('li');li.textContent=String(s);ul.appendChild(li)});
+    $('a1DailyScenWrap').hidden=!ul.children.length;
+    var up=d.diupdate||d.tanggal;
+    if(up){
+      var t=new Date(up);
+      $('a1DailyUpdated').textContent='Diupdate Agent · '+(isNaN(t)?String(up):t.toLocaleString('id-ID',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'})+' WIB');
+    }
+  }
+  function load(){
+    fetch(A1_ANALISA_URL+'?t='+Date.now(),{cache:'no-store'})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+      .then(render)
+      .catch(function(){empty('Analisa hari ini belum tersedia. Agent akan update di sini.')});
+  }
+  load();setInterval(load,10*60*1000);
+})();
+</script>
+
+<script>
+(function(){
+ const API="https://zona-a1-signal-api.landungprakoso14.workers.dev/api/zones?symbol=XAUUSD";
+ const GROUPS=[
+  {k:"SCALP",t:"SCALP",s:"M1 – M5"},
+  {k:"INTRADAY",t:"INTRADAY",s:"M15"}
+ ];
+ const root=document.getElementById("a1ZrGroups");
+ const st=document.getElementById("a1ZrStatus");
+ const up=document.getElementById("a1ZrUpdated");
+ if(!root||!st||!up) return;
+ function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+ function fmt(v){const n=Number(v);return isFinite(n)?n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}):"—";}
+ function box(label,b){
+  const d=el("div","a1-zr-box");
+  d.appendChild(el("small",null,label));
+  d.appendChild(el("span",null,b?fmt(b.bottom)+" – "+fmt(b.top):"—"));
+  return d;
+ }
+ function setStatus(s,txt){st.dataset.s=s;st.textContent=txt;}
+ function render(data){
+  const zones=Array.isArray(data.zones)?data.zones:[];
+  root.textContent="";
+  GROUPS.forEach(function(g){
+   const wrap=el("div","a1-zr-group");
+   const head=el("div","a1-zr-gh");
+   head.appendChild(el("b",null,g.t));
+   head.appendChild(el("small",null,g.s));
+   wrap.appendChild(head);
+   const list=zones.filter(function(z){return z&&z.group===g.k;});
+   if(!list.length){wrap.appendChild(el("div","a1-zr-empty","Belum ada zona valid"));}
+   list.forEach(function(z){
+    const row=el("div","a1-zr-row");
+    row.appendChild(el("span","a1-zr-tf",String(z.tf)));
+    const buy=z.bias==="BUY";
+    row.appendChild(el("span","a1-zr-bias "+(buy?"buy":"sell"),buy?"BUY":"SELL"));
+    row.appendChild(box("BR1 · GOLDEN",z.br1));
+    row.appendChild(box("BR2 · EQ",z.br2));
+    wrap.appendChild(row);
+   });
+   root.appendChild(wrap);
+  });
+ }
+ async function load(){
+  try{
+   const r=await fetch(API,{cache:"no-store"});
+   if(!r.ok) throw new Error("HTTP "+r.status);
+   const data=await r.json();
+   render(data);
+   if(data.updated_at){
+    const t=new Date(data.updated_at).toLocaleTimeString("id-ID",{timeZone:"Asia/Jakarta",hour12:false});
+    up.textContent="Update "+t+" WIB";
+   }else{up.textContent="Belum ada data dari EA";}
+   if(data.stale) setStatus("off","OFFLINE"); else setStatus("live","LIVE");
+  }catch(e){
+   setStatus("off","OFFLINE");
+   up.textContent="Gagal memuat data zona";
+   if(!root.children.length) render({zones:[]});
+  }
+ }
+ load();setInterval(load,20000);
+})();
+</script>
+
+<script id="a1-live-zones-script">
+(function(){
+ const API="https://zona-a1-signal-api.landungprakoso14.workers.dev/api/zones";
+ const symbolEl=document.getElementById("a1ZoneSymbol"),content=document.getElementById("a1ZonesContent"),connection=document.getElementById("a1ZonesConnection"),updated=document.getElementById("a1ZonesUpdated"),refresh=document.getElementById("a1ZoneRefresh");
+ if(!symbolEl||!content)return;
+ const $=id=>document.getElementById(id);
+ const fmt=v=>Number.isFinite(Number(v))?Number(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:5}):"—";
+ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ function stOf(v){return["FRESH","USED","INVALID"].includes(v)?v:"FRESH";}
+ function brTile(kind,tag,box,status){
+  if(!box)return `<div class="a1-zt ${kind} empty"><div class="a1-zt-top"><b>${tag}</b></div><div class="a1-zt-na">Belum ada blok</div></div>`;
+  const t=Number(box.top),bt=Number(box.bottom),hi=Math.max(t,bt),lo=Math.min(t,bt),st=stOf(status);
+  return `<div class="a1-zt ${kind}"><div class="a1-zt-top"><b>${tag}</b><span class="a1-zt-st ${st.toLowerCase()}"><i></i>${st}</span></div><div class="a1-zt-line hi"><span>HIGH</span><b>${fmt(hi)}</b></div><div class="a1-zt-slab"><em>Δ ${fmt(hi-lo)}</em></div><div class="a1-zt-line lo"><span>LOW</span><b>${fmt(lo)}</b></div></div>`;
+ }
+ function tfBody(z){
+  const v=b=>b&&Number.isFinite(Number(b.top))&&Number.isFinite(Number(b.bottom))?{h:Math.max(Number(b.top),Number(b.bottom)),l:Math.min(Number(b.top),Number(b.bottom))}:null;
+  const x=v(z.br1),y=v(z.br2);let rel="";
+  if(x&&y){const up=x.l>=y.l?["BR1","BR2",x,y]:["BR2","BR1",y,x];const gap=up[2].l-up[3].h;rel=gap>0?`<div class="a1-zt-rel"><span>${up[0]} di atas ${up[1]}</span><b>jarak ${fmt(gap)}</b></div>`:`<div class="a1-zt-rel"><span>BR1 dan BR2 saling tumpang tindih</span></div>`;}
+  return `<div class="a1-zt-wrap"><div class="a1-zt-grid">${brTile("br1","BR1",z.br1,z.status_br1)}${brTile("br2","BR2",z.br2,z.status_br2)}</div>${rel}</div>`;
+ }
+ function cleanZone(z){
+  if(!z||typeof z!=="object")return null;
+  const bias=String(z.bias||"WAIT").toUpperCase();if(bias!=="BUY"&&bias!=="SELL")return null;
+  const ok=(b,st)=>b&&Number.isFinite(Number(b.top))&&Number.isFinite(Number(b.bottom))&&String(st||"").toUpperCase()==="FRESH";
+  const br1=ok(z.br1,z.status_br1)?z.br1:null,br2=ok(z.br2,z.status_br2)?z.br2:null;
+  if(!br1&&!br2)return null;
+  return Object.assign({},z,{bias:bias,br1:br1,br2:br2});
+ }
+ function render(zones){
+  const sorted=zones.map(cleanZone).filter(Boolean).sort((a,b)=>["M1","M5","M15","M30","H1","H4","D1","W1","MN1"].indexOf(a.tf)-["M1","M5","M15","M30","H1","H4","D1","W1","MN1"].indexOf(b.tf));
+  const buy=sorted.filter(z=>z.bias==="BUY").length,sell=sorted.filter(z=>z.bias==="SELL").length;
+  const fresh=sorted.reduce((n,z)=>n+(z.status_br1==="FRESH"?1:0)+(z.status_br2==="FRESH"?1:0),0);
+  $("a1KpiTf").textContent=sorted.length;$("a1KpiBuy").textContent=buy;$("a1KpiSell").textContent=sell;$("a1KpiFresh").textContent=fresh;
+  if(!sorted.length){content.innerHTML='<div class="a1-zones-empty"><i class="fa-solid fa-satellite-dish"></i><b>Belum ada zona valid</b><span>EA masih menunggu (WAIT). Zona hanya tampil saat sudah valid dan fresh.</span></div>';return;}
+  content.innerHTML=sorted.map(z=>`<section class="a1-tf-panel"><div class="a1-tf-head"><div class="a1-tf-title"><i class="a1-tf-dot"></i><span class="a1-tf-code">${esc(z.tf)}</span><span class="a1-tf-group">/ ${esc(z.group||"TIMEFRAME")}</span></div><span class="a1-zone-bias ${String(z.bias||"WAIT").toLowerCase()}">${z.bias==="BUY"?"▲ ":z.bias==="SELL"?"▼ ":""}${esc(z.bias||"WAIT")}</span></div>${tfBody(z)}</section>`).join("");
+ }
+ async function load(){
+  const symbol=symbolEl.value;connection.className="a1-zone-connection";connection.innerHTML="<i></i> SYNCING DATA";
+  try{const res=await fetch(API+"?symbol="+encodeURIComponent(symbol),{cache:"no-store"});if(!res.ok)throw new Error("HTTP "+res.status);const data=await res.json(),zones=Array.isArray(data.zones)?data.zones:[],online=!data.stale&&zones.length>0;
+   connection.className="a1-zone-connection "+(online?"online":"offline");connection.innerHTML="<i></i> "+(online?"LIVE / CONNECTED":(zones.length?"DATA STALE":"NO ACTIVE ZONES"));updated.textContent="Update: "+(data.updated_at?new Date(data.updated_at).toLocaleString("id-ID"):"—");render(zones);
+  }catch(err){connection.className="a1-zone-connection offline";connection.innerHTML="<i></i> API ERROR";updated.textContent="Tidak dapat mengambil data zona";content.innerHTML='<div class="a1-zones-empty"><i class="fa-solid fa-triangle-exclamation"></i><b>Koneksi zona gagal</b><span>'+esc(err.message||"Periksa Worker API.")+'</span></div>';$("a1KpiTf").textContent=$("a1KpiBuy").textContent=$("a1KpiSell").textContent=$("a1KpiFresh").textContent="—";}
+ }
+ symbolEl.addEventListener("change",load);refresh&&refresh.addEventListener("click",load);load();setInterval(load,20000);
+})();
+</script>
+
 </body>
 </html>
 
-<style id="heatmap-bottom-overlap-fix">
-/* FINAL BOTTOM SPACING FIX — prevent Activity / Stats from being clipped by footer */
-.a1-heatmap-core{
- height:760px!important;
-}
-.a1-heatmap-terminal{
- height:710px!important;
-}
-.hm-main{
- padding-bottom:12px!important;
-}
-.hm-activity{
- margin-top:2px!important;
- padding-top:10px!important;
-}
-.hm-stats{
- margin-top:3px!important;
- padding-top:10px!important;
- padding-bottom:8px!important;
-}
-.hm-footer{
- position:absolute!important;
- bottom:0!important;
- height:32px!important;
- box-sizing:border-box!important;
- background:rgba(5,10,16,.96)!important;
- z-index:5!important;
-}
-@media(max-width:620px){
- .a1-heatmap-core{height:545px!important}
- .a1-heatmap-terminal{height:505px!important}
- .hm-main{padding-bottom:8px!important}
- .hm-activity{margin-top:1px!important;padding-top:7px!important}
- .hm-stats{margin-top:2px!important;padding-top:7px!important;padding-bottom:5px!important}
- .hm-footer{height:28px!important}
-}
-</style>
+
 <style id="a1-news-font-v3">
 /* READABILITY V3 — cleaner UI font + slightly larger text */
 .a1-news-card,
@@ -3785,34 +4105,4 @@ updateTodayLine();loadHistory();loadTradeCalendar();connectStream();setInterval(
 }
 </style>
 
-<style id="heatmap-text-mobile-final">
-@media(max-width:620px){
-  /* Extra vertical room so ACTIVITY + BIAS/VOLATILITY/RANGE/UPDATED
-     sit above the terminal footer instead of being covered by it. */
-  .a1-heatmap-core{
-    height:590px !important;
-  }
-  .a1-heatmap-terminal{
-    height:550px !important;
-  }
-  .hm-main{
-    padding-bottom:16px !important;
-  }
-  .hm-activity{
-    margin-top:3px !important;
-    padding-top:9px !important;
-  }
-  .hm-stats{
-    margin-top:4px !important;
-    padding-top:9px !important;
-    padding-bottom:10px !important;
-    line-height:1.5 !important;
-  }
-  .hm-stats span{
-    white-space:nowrap !important;
-  }
-  .hm-footer{
-    height:28px !important;
-  }
-}
-</style>
+
