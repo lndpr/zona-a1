@@ -4074,12 +4074,19 @@ window.A1_NEWS_WORKER='https://zona-a1-signal-api.landungprakoso14.workers.dev';
   if(perm!=="granted"){state=perm==="denied"?"blocked":"off";paint();if(perm==="denied")info(MSG.blocked);return;}
   var reg=await nav.serviceWorker.register("sw.js");await nav.serviceWorker.ready;
   var kr=await fetch(BASE+"/api/push/key");
-  if(!kr.ok){info(kr.status===503?MSG.server:MSG.fail);state="error";paint();return;}
+  if(!kr.ok){
+  var detail=await kr.text();
+  throw new Error("VAPID HTTP "+kr.status+": "+detail);
+}
   var key=(await kr.json()).key,sub=await reg.pushManager.getSubscription();
   async function make(){return reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(key)});}
   if(!sub){sub=await make();}
   var pr=await post("/api/push/subscribe",{subscription:sub.toJSON()});
-  if(!pr.ok){try{await sub.unsubscribe();}catch(e){}throw new Error("subscribe HTTP "+pr.status);}
+  if(!pr.ok){
+  var detail=await pr.text();
+  try{await sub.unsubscribe();}catch(e){}
+  throw new Error("SUBSCRIBE HTTP "+pr.status+": "+detail);
+}
   state="on";paint();info(MSG.on);
  }
  async function disable(){
@@ -4090,7 +4097,11 @@ window.A1_NEWS_WORKER='https://zona-a1-signal-api.landungprakoso14.workers.dev';
  btn.addEventListener("click",async function(){
   if(busy)return;busy=true;paint();
   try{if(state==="on")await disable();else await enable();}
-  catch(err){console.warn("Push error",err);state="error";info(MSG.fail);}
+  catch(err){
+  console.error("PUSH DIAGNOSTIC:",err);
+  state="error";
+  info("Error: "+(err.message||String(err)));
+}
   busy=false;paint();
  });
  async function boot(){
