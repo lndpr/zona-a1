@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050914">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ZONA A1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>ZONA A1 | Market Intelligence Terminal</title>
 <meta name="description" content="ZONA A1 — terminal market intelligence XAUUSD: signal live, kalender ekonomi high impact, berita pasar terbaru, dan tools trading by MataryClub.">
 <meta name="theme-color" content="#050b12">
@@ -1577,6 +1583,44 @@ img,iframe,video,canvas,svg{max-width:100%}
 .a1-daily-foot{display:flex;justify-content:space-between;gap:10px 18px;flex-wrap:wrap;margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);color:#5f7081;font-size:10px;line-height:1.7}
 @media(max-width:760px){.a1-daily{padding:20px}.a1-daily-grid{grid-template-columns:repeat(2,1fr)}.a1-daily h2{font-size:19px}}
 </style>
+<style id="a1-lang-style">
+.a1-lang{display:inline-flex;align-items:center;padding:3px;border-radius:999px;border:1px solid rgba(57,232,255,.28);background:rgba(8,18,30,.72);flex:0 0 auto}
+.a1-lang button{border:0;background:transparent;color:#7f98a9;font:800 10px/1 Inter,system-ui,sans-serif;letter-spacing:.8px;padding:7px 11px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.a1-lang button:hover{color:#e6fbff}
+.a1-lang button.on{background:linear-gradient(135deg,#39e8ff,#3f7cff);color:#04101a;box-shadow:0 0 14px rgba(57,232,255,.35)}
+.a1-lang button:focus-visible{outline:2px solid #39e8ff;outline-offset:2px}
+.a1-lang-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 18px 22px;padding:12px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.14);background:rgba(255,255,255,.03)}
+.a1-lang-wrap>span{font:700 11px Inter,system-ui,sans-serif;color:#9db8c6;letter-spacing:.3px}
+</style>
+<style id="a1-zone-alert-style">
+.a1-zones-controls .a1-za-btn{color:#7f98a9;white-space:nowrap}
+.a1-zones-controls .a1-za-btn.on{color:#8ff0c6;border-color:rgba(54,217,154,.45);background:rgba(54,217,154,.1)}
+.a1-zones-controls .a1-za-btn.warn{color:#e9b96f;border-color:rgba(233,185,111,.45);background:rgba(233,185,111,.1)}
+#a1ZoneToasts{position:fixed;top:calc(84px + env(safe-area-inset-top,0px));right:16px;z-index:100000;display:flex;flex-direction:column;gap:10px;width:min(360px,calc(100vw - 24px));pointer-events:none}
+.a1-za-toast{--c:#42d9ed;pointer-events:auto;position:relative;display:flex;gap:12px;align-items:flex-start;padding:14px 40px 17px 16px;border-radius:14px;border:1px solid rgba(112,175,198,.3);background:linear-gradient(150deg,#0e2434,#07131d);box-shadow:0 18px 50px rgba(0,0,0,.5);overflow:hidden;cursor:pointer;animation:a1zaIn .35s cubic-bezier(.2,.8,.2,1)}
+.a1-za-toast.buy{--c:#36d99a}.a1-za-toast.sell{--c:#ff7889}
+.a1-za-toast:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c);box-shadow:0 0 16px var(--c)}
+.a1-za-ico{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--c);background:rgba(255,255,255,.06);box-shadow:0 0 18px -2px var(--c);animation:a1zaRing .7s ease-in-out 3}
+.a1-za-body{display:flex;flex-direction:column;gap:3px;min-width:0}
+.a1-za-kicker{font:800 9px ui-monospace,monospace;letter-spacing:1.4px;color:#7f98a9}
+.a1-za-title{font:900 15px ui-monospace,monospace;color:var(--c);letter-spacing:.3px}
+.a1-za-sub{font-size:11px;color:#cfe6ee}
+.a1-za-nums{font:700 10.5px ui-monospace,monospace;color:#9db8c6}
+.a1-za-hint{margin-top:4px;font-size:9.5px;color:#e9b96f}
+.a1-za-x{position:absolute;top:6px;right:8px;width:26px;height:26px;border:0;border-radius:8px;background:transparent;color:#7f98a9;font-size:18px;line-height:1;cursor:pointer}
+.a1-za-x:hover{background:rgba(255,255,255,.08);color:#fff}
+.a1-za-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--c);transform-origin:left;animation:a1zaBar linear forwards;opacity:.8}
+@keyframes a1zaIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes a1zaBar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@keyframes a1zaRing{0%,100%{transform:rotate(0)}25%{transform:rotate(-14deg)}75%{transform:rotate(14deg)}}
+@media(max-width:620px){#a1ZoneToasts{top:calc(74px + env(safe-area-inset-top,0px));right:12px;left:12px;width:auto}}
+@media(prefers-reduced-motion:reduce){.a1-za-toast,.a1-za-ico{animation:none}}
+</style>
+<style id="a1-push-style">
+.a1-zones-controls{flex-wrap:wrap}
+.a1-za-toast.info{--c:#42d9ed}
+@media(max-width:620px){.a1-zones-controls{width:100%}.a1-zones-controls select,.a1-zones-controls button{flex:1 1 auto}}
+</style>
 </head>
 <body>
 <canvas id="astra-canvas"></canvas><div class="motion-orbs"><span class="motion-orb o1"></span><span class="motion-orb o2"></span><span class="motion-orb o3"></span></div>
@@ -1590,7 +1634,7 @@ img,iframe,video,canvas,svg{max-width:100%}
   </a>
 
   <nav class="a1-main-nav" aria-label="Main navigation">
-   <a class="a1-nav-link active" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#info-member"><i class="fa-solid fa-circle-info"></i><span>Info Member</span></a><a class="a1-nav-link" href="ebook.html"><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="upgrade.html"><i class="fa-solid fa-circle-check"></i><span>UPGRADE PLAN</span></a>
+   <a class="a1-nav-link active" href="index.html#home"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a class="a1-nav-link" href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a><a class="a1-nav-link" href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a><a class="a1-nav-link" href="index.html#info-member"><i class="fa-solid fa-circle-info"></i><span>Info Member</span></a><a class="a1-nav-link" href="ebook.html"><span>E-Book</span></a><a class="a1-nav-link rebate-link" href="fasilitas.html"><i class="fa-solid fa-circle-check"></i><span>Fasilitas</span></a>
   </nav>
 <button class="a1-mobile-toggle" id="a1MobileToggle" type="button"
     aria-label="Open navigation menu" aria-expanded="false">
@@ -1614,15 +1658,17 @@ img,iframe,video,canvas,svg{max-width:100%}
   <a href="index.html#signals"><i class="fa-solid fa-bolt"></i><span>Signals</span></a>
   <a href="index.html#intelligence"><i class="fa-solid fa-microchip"></i><span>Intelligence</span></a>
   <a href="index.html#info-member"><i class="fa-solid fa-circle-info"></i><span>Info Member</span></a>
-  <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a><a class="mobile-rebate" href="upgrade.html"><i class="fa-solid fa-circle-check"></i><span>Fasilitas</span></a>
+  <a href="ebook.html"><i class="fa-solid fa-book-open"></i><span>E-Book</span></a><a class="mobile-rebate" href="fasilitas.html"><i class="fa-solid fa-circle-check"></i><span>Fasilitas</span></a>
   
  </div>
 
  
+<div class="a1-lang-wrap"><span>Language / Bahasa</span><div class="a1-lang" role="group" aria-label="Language / Bahasa"><button type="button" data-lang="id" class="on" aria-pressed="true">ID</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div></div>
 </aside>
 
 
   <div class="nav-right">
+   <div class="a1-lang" role="group" aria-label="Language / Bahasa"><button type="button" data-lang="id" class="on" aria-pressed="true">ID</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
    
    <div class="nav-status"><span class="dot" id="navDot"></span><span id="navStatus">CONNECTING</span></div>
   </div>
@@ -1667,6 +1713,8 @@ img,iframe,video,canvas,svg{max-width:100%}
     <option value="NZDUSD">NZDUSD</option><option value="USDCHF">USDCHF</option>
    </select>
    <button type="button" id="a1ZoneRefresh"><i class="fa-solid fa-rotate"></i> REFRESH</button>
+   <button type="button" id="a1ZoneAlertBtn" class="a1-za-btn on" aria-pressed="true" title="Alert saat harga masuk blok BR1/BR2 (popup + suara)"><i class="fa-solid fa-bell"></i> ALERT ON</button>
+   <button type="button" id="a1ZonePushBtn" class="a1-za-btn" aria-pressed="false" title="Notifikasi HP: alert zona tetap masuk walau halaman ditutup"><i class="fa-solid fa-mobile-screen-button"></i> NOTIF HP OFF</button>
   </div>
  </div>
  <div class="a1-zones-meta">
@@ -1811,6 +1859,10 @@ img,iframe,video,canvas,svg{max-width:100%}
 .a1-zt-na{font-size:11px;color:#6b8798}
 .a1-zt-rel{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(120,180,200,.12);font:700 10px ui-monospace,monospace;color:#9db8c6}
 .a1-zt-rel b{color:#e9faff}
+.a1-tf-code.buy{color:#8ff0c6;background:linear-gradient(135deg,rgba(54,217,154,.22),rgba(54,217,154,.06));border-color:rgba(54,217,154,.45);box-shadow:0 0 18px rgba(54,217,154,.16)}
+.a1-tf-code.sell{color:#ff9aa5;background:linear-gradient(135deg,rgba(255,120,137,.22),rgba(255,120,137,.06));border-color:rgba(255,120,137,.45);box-shadow:0 0 18px rgba(255,120,137,.16)}
+.a1-tf-code{letter-spacing:.8px;white-space:nowrap}
+@media(max-width:620px){.a1-tf-code{font-size:14px;padding:4px 10px}}
 @container (max-width:430px){.a1-zt-grid{grid-template-columns:1fr}.a1-zt-wrap{padding:12px}.a1-zt-slab{height:38px}}
 @media(max-width:620px){.a1-zt-grid{grid-template-columns:1fr}.a1-zt-wrap{padding:12px}}
 </style>
@@ -1918,6 +1970,12 @@ img,iframe,video,canvas,svg{max-width:100%}
     <div class="today-line" id="todayLine">TODAY • memuat tanggal</div>
     <div class="calendar-grid" id="tradeCalendar"></div>
    </section>
+
+   
+
+   
+
+
 
   </div>
 
@@ -2127,7 +2185,7 @@ img,iframe,video,canvas,svg{max-width:100%}
    <div class="a1-info-links">
     <a href="panduan.html"><i class="fa-solid fa-compass"></i> Panduan Lengkap</a>
     <a href="ebook.html"><i class="fa-solid fa-book-open"></i> E-Book</a>
-    <a href="upgrade.html"><i class="fa-solid fa-circle-check"></i> Fasilitas</a>
+    <a href="fasilitas.html"><i class="fa-solid fa-circle-check"></i> Fasilitas</a>
    </div>
    <p class="a1-info-note">Informasi ini bersifat edukasi dan bukan ajakan transaksi. ZONA A1 tidak menerima pendaftaran IB maupun titip dana. Trading memiliki risiko tinggi dan setiap keputusan menjadi tanggung jawab pengguna.</p>
   </section>
@@ -3820,116 +3878,7 @@ window.A1_NEWS_WORKER='https://zona-a1-signal-api.landungprakoso14.workers.dev';
 
 
 
-<script id="a1-daily-js">
-(function(){
-  // Agent menulis file ini (JSON). Ganti URL kalau hostingnya beda.
-  var A1_ANALISA_URL='analisa.json';
-  var $=function(id){return document.getElementById(id)};
-  function list(v){return Array.isArray(v)?v.filter(Boolean).join(' · '):(v||'')}
-  function empty(msg){
-    $('a1DailySum').textContent=msg;
-    $('a1DailyBias').textContent='BELUM ADA';
-    $('a1DailyBias').dataset.bias='netral';
-    $('a1DailyGrid').hidden=true;$('a1DailyScenWrap').hidden=true;
-  }
-  function render(d){
-    if(!d||typeof d!=='object'){return empty('Analisa hari ini belum tersedia.')}
-    var bias=String(d.bias||'netral').toLowerCase();
-    if(['bullish','bearish','netral'].indexOf(bias)<0)bias='netral';
-    $('a1DailyTitle').textContent=d.judul||'Analisa Hari Ini';
-    $('a1DailyPair').textContent=d.pair||'XAUUSD';
-    $('a1DailyBias').textContent=bias.toUpperCase();
-    $('a1DailyBias').dataset.bias=bias;
-    $('a1DailySum').textContent=d.ringkasan||'';
-    var lv=d.level||{},zn=d.zona||{};
-    $('a1DailyRes').textContent=list(lv.resistance)||'—';
-    $('a1DailySup').textContent=list(lv.support)||'—';
-    $('a1DailyBr1').textContent=list(zn.br1)||'—';
-    $('a1DailyBr2').textContent=list(zn.br2)||'—';
-    $('a1DailyGrid').hidden=false;
-    var ul=$('a1DailyScen');ul.textContent='';
-    var sk=Array.isArray(d.skenario)?d.skenario:[];
-    sk.forEach(function(s){if(!s)return;var li=document.createElement('li');li.textContent=String(s);ul.appendChild(li)});
-    $('a1DailyScenWrap').hidden=!ul.children.length;
-    var up=d.diupdate||d.tanggal;
-    if(up){
-      var t=new Date(up);
-      $('a1DailyUpdated').textContent='Diupdate Agent · '+(isNaN(t)?String(up):t.toLocaleString('id-ID',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'})+' WIB');
-    }
-  }
-  function load(){
-    fetch(A1_ANALISA_URL+'?t='+Date.now(),{cache:'no-store'})
-      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
-      .then(render)
-      .catch(function(){empty('Analisa hari ini belum tersedia. Agent akan update di sini.')});
-  }
-  load();setInterval(load,10*60*1000);
-})();
-</script>
 
-<script>
-(function(){
- const API="https://zona-a1-signal-api.landungprakoso14.workers.dev/api/zones?symbol=XAUUSD";
- const GROUPS=[
-  {k:"SCALP",t:"SCALP",s:"M1 – M5"},
-  {k:"INTRADAY",t:"INTRADAY",s:"M15"}
- ];
- const root=document.getElementById("a1ZrGroups");
- const st=document.getElementById("a1ZrStatus");
- const up=document.getElementById("a1ZrUpdated");
- if(!root||!st||!up) return;
- function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
- function fmt(v){const n=Number(v);return isFinite(n)?n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}):"—";}
- function box(label,b){
-  const d=el("div","a1-zr-box");
-  d.appendChild(el("small",null,label));
-  d.appendChild(el("span",null,b?fmt(b.bottom)+" – "+fmt(b.top):"—"));
-  return d;
- }
- function setStatus(s,txt){st.dataset.s=s;st.textContent=txt;}
- function render(data){
-  const zones=Array.isArray(data.zones)?data.zones:[];
-  root.textContent="";
-  GROUPS.forEach(function(g){
-   const wrap=el("div","a1-zr-group");
-   const head=el("div","a1-zr-gh");
-   head.appendChild(el("b",null,g.t));
-   head.appendChild(el("small",null,g.s));
-   wrap.appendChild(head);
-   const list=zones.filter(function(z){return z&&z.group===g.k;});
-   if(!list.length){wrap.appendChild(el("div","a1-zr-empty","Belum ada zona valid"));}
-   list.forEach(function(z){
-    const row=el("div","a1-zr-row");
-    row.appendChild(el("span","a1-zr-tf",String(z.tf)));
-    const buy=z.bias==="BUY";
-    row.appendChild(el("span","a1-zr-bias "+(buy?"buy":"sell"),buy?"BUY":"SELL"));
-    row.appendChild(box("BR1 · GOLDEN",z.br1));
-    row.appendChild(box("BR2 · EQ",z.br2));
-    wrap.appendChild(row);
-   });
-   root.appendChild(wrap);
-  });
- }
- async function load(){
-  try{
-   const r=await fetch(API,{cache:"no-store"});
-   if(!r.ok) throw new Error("HTTP "+r.status);
-   const data=await r.json();
-   render(data);
-   if(data.updated_at){
-    const t=new Date(data.updated_at).toLocaleTimeString("id-ID",{timeZone:"Asia/Jakarta",hour12:false});
-    up.textContent="Update "+t+" WIB";
-   }else{up.textContent="Belum ada data dari EA";}
-   if(data.stale) setStatus("off","OFFLINE"); else setStatus("live","LIVE");
-  }catch(e){
-   setStatus("off","OFFLINE");
-   up.textContent="Gagal memuat data zona";
-   if(!root.children.length) render({zones:[]});
-  }
- }
- load();setInterval(load,20000);
-})();
-</script>
 
 <script id="a1-live-zones-script">
 (function(){
@@ -3965,7 +3914,7 @@ window.A1_NEWS_WORKER='https://zona-a1-signal-api.landungprakoso14.workers.dev';
   const fresh=sorted.reduce((n,z)=>n+(z.status_br1==="FRESH"?1:0)+(z.status_br2==="FRESH"?1:0),0);
   $("a1KpiTf").textContent=sorted.length;$("a1KpiBuy").textContent=buy;$("a1KpiSell").textContent=sell;$("a1KpiFresh").textContent=fresh;
   if(!sorted.length){content.innerHTML='<div class="a1-zones-empty"><i class="fa-solid fa-satellite-dish"></i><b>Belum ada zona valid</b><span>EA masih menunggu (WAIT). Zona hanya tampil saat sudah valid dan fresh.</span></div>';return;}
-  content.innerHTML=sorted.map(z=>`<section class="a1-tf-panel"><div class="a1-tf-head"><div class="a1-tf-title"><i class="a1-tf-dot"></i><span class="a1-tf-code">${esc(z.tf)}</span><span class="a1-tf-group">/ ${esc(z.group||"TIMEFRAME")}</span></div><span class="a1-zone-bias ${String(z.bias||"WAIT").toLowerCase()}">${z.bias==="BUY"?"▲ ":z.bias==="SELL"?"▼ ":""}${esc(z.bias||"WAIT")}</span></div>${tfBody(z)}</section>`).join("");
+  content.innerHTML=sorted.map(z=>`<section class="a1-tf-panel"><div class="a1-tf-head"><div class="a1-tf-title"><i class="a1-tf-dot"></i><span class="a1-tf-code ${String(z.bias||"wait").toLowerCase()}">${z.bias==="BUY"?"▲ ":z.bias==="SELL"?"▼ ":""}ZONA ${esc(z.bias||"WAIT")} ${esc(z.tf)}</span><span class="a1-tf-group">/ ${esc(z.group||"TIMEFRAME")}</span></div></div>${tfBody(z)}</section>`).join("");
  }
  async function load(){
   const symbol=symbolEl.value;connection.className="a1-zone-connection";connection.innerHTML="<i></i> SYNCING DATA";
@@ -3977,6 +3926,493 @@ window.A1_NEWS_WORKER='https://zona-a1-signal-api.landungprakoso14.workers.dev';
 })();
 </script>
 
+<script id="a1-zone-alert-js">
+/* ALERT ZONA — popup + suara saat harga XAUUSD masuk ke area blok BR1/BR2 yang valid (FRESH) */
+(function(){
+ var BASE="https://zona-a1-signal-api.landungprakoso14.workers.dev",SYMBOL="XAUUSD";
+ var TOL=0;               /* toleransi harga (USD) di luar batas blok; 0 = harus tepat di dalam area */
+ var COOLDOWN=180000;     /* jeda minimal alert untuk blok yang sama (ms) */
+ var PRICE_EVERY=10000,ZONES_EVERY=20000,TOAST_MS=20000,MAX_TOASTS=3,KEY="a1_zone_alert";
+ var on=true;try{on=localStorage.getItem(KEY)!=="off";}catch(e){}
+ var btn=document.getElementById("a1ZoneAlertBtn");
+ var zones=[],price=null,priceFail=0,state=new Map(),ctx=null,box=null;
+ function num(v){if(v===null||v===undefined||v==="")return null;var n=Number(String(v).replace(/,/g,""));return isFinite(n)?n:null;}
+ function fmt(n){return n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});}
+ function paintBtn(){
+  if(!btn)return;
+  var warn=on&&priceFail>=3;
+  btn.classList.toggle("on",on&&!warn);btn.classList.toggle("warn",warn);btn.setAttribute("aria-pressed",on?"true":"false");
+  btn.innerHTML='<i class="fa-solid fa-bell'+(on?'':'-slash')+'"></i> '+(on?(warn?"ALERT ON ⚠":"ALERT ON"):"ALERT OFF");
+  btn.title=warn?"Harga live belum terbaca — alert belum bisa jalan":"Alert saat harga masuk blok BR1/BR2 (popup + suara)";
+ }
+ /* ---- suara (WebAudio, tanpa file) ---- */
+ function unlock(){try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();if(ctx.state==="suspended")ctx.resume();}catch(e){}}
+ function audioOK(){return !!ctx&&ctx.state==="running";}
+ ["pointerdown","keydown","touchstart"].forEach(function(ev){
+  var h=function(){unlock();["pointerdown","keydown","touchstart"].forEach(function(e2){document.removeEventListener(e2,h,true);});};
+  document.addEventListener(ev,h,true);
+ });
+ function beep(bias,short){
+  if(!audioOK())return;
+  try{
+   var seq=short?[880]:(bias==="BUY"?[660,880,1100]:[880,660,520]),t=ctx.currentTime;
+   seq.forEach(function(f,i){
+    var o=ctx.createOscillator(),g=ctx.createGain(),a=t+i*.18;
+    o.type="sine";o.frequency.value=f;
+    g.gain.setValueAtTime(.0001,a);g.gain.exponentialRampToValueAtTime(.28,a+.03);g.gain.exponentialRampToValueAtTime(.0001,a+.16);
+    o.connect(g);g.connect(ctx.destination);o.start(a);o.stop(a+.18);
+   });
+  }catch(e){}
+ }
+ /* ---- popup ---- */
+ function ensureBox(){if(box&&box.isConnected)return box;box=document.createElement("div");box.id="a1ZoneToasts";box.setAttribute("aria-live","assertive");document.body.appendChild(box);return box;}
+ function toast(z,p){
+  var b=ensureBox(),el=document.createElement("div"),cls=z.bias==="BUY"?"buy":"sell";
+  el.className="a1-za-toast "+cls;el.setAttribute("role","alert");
+  el.innerHTML='<span class="a1-za-ico"><i class="fa-solid fa-bell"></i></span><div class="a1-za-body"><span class="a1-za-kicker">ALERT ZONA</span>'
+   +'<b class="a1-za-title">ZONA '+z.bias+' '+z.tf+' · '+z.block+'</b>'
+   +'<span class="a1-za-sub">Harga masuk area '+z.block+'</span>'
+   +'<span class="a1-za-nums">Harga '+fmt(p)+' · Area '+fmt(z.lo)+' – '+fmt(z.hi)+'</span>'
+   +(audioOK()?'':'<span class="a1-za-hint">Ketuk halaman untuk mengaktifkan suara</span>')+'</div>'
+   +'<button type="button" class="a1-za-x" aria-label="Tutup">×</button><u class="a1-za-bar" style="animation-duration:'+TOAST_MS+'ms"></u>';
+  function close(){clearTimeout(tm);if(el.parentNode)el.parentNode.removeChild(el);}
+  var tm=setTimeout(close,TOAST_MS);
+  el.querySelector(".a1-za-x").addEventListener("click",function(ev){ev.stopPropagation();close();});
+  el.addEventListener("click",function(){var t=document.getElementById("a1LiveZones");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});close();});
+  b.appendChild(el);
+  while(b.children.length>MAX_TOASTS)b.removeChild(b.firstChild);
+ }
+ function fire(z,p){toast(z,p);beep(z.bias,false);}
+ /* ---- data ---- */
+ function parse(data){
+  var out=[];if(!data||data.stale)return out;
+  (Array.isArray(data.zones)?data.zones:[]).forEach(function(z){
+   var bias=String(z&&z.bias||"").toUpperCase();if(bias!=="BUY"&&bias!=="SELL")return;var tf=String(z.tf||"");
+   [["BR1",z.br1,z.status_br1],["BR2",z.br2,z.status_br2]].forEach(function(b){
+    var t=num(b[1]&&b[1].top),bt=num(b[1]&&b[1].bottom);
+    if(t===null||bt===null||String(b[2]||"").toUpperCase()!=="FRESH")return;
+    var lo=Math.min(t,bt),hi=Math.max(t,bt);
+    out.push({key:tf+"|"+b[0]+"|"+lo+"|"+hi,tf:tf,bias:bias,block:b[0],lo:lo,hi:hi});
+   });
+  });
+  return out;
+ }
+ function check(){
+  if(price===null)return;
+  var now=Date.now(),seen={};
+  zones.forEach(function(z){
+   seen[z.key]=1;
+   var inside=price>=z.lo-TOL&&price<=z.hi+TOL,st=state.get(z.key);
+   if(!st){st={inside:false,last:0};state.set(z.key,st);}
+   if(inside&&!st.inside&&on&&now-st.last>=COOLDOWN){st.last=now;fire(z,price);}
+   st.inside=inside;
+  });
+  state.forEach(function(v,k){if(!seen[k])state.delete(k);});
+ }
+ async function loadZones(){
+  try{var r=await fetch(BASE+"/api/zones?symbol="+SYMBOL,{cache:"no-store"});if(!r.ok)throw new Error("HTTP "+r.status);zones=parse(await r.json());check();}
+  catch(e){console.warn("Zone alert: zones",e);}
+ }
+ function pickPrice(j){
+  if(!j)return null;var d=j.data||j.quote||j;
+  return num(d.mid)??num(d.price)??num(d.close)??num(d.bid)??num(j.price)??num(j.mid)??num(j.bid);
+ }
+ async function loadPrice(){
+  var p=null;
+  try{var r=await fetch("https://biquote.io/api/XAUUSD",{cache:"no-store"});if(r.ok)p=pickPrice(await r.json());}catch(e){}
+  if(p===null){try{var r2=await fetch(BASE+"/api/price?symbol="+SYMBOL,{cache:"no-store"});if(r2.ok)p=pickPrice(await r2.json());}catch(e){}}
+  if(p!==null&&p>0){price=p;priceFail=0;}else{priceFail++;}
+  paintBtn();check();
+ }
+ if(btn)btn.addEventListener("click",function(){
+  on=!on;try{localStorage.setItem(KEY,on?"on":"off");}catch(e){}
+  unlock();paintBtn();if(on)beep("BUY",true);
+ });
+ paintBtn();loadZones();loadPrice();
+ setInterval(loadZones,ZONES_EVERY);setInterval(loadPrice,PRICE_EVERY);
+ window.A1ZoneAlert={test:function(){fire({bias:"SELL",tf:"M1",block:"BR1",lo:0,hi:0},price||0);}};
+})();
+</script>
+<script id="a1-push-js">
+/* NOTIF HP — Web Push: alert zona BR1/BR2 tetap masuk ke HP walau halaman ditutup (butuh sw.js + Worker push-alerts.js) */
+(function(){
+ var BASE="https://zona-a1-signal-api.landungprakoso14.workers.dev";
+ var btn=document.getElementById("a1ZonePushBtn");if(!btn)return;
+ var nav=window.navigator,state="off",busy=false;
+ var supported="serviceWorker" in nav&&"PushManager" in window&&"Notification" in window;
+ var isiOS=/iphone|ipad|ipod/i.test(nav.userAgent||"")||(nav.platform==="MacIntel"&&nav.maxTouchPoints>1);
+ function b64(s){var p="=".repeat((4-s.length%4)%4),r=atob((s+p).replace(/-/g,"+").replace(/_/g,"/")),o=new Uint8Array(r.length);for(var i=0;i<r.length;i++)o[i]=r.charCodeAt(i);return o;}
+ function paint(){
+  var map={on:["NOTIF HP ON","on"],off:["NOTIF HP OFF",""],blocked:["NOTIF DIBLOKIR","warn"],error:["NOTIF HP ⚠","warn"]},m=map[state]||map.off;
+  btn.className="a1-za-btn "+m[1];btn.setAttribute("aria-pressed",state==="on"?"true":"false");
+  btn.innerHTML='<i class="fa-solid fa-mobile-screen-button"></i> '+m[0];
+  btn.disabled=busy;
+ }
+ function info(msg){
+  var box=document.getElementById("a1ZoneToasts");
+  if(!box){box=document.createElement("div");box.id="a1ZoneToasts";box.setAttribute("aria-live","assertive");document.body.appendChild(box);}
+  var el=document.createElement("div");el.className="a1-za-toast info";el.setAttribute("role","status");
+  el.innerHTML='<span class="a1-za-ico"><i class="fa-solid fa-mobile-screen-button"></i></span><div class="a1-za-body"><span class="a1-za-kicker">NOTIF HP</span><span class="a1-za-sub"></span></div><button type="button" class="a1-za-x" aria-label="Tutup">×</button><u class="a1-za-bar" style="animation-duration:9000ms"></u>';
+  el.querySelector(".a1-za-sub").textContent=msg;
+  var tm=setTimeout(close,9000);function close(){clearTimeout(tm);if(el.parentNode)el.parentNode.removeChild(el);}
+  el.addEventListener("click",close);box.appendChild(el);while(box.children.length>3)box.removeChild(box.firstChild);
+ }
+ var MSG={
+  ios:"Di iPhone: ketuk Share → Add to Home Screen, lalu buka dari ikon ZONA A1 dan aktifkan lagi.",
+  nosup:"Browser ini belum mendukung notifikasi push.",
+  blocked:"Notifikasi diblokir. Izinkan notifikasi untuk situs ini di pengaturan browser.",
+  on:"Notifikasi HP aktif. Alert zona akan masuk walau halaman ditutup.",
+  off:"Notifikasi HP dimatikan.",
+  fail:"Gagal mengaktifkan notifikasi. Coba lagi nanti.",
+  server:"Server notifikasi belum siap (VAPID belum diset)."
+ };
+ async function post(path,obj){return fetch(BASE+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(obj)});}
+ async function currentSub(){var reg=await nav.serviceWorker.getRegistration();return reg?await reg.pushManager.getSubscription():null;}
+ async function enable(){
+  if(!supported){info(isiOS?MSG.ios:MSG.nosup);return;}
+  var perm=await Notification.requestPermission();
+  if(perm!=="granted"){state=perm==="denied"?"blocked":"off";paint();if(perm==="denied")info(MSG.blocked);return;}
+  var reg=await nav.serviceWorker.register("sw.js");await nav.serviceWorker.ready;
+  var kr=await fetch(BASE+"/api/push/key");
+  if(!kr.ok){info(kr.status===503?MSG.server:MSG.fail);state="error";paint();return;}
+  var key=(await kr.json()).key,sub=await reg.pushManager.getSubscription();
+  async function make(){return reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64(key)});}
+  if(!sub){sub=await make();}
+  var pr=await post("/api/push/subscribe",{subscription:sub.toJSON()});
+  if(!pr.ok){try{await sub.unsubscribe();}catch(e){}throw new Error("subscribe HTTP "+pr.status);}
+  state="on";paint();info(MSG.on);
+ }
+ async function disable(){
+  var sub=await currentSub();
+  if(sub){var ep=sub.endpoint;try{await sub.unsubscribe();}catch(e){}try{await post("/api/push/unsubscribe",{endpoint:ep});}catch(e){}}
+  state="off";paint();info(MSG.off);
+ }
+ btn.addEventListener("click",async function(){
+  if(busy)return;busy=true;paint();
+  try{if(state==="on")await disable();else await enable();}
+  catch(err){console.warn("Push error",err);state="error";info(MSG.fail);}
+  busy=false;paint();
+ });
+ async function boot(){
+  paint();
+  if(!supported)return;
+  if(Notification.permission==="denied"){state="blocked";paint();return;}
+  if(Notification.permission!=="granted")return;
+  try{
+   var sub=await currentSub();
+   if(sub){state="on";paint();try{await post("/api/push/subscribe",{subscription:sub.toJSON()});}catch(e){}}
+  }catch(e){}
+ }
+ boot();
+})();
+</script>
+<script id="a1-i18n-js">
+/* ZONA A1 — pilihan bahasa ID/EN (teks sumber = Indonesia, terjemahan EN dipasang saat runtime) */
+(function(){
+ var KEY="a1_lang",lang="id",observer=null,pending=new Set(),timer=null;
+ try{var sv=localStorage.getItem(KEY);if(sv==="en"||sv==="id")lang=sv;}catch(e){}
+ var WD={Senin:"Monday",Selasa:"Tuesday",Rabu:"Wednesday",Kamis:"Thursday",Jumat:"Friday",Sabtu:"Saturday",Minggu:"Sunday"};
+ var MO={Januari:"January",Februari:"February",Maret:"March",Mei:"May",Juni:"June",Juli:"July",Agustus:"August",Oktober:"October",Desember:"December",Agu:"Aug",Okt:"Oct",Des:"Dec"};
+ var EXACT=new Map(Object.entries({
+"ANALISA HARIAN · AGENT ZONA A1": "DAILY ANALYSIS · ZONA A1 AGENT",
+"Analisa Hari Ini": "Today's Analysis",
+"Analisa dari Agent memuat bias, support, resistance, dan skenario. Pakai sebagai bahan pertimbangan, keputusan transaksi tetap di tangan kamu.": "The Agent's analysis covers bias, support, resistance, and scenarios. Use it as input for your considerations; the trading decision stays in your hands.",
+"Analisa market untuk edukasi, bukan ajakan transaksi. Risiko trading ditanggung pengguna.": "Market analysis for education, not a call to trade. Trading risk is borne by the user.",
+"BUKA FULL CHART ↗": "OPEN FULL CHART ↗",
+"Baca Zona dengan Benar": "Read Zones Correctly",
+"Blok rejection BR1 dan BR2 per timeframe, dikirim langsung dari EA MetaTrader 5.": "Rejection blocks BR1 and BR2 per timeframe, sent live from the MetaTrader 5 EA.",
+"Catat Jurnal Trading": "Keep a Trading Journal",
+"Catatan: harga dan ketersediaan simbol mengikuti penyedia data TradingView.": "Note: prices and symbol availability follow the TradingView data provider.",
+"Cek Economic Calendar": "Check the Economic Calendar",
+"Data dikirim EA secara berkala. Zona merupakan area pantauan, bukan instruksi entry.": "Data is sent by the EA periodically. Zones are watch areas, not entry instructions.",
+"EMAS": "GOLD",
+"Engine sedang memantau zona dan kondisi market. Signal akan muncul otomatis saat setup terdeteksi.": "The engine is monitoring zones and market conditions. Signals will appear automatically when a setup is detected.",
+"FED / SUKU BUNGA": "FED / INTEREST RATES",
+"Fasilitas": "Facilities",
+"HARI INI": "TODAY",
+"HIGH IMPACT BERIKUTNYA": "NEXT HIGH IMPACT",
+"HIGH-IMPACT RELEASES · WAKTU WIB": "HIGH-IMPACT RELEASES · WIB TIME",
+"Hanya eksekusi ketika setup berada di area terbaik.": "Only execute when the setup is in the best area.",
+"Hanya zona yang belum ditembus. Referensi edukasi, bukan ajakan transaksi.": "Only zones that have not been broken. Educational reference, not a call to trade.",
+"IMBAL HASIL TREASURY": "TREASURY YIELDS",
+"INFO MEMBER": "MEMBER INFO",
+"Info Member": "Member Info",
+"Identifikasi area smart money sebelum entry.": "Identify smart money areas before entry.",
+"Informasi ini bersifat edukasi dan bukan ajakan transaksi. ZONA A1 tidak menerima pendaftaran IB maupun titip dana. Trading memiliki risiko tinggi dan setiap keputusan menjadi tanggung jawab pengguna.": "This information is educational and not a call to trade. ZONA A1 does not accept IB registrations or deposits of funds. Trading carries high risk and every decision is the responsibility of the user.",
+"Jaga risiko dan jangan memaksakan trade.": "Protect your risk and never force a trade.",
+"Lihat kalender di sidebar sebelum entry. Rilis High Impact bisa membuat harga bergerak cepat dan spread melebar, jadi pertimbangkan menahan diri di sekitar jam rilis.": "Check the calendar in the sidebar before entering. High Impact releases can move price fast and widen spreads, so consider staying out around release times.",
+"MAKRO": "MACRO",
+"MEMINDAI BERITA PASAR": "SCANNING MARKET NEWS",
+"MEMUAT": "LOADING",
+"MENUNGGU DATA": "WAITING FOR DATA",
+"MINYAK / INFLASI": "OIL / INFLATION",
+"Manfaatkan Analisa Harian": "Make Use of the Daily Analysis",
+"Memindai kalender…": "Scanning calendar…",
+"Memuat agenda berikutnya…": "Loading next agenda…",
+"Memuat analisa dari Agent…": "Loading analysis from the Agent…",
+"Mengambil jadwal high impact…": "Fetching high impact schedule…",
+"Menghubungkan ke sumber kalender ekonomi": "Connecting to the economic calendar source",
+"Menunggu data dari EA": "Waiting for data from the EA",
+"Menunggu data zona": "Waiting for zone data",
+"Menunggu koneksi engine ZONA A1…": "Waiting for ZONA A1 engine connection…",
+"Menunggu update Agent": "Waiting for Agent update",
+"OTOMATIS 2M ↻": "AUTO 2M ↻",
+"PENGGERAK PASAR XAUUSD": "XAUUSD MARKET DRIVERS",
+"Panduan Lengkap": "Full Guide",
+"Pantau Dashboard": "Watch the Dashboard",
+"Pantau Zona": "Watch the Zones",
+"Pastikan EA ZONA A1 aktif dan pengiriman zona ke Worker sudah dikonfigurasi.": "Make sure the ZONA A1 EA is active and zone delivery to the Worker is configured.",
+"Pegangan Trading Harian.": "Your Daily Trading Companion.",
+"Posisi Berjalan": "Open Positions",
+"Putuskan batas risiko per trade sebelum entry dan selalu pakai stop loss. Jangan menambah lot untuk mengejar kerugian.": "Decide your risk limit per trade before entry and always use a stop loss. Do not add lots to chase losses.",
+"RANGE ZONA · XAUUSD": "ZONE RANGE · XAUUSD",
+"RISIKO": "RISK",
+"RISIKO / GEOPOLITIK": "RISK / GEOPOLITICS",
+"Real-time signal feed dari ZONA EA yang berjalan di MetaTrader 5. Dirancang dengan interface yang ringan, modern, dan fokus pada informasi penting.": "Real-time signal feed from ZONA EA running on MetaTrader 5. Designed with a light, modern interface focused on the information that matters.",
+"Ringkasan praktis cara memakai fitur ZONA A1 dan kebiasaan yang membantu trading tetap disiplin.": "A practical summary of how to use ZONA A1 features and the habits that keep trading disciplined.",
+"Riwayat Sinyal": "Signal History",
+"Riwayat trade akan tampil di sini setelah posisi selesai.": "Trade history will appear here once positions are closed.",
+"SAHAM INDO": "INDONESIAN STOCKS",
+"SEMUA": "ALL",
+"SKENARIO": "SCENARIOS",
+"Saya Mengerti": "I Understand",
+"Sebelum dipakai di akun real, coba tools di akun demo agar paham perilaku setup, parameter, dan tampilan dashboard.": "Before using on a real account, try the tools on a demo account to understand setup behavior, parameters, and the dashboard.",
+"Seluruh tools dan informasi hanya untuk edukasi dan analisa pasar. Trading memiliki risiko tinggi dan setiap keputusan transaksi menjadi tanggung jawab masing-masing pengguna.": "All tools and information are for education and market analysis only. Trading carries high risk and every trading decision is the sole responsibility of each user.",
+"Sinyal Hari Ini": "Today's Signals",
+"Sumber: Google News · Bing News · media pasar (via server ZONA A1) · refresh otomatis 2 menit": "Source: Google News · Bing News · market media (via ZONA A1 server) · auto refresh every 2 minutes",
+"TEKANAN XAUUSD": "XAUUSD PRESSURE",
+"TIMEFRAME AKTIF": "ACTIVE TIMEFRAMES",
+"TODAY • memuat tanggal": "TODAY • loading date",
+"Tentukan Risiko Dulu": "Set Your Risk First",
+"Trading forex dan gold memiliki risiko tinggi. Gunakan manajemen risiko yang sesuai dan jangan menggunakan dana yang tidak sanggup untuk kehilangan.": "Forex and gold trading carries high risk. Use appropriate risk management and never trade with money you cannot afford to lose.",
+"Tulis alasan entry, hasil, dan kondisi emosi. Evaluasi mingguan membantu melihat pola kesalahan yang sering berulang.": "Write down your entry reason, result, and emotional state. Weekly reviews help reveal recurring mistake patterns.",
+"Tunggu Tempat": "Wait for the Right Place",
+"Uji di Demo Dulu": "Test on Demo First",
+"Validasi kondisi market dan status signal.": "Validate market conditions and signal status.",
+"ZONA A1 BERITA UTAMA": "ZONA A1 TOP NEWS",
+"ZONA A1 merupakan platform tools dan edukasi trading untuk membantu analisa serta pemantauan market. Seluruh informasi, signal, indikator, hasil backtest, dan performa Expert Advisor yang ditampilkan bersifat informatif dan tidak dapat dianggap sebagai jaminan hasil di masa depan. Performa pada kondisi live dapat berbeda dari hasil historis atau backtest.": "ZONA A1 is a trading tools and education platform that helps with market analysis and monitoring. All information, signals, indicators, backtest results, and Expert Advisor performance shown are informative only and cannot be taken as a guarantee of future results. Live performance may differ from historical or backtest results.",
+"ZONA A1 merupakan platform tools dan edukasi trading. ZONA A1 tidak menerima pendaftaran IB, tidak menerima penitipan dana, tidak mengelola dana pengguna, tidak menyediakan layanan investasi, dan tidak menjanjikan keuntungan tertentu.": "ZONA A1 is a trading tools and education platform. ZONA A1 does not accept IB registrations, does not accept deposits of funds, does not manage user funds, does not provide investment services, and does not promise any specific profit.",
+"ZONA BR1": "BR1 ZONE",
+"ZONA BR2": "BR2 ZONE",
+"ZONA FRESH": "FRESH ZONES",
+"Zona BR1 dan BR2 adalah area pantauan di chart, bukan perintah entry. Harga masuk zona belum tentu berbalik, tunggu konfirmasi sebelum bertindak.": "BR1 and BR2 zones are watch areas on the chart, not entry orders. Price entering a zone does not guarantee a reversal; wait for confirmation before acting.",
+"Zona Valid per Timeframe": "Valid Zones per Timeframe",
+"— Sinyal live hanya untuk informasi dan edukasi. Bukan ajakan atau rekomendasi transaksi. Setiap keputusan dan risiko trading sepenuhnya menjadi tanggung jawab pengguna.": "— Live signals are for information and education only. Not a call or recommendation to trade. Every trading decision and risk is fully the responsibility of the user.",
+"Belum ada posisi berjalan.": "No open positions yet.",
+"Tidak ada signal aktif • engine tetap scanning": "No active signals • engine keeps scanning",
+"Gagal memuat sinyal. Menunggu koneksi…": "Failed to load signals. Waiting for connection…",
+"Gagal memuat riwayat tanggal tersebut.": "Failed to load history for that date.",
+"Tidak ada rilis high impact terjadwal": "No high impact releases scheduled",
+"Tidak ada rilis high impact hari ini": "No high impact releases today",
+"Tidak ada rilis high impact pada rentang ini": "No high impact releases in this range",
+"Agenda berikutnya akan muncul saat tersedia dari sumber kalender.": "The next agenda will appear once available from the calendar source.",
+"MENUNGGU ACTUAL": "WAITING FOR ACTUAL",
+"AKAN RILIS": "UPCOMING",
+"BELUM RILIS": "NOT RELEASED",
+"Di atas forecast": "Above forecast",
+"Di bawah forecast": "Below forecast",
+"MEMUAT KALENDER USD": "LOADING USD CALENDAR",
+"KALENDER USD BELUM MENGIRIM DATA": "USD CALENDAR HAS NOT SENT DATA",
+"GAGAL MEMUAT KALENDER USD": "FAILED TO LOAD USD CALENDAR",
+"Sumber belum mengirim angka aktual dan/atau perkiraan; bias BUY/SELL belum dihitung": "The source has not sent actual and/or forecast figures; BUY/SELL bias not yet calculated",
+"Rilis ekonomi high impact": "High impact economic release",
+"RILIS HIGH IMPACT": "HIGH IMPACT RELEASE",
+"MENUNGGU RILIS": "WAITING FOR RELEASE",
+"BELUM ADA KEJUTAN DATA": "NO DATA SURPRISE YET",
+"Belum ada rilis high-impact terbaru dengan data aktual dan perkiraan yang bisa dibandingkan. Tunggu data valid; jangan membuat keputusan BUY/SELL hanya dari headline.": "There is no recent high-impact release with comparable actual and forecast data yet. Wait for valid data; do not make BUY/SELL decisions from headlines alone.",
+"TIDAK ADA BERITA PASAR YANG SESUAI.": "NO MATCHING MARKET NEWS.",
+"MENUNGGU PEMBARUAN SUMBER BERIKUTNYA.": "WAITING FOR THE NEXT SOURCE UPDATE.",
+"Pembaruan pasar terkait XAUUSD dan kondisi makro.": "Market updates related to XAUUSD and macro conditions.",
+"MENGAMBIL BERITA TERBARU": "FETCHING LATEST NEWS",
+"BERITA LIVE • FEED SEMENTARA TIDAK TERSEDIA": "LIVE NEWS • FEED TEMPORARILY UNAVAILABLE",
+"FEED BELUM TERSAMBUNG • MENCOBA LAGI OTOMATIS": "FEED NOT CONNECTED • RETRYING AUTOMATICALLY",
+"HASIL LIVE": "LIVE RESULT",
+"BELUM ADA": "NONE YET",
+"SUMBER ↗": "SOURCE ↗",
+"NETRAL": "NEUTRAL",
+"Analisa hari ini belum tersedia.": "Today's analysis is not available yet.",
+"Analisa hari ini belum tersedia. Agent akan update di sini.": "Today's analysis is not available yet. The Agent will update here.",
+"Belum ada zona valid": "No valid zones yet",
+"Belum ada data dari EA": "No data from the EA yet",
+"Gagal memuat data zona": "Failed to load zone data",
+"Belum ada blok": "No block yet",
+"BR1 dan BR2 saling tumpang tindih": "BR1 and BR2 overlap",
+"EA masih menunggu (WAIT). Zona hanya tampil saat sudah valid dan fresh.": "The EA is still waiting (WAIT). Zones only show when valid and fresh.",
+"Tidak dapat mengambil data zona": "Unable to fetch zone data",
+"Koneksi zona gagal": "Zone connection failed",
+"Periksa Worker API.": "Check the Worker API.",
+"sekarang": "now",
+"Pilih symbol": "Select symbol",
+"Bulan sebelumnya": "Previous month",
+"Bulan berikutnya": "Next month",
+"Filter kalender": "Calendar filter",
+"Klik untuk refresh sekarang": "Click to refresh now",
+"Performa per Blok": "Performance by Block",
+"Hasil trade yang sudah closed per blok rejection dan arah posisi.": "Results of closed trades by rejection block and position direction.",
+"Memuat statistik…": "Loading statistics…",
+"Belum ada trade closed untuk dihitung.": "No closed trades to count yet.",
+"Gagal memuat statistik.": "Failed to load statistics.",
+"PER BLOK": "BY BLOCK",
+"PER ARAH": "BY DIRECTION",
+"KOMBINASI BLOK × ARAH": "BLOCK × DIRECTION",
+"SAMPEL KECIL": "SMALL SAMPLE",
+"Dihitung dari": "Calculated from",
+"trade closed (TP/SL). Closed manual tidak dihitung. Hasil lalu tidak menjamin hasil ke depan.": "closed trades (TP/SL). Manual closes are not counted. Past results do not guarantee future results.",
+"ALERT ZONA": "ZONE ALERT",
+"Ketuk halaman untuk mengaktifkan suara": "Tap the page to enable sound",
+"Tutup": "Close",
+"Alert saat harga masuk blok BR1/BR2 (popup + suara)": "Alert when price enters a BR1/BR2 block (popup + sound)",
+"Harga live belum terbaca — alert belum bisa jalan": "Live price not available yet — alert cannot run",
+"NOTIF HP OFF": "PHONE PUSH OFF",
+"NOTIF HP ON": "PHONE PUSH ON",
+"NOTIF DIBLOKIR": "PUSH BLOCKED",
+"NOTIF HP ⚠": "PHONE PUSH ⚠",
+"NOTIF HP": "PHONE PUSH",
+"Notifikasi HP: alert zona tetap masuk walau halaman ditutup": "Phone push: zone alerts still arrive even when the page is closed",
+"Di iPhone: ketuk Share → Add to Home Screen, lalu buka dari ikon ZONA A1 dan aktifkan lagi.": "On iPhone: tap Share → Add to Home Screen, then open from the ZONA A1 icon and enable it again.",
+"Browser ini belum mendukung notifikasi push.": "This browser does not support push notifications yet.",
+"Notifikasi diblokir. Izinkan notifikasi untuk situs ini di pengaturan browser.": "Notifications are blocked. Allow notifications for this site in your browser settings.",
+"Notifikasi HP aktif. Alert zona akan masuk walau halaman ditutup.": "Phone push enabled. Zone alerts will arrive even when the page is closed.",
+"Notifikasi HP dimatikan.": "Phone push turned off.",
+"Gagal mengaktifkan notifikasi. Coba lagi nanti.": "Failed to enable notifications. Please try again later.",
+"Server notifikasi belum siap (VAPID belum diset).": "Notification server is not ready (VAPID not set)."
+}));
+ var RULES=[[/^(\d+) RILIS TERBACA$/,'$1 RELEASES READ'],
+  [/^Update: /,'Updated: '],
+  [/^Diupdate Agent · /,'Updated by Agent · '],
+  [/^Riwayat Sinyal • /,'Signal History • '],
+  [/^BERITA LIVE • TERBARU DULU • /,'LIVE NEWS • NEWEST FIRST • '],
+  [/\b(\d+) BERITA\b/g,'$1 NEWS'],
+  [/\b(\d+) HARI\b/g,'$1 DAYS'],
+  [/^Tidak ada riwayat untuk (.+)\.$/,function(m,x){return 'No history for '+x.replace('hari ini','today')+'.';}],
+  [/^Tidak ada riwayat pada (.+)\.$/,'No history on $1.'],
+  [/\bdalam (\d+)j (\d+)m\b/g,'in $1h $2m'],
+  [/\bdalam (\d+)m\b/g,'in $1m'],
+  [/\bdalam (\d+)h\b/g,'in $1d'],
+  [/\b(\d+)m lalu\b/g,'$1m ago'],
+  [/\b(\d+)j lalu\b/g,'$1h ago'],
+  [/\b(\d+)h lalu\b/g,'$1d ago'],
+  [/\bZONA (BUY|SELL|WAIT) (\w+)\b/g,'$1 ZONE $2'],
+  [/^Harga masuk area (BR\d)$/,'Price entered $1 area'],
+  [/^Harga ([\d.,]+) · Area ([\d.,]+) – ([\d.,]+)$/,'Price $1 · Range $2 – $3'],
+  [/\b(BR\d) di atas (BR\d)\b/g,'$1 above $2'],
+  [/\bjarak ([\d.,]+)/g,'gap $1'],
+  [/\bDasar: /,'Basis: '],
+  [/ rilis high-impact terbaru yang memiliki aktual vs perkiraan\. Rilis terbaru: /,' recent high-impact releases with actual vs forecast. Latest release: '],
+  [/Ini bias awal berbasis kejutan data, bukan sinyal entry otomatis; konfirmasi struktur harga, momentum, dan spread\./,'This is an initial bias based on data surprise, not an automatic entry signal; confirm with price structure, momentum, and spread.'],
+  [/\bdata makro\b/g,'macro data'],
+  [/HASIL RILIS · ACTUAL VS FORECAST/g,'RELEASE RESULT · ACTUAL VS FORECAST'],
+  [/BIAS PERKIRAAN · FORECAST VS PREVIOUS/g,'FORECAST BIAS · FORECAST VS PREVIOUS'],
+  [/BIAS USD: NETRAL · XAUUSD: WAIT/g,'USD BIAS: NEUTRAL · XAUUSD: WAIT'],
+  [/Actual sesuai forecast/g,'Actual matches forecast'],
+  [/Forecast sama dengan previous/g,'Forecast equals previous'],
+  [/belum ada perbedaan angka yang memberi arah jelas\. Tunggu konfirmasi price action dan data pendukung\./g,'no figure difference gives a clear direction yet. Wait for price action confirmation and supporting data.'],
+  [/Actual lebih kuat dari forecast, cenderung mendukung USD dan menekan emas\./g,'Actual is stronger than forecast, tending to support USD and pressure gold.'],
+  [/Actual lebih lemah dari forecast, cenderung melemahkan USD dan mendukung emas\./g,'Actual is weaker than forecast, tending to weaken USD and support gold.'],
+  [/Forecast lebih kuat dari previous, ekspektasi awal cenderung mendukung USD dan menekan emas\./g,'Forecast is stronger than previous; initial expectations tend to support USD and pressure gold.'],
+  [/Forecast lebih lemah dari previous, ekspektasi awal cenderung melemahkan USD dan mendukung emas\./g,'Forecast is weaker than previous; initial expectations tend to weaken USD and support gold.'],
+  [/Ini hanya indikasi sebelum rilis, bukan reaksi aktual\./g,'This is only an indication before the release, not an actual reaction.'],
+  [/Konfirmasi dengan price action, momentum, dan spread\./g,'Confirm with price action, momentum, and spread.'],
+  [/Selisih kecil dibanding perkiraan/g,'Small difference versus forecast'],
+  [/Kejutan makro → tekanan USD \/ yield dapat mendukung Emas/g,'Macro surprise → USD / yield pressure may support Gold'],
+  [/Kejutan makro → tekanan USD \/ yield dapat menekan Emas/g,'Macro surprise → USD / yield pressure may pressure Gold'],
+  [/\b(Senin|Selasa|Rabu|Kamis|Jumat|Sabtu|Minggu)\b(?=,? ?\d)/g,function(m){return WD[m];}],
+  [/\b(\d{1,2}) (Januari|Februari|Maret|Mei|Juni|Juli|Agustus|Oktober|Desember|Agu|Okt|Des|Mei)\b/g,function(m,d,mo){return d+' '+MO[mo];}],
+  [/\b(Januari|Februari|Maret|Mei|Juni|Juli|Agustus|Oktober|Desember)\b(?= \d{4})/g,function(m){return MO[m];}]];
+ var ATTRS=["aria-label","title","placeholder","alt"];
+ var textRec=new Map(),attrRec=new Map();
+ function norm(s){return s.replace(/\s+/g," ").trim();}
+ function tr(s){
+  var n=norm(s);if(!n)return null;
+  if(EXACT.has(n))return EXACT.get(n);
+  var out=n,ch=false;
+  for(var i=0;i<RULES.length;i++){var r=out.replace(RULES[i][0],RULES[i][1]);if(r!==out){out=r;ch=true;}}
+  return ch?out:null;
+ }
+ function skip(el){
+  while(el&&el.nodeType===1){var t=el.tagName;if(t==="SCRIPT"||t==="STYLE"||t==="TEXTAREA"||t==="NOSCRIPT"||t==="CANVAS"||t==="IFRAME"||el.hasAttribute("data-no-i18n"))return true;el=el.parentNode;}
+  return false;
+ }
+ function doText(n){
+  var cur=n.nodeValue,rec=textRec.get(n);
+  if(rec&&cur===rec.t)return;
+  if(!cur||!/[A-Za-z]/.test(cur)){if(rec)textRec.delete(n);return;}
+  if(skip(n.parentNode))return;
+  var t=tr(cur);
+  if(t===null){if(rec)textRec.delete(n);return;}
+  var lead=cur.match(/^\s*/)[0],trail=cur.match(/\s*$/)[0],res=lead+t+trail;
+  if(res===cur)return;
+  textRec.set(n,{o:cur,t:res});n.nodeValue=res;
+ }
+ function doAttrs(el){
+  if(el.nodeType!==1||skip(el))return;
+  for(var i=0;i<ATTRS.length;i++){
+   var a=ATTRS[i];if(!el.hasAttribute(a))continue;
+   var cur=el.getAttribute(a),recs=attrRec.get(el),rec=recs&&recs[a];
+   if(rec&&cur===rec.t)continue;
+   var t=tr(cur);if(t===null||t===cur)continue;
+   if(!recs){recs={};attrRec.set(el,recs);}
+   recs[a]={o:cur,t:t};el.setAttribute(a,t);
+  }
+ }
+ function walk(root){
+  if(!root)return;
+  if(root.nodeType===3){doText(root);return;}
+  if(root.nodeType!==1&&root.nodeType!==9&&root.nodeType!==11)return;
+  if(root.nodeType===1){if(skip(root))return;doAttrs(root);}
+  var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT,null),n;
+  while((n=w.nextNode())){if(n.nodeType===3)doText(n);else if(n.tagName==="SCRIPT"||n.tagName==="STYLE"){/* lewati */}else doAttrs(n);}
+ }
+ function flush(){
+  timer=null;var items=Array.from(pending);pending.clear();
+  items.forEach(function(n){if(n.isConnected!==false)walk(n);});
+  if(textRec.size>4000){textRec.forEach(function(v,k){if(!k.isConnected)textRec.delete(k);});}
+  if(attrRec.size>2000){attrRec.forEach(function(v,k){if(!k.isConnected)attrRec.delete(k);});}
+ }
+ function queue(n){pending.add(n);if(!timer)timer=setTimeout(flush,40);}
+ function startObs(){
+  if(observer||!document.body)return;
+  observer=new MutationObserver(function(list){
+   for(var i=0;i<list.length;i++){
+    var m=list[i];
+    if(m.type==="characterData")queue(m.target);
+    else if(m.type==="attributes")queue(m.target);
+    else m.addedNodes.forEach(function(x){queue(x);});
+   }
+  });
+  observer.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:ATTRS});
+ }
+ function stopObs(){if(observer){observer.disconnect();observer=null;}pending.clear();}
+ function restore(){
+  textRec.forEach(function(r,n){if(n.nodeValue===r.t)n.nodeValue=r.o;});textRec.clear();
+  attrRec.forEach(function(recs,el){for(var a in recs){if(el.getAttribute(a)===recs[a].t)el.setAttribute(a,recs[a].o);}});attrRec.clear();
+ }
+ function paint(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll(".a1-lang button").forEach(function(b){var on=b.getAttribute("data-lang")===lang;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on?"true":"false");});
+ }
+ function setLang(l,save){
+  if(l!=="en"&&l!=="id")return;
+  if(save!==false){try{localStorage.setItem(KEY,l);}catch(e){}}
+  if(l===lang&&(l==="id"||observer)){paint();return;}
+  lang=l;paint();
+  if(lang==="en"){walk(document.body);startObs();}
+  else{stopObs();restore();}
+ }
+ /* tanggal & jam dinamis ikut bahasa */
+ try{["toLocaleString","toLocaleDateString","toLocaleTimeString"].forEach(function(m){
+  var o=Date.prototype[m];
+  Date.prototype[m]=function(loc,opt){if(lang==="en"&&(loc==="id-ID"||loc==="id"))loc="en-GB";return o.call(this,loc,opt);};
+ });}catch(e){}
+ document.addEventListener("click",function(ev){
+  var b=ev.target.closest&&ev.target.closest(".a1-lang button[data-lang]");
+  if(b){ev.preventDefault();setLang(b.getAttribute("data-lang"));}
+ });
+ function init(){paint();if(lang==="en"){walk(document.body);startObs();}}
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+ window.A1Lang={set:setLang,get:function(){return lang;}};
+})();
+</script>
 </body>
 </html>
 
